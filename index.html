@@ -3,29 +3,84 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>콘텐츠 아카이브</title>
+  <title>보미리뷰</title>
+  <meta name="description" content="보미리뷰 - 생활, 뷰티, 디지털, 식품 제품 리뷰를 카테고리별로 정리한 리뷰 아카이브">
   <link rel="alternate" type="application/rss+xml" href="https://kshpartner.github.io/bomireivew/rss.xml">
-  <style>body{margin:0;font-family:Arial,'Malgun Gothic',sans-serif;color:#222;background:#fff}a{color:inherit;text-decoration:none}.site-header{height:56px;display:flex;align-items:center;gap:18px;padding:0 28px;border-bottom:1px solid #e5e5e5}.site-header a{color:#3366cc}main{max-width:960px;margin:0 auto;padding:28px 20px}.category-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}.category-nav a,.tags span{border:1px solid #ddd;padding:7px 10px;border-radius:4px;background:#fafafa}.post h1{font-size:32px;line-height:1.35;margin:6px 0 12px}.summary{color:#666;font-size:16px}.category{color:#3366cc;font-weight:bold}.tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 28px}.post article{font-size:17px;line-height:1.75}.post article img{max-width:100%;height:auto}.post-image{margin:24px 0;text-align:center}.post-image img{max-width:100%;height:auto;border-radius:8px}.cta{display:inline-block;margin-top:16px;padding:10px 14px;background:#222;color:#fff;border-radius:4px}.post-list{display:grid;gap:14px}.post-item{border-bottom:1px solid #eee;padding:14px 0}.post-item span{color:#3366cc;font-size:13px}.post-item h2{font-size:20px;margin:6px 0}.post-item p{color:#666;margin:0 0 8px}.post-item time{font-size:12px;color:#888}</style>
+  <style>*{box-sizing:border-box}body{margin:0;font-family:Arial,'Malgun Gothic',sans-serif;color:#171717;background:#f7f8fb}a{color:inherit;text-decoration:none}.topbar{position:sticky;top:0;z-index:10;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;background:rgba(255,255,255,.92);border-bottom:1px solid #e8eaf0;backdrop-filter:blur(12px)}.brand{font-size:24px;font-weight:800;color:#111}.topnav{display:flex;gap:8px}.topnav a{padding:9px 12px;border-radius:6px;color:#555;font-weight:600}.topnav a:hover{background:#eef3ff;color:#1f55d6}main{max-width:1180px;margin:0 auto;padding:28px 22px 64px}.hero{min-height:430px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:28px;align-items:stretch;padding:54px 0 38px}.eyebrow{margin:0 0 16px;color:#1f55d6;font-weight:800;letter-spacing:0}.hero h1{margin:0;font-size:52px;line-height:1.12;letter-spacing:0;color:#101010}.lead{max-width:650px;margin:20px 0 0;color:#555;font-size:18px;line-height:1.75}.hero-actions{display:flex;gap:10px;margin-top:28px}.hero-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:6px;font-weight:800}.hero-actions a:first-child{background:#1f55d6;color:#fff}.hero-actions a:last-child{background:#fff;border:1px solid #d9deea;color:#222}.hero-card{align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end;min-height:320px;padding:28px;border-radius:8px;background:linear-gradient(135deg,#111827,#1f55d6);color:#fff;box-shadow:0 18px 45px rgba(30,49,91,.22)}.hero-card span{font-size:14px;font-weight:800;color:#b9d0ff}.hero-card strong{display:block;margin-top:12px;font-size:28px;line-height:1.35}.hero-card p{margin:14px 0 0;color:#e8eeff;line-height:1.65}.section{margin-top:30px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:16px}.section-head p{margin:0;color:#1f55d6;font-weight:800}.section-head h2{margin:0;font-size:26px}.category-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.category-grid a{display:flex;flex-direction:column;gap:8px;min-height:96px;padding:18px;border-radius:8px;background:#fff;border:1px solid #e7eaf2;box-shadow:0 8px 24px rgba(23,23,23,.04)}.category-grid a:hover{border-color:#9bb7ff;transform:translateY(-1px)}.category-grid strong{font-size:18px}.category-grid span{color:#777}.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.review-card{background:#fff;border:1px solid #e7eaf2;border-radius:8px;overflow:hidden;box-shadow:0 8px 24px rgba(23,23,23,.04)}.review-card a{display:block;min-height:210px;padding:20px}.review-card span{display:inline-flex;margin-bottom:14px;color:#1f55d6;font-weight:800;font-size:13px}.review-card h3{margin:0;font-size:20px;line-height:1.45}.review-card p{margin:12px 0;color:#666;line-height:1.6}.review-card time{font-size:12px;color:#999}.footer{border-top:1px solid #e8eaf0;padding:26px 34px;color:#777;background:#fff}@media(max-width:860px){.topbar{padding:0 18px}.topnav a{padding:8px}.hero{grid-template-columns:1fr;padding-top:34px}.hero h1{font-size:38px}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.review-grid{grid-template-columns:1fr}}@media(max-width:520px){main{padding-left:16px;padding-right:16px}.hero h1{font-size:32px}.lead{font-size:16px}.hero-actions{flex-direction:column}.category-grid{grid-template-columns:1fr}.section-head{display:block}.section-head h2{margin-top:6px}}</style>
 </head>
 <body>
-  <header class="site-header"><strong>콘텐츠 아카이브</strong></header>
+  <header class="topbar">
+    <a class="brand" href="index.html">보미리뷰</a>
+    <nav class="topnav">
+      <a href="index.html">홈</a>
+      <a href="rss.xml">RSS</a>
+      <a href="sitemap.xml">Sitemap</a>
+    </nav>
+  </header>
   <main>
-    <nav class="category-nav"><a href="category/생활-리빙.html">생활/리빙</a><a href="category/패션-뷰티.html">패션/뷰티</a></nav>
-    <section class="post-list"><article class="post-item">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">BOMI REVIEW</p>
+        <h1>살까 말까 고민될 때,<br>먼저 보는 제품 리뷰</h1>
+        <p class="lead">생활용품부터 뷰티, 디지털, 식품까지. 보미리뷰는 흩어진 상품 정보를 읽기 편한 리뷰로 정리합니다.</p>
+        <div class="hero-actions">
+          <a href="https://kshpartner.github.io/bomireivew/posts/식품/2026-05-10-hamheung-naengmyeon-premium-mealkit-review.html">최신 리뷰 보기</a>
+          <a href="rss.xml">구독하기</a>
+        </div>
+      </div>
+      <a class="hero-card" href="https://kshpartner.github.io/bomireivew/posts/식품/2026-05-10-hamheung-naengmyeon-premium-mealkit-review.html">
+        <span>오늘의 리뷰</span>
+        <strong>함흥냉면 추천 캠핑용 프리미엄 밀키트 후기와 꿀팁 알아보기</strong>
+        <p>함흥명가홍현 함흥냉면 밀키트 후기와 캠핑용 프리미엄 제품의 장점을 소개합니다.</p>
+      </a>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <p>Category</p>
+        <h2>카테고리별로 빠르게 찾기</h2>
+      </div>
+      <nav class="category-grid"><a href="category/생활-리빙.html">
+      <strong>생활/리빙</strong>
+      <span>1개의 리뷰</span>
+    </a><a href="category/식품.html">
+      <strong>식품</strong>
+      <span>1개의 리뷰</span>
+    </a><a href="category/패션-뷰티.html">
+      <strong>패션/뷰티</strong>
+      <span>1개의 리뷰</span>
+    </a></nav>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <p>Latest</p>
+        <h2>최신 리뷰</h2>
+      </div>
+      <div class="review-grid"><article class="review-card">
+  <a href="https://kshpartner.github.io/bomireivew/posts/식품/2026-05-10-hamheung-naengmyeon-premium-mealkit-review.html">
+    <span>식품</span>
+    <h3>함흥냉면 추천 캠핑용 프리미엄 밀키트 후기와 꿀팁 알아보기</h3>
+    <p>함흥명가홍현 함흥냉면 밀키트 후기와 캠핑용 프리미엄 제품의 장점을 소개합니다.</p>
+    <time>2026-05-10T01:23:52+09:00</time>
+  </a>
+</article><article class="review-card">
   <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-white-double-layer-blackout-curtain-review.html">
     <span>생활/리빙</span>
-    <h2>암막커튼 추천 화이트 이중 레이스로 거실 침실 분위기 바꾸는법 후기</h2>
+    <h3>암막커튼 추천 화이트 이중 레이스로 거실 침실 분위기 바꾸는법 후기</h3>
     <p>뷰하우스 엘룸 이중 암막커튼으로 거실과 침실 분위기 바꾸는 솔직 후기입니다.</p>
     <time>2026-05-10T01:17:50+09:00</time>
   </a>
-</article><article class="post-item">
+</article><article class="review-card">
   <a href="https://kshpartner.github.io/bomireivew/posts/패션-뷰티/2026-05-10-mini-volume-curling-iron-glamsheek-review.html">
     <span>패션/뷰티</span>
-    <h2>미니 볼륨 고데기 추천 글램시크 사용법과 후기</h2>
+    <h3>미니 볼륨 고데기 추천 글램시크 사용법과 후기</h3>
     <p>작고 휴대 간편한 글램팜 글램시크 미니 볼륨 고데기 사용 후기와 추천 이유를 소개합니다.</p>
     <time>2026-05-10T01:05:26+09:00</time>
   </a>
-</article></section>
+</article></div>
+    </section>
   </main>
+  <footer class="footer">© 보미리뷰</footer>
 </body>
 </html>
