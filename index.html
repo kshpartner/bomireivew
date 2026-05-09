@@ -4,14 +4,63 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>보미리뷰</title>
-  <meta name="description" content="보미리뷰 - 제품 리뷰를 카테고리별로 정리하는 리뷰 아카이브">
-  <style>*{box-sizing:border-box}body{margin:0;font-family:Arial,'Malgun Gothic',sans-serif;color:#171717;background:#f7f8fb}a{color:inherit;text-decoration:none}.topbar{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;background:#fff;border-bottom:1px solid #e8eaf0}.brand{font-size:24px;font-weight:800}.topnav{display:flex;gap:8px}.topnav a{padding:9px 12px;border-radius:6px;color:#555;font-weight:600}main{max-width:1180px;margin:0 auto;padding:70px 22px}.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:28px;align-items:stretch}.eyebrow{margin:0 0 16px;color:#1f55d6;font-weight:800}.hero h1{margin:0;font-size:52px;line-height:1.12}.lead{max-width:650px;margin:20px 0 0;color:#555;font-size:18px;line-height:1.75}.hero-card{display:flex;flex-direction:column;justify-content:flex-end;min-height:320px;padding:28px;border-radius:8px;background:linear-gradient(135deg,#111827,#1f55d6);color:#fff;box-shadow:0 18px 45px rgba(30,49,91,.22)}.hero-card strong{font-size:28px}.section{margin-top:46px}.empty{padding:22px;border:1px solid #e7eaf2;background:#fff;border-radius:8px;color:#666}.footer{border-top:1px solid #e8eaf0;padding:26px 34px;color:#777;background:#fff}@media(max-width:860px){.hero{grid-template-columns:1fr}.hero h1{font-size:38px}}</style>
+  <meta name="description" content="보미리뷰 - 생활, 뷰티, 디지털, 식품 제품 리뷰를 카테고리별로 정리한 리뷰 아카이브">
+  <link rel="alternate" type="application/rss+xml" href="https://kshpartner.github.io/bomireivew/rss.xml">
+  <style>*{box-sizing:border-box}body{margin:0;font-family:Arial,'Malgun Gothic',sans-serif;color:#171717;background:#f7f8fb}a{color:inherit;text-decoration:none}.topbar{position:sticky;top:0;z-index:10;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;background:rgba(255,255,255,.92);border-bottom:1px solid #e8eaf0;backdrop-filter:blur(12px)}.brand{font-size:24px;font-weight:800;color:#111}.topnav{display:flex;gap:8px}.topnav a{padding:9px 12px;border-radius:6px;color:#555;font-weight:600}.topnav a:hover{background:#eef3ff;color:#1f55d6}main{max-width:1180px;margin:0 auto;padding:28px 22px 64px}.hero{min-height:430px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:28px;align-items:stretch;padding:54px 0 38px}.eyebrow{margin:0 0 16px;color:#1f55d6;font-weight:800;letter-spacing:0}.hero h1{margin:0;font-size:52px;line-height:1.12;letter-spacing:0;color:#101010}.lead{max-width:650px;margin:20px 0 0;color:#555;font-size:18px;line-height:1.75}.hero-actions{display:flex;gap:10px;margin-top:28px}.hero-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:6px;font-weight:800}.hero-actions a:first-child{background:#1f55d6;color:#fff}.hero-actions a:last-child{background:#fff;border:1px solid #d9deea;color:#222}.hero-card{align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end;min-height:320px;padding:28px;border-radius:8px;background:linear-gradient(135deg,#111827,#1f55d6);background-size:cover;background-position:center;color:#fff;box-shadow:0 18px 45px rgba(30,49,91,.22)}.hero-card span{font-size:14px;font-weight:800;color:#dce8ff}.hero-card strong{display:block;margin-top:12px;font-size:28px;line-height:1.35}.hero-card p{margin:14px 0 0;color:#f2f6ff;line-height:1.65}.section{margin-top:30px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:16px}.section-head p{margin:0;color:#1f55d6;font-weight:800}.section-head h2{margin:0;font-size:26px}.category-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.category-grid a{display:flex;flex-direction:column;gap:8px;min-height:96px;padding:18px;border-radius:8px;background:#fff;border:1px solid #e7eaf2;box-shadow:0 8px 24px rgba(23,23,23,.04)}.category-grid a:hover{border-color:#9bb7ff;transform:translateY(-1px)}.category-grid strong{font-size:18px}.category-grid span{color:#777}.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.review-card{background:#fff;border:1px solid #e7eaf2;border-radius:8px;overflow:hidden;box-shadow:0 8px 24px rgba(23,23,23,.04)}.review-card a{display:block;min-height:290px;padding:0 0 20px}.review-thumb{height:170px;background:#e9edf5;overflow:hidden}.review-thumb img{width:100%;height:100%;object-fit:cover;display:block}.review-thumb.empty{background:linear-gradient(135deg,#eef3ff,#ffffff)}.review-card span,.review-card h3,.review-card p,.review-card time{margin-left:20px;margin-right:20px}.review-card span{display:inline-flex;margin-top:18px;margin-bottom:12px;color:#1f55d6;font-weight:800;font-size:13px}.review-card h3{font-size:20px;line-height:1.45}.review-card p{color:#666;line-height:1.6}.review-card time{font-size:12px;color:#999}.footer{border-top:1px solid #e8eaf0;padding:26px 34px;color:#777;background:#fff}@media(max-width:860px){.topbar{padding:0 18px}.topnav a{padding:8px}.hero{grid-template-columns:1fr;padding-top:34px}.hero h1{font-size:38px}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.review-grid{grid-template-columns:1fr}}@media(max-width:520px){main{padding-left:16px;padding-right:16px}.hero h1{font-size:32px}.lead{font-size:16px}.hero-actions{flex-direction:column}.category-grid{grid-template-columns:1fr}.section-head{display:block}.section-head h2{margin-top:6px}}</style>
 </head>
 <body>
-  <header class="topbar"><a class="brand" href="index.html">보미리뷰</a><nav class="topnav"><a href="index.html">홈</a><a href="rss.xml">RSS</a><a href="sitemap.xml">Sitemap</a></nav></header>
+  <header class="topbar">
+    <a class="brand" href="index.html">보미리뷰</a>
+    <nav class="topnav">
+      <a href="index.html">홈</a>
+      <a href="rss.xml">RSS</a>
+      <a href="sitemap.xml">Sitemap</a>
+    </nav>
+  </header>
   <main>
-    <section class="hero"><div><p class="eyebrow">BOMI REVIEW</p><h1>살까 말까 고민될 때,<br>먼저 보는 제품 리뷰</h1><p class="lead">생활용품부터 뷰티, 디지털, 식품까지. 새 리뷰가 발행되면 이곳에 카테고리별로 정리됩니다.</p></div><div class="hero-card"><span>Ready</span><strong>새 리뷰 발행 대기 중</strong><p>기존 테스트 콘텐츠를 정리했습니다.</p></div></section>
-    <section class="section"><h2>최신 리뷰</h2><p class="empty">아직 표시할 리뷰가 없습니다.</p></section>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">BOMI REVIEW</p>
+        <h1>살까 말까 고민될 때,<br>먼저 보는 제품 리뷰</h1>
+        <p class="lead">생활용품부터 뷰티, 디지털, 식품까지. 보미리뷰는 흩어진 상품 정보를 읽기 편한 리뷰로 정리합니다.</p>
+        <div class="hero-actions">
+          <a href="https://kshpartner.github.io/bomireivew/posts/식품/2026-05-10-mirubat-10set-mulbim-naengmyeon-review-guide.html">최신 리뷰 보기</a>
+          <a href="rss.xml">구독하기</a>
+        </div>
+      </div>
+      <a class="hero-card" href="https://kshpartner.github.io/bomireivew/posts/식품/2026-05-10-mirubat-10set-mulbim-naengmyeon-review-guide.html" style="background-image:linear-gradient(135deg,rgba(17,24,39,.72),rgba(31,85,214,.72)),url('https://shop-phinf.pstatic.net/20240502_250/1714613829755hfDdn_JPEG/115749718450241184_1946774188.jpg')">
+        <span>오늘의 리뷰</span>
+        <strong>냉면 10인세트 추천 미루밭 물냉면&#183;비빔냉면 후기와 구매가이드</strong>
+        <p>미루밭 냉면 10인세트의 가성비와 맛, 편리함 후기를 소개합니다.</p>
+      </a>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <p>Category</p>
+        <h2>카테고리별로 빠르게 찾기</h2>
+      </div>
+      <nav class="category-grid"><a href="category/식품.html">
+      <strong>식품</strong>
+      <span>1개의 리뷰</span>
+    </a></nav>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <p>Latest</p>
+        <h2>최신 리뷰</h2>
+      </div>
+      <div class="review-grid"><article class="review-card">
+  <a href="https://kshpartner.github.io/bomireivew/posts/식품/2026-05-10-mirubat-10set-mulbim-naengmyeon-review-guide.html">
+    <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20240502_250/1714613829755hfDdn_JPEG/115749718450241184_1946774188.jpg" alt="냉면 10인세트 추천 미루밭 물냉면&#183;비빔냉면 후기와 구매가이드"></div>
+    <span>식품</span>
+    <h3>냉면 10인세트 추천 미루밭 물냉면&#183;비빔냉면 후기와 구매가이드</h3>
+    <p>미루밭 냉면 10인세트의 가성비와 맛, 편리함 후기를 소개합니다.</p>
+    <time>2026-05-10T01:36:10+09:00</time>
+  </a>
+</article></div>
+    </section>
   </main>
   <footer class="footer">© 보미리뷰</footer>
 </body>
