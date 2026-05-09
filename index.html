@@ -52,6 +52,21 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
 .footer{border-top:1px solid #eadfd2;padding:28px 38px;color:#8b7b70;background:#fffaf5}
 @media(max-width:860px){.topbar{padding:0 18px}.topnav a{padding:8px}.hero{grid-template-columns:1fr;padding-top:36px}.hero h1{font-size:40px}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.review-grid{grid-template-columns:1fr}}
 @media(max-width:520px){main{padding-left:16px;padding-right:16px}.hero h1{font-size:32px}.lead{font-size:16px}.hero-actions{flex-direction:column}.category-grid{grid-template-columns:1fr}.section-head{display:block}.section-head h2{margin-top:7px}}</style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NVBM3GHMNX');
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('[data-ga-event]');
+    if (!el || typeof gtag !== 'function') return;
+    gtag('event', el.getAttribute('data-ga-event'), {
+      event_category: 'engagement',
+      event_label: el.getAttribute('data-ga-label') || el.href || ''
+    });
+  });
+</script>
 </head>
 <body>
   <header class="topbar">
@@ -69,14 +84,14 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
         <h1>생활에 온기를 더하는<br>다정한 제품 리뷰</h1>
         <p class="lead">보미리뷰는 매일 쓰는 물건의 장점과 아쉬움을 차분히 살펴보고, 내 취향과 생활에 맞는 선택을 돕습니다.</p>
         <div class="hero-actions">
-          <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-kinox-1100-camping-utility-pan-review.html">따끈한 리뷰 보기</a>
-          <a href="rss.xml">새 리뷰 구독</a>
+          <a href="https://kshpartner.github.io/bomireivew/posts/패션-뷰티/2026-05-10-satin-pearl-ribbon-hairpin-review.html" data-ga-event="post_click" data-ga-label="리본 헤어 자동핀 추천 새틴 진주 풍성 스타일링 후기">따끈한 리뷰 보기</a>
+          <a href="rss.xml" data-ga-event="rss_click" data-ga-label="home_rss">새 리뷰 구독</a>
         </div>
       </div>
-      <a class="hero-card" href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-kinox-1100-camping-utility-pan-review.html" style="background-image:linear-gradient(135deg,rgba(17,24,39,.72),rgba(31,85,214,.72)),url('https://shop-phinf.pstatic.net/20251120_115/1763621324378ItDGG_PNG/24958571395706432_950917123.png')">
+      <a class="hero-card" href="https://kshpartner.github.io/bomireivew/posts/패션-뷰티/2026-05-10-satin-pearl-ribbon-hairpin-review.html" data-ga-event="post_click" data-ga-label="리본 헤어 자동핀 추천 새틴 진주 풍성 스타일링 후기" style="background-image:linear-gradient(135deg,rgba(17,24,39,.72),rgba(31,85,214,.72)),url('https://shop-phinf.pstatic.net/20220522_287/1653226776578syGTo_JPEG/54362556297198603_665456869.jpg')">
         <span>오늘의 따뜻한 리뷰</span>
-        <strong>캠핑 유틸리티 팬 추천 키녹스 1100 플레이팅 그릇 활용법과 후기</strong>
-        <p>캠핑 요리가 편해지는 키녹스 1100 팬, 조리와 플레이팅을 한 번에 할 수 있어 꼭 추천해요.</p>
+        <strong>리본 헤어 자동핀 추천 새틴 진주 풍성 스타일링 후기</strong>
+        <p>진주 장식과 새틴 소재가 고급스러운 리본 헤어핀, 튼튼하고 예뻐서 친구에게도 추천하고 싶어요.</p>
       </a>
     </section>
 
@@ -85,16 +100,16 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
         <p>Category</p>
         <h2>필요한 물건을 결대로 찾기</h2>
       </div>
-      <nav class="category-grid"><a href="category/생활-리빙.html">
+      <nav class="category-grid"><a href="category/생활-리빙.html" data-ga-event="category_click" data-ga-label="생활/리빙">
       <strong>생활/리빙</strong>
       <span>7개의 리뷰</span>
-    </a><a href="category/식품.html">
+    </a><a href="category/식품.html" data-ga-event="category_click" data-ga-label="식품">
       <strong>식품</strong>
       <span>7개의 리뷰</span>
-    </a><a href="category/패션-뷰티.html">
+    </a><a href="category/패션-뷰티.html" data-ga-event="category_click" data-ga-label="패션/뷰티">
       <strong>패션/뷰티</strong>
-      <span>4개의 리뷰</span>
-    </a><a href="category/가전-디지털.html">
+      <span>5개의 리뷰</span>
+    </a><a href="category/가전-디지털.html" data-ga-event="category_click" data-ga-label="가전/디지털">
       <strong>가전/디지털</strong>
       <span>3개의 리뷰</span>
     </a></nav>
@@ -106,7 +121,15 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
         <h2>방금 정리한 리뷰</h2>
       </div>
       <div class="review-grid"><article class="review-card">
-  <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-kinox-1100-camping-utility-pan-review.html">
+  <a href="https://kshpartner.github.io/bomireivew/posts/패션-뷰티/2026-05-10-satin-pearl-ribbon-hairpin-review.html" data-ga-event="post_click" data-ga-label="리본 헤어 자동핀 추천 새틴 진주 풍성 스타일링 후기">
+    <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20220522_287/1653226776578syGTo_JPEG/54362556297198603_665456869.jpg" alt="리본 헤어 자동핀 추천 새틴 진주 풍성 스타일링 후기"></div>
+    <span>패션/뷰티</span>
+    <h3>리본 헤어 자동핀 추천 새틴 진주 풍성 스타일링 후기</h3>
+    <p>진주 장식과 새틴 소재가 고급스러운 리본 헤어핀, 튼튼하고 예뻐서 친구에게도 추천하고 싶어요.</p>
+    <time>2026-05-10T03:02:00+09:00</time>
+  </a>
+</article><article class="review-card">
+  <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-kinox-1100-camping-utility-pan-review.html" data-ga-event="post_click" data-ga-label="캠핑 유틸리티 팬 추천 키녹스 1100 플레이팅 그릇 활용법과 후기">
     <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20251120_115/1763621324378ItDGG_PNG/24958571395706432_950917123.png" alt="캠핑 유틸리티 팬 추천 키녹스 1100 플레이팅 그릇 활용법과 후기"></div>
     <span>생활/리빙</span>
     <h3>캠핑 유틸리티 팬 추천 키녹스 1100 플레이팅 그릇 활용법과 후기</h3>
@@ -114,7 +137,7 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
     <time>2026-05-10T02:52:43+09:00</time>
   </a>
 </article><article class="review-card">
-  <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-ttodocleaner-refill-10roll-review.html">
+  <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-ttodocleaner-refill-10roll-review.html" data-ga-event="post_click" data-ga-label="테이프 크리너 추천 또도크리너 리필 10롤 사용법과 후기">
     <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20251120_249/17636205815141o8OJ_JPEG/26605435234218204_833923224.jpg" alt="테이프 크리너 추천 또도크리너 리필 10롤 사용법과 후기"></div>
     <span>생활/리빙</span>
     <h3>테이프 크리너 추천 또도크리너 리필 10롤 사용법과 후기</h3>
@@ -122,7 +145,7 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
     <time>2026-05-10T02:46:22+09:00</time>
   </a>
 </article><article class="review-card">
-  <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-stainless-camping-pan-bellark-gungjungpan-24cm-review.html">
+  <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-stainless-camping-pan-bellark-gungjungpan-24cm-review.html" data-ga-event="post_click" data-ga-label="스텐 캠핑팬 추천 벨락 궁중팬 24cm 통3중 오뎅냄비 사용후기">
     <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20231224_107/170336083568236EcD_JPEG/104496734391789243_1845398426.jpg" alt="스텐 캠핑팬 추천 벨락 궁중팬 24cm 통3중 오뎅냄비 사용후기"></div>
     <span>생활/리빙</span>
     <h3>스텐 캠핑팬 추천 벨락 궁중팬 24cm 통3중 오뎅냄비 사용후기</h3>
@@ -130,7 +153,7 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
     <time>2026-05-10T02:41:48+09:00</time>
   </a>
 </article><article class="review-card">
-  <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-portable-doldoli-cleaner-useful-tips-review.html">
+  <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-portable-doldoli-cleaner-useful-tips-review.html" data-ga-event="post_click" data-ga-label="휴대용 돌돌이 청소기 추천 유즈베러띵 포켓 미니 세트 활용법과 사용후기">
     <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20250307_271/1741321888406ap6kM_JPEG/16661565164568027_571938587.jpg" alt="휴대용 돌돌이 청소기 추천 유즈베러띵 포켓 미니 세트 활용법과 사용후기"></div>
     <span>생활/리빙</span>
     <h3>휴대용 돌돌이 청소기 추천 유즈베러띵 포켓 미니 세트 활용법과 사용후기</h3>
@@ -138,7 +161,7 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
     <time>2026-05-10T02:35:18+09:00</time>
   </a>
 </article><article class="review-card">
-  <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-microwave-3tier-rack-tips-review.html">
+  <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-microwave-3tier-rack-tips-review.html" data-ga-event="post_click" data-ga-label="전자렌지 수납장 추천 3단 렌지대 활용법과 구매팁 리뷰">
     <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20240712_38/1720775196499e7nv3_PNG/67408979739210387_683929370.png" alt="전자렌지 수납장 추천 3단 렌지대 활용법과 구매팁 리뷰"></div>
     <span>생활/리빙</span>
     <h3>전자렌지 수납장 추천 3단 렌지대 활용법과 구매팁 리뷰</h3>
@@ -146,7 +169,7 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
     <time>2026-05-10T02:29:42+09:00</time>
   </a>
 </article><article class="review-card">
-  <a href="https://kshpartner.github.io/bomireivew/posts/패션-뷰티/2026-05-10-bubble-curl-bongodegi-32mm-pink-edition-review.html">
+  <a href="https://kshpartner.github.io/bomireivew/posts/패션-뷰티/2026-05-10-bubble-curl-bongodegi-32mm-pink-edition-review.html" data-ga-event="post_click" data-ga-label="버블컬 봉고데기 추천 32mm 볼륨 웨이브 핑크에디션 사용후기">
     <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20230829_278/16932966384004QmK9_JPEG/4222756258858691_136374448.jpg" alt="버블컬 봉고데기 추천 32mm 볼륨 웨이브 핑크에디션 사용후기"></div>
     <span>패션/뷰티</span>
     <h3>버블컬 봉고데기 추천 32mm 볼륨 웨이브 핑크에디션 사용후기</h3>
@@ -154,7 +177,7 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
     <time>2026-05-10T02:23:28+09:00</time>
   </a>
 </article><article class="review-card">
-  <a href="https://kshpartner.github.io/bomireivew/posts/가전-디지털/2026-05-10-microwave-stand-recommendation-space-saving-review.html">
+  <a href="https://kshpartner.github.io/bomireivew/posts/가전-디지털/2026-05-10-microwave-stand-recommendation-space-saving-review.html" data-ga-event="post_click" data-ga-label="전자레인지 선반 추천, 공간활용과 다용도 렌지대 고르는법 리뷰">
     <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20250904_32/1756958806033hrII7_JPEG/107303203013229785_1454770898.jpg" alt="전자레인지 선반 추천, 공간활용과 다용도 렌지대 고르는법 리뷰"></div>
     <span>가전/디지털</span>
     <h3>전자레인지 선반 추천, 공간활용과 다용도 렌지대 고르는법 리뷰</h3>
@@ -162,7 +185,7 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
     <time>2026-05-10T02:18:20+09:00</time>
   </a>
 </article><article class="review-card">
-  <a href="https://kshpartner.github.io/bomireivew/posts/패션-뷰티/2026-05-10-wireless-volumeon-brush-curling-iron-review.html">
+  <a href="https://kshpartner.github.io/bomireivew/posts/패션-뷰티/2026-05-10-wireless-volumeon-brush-curling-iron-review.html" data-ga-event="post_click" data-ga-label="무선 볼륨온 브러쉬 고데기 추천 후기와 사용법 알아보기">
     <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20250918_2/1758171798391Fcwwb_JPEG/33789824851666112_1425947417.jpg" alt="무선 볼륨온 브러쉬 고데기 추천 후기와 사용법 알아보기"></div>
     <span>패션/뷰티</span>
     <h3>무선 볼륨온 브러쉬 고데기 추천 후기와 사용법 알아보기</h3>
@@ -170,7 +193,7 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
     <time>2026-05-10T02:15:44+09:00</time>
   </a>
 </article><article class="review-card">
-  <a href="https://kshpartner.github.io/bomireivew/posts/가전-디지털/2026-05-10-phu-quoc-5g-esim-unlimited-data-review.html">
+  <a href="https://kshpartner.github.io/bomireivew/posts/가전-디지털/2026-05-10-phu-quoc-5g-esim-unlimited-data-review.html" data-ga-event="post_click" data-ga-label="푸꾸옥 5G 유심 추천 ESIM 무제한 데이터 사용법 리뷰">
     <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20251111_36/176284580518690JIG_JPEG/9479606462002454_1655323937.jpg" alt="푸꾸옥 5G 유심 추천 ESIM 무제한 데이터 사용법 리뷰"></div>
     <span>가전/디지털</span>
     <h3>푸꾸옥 5G 유심 추천 ESIM 무제한 데이터 사용법 리뷰</h3>
@@ -178,7 +201,7 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
     <time>2026-05-10T02:14:59+09:00</time>
   </a>
 </article><article class="review-card">
-  <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-microwave-storage-cabinet-wide-rail-installation-review.html">
+  <a href="https://kshpartner.github.io/bomireivew/posts/생활-리빙/2026-05-10-microwave-storage-cabinet-wide-rail-installation-review.html" data-ga-event="post_click" data-ga-label="전자렌지 수납장 추천 광폭 레일 선반 설치법과 사용후기">
     <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20231215_296/1702620077928UeILB_JPEG/103755920632523460_364719146.jpg" alt="전자렌지 수납장 추천 광폭 레일 선반 설치법과 사용후기"></div>
     <span>생활/리빙</span>
     <h3>전자렌지 수납장 추천 광폭 레일 선반 설치법과 사용후기</h3>
@@ -186,20 +209,12 @@ main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
     <time>2026-05-10T02:12:05+09:00</time>
   </a>
 </article><article class="review-card">
-  <a href="https://kshpartner.github.io/bomireivew/posts/가전-디지털/2026-05-10-iphone-screen-protector-koker-paper-texture-2pcs.html">
+  <a href="https://kshpartner.github.io/bomireivew/posts/가전-디지털/2026-05-10-iphone-screen-protector-koker-paper-texture-2pcs.html" data-ga-event="post_click" data-ga-label="아이폰 액정 보호필름 추천 코커 종이질감 2매입내일배송 가성비 좋은 선택법">
     <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20240913_19/1726200644731Acb1J_JPEG/762578850728378_249860140.jpg" alt="아이폰 액정 보호필름 추천 코커 종이질감 2매입내일배송 가성비 좋은 선택법"></div>
     <span>가전/디지털</span>
     <h3>아이폰 액정 보호필름 추천 코커 종이질감 2매입내일배송 가성비 좋은 선택법</h3>
     <p>아이폰 액정 보호에 좋은 종이질감 필름, 자연스러운 터치감과 가성비 좋은 선택이라 살짝 추천해요.</p>
     <time>2026-05-10T02:07:57+09:00</time>
-  </a>
-</article><article class="review-card">
-  <a href="https://kshpartner.github.io/bomireivew/posts/패션-뷰티/2026-05-10-mini-hair-clip-18color-francepin-review.html">
-    <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20240909_94/172587998289140NRH_JPEG/5032435069458050_1812926239.jpg" alt="미니집게핀 추천 18가지 컬러 프랑스핀 반머리 고르는법 리뷰"></div>
-    <span>패션/뷰티</span>
-    <h3>미니집게핀 추천 18가지 컬러 프랑스핀 반머리 고르는법 리뷰</h3>
-    <p>작고 가벼운 미니집게핀으로 반머리를 예쁘게 정리하고 싶다면 이 리뷰를 꼭 읽어보세요.</p>
-    <time>2026-05-10T01:56:39+09:00</time>
   </a>
 </article></div>
     </section>
