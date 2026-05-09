@@ -7,4 +7,4 @@ Allow: /
 User-agent: Yeti
 Allow: /
 
-Sitemap: https://kshpartner.github.io/bomireivew/sitemap.xml
+Sitemap: http://bomireview.doripress.com/sitemap.xml
