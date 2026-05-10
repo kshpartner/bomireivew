@@ -7,4 +7,4 @@ Allow: /
 User-agent: Yeti
 Allow: /
 
-Sitemap: http://bomireview.doripress.com/sitemap.xml
+Sitemap: https://bomireview.doripress.com/sitemap.xml
