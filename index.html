@@ -1,14 +1,129 @@
 <!doctype html>
-<html lang=""ko"">
+<html lang="ko">
 <head>
-  <meta charset=""utf-8"">
-  <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>보미리뷰</title>
-  <meta name=""description"" content=""보미리뷰 - 생활에 온기를 더하는 제품 리뷰를 카테고리별로 정리합니다"">
-  <link rel=""alternate"" type=""application/rss+xml"" href=""http://bomireview.doripress.com/rss.xml"">
-  <script async src=""https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553""
-     crossorigin=""anonymous""></script>
-  <style>body{margin:0;font-family:Arial,'Malgun Gothic',sans-serif;background:#fbf7f1;color:#3f352f}main{max-width:880px;margin:0 auto;padding:80px 22px;text-align:center}h1{font-size:44px;line-height:1.2;margin:0 0 18px;color:#8f4a35}p{font-size:18px;line-height:1.8;color:#6f6258}a{color:#8f4a35;font-weight:700;text-decoration:none}</style>
+  <meta name="description" content="보미리뷰 - 생활에 온기를 더하는 제품 리뷰를 카테고리별로 정리합니다">
+  <link rel="alternate" type="application/rss+xml" href="http://bomireview.doripress.com/rss.xml">
+  <style>@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+*{box-sizing:border-box}
+body{margin:0;font-family:'Pretendard Variable',Pretendard,'Malgun Gothic',sans-serif;color:#3f352f;background:#fbf7f1;letter-spacing:0}
+a{color:inherit;text-decoration:none}
+.topbar{position:sticky;top:0;z-index:10;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 38px;background:rgba(255,251,246,.92);border-bottom:1px solid #eadfd2;backdrop-filter:blur(16px)}
+.brand{font-size:26px;font-weight:900;color:#8f4a35}
+.topnav{display:flex;gap:8px}
+.topnav a{padding:10px 13px;border-radius:999px;color:#6f6258;font-weight:750}
+.topnav a:hover{background:#f3e4d8;color:#8f4a35}
+main{max-width:1180px;margin:0 auto;padding:34px 22px 76px}
+.hero{min-height:450px;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(310px,.88fr);gap:30px;align-items:stretch;padding:58px 0 42px}
+.eyebrow{display:inline-flex;margin:0 0 18px;padding:8px 12px;border-radius:999px;background:#f1ded0;color:#a65f48;font-size:13px;font-weight:900}
+.hero h1{margin:0;font-size:54px;line-height:1.12;color:#312821}
+.lead{max-width:660px;margin:22px 0 0;color:#6f6258;font-size:18px;line-height:1.85}
+.hero-actions{display:flex;gap:11px;margin-top:30px}
+.hero-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 19px;border-radius:999px;font-weight:850}
+.hero-actions a:first-child{background:#c66a4a;color:#fff;box-shadow:0 12px 28px rgba(198,106,74,.24)}
+.hero-actions a:last-child{background:#fffaf5;border:1px solid #ead3c2;color:#6b584d}
+.hero-card{align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end;min-height:330px;padding:30px;border-radius:14px;background:linear-gradient(135deg,rgba(88,58,43,.78),rgba(198,106,74,.62));background-size:cover;background-position:center;color:#fff;box-shadow:0 22px 46px rgba(94,63,45,.18);overflow:hidden}
+.hero-card span{font-size:14px;font-weight:900;color:#ffe8d8}
+.hero-card strong{display:block;margin-top:12px;font-size:29px;line-height:1.38}
+.hero-card p{margin:14px 0 0;color:#fff5ed;line-height:1.7}
+.section{margin-top:34px}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:17px}
+.section-head p{margin:0;color:#a65f48;font-weight:900}
+.section-head h2{margin:0;font-size:28px;color:#332a24}
+.category-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.category-grid a{display:flex;flex-direction:column;gap:9px;min-height:108px;padding:20px;border-radius:12px;background:#fffdf9;border:1px solid #eadfd2;box-shadow:0 12px 28px rgba(84,61,45,.06);transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+.category-grid a:hover{border-color:#d7aa92;transform:translateY(-2px);box-shadow:0 18px 36px rgba(84,61,45,.1)}
+.category-grid strong{font-size:19px;color:#3f352f}
+.category-grid span{color:#8b7b70}
+.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.review-card{background:#fffdf9;border:1px solid #eadfd2;border-radius:14px;overflow:hidden;box-shadow:0 12px 28px rgba(84,61,45,.06);transition:transform .16s ease,box-shadow .16s ease}
+.review-card:hover{transform:translateY(-2px);box-shadow:0 20px 38px rgba(84,61,45,.11)}
+.review-card a{display:block;min-height:314px;padding:0 0 22px}
+.review-thumb{height:184px;background:#f1e7dc;overflow:hidden}
+.review-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.review-thumb.empty{background:linear-gradient(135deg,#f6e5d7,#fffaf5)}
+.review-card span,.review-card h3,.review-card p,.review-card time{margin-left:21px;margin-right:21px}
+.review-card span{display:inline-flex;margin-top:18px;margin-bottom:12px;color:#a65f48;font-weight:900;font-size:13px}
+.review-card h3{font-size:20px;line-height:1.48;color:#352b25}
+.review-card p{color:#75665c;line-height:1.65}
+.review-card time{font-size:12px;color:#9d8d82}
+.footer{border-top:1px solid #eadfd2;padding:28px 38px;color:#8b7b70;background:#fffaf5}
+@media(max-width:860px){.topbar{padding:0 18px}.topnav a{padding:8px}.hero{grid-template-columns:1fr;padding-top:36px}.hero h1{font-size:40px}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.review-grid{grid-template-columns:1fr}}
+@media(max-width:520px){main{padding-left:16px;padding-right:16px}.hero h1{font-size:32px}.lead{font-size:16px}.hero-actions{flex-direction:column}.category-grid{grid-template-columns:1fr}.section-head{display:block}.section-head h2{margin-top:7px}}</style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
+     crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NVBM3GHMNX');
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('[data-ga-event]');
+    if (!el || typeof gtag !== 'function') return;
+    gtag('event', el.getAttribute('data-ga-event'), {
+      event_category: 'engagement',
+      event_label: el.getAttribute('data-ga-label') || el.href || ''
+    });
+  });
+</script>
 </head>
-<body><main><h1>보미리뷰</h1><p>새 리뷰를 준비하고 있습니다. 곧 따뜻한 제품 리뷰로 채워둘게요.</p><p><a href=""rss.xml"">RSS</a> · <a href=""sitemap.xml"">Sitemap</a></p></main></body>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">보미리뷰</a>
+    <nav class="topnav">
+      <a href="index.html">홈</a>
+      <a href="rss.xml">RSS</a>
+      <a href="sitemap.xml">Sitemap</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">BOMI REVIEW</p>
+        <h1>생활에 온기를 더하는<br>다정한 제품 리뷰</h1>
+        <p class="lead">보미리뷰는 매일 쓰는 물건의 장점과 아쉬움을 차분히 살펴보고, 내 취향과 생활에 맞는 선택을 돕습니다.</p>
+        <div class="hero-actions">
+          <a href="http://bomireview.doripress.com/posts/육아/2026-05-10-baby-socks-popori-nonslip-autumn-review.html" data-ga-event="post_click" data-ga-label="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기">따끈한 리뷰 보기</a>
+          <a href="rss.xml" data-ga-event="rss_click" data-ga-label="home_rss">새 리뷰 구독</a>
+        </div>
+      </div>
+      <a class="hero-card" href="http://bomireview.doripress.com/posts/육아/2026-05-10-baby-socks-popori-nonslip-autumn-review.html" data-ga-event="post_click" data-ga-label="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기" style="background-image:linear-gradient(135deg,rgba(17,24,39,.72),rgba(31,85,214,.72)),url('https://shop-phinf.pstatic.net/20230825_125/1692946575052pEdeY_JPEG/26358304913354140_126247376.jpg')">
+        <span>오늘의 따뜻한 리뷰</span>
+        <strong>아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기</strong>
+        <p>아기 양말 고르기 힘든 엄마에게 포포리 논슬립 무압박 양말을 조심스럽게 추천드려요.</p>
+      </a>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <p>Category</p>
+        <h2>필요한 물건을 결대로 찾기</h2>
+      </div>
+      <nav class="category-grid"><a href="category/육아.html" data-ga-event="category_click" data-ga-label="육아">
+      <strong>육아</strong>
+      <span>1개의 리뷰</span>
+    </a></nav>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <p>Latest</p>
+        <h2>방금 정리한 리뷰</h2>
+      </div>
+      <div class="review-grid"><article class="review-card">
+  <a href="http://bomireview.doripress.com/posts/육아/2026-05-10-baby-socks-popori-nonslip-autumn-review.html" data-ga-event="post_click" data-ga-label="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기">
+    <div class="review-thumb"><img src="https://shop-phinf.pstatic.net/20230825_125/1692946575052pEdeY_JPEG/26358304913354140_126247376.jpg" alt="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기"></div>
+    <span>육아</span>
+    <h3>아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기</h3>
+    <p>아기 양말 고르기 힘든 엄마에게 포포리 논슬립 무압박 양말을 조심스럽게 추천드려요.</p>
+    <time>2026-05-10T12:27:11+09:00</time>
+  </a>
+</article></div>
+    </section>
+  </main>
+  <footer class="footer">© 보미리뷰 · 천천히 고르고 오래 만족하는 리뷰</footer>
+</body>
 </html>
