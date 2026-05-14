@@ -38,9 +38,7 @@
     .result-body p{margin:0;color:#b76046;font-size:14px;font-weight:900}
     .result-body h2{margin:8px 0 0;color:#2f2a25;font-size:34px;line-height:1.22}
     .share-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
-    .share-button{min-height:44px;padding:0 16px;border:1px solid #f4cf24;border-radius:8px;background:#fee500;color:#181600;font-weight:900;cursor:pointer}
     .copy-button{min-height:44px;padding:0 16px;border:1px solid #d9c7b4;border-radius:8px;background:#fffaf3;color:#554c43;font-weight:850;cursor:pointer}
-    .share-error{display:none;margin:14px auto 0;color:#8a4b37;font-size:14px;line-height:1.55}
     .empty{display:none;margin-top:22px;padding:24px;border:1px solid #dccfbd;border-radius:8px;background:#fffaf3;color:#6e655b;text-align:center;font-weight:800}
     @media(max-width:760px){
       .topbar{padding:0 18px}
@@ -56,7 +54,6 @@
       .versus{display:none}
     }
   </style>
-  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="topbar">
@@ -95,10 +92,8 @@
         <p>최종 우승</p>
         <h2 id="winnerTitle"></h2>
         <div class="share-actions">
-          <button class="share-button" id="kakaoShareBtn" type="button">카카오톡 공유</button>
           <button class="copy-button" id="copyResultBtn" type="button">결과 링크 복사</button>
         </div>
-        <p class="share-error" id="shareError"></p>
       </div>
     </section>
 
@@ -111,8 +106,6 @@
   </main>
 
   <script>
-    const KAKAO_JAVASCRIPT_KEY = '8702dedde24cf4feee72560f26c407a0';
-
     const state = {
       sourceItems: [],
       roundItems: [],
@@ -243,80 +236,10 @@
       }
     }
 
-    function showShareError(error) {
-      const message = error?.error_description || error?.message || String(error || '');
-      $('shareError').textContent = message
-        ? `카카오 공유가 막혔어요: ${message}`
-        : '카카오 공유가 막혔어요. 결과 링크를 복사해 주세요.';
-      $('shareError').style.display = 'block';
-    }
-
-    function getKakaoSharePayload() {
-      const resultUrl = getResultUrl();
-      const imageUrl = absoluteUrl(state.winner.imageUrl);
-      const isSvg = /\.svg($|\?)/i.test(imageUrl);
-
-      if (isSvg) {
-        return {
-          objectType: 'text',
-          text: `내 이상형 월드컵 최종 우승: ${state.winner.title}`,
-          link: {
-            mobileWebUrl: resultUrl,
-            webUrl: resultUrl
-          }
-        };
-      }
-
-      return {
-        objectType: 'feed',
-        content: {
-          title: '내 이상형 월드컵 최종 우승',
-          description: state.winner.title,
-          imageUrl,
-          link: {
-            mobileWebUrl: resultUrl,
-            webUrl: resultUrl
-          }
-        },
-        buttons: [
-          {
-            title: '결과 보기',
-            link: {
-              mobileWebUrl: resultUrl,
-              webUrl: resultUrl
-            }
-          }
-        ]
-      };
-    }
-
-    function shareToKakao() {
-      if (!state.winner) return;
-      $('shareError').style.display = 'none';
-
-      if (!window.Kakao || !Kakao.Share) {
-        showShareError('카카오 SDK를 불러오지 못했습니다.');
-        copyResultLink();
-        return;
-      }
-
-      if (!Kakao.isInitialized()) {
-        Kakao.init(KAKAO_JAVASCRIPT_KEY);
-      }
-
-      try {
-        Kakao.Share.sendDefault(getKakaoSharePayload());
-      } catch (error) {
-        showShareError(error);
-        copyResultLink();
-      }
-    }
-
     $('leftCard').addEventListener('click', () => choose(state.left));
     $('rightCard').addEventListener('click', () => choose(state.right));
     $('restartBtn').addEventListener('click', () => startGame(false));
     $('shuffleBtn').addEventListener('click', () => startGame(true));
-    $('kakaoShareBtn').addEventListener('click', shareToKakao);
     $('copyResultBtn').addEventListener('click', copyResultLink);
 
     loadItems()
