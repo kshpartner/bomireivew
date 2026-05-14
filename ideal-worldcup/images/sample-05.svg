@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="휴식 테라스">
+  <rect width="900" height="620" fill="#eaf5f7"/>
+  <rect x="0" y="382" width="900" height="238" fill="#b8d0c0"/>
+  <circle cx="710" cy="114" r="64" fill="#f6b461"/>
+  <rect x="86" y="378" width="728" height="34" rx="17" fill="#617864"/>
+  <rect x="154" y="242" width="188" height="134" rx="28" fill="#d7765a"/>
+  <rect x="558" y="242" width="188" height="134" rx="28" fill="#d7765a"/>
+  <rect x="202" y="372" width="52" height="118" rx="18" fill="#6c5348"/>
+  <rect x="646" y="372" width="52" height="118" rx="18" fill="#6c5348"/>
+  <path d="M404 306c28-68 64-102 108-102s80 34 108 102" fill="none" stroke="#617864" stroke-width="24" stroke-linecap="round"/>
+</svg>
