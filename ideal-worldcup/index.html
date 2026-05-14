@@ -37,6 +37,9 @@
     .result-body{padding:24px}
     .result-body p{margin:0;color:#b76046;font-size:14px;font-weight:900}
     .result-body h2{margin:8px 0 0;color:#2f2a25;font-size:34px;line-height:1.22}
+    .share-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .share-button{min-height:44px;padding:0 16px;border:1px solid #f4cf24;border-radius:8px;background:#fee500;color:#181600;font-weight:900;cursor:pointer}
+    .copy-button{min-height:44px;padding:0 16px;border:1px solid #d9c7b4;border-radius:8px;background:#fffaf3;color:#554c43;font-weight:850;cursor:pointer}
     .empty{display:none;margin-top:22px;padding:24px;border:1px solid #dccfbd;border-radius:8px;background:#fffaf3;color:#6e655b;text-align:center;font-weight:800}
     @media(max-width:760px){
       .topbar{padding:0 18px}
@@ -52,6 +55,7 @@
       .versus{display:none}
     }
   </style>
+  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" integrity="sha384-DKYJ5nL3P6V4hWzGWJrQGAv2mTaFMoQ9hHcc+7Xh6pUZy9h9j0uZbDb0Rk5u5hX4" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="topbar">
@@ -89,6 +93,10 @@
       <div class="result-body">
         <p>최종 우승</p>
         <h2 id="winnerTitle"></h2>
+        <div class="share-actions">
+          <button class="share-button" id="kakaoShareBtn" type="button">카카오톡 공유</button>
+          <button class="copy-button" id="copyResultBtn" type="button">결과 링크 복사</button>
+        </div>
       </div>
     </section>
 
@@ -101,13 +109,16 @@
   </main>
 
   <script>
+    const KAKAO_JAVASCRIPT_KEY = '8702dedde24cf4feee72560f26c407a0';
+
     const state = {
       sourceItems: [],
       roundItems: [],
       winners: [],
       matchIndex: 0,
       left: null,
-      right: null
+      right: null,
+      winner: null
     };
 
     const $ = (id) => document.getElementById(id);
@@ -198,6 +209,7 @@
     }
 
     function showWinner(winner) {
+      state.winner = winner;
       $('arena').style.display = 'none';
       $('roundLabel').textContent = '완료';
       $('matchLabel').textContent = '우승';
@@ -207,10 +219,70 @@
       $('result').style.display = 'block';
     }
 
+    function absoluteUrl(path) {
+      return new URL(path, window.location.href).href;
+    }
+
+    function getResultUrl() {
+      const url = new URL(window.location.href);
+      if (state.winner?.id) url.searchParams.set('winner', state.winner.id);
+      return url.href;
+    }
+
+    async function copyResultLink() {
+      const winnerTitle = state.winner?.title || '이상형 월드컵 결과';
+      const text = `${winnerTitle}\n${getResultUrl()}`;
+      try {
+        await navigator.clipboard.writeText(text);
+        $('copyResultBtn').textContent = '복사 완료';
+        setTimeout(() => $('copyResultBtn').textContent = '결과 링크 복사', 1500);
+      } catch {
+        window.prompt('아래 결과 링크를 복사하세요.', text);
+      }
+    }
+
+    function shareToKakao() {
+      if (!state.winner) return;
+
+      if (!window.Kakao || !Kakao.Share) {
+        copyResultLink();
+        return;
+      }
+
+      if (!Kakao.isInitialized()) {
+        Kakao.init(KAKAO_JAVASCRIPT_KEY);
+      }
+
+      const resultUrl = getResultUrl();
+      Kakao.Share.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: '내 이상형 월드컵 최종 우승',
+          description: state.winner.title,
+          imageUrl: absoluteUrl(state.winner.imageUrl),
+          link: {
+            mobileWebUrl: resultUrl,
+            webUrl: resultUrl
+          }
+        },
+        buttons: [
+          {
+            title: '결과 보기',
+            link: {
+              mobileWebUrl: resultUrl,
+              webUrl: resultUrl
+            }
+          }
+        ]
+      });
+    }
+
     $('leftCard').addEventListener('click', () => choose(state.left));
     $('rightCard').addEventListener('click', () => choose(state.right));
     $('restartBtn').addEventListener('click', () => startGame(false));
     $('shuffleBtn').addEventListener('click', () => startGame(true));
+    $('kakaoShareBtn').addEventListener('click', shareToKakao);
+    $('copyResultBtn').addEventListener('click', copyResultLink);
 
     loadItems()
       .then(() => startGame(true))
