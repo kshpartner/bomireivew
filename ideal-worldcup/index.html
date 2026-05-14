@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>이상형 월드컵</title>
-  <meta name="description" content="이미지 폴더와 JSON 목록으로 진행하는 이상형 월드컵 샘플 페이지">
+  <meta name="description" content="이미지 폴더와 JSON 목록으로 진행하는 이상형 월드컵 페이지">
   <style>
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
     *{box-sizing:border-box}
@@ -32,14 +32,24 @@
     .action{min-height:44px;padding:0 16px;border:1px solid #d9c7b4;border-radius:8px;background:#fffaf3;color:#554c43;font-weight:850;cursor:pointer}
     .action.primary{background:#b85f45;color:#fff;border-color:#b85f45}
     .action:hover{filter:brightness(.98)}
-    .result{display:none;max-width:720px;margin:22px auto 0;border:1px solid #dccfbd;border-radius:8px;background:#fffaf3;box-shadow:0 16px 34px rgba(70,54,38,.1);overflow:hidden;text-align:center}
-    .result img{display:block;width:100%;max-height:560px;object-fit:cover;background:#e8dfd2}
+    .result{display:none;max-width:980px;margin:22px auto 0;text-align:center}
+    .winner-card{border:1px solid #dccfbd;border-radius:8px;background:#fffaf3;box-shadow:0 16px 34px rgba(70,54,38,.1);overflow:hidden}
+    .winner-card img{display:block;width:100%;max-height:560px;object-fit:cover;background:#e8dfd2}
     .result-body{padding:24px}
     .result-body p{margin:0;color:#b76046;font-size:14px;font-weight:900}
     .result-body h2{margin:8px 0 0;color:#2f2a25;font-size:34px;line-height:1.22}
+    .ranking{display:grid;grid-template-columns:1.15fr repeat(3,1fr);gap:12px;margin-top:16px}
+    .rank-card{min-width:0;border:1px solid #dccfbd;border-radius:8px;background:#fffaf3;overflow:hidden;box-shadow:0 12px 26px rgba(70,54,38,.08)}
+    .rank-card.winner{border-color:#d6a846;background:#fff7da}
+    .rank-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#e8dfd2}
+    .rank-body{padding:13px}
+    .rank-medal{display:inline-flex;align-items:center;justify-content:center;min-height:28px;margin-bottom:8px;padding:0 10px;border-radius:999px;background:#eee2d0;color:#5f5449;font-size:13px;font-weight:950}
+    .rank-card.winner .rank-medal{background:#f6d45c;color:#45320b}
+    .rank-body strong{display:block;color:#312b25;font-size:16px;line-height:1.35;word-break:keep-all;overflow-wrap:anywhere}
     .share-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
     .copy-button{min-height:44px;padding:0 16px;border:1px solid #d9c7b4;border-radius:8px;background:#fffaf3;color:#554c43;font-weight:850;cursor:pointer}
     .empty{display:none;margin-top:22px;padding:24px;border:1px solid #dccfbd;border-radius:8px;background:#fffaf3;color:#6e655b;text-align:center;font-weight:800}
+    @media(max-width:900px){.ranking{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:760px){
       .topbar{padding:0 18px}
       main{padding:24px 14px 46px}
@@ -52,6 +62,7 @@
       .photo{min-height:270px}
       .candidate strong{font-size:19px}
       .versus{display:none}
+      .ranking{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -65,8 +76,8 @@
     <section class="intro">
       <div>
         <p class="eyebrow">Pick Your Favorite</p>
-        <h1>둘 중 하나를 고르면<br>결승까지 자동 진행됩니다</h1>
-        <p class="summary">이 샘플은 같은 폴더의 <strong>worldcup.json</strong>을 읽어서 작동합니다. 나중에 C# 업로드 기능이 이미지와 JSON만 갱신하면 페이지는 그대로 사용할 수 있습니다.</p>
+        <h1>부전승까지 포함해서<br>결승까지 자동 진행됩니다</h1>
+        <p class="summary">이미지 개수가 32강, 64강에 딱 맞지 않아도 가까운 상위 강수로 열리고, 빈 자리는 자동 부전승으로 처리됩니다.</p>
       </div>
       <div class="status">
         <span class="chip" id="roundLabel">준비 중</span>
@@ -87,14 +98,17 @@
     </section>
 
     <section class="result" id="result">
-      <img id="winnerImage" alt="">
-      <div class="result-body">
-        <p>최종 우승</p>
-        <h2 id="winnerTitle"></h2>
-        <div class="share-actions">
-          <button class="copy-button" id="copyResultBtn" type="button">결과 링크 복사</button>
+      <div class="winner-card">
+        <img id="winnerImage" alt="">
+        <div class="result-body">
+          <p>최종 우승</p>
+          <h2 id="winnerTitle"></h2>
+          <div class="share-actions">
+            <button class="copy-button" id="copyResultBtn" type="button">결과 링크 복사</button>
+          </div>
         </div>
       </div>
+      <div class="ranking" id="rankingList"></div>
     </section>
 
     <p class="empty" id="emptyMessage">월드컵을 진행하려면 worldcup.json에 이미지가 최소 2개 필요합니다.</p>
@@ -108,12 +122,15 @@
   <script>
     const state = {
       sourceItems: [],
-      roundItems: [],
-      winners: [],
+      roundSize: 0,
+      currentMatches: [],
+      nextRoundItems: [],
       matchIndex: 0,
       left: null,
       right: null,
-      winner: null
+      winner: null,
+      finalLoser: null,
+      semifinalLosers: []
     };
 
     const $ = (id) => document.getElementById(id);
@@ -127,16 +144,15 @@
       return copied;
     }
 
-    function trimToPowerOfTwo(items) {
-      const sizes = [64, 32, 16, 8, 4, 2];
-      const size = sizes.find((value) => items.length >= value) || 0;
-      return items.slice(0, size);
+    function getBracketSize(count) {
+      let size = 2;
+      while (size < count) size *= 2;
+      return size;
     }
 
     function getRoundName(count) {
       if (count === 2) return '결승';
       if (count === 4) return '4강';
-      if (count === 8) return '8강';
       return `${count}강`;
     }
 
@@ -155,24 +171,74 @@
       state.sourceItems = items.map(normalizeItem).filter((item) => item.imageUrl);
     }
 
-    function startGame(shouldShuffle) {
-      const items = shouldShuffle ? shuffle(state.sourceItems) : [...state.sourceItems];
-      state.roundItems = trimToPowerOfTwo(items);
-      state.winners = [];
+    function buildRoundMatches(items, roundSize) {
+      const shuffled = shuffle(items);
+      const byeCount = Math.max(0, roundSize - shuffled.length);
+      const matches = [];
+      let index = 0;
+
+      for (let i = 0; i < byeCount; i += 1) {
+        matches.push([shuffled[index], null]);
+        index += 1;
+      }
+
+      while (index < shuffled.length) {
+        matches.push([shuffled[index], shuffled[index + 1] || null]);
+        index += 2;
+      }
+
+      return shuffle(matches);
+    }
+
+    function startGame() {
+      state.roundSize = getBracketSize(state.sourceItems.length);
+      state.currentMatches = buildRoundMatches(state.sourceItems, state.roundSize);
+      state.nextRoundItems = [];
       state.matchIndex = 0;
+      state.winner = null;
+      state.finalLoser = null;
+      state.semifinalLosers = [];
+
       $('result').style.display = 'none';
-      $('arena').style.display = state.roundItems.length >= 2 ? 'grid' : 'none';
-      $('emptyMessage').style.display = state.roundItems.length >= 2 ? 'none' : 'block';
-      if (state.roundItems.length >= 2) renderMatch();
+      $('arena').style.display = state.sourceItems.length >= 2 ? 'grid' : 'none';
+      $('emptyMessage').style.display = state.sourceItems.length >= 2 ? 'none' : 'block';
+
+      if (state.sourceItems.length >= 2) renderNextPlayableMatch();
+    }
+
+    function renderNextPlayableMatch() {
+      while (state.matchIndex < state.currentMatches.length) {
+        const [left, right] = state.currentMatches[state.matchIndex];
+
+        if (left && !right) {
+          state.nextRoundItems.push(left);
+          state.matchIndex += 1;
+          continue;
+        }
+
+        if (!left && right) {
+          state.nextRoundItems.push(right);
+          state.matchIndex += 1;
+          continue;
+        }
+
+        state.left = left;
+        state.right = right;
+        renderMatch();
+        return;
+      }
+
+      finishRound();
     }
 
     function renderMatch() {
-      state.left = state.roundItems[state.matchIndex * 2];
-      state.right = state.roundItems[state.matchIndex * 2 + 1];
+      const playableTotal = state.currentMatches.filter(([left, right]) => left && right).length;
+      const playableDone = state.currentMatches.slice(0, state.matchIndex).filter(([left, right]) => left && right).length;
+      const byeTotal = state.currentMatches.length - playableTotal;
+      const suffix = byeTotal > 0 ? ` · 부전승 ${byeTotal}` : '';
 
-      const totalMatches = state.roundItems.length / 2;
-      $('roundLabel').textContent = getRoundName(state.roundItems.length);
-      $('matchLabel').textContent = `${state.matchIndex + 1} / ${totalMatches}`;
+      $('roundLabel').textContent = getRoundName(state.roundSize);
+      $('matchLabel').textContent = `${playableDone + 1} / ${playableTotal}${suffix}`;
 
       $('leftImage').src = state.left.imageUrl;
       $('leftImage').alt = state.left.title;
@@ -184,23 +250,26 @@
     }
 
     function choose(winner) {
-      state.winners.push(winner);
+      const loser = winner.id === state.left.id ? state.right : state.left;
+      if (state.roundSize === 2) state.finalLoser = loser;
+      if (state.roundSize === 4) state.semifinalLosers.push(loser);
+
+      state.nextRoundItems.push(winner);
       state.matchIndex += 1;
+      renderNextPlayableMatch();
+    }
 
-      if (state.matchIndex < state.roundItems.length / 2) {
-        renderMatch();
+    function finishRound() {
+      if (state.nextRoundItems.length === 1) {
+        showWinner(state.nextRoundItems[0]);
         return;
       }
 
-      if (state.winners.length === 1) {
-        showWinner(state.winners[0]);
-        return;
-      }
-
-      state.roundItems = [...state.winners];
-      state.winners = [];
+      state.roundSize = state.nextRoundItems.length;
+      state.currentMatches = buildRoundMatches(state.nextRoundItems, state.roundSize);
+      state.nextRoundItems = [];
       state.matchIndex = 0;
-      renderMatch();
+      renderNextPlayableMatch();
     }
 
     function showWinner(winner) {
@@ -211,11 +280,27 @@
       $('winnerImage').src = winner.imageUrl;
       $('winnerImage').alt = winner.title;
       $('winnerTitle').textContent = winner.title;
+      renderRanking();
       $('result').style.display = 'block';
     }
 
-    function absoluteUrl(path) {
-      return new URL(path, window.location.href).href;
+    function renderRanking() {
+      const ranks = [
+        { rank: 1, medal: '왕관', item: state.winner, className: 'winner' },
+        { rank: 2, medal: '골드', item: state.finalLoser },
+        { rank: 3, medal: '실버', item: state.semifinalLosers[0] },
+        { rank: 4, medal: '브론즈', item: state.semifinalLosers[1] }
+      ].filter((entry) => entry.item);
+
+      $('rankingList').innerHTML = ranks.map((entry) => `
+        <article class="rank-card ${entry.className || ''}">
+          <img src="${escapeHtml(entry.item.imageUrl)}" alt="${escapeHtml(entry.item.title)}">
+          <div class="rank-body">
+            <span class="rank-medal">${entry.rank}위 · ${entry.medal}</span>
+            <strong>${escapeHtml(entry.item.title)}</strong>
+          </div>
+        </article>
+      `).join('');
     }
 
     function getResultUrl() {
@@ -224,26 +309,41 @@
       return url.href;
     }
 
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
     async function copyResultLink() {
-      const winnerTitle = state.winner?.title || '이상형 월드컵 결과';
-      const text = `${winnerTitle}\n${getResultUrl()}`;
+      const lines = [
+        `1위 왕관: ${state.winner?.title || ''}`,
+        state.finalLoser ? `2위 골드: ${state.finalLoser.title}` : '',
+        state.semifinalLosers[0] ? `3위 실버: ${state.semifinalLosers[0].title}` : '',
+        state.semifinalLosers[1] ? `4위 브론즈: ${state.semifinalLosers[1].title}` : '',
+        getResultUrl()
+      ].filter(Boolean);
+
       try {
-        await navigator.clipboard.writeText(text);
+        await navigator.clipboard.writeText(lines.join('\n'));
         $('copyResultBtn').textContent = '복사 완료';
         setTimeout(() => $('copyResultBtn').textContent = '결과 링크 복사', 1500);
       } catch {
-        window.prompt('아래 결과 링크를 복사하세요.', text);
+        window.prompt('아래 결과 링크를 복사하세요.', lines.join('\n'));
       }
     }
 
     $('leftCard').addEventListener('click', () => choose(state.left));
     $('rightCard').addEventListener('click', () => choose(state.right));
-    $('restartBtn').addEventListener('click', () => startGame(false));
-    $('shuffleBtn').addEventListener('click', () => startGame(true));
+    $('restartBtn').addEventListener('click', startGame);
+    $('shuffleBtn').addEventListener('click', startGame);
     $('copyResultBtn').addEventListener('click', copyResultLink);
 
     loadItems()
-      .then(() => startGame(true))
+      .then(startGame)
       .catch(() => {
         $('arena').style.display = 'none';
         $('emptyMessage').style.display = 'block';
