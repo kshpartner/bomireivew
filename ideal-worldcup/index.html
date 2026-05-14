@@ -93,7 +93,6 @@
     <section class="start-panel" id="startPanel">
       <div>
         <strong>준비되면 시작해 주세요</strong>
-        <p>두 장씩 비교하면서 마지막 한 장까지 고르는 방식입니다. 후보 수가 맞지 않는 라운드는 자동으로 부전승 처리됩니다.</p>
       </div>
       <button class="start-button" id="startBtn" type="button">시작하기</button>
     </section>
@@ -252,8 +251,7 @@
     function renderMatch() {
       const playableTotal = state.currentMatches.filter(([left, right]) => left && right).length;
       const playableDone = state.currentMatches.slice(0, state.matchIndex).filter(([left, right]) => left && right).length;
-      const byeTotal = state.currentMatches.length - playableTotal;
-      const suffix = byeTotal > 0 ? ` · 부전승 ${byeTotal}` : '';
+      const suffix = '';
 
       $('roundLabel').textContent = getRoundName(state.roundSize);
       $('matchLabel').textContent = `${playableDone + 1} / ${playableTotal}${suffix}`;
