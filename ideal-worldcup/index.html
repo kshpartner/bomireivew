@@ -177,7 +177,7 @@
     }
 
     async function loadItems() {
-      const response = await fetch('worldcup.json', { cache: 'no-store' });
+      const response = await fetch('worldcup-v2.json', { cache: 'no-store' });
       if (!response.ok) throw new Error('후보 목록을 불러오지 못했습니다.');
       const items = await response.json();
       state.sourceItems = items.map(normalizeItem).filter((item) => item.imageUrl);
