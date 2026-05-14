@@ -20,6 +20,11 @@
     .summary{max-width:650px;margin:12px 0 0;color:#6f675f;font-size:17px;line-height:1.7}
     .status{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}
     .chip{min-height:34px;display:inline-flex;align-items:center;padding:0 12px;border:1px solid #d9d0c3;border-radius:999px;background:#fffaf4;color:#615b55;font-size:14px;font-weight:800}
+    .start-panel{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px;align-items:center;margin-top:22px;padding:26px;border:1px solid #d9d0c3;border-radius:8px;background:#fffaf4;box-shadow:0 16px 34px rgba(44,52,65,.1)}
+    .start-panel strong{display:block;color:#222936;font-size:24px;line-height:1.3}
+    .start-panel p{margin:10px 0 0;color:#6f675f;line-height:1.65}
+    .start-button{width:100%;min-height:64px;border:0;border-radius:8px;background:#26374f;color:#fff;font-size:20px;font-weight:950;cursor:pointer;box-shadow:0 16px 30px rgba(38,55,79,.22)}
+    .start-button:hover{filter:brightness(1.04)}
     .arena{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:stretch}
     .candidate{min-height:510px;display:flex;flex-direction:column;padding:0;border:1px solid #d9d0c3;border-radius:8px;background:#fffaf4;box-shadow:0 16px 34px rgba(44,52,65,.1);overflow:hidden;cursor:pointer;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
     .candidate:hover,.candidate:focus-visible{transform:translateY(-3px);border-color:#bfa467;box-shadow:0 22px 42px rgba(44,52,65,.16);outline:none}
@@ -57,6 +62,7 @@
       h1{font-size:32px}
       .summary{font-size:16px}
       .status{justify-content:flex-start;margin-top:16px}
+      .start-panel{grid-template-columns:1fr;padding:18px}
       .arena{grid-template-columns:1fr;gap:14px}
       .candidate{min-height:auto}
       .photo{min-height:270px}
@@ -83,6 +89,14 @@
         <span class="chip" id="roundLabel">준비 중</span>
         <span class="chip" id="matchLabel">0 / 0</span>
       </div>
+    </section>
+
+    <section class="start-panel" id="startPanel">
+      <div>
+        <strong>준비되면 시작해 주세요</strong>
+        <p>두 장씩 비교하면서 마지막 한 장까지 고르는 방식입니다. 후보 수가 맞지 않는 라운드는 자동으로 부전승 처리됩니다.</p>
+      </div>
+      <button class="start-button" id="startBtn" type="button">시작하기</button>
     </section>
 
     <section class="arena" id="arena" aria-live="polite">
@@ -190,7 +204,7 @@
       return shuffle(matches);
     }
 
-    function startGame() {
+    function resetGameState() {
       state.roundSize = getBracketSize(state.sourceItems.length);
       state.currentMatches = buildRoundMatches(state.sourceItems, state.roundSize);
       state.nextRoundItems = [];
@@ -198,7 +212,12 @@
       state.winner = null;
       state.finalLoser = null;
       state.semifinalLosers = [];
+    }
 
+    function startGame() {
+      resetGameState();
+
+      $('startPanel').style.display = 'none';
       $('result').style.display = 'none';
       $('arena').style.display = state.sourceItems.length >= 2 ? 'grid' : 'none';
       $('emptyMessage').style.display = state.sourceItems.length >= 2 ? 'none' : 'block';
@@ -341,12 +360,21 @@
     $('rightCard').addEventListener('click', () => choose(state.right));
     $('restartBtn').addEventListener('click', startGame);
     $('shuffleBtn').addEventListener('click', startGame);
+    $('startBtn').addEventListener('click', startGame);
     $('copyResultBtn').addEventListener('click', copyResultLink);
 
     loadItems()
-      .then(startGame)
+      .then(() => {
+        $('arena').style.display = 'none';
+        $('result').style.display = 'none';
+        $('emptyMessage').style.display = state.sourceItems.length >= 2 ? 'none' : 'block';
+        $('startPanel').style.display = state.sourceItems.length >= 2 ? 'grid' : 'none';
+        $('roundLabel').textContent = state.sourceItems.length >= 2 ? `${getBracketSize(state.sourceItems.length)}강` : '대기';
+        $('matchLabel').textContent = `${state.sourceItems.length}장`;
+      })
       .catch(() => {
         $('arena').style.display = 'none';
+        $('startPanel').style.display = 'none';
         $('emptyMessage').style.display = 'block';
         $('roundLabel').textContent = '오류';
         $('matchLabel').textContent = '확인 필요';
