@@ -1,0 +1,42 @@
+[
+  {
+    "id": "sample-01",
+    "title": "따뜻한 라운지",
+    "imageUrl": "images/sample-01.svg"
+  },
+  {
+    "id": "sample-02",
+    "title": "집중 데스크",
+    "imageUrl": "images/sample-02.svg"
+  },
+  {
+    "id": "sample-03",
+    "title": "햇살 주방",
+    "imageUrl": "images/sample-03.svg"
+  },
+  {
+    "id": "sample-04",
+    "title": "차분한 침실",
+    "imageUrl": "images/sample-04.svg"
+  },
+  {
+    "id": "sample-05",
+    "title": "휴식 테라스",
+    "imageUrl": "images/sample-05.svg"
+  },
+  {
+    "id": "sample-06",
+    "title": "미니 서재",
+    "imageUrl": "images/sample-06.svg"
+  },
+  {
+    "id": "sample-07",
+    "title": "감성 욕실",
+    "imageUrl": "images/sample-07.svg"
+  },
+  {
+    "id": "sample-08",
+    "title": "깔끔한 현관",
+    "imageUrl": "images/sample-08.svg"
+  }
+]
