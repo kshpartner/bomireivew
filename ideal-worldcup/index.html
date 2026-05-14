@@ -304,11 +304,12 @@
         Kakao.init(KAKAO_JAVASCRIPT_KEY);
       }
 
-      Kakao.Share.sendDefault(getKakaoSharePayload())
-        .catch((error) => {
-          showShareError(error);
-          copyResultLink();
-        });
+      try {
+        Kakao.Share.sendDefault(getKakaoSharePayload());
+      } catch (error) {
+        showShareError(error);
+        copyResultLink();
+      }
     }
 
     $('leftCard').addEventListener('click', () => choose(state.left));
