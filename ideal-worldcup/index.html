@@ -3,52 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>이상형 월드컵</title>
-  <meta name="description" content="이미지 폴더와 JSON 목록으로 진행하는 이상형 월드컵 페이지">
+  <title>이창섭 AI 포토 월드컵</title>
+  <meta name="description" content="이창섭 AI 팬메이드 포토 중 오늘의 원픽을 고르는 월드컵">
   <style>
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
     *{box-sizing:border-box}
-    body{margin:0;font-family:'Pretendard Variable',Pretendard,'Malgun Gothic',sans-serif;color:#292724;background:#f6f2ea;letter-spacing:0}
+    body{margin:0;font-family:'Pretendard Variable',Pretendard,'Malgun Gothic',sans-serif;color:#252326;background:#f7f4ef;letter-spacing:0}
     button{font:inherit}
-    .topbar{position:sticky;top:0;z-index:5;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(246,242,234,.92);border-bottom:1px solid #ded5c6;backdrop-filter:blur(12px)}
-    .brand{font-size:22px;font-weight:900;color:#9c4f3b;text-decoration:none}
-    .topbar a:not(.brand){color:#625a50;text-decoration:none;font-weight:750}
+    .topbar{position:sticky;top:0;z-index:5;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(247,244,239,.92);border-bottom:1px solid #ded6ca;backdrop-filter:blur(12px)}
+    .brand{font-size:22px;font-weight:900;color:#26374f;text-decoration:none}
+    .topbar a:not(.brand){color:#68605a;text-decoration:none;font-weight:750}
     main{max-width:1160px;margin:0 auto;padding:30px 20px 60px}
     .intro{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:22px}
-    .eyebrow{margin:0 0 8px;color:#b76046;font-size:13px;font-weight:900;text-transform:uppercase}
-    h1{margin:0;color:#2f2a25;font-size:42px;line-height:1.18}
-    .summary{max-width:620px;margin:12px 0 0;color:#6e655b;font-size:17px;line-height:1.7}
+    .eyebrow{margin:0 0 8px;color:#b4893e;font-size:13px;font-weight:900;text-transform:uppercase}
+    h1{margin:0;color:#222936;font-size:42px;line-height:1.18}
+    .summary{max-width:650px;margin:12px 0 0;color:#6f675f;font-size:17px;line-height:1.7}
     .status{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}
-    .chip{min-height:34px;display:inline-flex;align-items:center;padding:0 12px;border:1px solid #dccfbd;border-radius:999px;background:#fffaf3;color:#655b50;font-size:14px;font-weight:800}
+    .chip{min-height:34px;display:inline-flex;align-items:center;padding:0 12px;border:1px solid #d9d0c3;border-radius:999px;background:#fffaf4;color:#615b55;font-size:14px;font-weight:800}
     .arena{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:stretch}
-    .candidate{min-height:510px;display:flex;flex-direction:column;padding:0;border:1px solid #dccfbd;border-radius:8px;background:#fffaf3;box-shadow:0 16px 34px rgba(70,54,38,.1);overflow:hidden;cursor:pointer;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
-    .candidate:hover,.candidate:focus-visible{transform:translateY(-3px);border-color:#c98265;box-shadow:0 22px 42px rgba(70,54,38,.15);outline:none}
-    .photo{flex:1;min-height:390px;background:#e8dfd2}
+    .candidate{min-height:510px;display:flex;flex-direction:column;padding:0;border:1px solid #d9d0c3;border-radius:8px;background:#fffaf4;box-shadow:0 16px 34px rgba(44,52,65,.1);overflow:hidden;cursor:pointer;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+    .candidate:hover,.candidate:focus-visible{transform:translateY(-3px);border-color:#bfa467;box-shadow:0 22px 42px rgba(44,52,65,.16);outline:none}
+    .photo{flex:1;min-height:390px;background:#e8e0d7}
     .photo img{display:block;width:100%;height:100%;object-fit:cover}
-    .candidate strong{display:flex;align-items:center;justify-content:center;min-height:74px;padding:16px 18px;color:#312b25;font-size:22px;line-height:1.35;text-align:center}
+    .candidate strong{display:flex;align-items:center;justify-content:center;min-height:74px;padding:16px 18px;color:#222936;font-size:22px;line-height:1.35;text-align:center}
     .versus{position:relative;display:grid;place-items:center;height:0}
-    .versus span{position:absolute;z-index:2;top:235px;display:grid;place-items:center;width:66px;height:66px;border-radius:50%;background:#2f2a25;color:#fff;font-size:20px;font-weight:950;box-shadow:0 16px 32px rgba(47,42,37,.28)}
+    .versus span{position:absolute;z-index:2;top:235px;display:grid;place-items:center;width:66px;height:66px;border-radius:50%;background:#222936;color:#fff;font-size:20px;font-weight:950;box-shadow:0 16px 32px rgba(34,41,54,.28)}
     .actions{display:flex;justify-content:center;gap:10px;margin-top:18px}
-    .action{min-height:44px;padding:0 16px;border:1px solid #d9c7b4;border-radius:8px;background:#fffaf3;color:#554c43;font-weight:850;cursor:pointer}
-    .action.primary{background:#b85f45;color:#fff;border-color:#b85f45}
+    .action{min-height:44px;padding:0 16px;border:1px solid #d9d0c3;border-radius:8px;background:#fffaf4;color:#554f49;font-weight:850;cursor:pointer}
+    .action.primary{background:#26374f;color:#fff;border-color:#26374f}
     .action:hover{filter:brightness(.98)}
     .result{display:none;max-width:980px;margin:22px auto 0;text-align:center}
-    .winner-card{border:1px solid #dccfbd;border-radius:8px;background:#fffaf3;box-shadow:0 16px 34px rgba(70,54,38,.1);overflow:hidden}
-    .winner-card img{display:block;width:100%;max-height:560px;object-fit:cover;background:#e8dfd2}
+    .winner-card{border:1px solid #d9d0c3;border-radius:8px;background:#fffaf4;box-shadow:0 16px 34px rgba(44,52,65,.1);overflow:hidden}
+    .winner-card img{display:block;width:100%;max-height:560px;object-fit:cover;background:#e8e0d7}
     .result-body{padding:24px}
-    .result-body p{margin:0;color:#b76046;font-size:14px;font-weight:900}
-    .result-body h2{margin:8px 0 0;color:#2f2a25;font-size:34px;line-height:1.22}
+    .result-body p{margin:0;color:#b4893e;font-size:14px;font-weight:900}
+    .result-body h2{margin:8px 0 0;color:#222936;font-size:34px;line-height:1.22}
     .ranking{display:grid;grid-template-columns:1.15fr repeat(3,1fr);gap:12px;margin-top:16px}
-    .rank-card{min-width:0;border:1px solid #dccfbd;border-radius:8px;background:#fffaf3;overflow:hidden;box-shadow:0 12px 26px rgba(70,54,38,.08)}
-    .rank-card.winner{border-color:#d6a846;background:#fff7da}
-    .rank-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#e8dfd2}
+    .rank-card{min-width:0;border:1px solid #d9d0c3;border-radius:8px;background:#fffaf4;overflow:hidden;box-shadow:0 12px 26px rgba(44,52,65,.08)}
+    .rank-card.winner{border-color:#d6a846;background:#fff8dc}
+    .rank-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#e8e0d7}
     .rank-body{padding:13px}
-    .rank-medal{display:inline-flex;align-items:center;justify-content:center;min-height:28px;margin-bottom:8px;padding:0 10px;border-radius:999px;background:#eee2d0;color:#5f5449;font-size:13px;font-weight:950}
+    .rank-medal{display:inline-flex;align-items:center;justify-content:center;min-height:28px;margin-bottom:8px;padding:0 10px;border-radius:999px;background:#eee7dd;color:#5f5850;font-size:13px;font-weight:950}
     .rank-card.winner .rank-medal{background:#f6d45c;color:#45320b}
-    .rank-body strong{display:block;color:#312b25;font-size:16px;line-height:1.35;word-break:keep-all;overflow-wrap:anywhere}
+    .rank-body strong{display:block;color:#222936;font-size:16px;line-height:1.35;word-break:keep-all;overflow-wrap:anywhere}
     .share-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
-    .copy-button{min-height:44px;padding:0 16px;border:1px solid #d9c7b4;border-radius:8px;background:#fffaf3;color:#554c43;font-weight:850;cursor:pointer}
-    .empty{display:none;margin-top:22px;padding:24px;border:1px solid #dccfbd;border-radius:8px;background:#fffaf3;color:#6e655b;text-align:center;font-weight:800}
+    .copy-button{min-height:44px;padding:0 16px;border:1px solid #d9d0c3;border-radius:8px;background:#fffaf4;color:#554f49;font-weight:850;cursor:pointer}
+    .empty{display:none;margin-top:22px;padding:24px;border:1px solid #d9d0c3;border-radius:8px;background:#fffaf4;color:#6f675f;text-align:center;font-weight:800}
     @media(max-width:900px){.ranking{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:760px){
       .topbar{padding:0 18px}
@@ -68,16 +68,16 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="./">이상형 월드컵</a>
+    <a class="brand" href="./">CHANGSUB PICK</a>
     <a href="../index.html">블로그 홈</a>
   </header>
 
   <main>
     <section class="intro">
       <div>
-        <p class="eyebrow">Pick Your Favorite</p>
-        <h1>부전승까지 포함해서<br>결승까지 자동 진행됩니다</h1>
-        <p class="summary">이미지 개수가 32강, 64강에 딱 맞지 않아도 가까운 상위 강수로 열리고, 빈 자리는 자동 부전승으로 처리됩니다.</p>
+        <p class="eyebrow">AI Fanmade Photo Cup</p>
+        <h1>창섭 님의 오늘의 원픽을<br>끝까지 골라주세요</h1>
+        <p class="summary">팬메이드 AI 포토 중 가장 마음이 가는 한 장을 고르는 페이지입니다. 이미지 수가 딱 맞지 않아도 부전승으로 자연스럽게 진행됩니다.</p>
       </div>
       <div class="status">
         <span class="chip" id="roundLabel">준비 중</span>
@@ -101,7 +101,7 @@
       <div class="winner-card">
         <img id="winnerImage" alt="">
         <div class="result-body">
-          <p>최종 우승</p>
+          <p>오늘의 원픽</p>
           <h2 id="winnerTitle"></h2>
           <div class="share-actions">
             <button class="copy-button" id="copyResultBtn" type="button">결과 링크 복사</button>
@@ -111,7 +111,7 @@
       <div class="ranking" id="rankingList"></div>
     </section>
 
-    <p class="empty" id="emptyMessage">월드컵을 진행하려면 worldcup.json에 이미지가 최소 2개 필요합니다.</p>
+    <p class="empty" id="emptyMessage">후보 이미지가 최소 2장 필요합니다.</p>
 
     <div class="actions">
       <button class="action" id="shuffleBtn" type="button">섞어서 다시</button>
@@ -151,22 +151,22 @@
     }
 
     function getRoundName(count) {
-      if (count === 2) return '결승';
-      if (count === 4) return '4강';
+      if (count === 2) return '파이널';
+      if (count === 4) return '세미파이널';
       return `${count}강`;
     }
 
     function normalizeItem(item, index) {
       return {
         id: item.id || `item-${index + 1}`,
-        title: item.title || `후보 ${index + 1}`,
+        title: item.title || `창섭 픽 후보 ${index + 1}`,
         imageUrl: item.imageUrl || item.url || ''
       };
     }
 
     async function loadItems() {
       const response = await fetch('worldcup.json', { cache: 'no-store' });
-      if (!response.ok) throw new Error('worldcup.json을 불러오지 못했습니다.');
+      if (!response.ok) throw new Error('후보 목록을 불러오지 못했습니다.');
       const items = await response.json();
       state.sourceItems = items.map(normalizeItem).filter((item) => item.imageUrl);
     }
@@ -276,7 +276,7 @@
       state.winner = winner;
       $('arena').style.display = 'none';
       $('roundLabel').textContent = '완료';
-      $('matchLabel').textContent = '우승';
+      $('matchLabel').textContent = '원픽';
       $('winnerImage').src = winner.imageUrl;
       $('winnerImage').alt = winner.title;
       $('winnerTitle').textContent = winner.title;
@@ -320,6 +320,7 @@
 
     async function copyResultLink() {
       const lines = [
+        `창섭 님의 오늘의 원픽`,
         `1위 왕관: ${state.winner?.title || ''}`,
         state.finalLoser ? `2위 골드: ${state.finalLoser.title}` : '',
         state.semifinalLosers[0] ? `3위 실버: ${state.semifinalLosers[0].title}` : '',
