@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="감성 욕실">
+  <rect width="900" height="620" fill="#eef5f4"/>
+  <rect x="0" y="420" width="900" height="200" fill="#bdd3d0"/>
+  <rect x="176" y="266" width="548" height="156" rx="58" fill="#ffffff"/>
+  <rect x="236" y="366" width="428" height="48" rx="24" fill="#d9e8e5"/>
+  <circle cx="452" cy="182" r="72" fill="#8fb6b2"/>
+  <rect x="426" y="248" width="52" height="120" rx="26" fill="#5a736f"/>
+  <rect x="172" y="424" width="72" height="72" rx="24" fill="#ffffff"/>
+  <rect x="656" y="424" width="72" height="72" rx="24" fill="#ffffff"/>
+</svg>
