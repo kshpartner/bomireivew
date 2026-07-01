@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClearTone YouTube Clean Embed</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #f7f4ec;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .video-section {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #000;
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      pointer-events: none;
+    }
+
+    /* 유튜브 느낌을 줄이기 위한 얇은 오버레이 */
+    .video-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 768px) {
+      .video-frame {
+        border-radius: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="video-section">
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/5qtwPAywWcQ?autoplay=1&mute=1&loop=1&playlist=5qtwPAywWcQ&controls=0&modestbranding=1&rel=0&playsinline=1&cc_load_policy=0&iv_load_policy=3&disablekb=1&fs=0"
+        title="ClearTone Brand Story"
+        allow="autoplay; encrypted-media; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+</body>
+</html>
