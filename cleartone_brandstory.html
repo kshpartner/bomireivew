@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>ClearTone Clean YouTube Embed with Sound Toggle</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #f7f4ec;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .video-section {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #000;
+    }
+
+    #player {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      pointer-events: none;
+    }
+
+    .video-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    }
+
+    .sound-toggle {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      z-index: 5;
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: rgba(0, 0, 0, 0.56);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .sound-toggle:hover {
+      opacity: .86;
+      transform: translateY(-1px);
+    }
+
+    .local-notice {
+      display: none;
+      max-width: 1100px;
+      margin: 14px auto 0;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.06);
+      color: #333;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    body.is-local .local-notice {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .video-frame {
+        border-radius: 12px;
+      }
+
+      .sound-toggle {
+        right: 12px;
+        bottom: 12px;
+        padding: 9px 12px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="video-section">
+    <div class="video-frame">
+      <div id="player"></div>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-label="소리 켜기">🔇 소리 켜기</button>
+    </div>
+
+    <div class="local-notice">
+      이 파일을 PC에서 바로 열면 YouTube Error 153이 날 수 있습니다.
+      GitHub Pages, Cloudflare Pages, 카페24/자사몰 HTML 영역처럼 https 주소에서 열어야 정상 재생됩니다.
+    </div>
+  </section>
+
+  <script>
+    var player;
+    var videoId = "5qtwPAywWcQ";
+    var isMuted = true;
+
+    if (location.protocol === "file:") {
+      document.body.classList.add("is-local");
+    }
+
+    var tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+      var originValue = "";
+      if (location.origin && location.origin !== "null" && location.protocol !== "file:") {
+        originValue = location.origin;
+      }
+
+      player = new YT.Player("player", {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          loop: 1,
+          playlist: videoId,
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          playsinline: 1,
+          cc_load_policy: 0,
+          iv_load_policy: 3,
+          disablekb: 1,
+          fs: 0,
+          origin: originValue
+        },
+        events: {
+          onReady: function(event) {
+            event.target.mute();
+            event.target.playVideo();
+          },
+          onStateChange: function(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+              player.playVideo();
+            }
+          }
+        }
+      });
+    }
+
+    document.getElementById("soundToggle").addEventListener("click", function () {
+      if (!player || typeof player.isMuted !== "function") return;
+
+      if (player.isMuted()) {
+        player.unMute();
+        player.setVolume(80);
+        this.textContent = "🔊 소리 끄기";
+        this.setAttribute("aria-label", "소리 끄기");
+        isMuted = false;
+      } else {
+        player.mute();
+        this.textContent = "🔇 소리 켜기";
+        this.setAttribute("aria-label", "소리 켜기");
+        isMuted = true;
+      }
+    });
+  </script>
+
+</body>
+</html>
