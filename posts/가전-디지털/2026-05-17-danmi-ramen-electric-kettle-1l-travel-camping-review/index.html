@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">캠핑과 여행에 딱 좋은 단미 라면포트, 작고 가볍지만 활용도 높은 전기포트라 믿고 추천할게요.</p>
     <div class="tags"><span>전기포트</span><span>단미</span><span>캠핑용</span><span>라면포트</span><span>멀티쿠커</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" href="https://naver.me/FriArA0T" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250227_176/1740639251359yFqaQ_JPEG/33543721009294744_1502416149.jpg" alt="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FriArA0T" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250227_176/1740639251359yFqaQ_JPEG/33543721009294744_1502416149.jpg" alt="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요 여러분~ 😊<br>요즘 캠핑이나 여행 준비하면서 간편하게 쓸 수 있는 전기포트를 찾고 있었어요.<br>사실 집에서는 큰 전기포트를 쓰는데, 여행이나 캠핑 갈 때는 부피가 크고 무거워서 번거롭더라고요.</p><p>특히 라면을 좋아하는 저에게는<br><font color="#ff69b4"><strong>작고 가벼우면서도 라면 끓이기 딱 좋은</strong></font> 전기포트가 절실했답니다.<br>그래서 여러 제품을 찾아보던 중에 <font color="#ff69b4"><strong>단미 라면포트 전기포트 EK05</strong></font>를 알게 되었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FriArA0T" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241118_225/1731886643281Fy8SU_JPEG/78424013068881961_92279317.jpg" alt="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 단미 라면포트를 선택했을까?</h2></section><p>사실 비슷한 소형 전기포트가 너무 많잖아요? 그래서 가격, 후기, 브랜드 신뢰도까지 꼼꼼히 비교했는데,<br>단미 제품은 <font color="#ff69b4"><strong>1L 용량에 딱 맞는 크기와 합리적인 가격</strong></font>이 가장 마음에 들었어요.<br>할인가 28,900원이라 부담도 적고요.</p><p>후기도 꽤 많아서 실제 사용자들의 평이 좋아서 망설임이 줄었고,<br>무엇보다 여행용으로 가볍고 휴대하기 좋다는 점이 결정적 구매동기였답니다.<br>그리고 샤브샤브나 전골냄비 기능도 된다고 해서 멀티쿠커로도 활용할 수 있다는 게 참 매력적이었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FriArA0T" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240911_8/1726031431022gwg45_JPEG/60164378153609106_493224819.jpg" alt="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 확실히 달라진 점</h2></section><p>사용 전에는 작은 냄비에 물 끓이고 라면 끓이는 게 은근 번거롭고,<br>가스렌지 쓸 때도 공간 차지하고 불안했는데요,<br>단미 라면포트는 전기라서 안전하고 빠르게 끓여주니 너무 편하더라고요.</p><p>캠핑 가서도 바로 물 끓여서 라면 먹고, 샤브샤브 해 먹으니<br><font color="#ff69b4"><strong>작은 크기에 비해 활용도가 정말 높다</strong></font>는 걸 느꼈어요.<br>여행용 가방에 쏙 들어가서 부담 없고, 청소도 쉬워서 관리도 편했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FriArA0T" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260223_251/17718179512144XaTL_JPEG/105950764481829554_649787559.jpg" alt="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FriArA0T" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240911_264/1726031463499iM1kV_JPEG/60164334633175006_1260390091.jpg" alt="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>조금 아쉬운 점도 솔직히</h2></section><p>사실 용량이 1L라서 3인 이상은 조금 부족할 수도 있어요.<br>또 뚜껑이 완전 밀폐형은 아니라서 살짝 뜨거운 김이 빠져나가긴 하는데,<br>그래도 안전하고 사용하기에 전혀 불편함은 없답니다.</p><p>아쉬운 점이 있지만 그래도 <font color="#ff69b4"><strong>가벼움과 멀티 기능, 가격 대비 성능</strong></font>이 너무 좋아서<br>대체로 만족하며 쓰고 있어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FriArA0T" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240911_164/1726031411689KoHws_JPEG/60164235876071919_608436488.jpg" alt="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 단미 라면포트를 추천할까?</h2></section><p>여행이나 캠핑 자주 다니면서 가볍고 실용적인 전기포트 찾는 분들께 강추해요.<br>혼자 사는 1~2인 가구나, 간편하게 라면 끓이거나 전골 해 먹고 싶은 분들께도 딱이에요.</p><p>그리고 부피 큰 전기포트 대신 휴대성 좋은 제품을 찾는 분들께도 정말 잘 맞아요.<br>요즘 같이 간편한 요리가 인기인 시대에 딱 어울리는 제품이에요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FriArA0T" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200224_279/15825307074478LSFV_JPEG/19891446079036062_1332006820.jpg" alt="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>구매 후기도 꼼꼼히 보고 비교해 보세요!</h2></section><p>저처럼 라면포트나 소형 전기포트를 고민 중이라면 후기도 꼼꼼히 살펴보시고,<br><font color="#ff69b4"><strong>단미 EK05 제품 상세페이지</strong></font>와 비교해 보시면 좋을 것 같아요.<br>가격도 지금 할인가 28,900원으로 부담 없으니 한 번 써보시길 추천드려요.</p><p>저는 이번 여행부터 정말 잘 챙기고 다니면서 만족 중이라 재구매 의사 100%랍니다.😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FriArA0T" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260223_230/1771817902372z7pqX_JPEG/21626149202128392_397925752.jpg" alt="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -223,7 +247,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FriArA0T" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240911_176/1726031542877Ni2la_JPEG/40924832095508644_1395643693.jpg" alt="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -231,11 +255,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>오늘 소개한 단미 라면포트, 여러분도 한번 사용해 보시고<br>여행이나 캠핑에서 직접 체험한 후기를 꼭 공유해 주세요!<br>궁금한 점이나 궁금한 사용법도 댓글로 남겨주시면<br>저도 답변 드리고 같이 이야기 나눌게요. 💬</p><p><font color="#ff69b4"><strong>#단미라면포트 #전기포트추천 #캠핑용품 #여행필수템 #멀티쿠커</strong></font></p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FriArA0T" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240911_266/1726031636430eAaQG_JPEG/60164460636304528_807306188.jpg" alt="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰" href="https://naver.me/FriArA0T" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250227_176/1740639251359yFqaQ_JPEG/33543721009294744_1502416149.jpg" alt="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -243,7 +267,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FriArA0T" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FriArA0T" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="전기포트 추천 단미 라면포트 1L 여행용 캠핑용 멀티쿠커 활용법 리뷰">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
