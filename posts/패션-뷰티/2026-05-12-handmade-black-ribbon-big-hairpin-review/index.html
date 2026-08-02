@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">머리숱 많아도 흘러내리지 않는 핸드메이드 빅사이즈 헤어핀이라 친구에게 살짝 추천하고 싶어요.</p>
     <div class="tags"><span>헤어핀</span><span>빅사이즈</span><span>핸드메이드</span><span>블랙리본</span><span>골지</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰" href="https://naver.me/GntvRGg5" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰" href="https://naver.me/GntvRGg5" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230409_131/16810225111285myt2_JPEG/82158399830844421_175290915.jpg" alt="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GntvRGg5" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GntvRGg5" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230409_131/16810225111285myt2_JPEG/82158399830844421_175290915.jpg" alt="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 머리핀 찾으면서 고민이 많았어요.<br>평소에 헤어스타일을 간단하게 완성하고 싶었거든요.</p><p>특히 머리카락이 좀 많은 편이라 작은 핀은 금방 빠지고<br>딱 맞는 크기가 없어서 불편했어요.</p><p>그래서 <font color="#ff69b4"><strong>미엘 보우 헤어핀</strong></font>을 알게 됐죠.<br>핸드메이드에 빅사이즈라서 기대가 됐답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GntvRGg5" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GntvRGg5" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230409_147/1681022145503DD5mb_JPEG/8324829269014293_2025806966.jpg" alt="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>미엘 보우 헤어핀 선택한 이유</h2></section><p>시장에 워낙 다양한 헤어핀이 많아서 고민했어요.<br>그중에 <font color="#ff69b4"><strong>블랙리본 디자인</strong></font>과<br>세련된 골지 텍스처가 눈에 띄었죠.</p><p>후기도 꽤 좋아서 믿음이 갔고<br>가격도 할인가 12,000원이라 적당했어요.</p><p>처음엔 핸드메이드라서 내구성이 걱정됐는데<br>받아보고 바로 마음이 바뀌었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GntvRGg5" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GntvRGg5" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230409_24/1681022468516bYjgS_JPEG/82158302333193969_135959927.jpg" alt="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 달라진 점</h2></section><p>전에 쓰던 핀은 머리카락이 쉽게 미끄러지고<br>작아서 머리 한쪽만 고정이 잘 안 됐는데요.</p><p>미엘 보우 헤어핀은 크기가 커서<br>한 번에 풍성한 머리를 단단히 잡아줘요.<br>빅사이즈라서 언발란스한 멋도 살고요.</p><p>핸드메이드 특유의 부드러운 촉감과<br>골지 리본의 고급스러운 느낌이<br>일상 속에서 스타일을 한층 더 살려줬어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GntvRGg5" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GntvRGg5" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230409_16/1681022477457YHtJG_JPEG/82158311260303046_2102350020.jpg" alt="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GntvRGg5" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GntvRGg5" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230409_8/1681022484490npIeb_JPEG/82158318282456774_973790724.jpg" alt="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>약간 아쉬운 점</h2></section><p>아쉬운 점이 있다면<br>조금 무게감이 느껴진다는 건데요.</p><p>하지만 빅사이즈라 머리를 더 잘 잡아주는<br>장점과 비교하면 크게 문제되진 않았어요.</p><p>오히려 안정감 덕분에 머리 핀 고정력이 높아서<br>하루종일 신경 쓰이지 않았답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GntvRGg5" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GntvRGg5" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230409_128/1681022489582bnNcD_JPEG/82158323378873211_404243615.jpg" alt="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천할까?</h2></section><p>머리숱이 많거나 풍성한 헤어스타일을 좋아하는 분,<br>또는 깔끔하면서도 여성스러운 <font color="#ff69b4"><strong>블랙리본 헤어핀</strong></font>을 찾는 분께 추천해요.</p><p>간편하게 스타일을 완성하고 싶으면서<br>퀄리티 좋은 핸드메이드 제품에 관심 있는 분이라면<br>한 번쯤 경험해보시길 바랍니다.</p><p>일상 속 소소한 스타일링 아이템으로 딱 좋아요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GntvRGg5" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GntvRGg5" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230409_244/1681022499509zp8Cg_JPEG/82158333312707458_1336639882.jpg" alt="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -220,7 +244,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>여러분은 평소 머리핀 고를 때<br>어떤 점을 가장 중요하게 생각하시나요? 💭</p><p>제 경험이 조금이라도 도움이 됐다면 좋아요와 댓글로<br>함께 이야기 나눠요! 여러분의 스타일링 팁도 궁금해요. 😊</p><p>#헤어핀추천 #핸드메이드헤어핀 #블랙리본헤어핀 #빅사이즈헤어핀 #미엘보우헤어핀</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰" href="https://naver.me/GntvRGg5" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰" href="https://naver.me/GntvRGg5" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230409_131/16810225111285myt2_JPEG/82158399830844421_175290915.jpg" alt="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -228,7 +252,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/GntvRGg5" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/GntvRGg5" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="헤어핀 추천 핸드메이드 블랙리본 골지 빅사이즈 활용법 리뷰">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
