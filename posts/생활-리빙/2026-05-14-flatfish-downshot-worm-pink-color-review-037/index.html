@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">낚시 좋아하는 친구에게 꼭 추천하고 싶은, 튼튼하고 자연스러운 핑크 컬러 광어다운샷웜 후기예요.</p>
     <div class="tags"><span>광어다운샷웜</span><span>낚시용품</span><span>핑크웜</span><span>캣츠크로우</span><span>낚시후기</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" href="https://naver.me/xhPKlNT2" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" href="https://naver.me/xhPKlNT2" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250109_272/1736404799752dFdTv_JPEG/14594085864216692_67544824.jpg" alt="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xhPKlNT2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xhPKlNT2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250109_272/1736404799752dFdTv_JPEG/14594085864216692_67544824.jpg" alt="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>낚시를 좋아하는 분들이라면 한번쯤 <font color="#ff69b4"><strong>광어다운샷웜</strong></font>을 검색해보셨을 거예요🐟<br>저도 오랜만에 입질이 뜸해서 새로운 루어를 찾던 중에 발견한 제품이랍니다.</p><p>사실 전에 쓰던 웜이 쉽게 부서지고<br>색감도 별로여서 불편했었는데요,<br>그래서 좀 더 튼튼하고 자연스러운 색감의 제품을 찾게 되었어요.</p><p>이런 고민 끝에 고른 게 바로 <font color="#ff69b4"><strong>캣츠크로우 모비딕쉐드 037 핑크</strong></font>였답니다😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xhPKlNT2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xhPKlNT2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250303_32/1741004364774mjfx7_JPEG/75137248901688883_2048393090.jpg" alt="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>캣츠크로우 모비딕쉐드 광어웜 선택 이유</h2></section><p>광어웜 종류가 정말 많아서 한참 고민했는데,<br>가격도 적당하고 후기가 꽤 좋아서 관심이 갔어요.</p><p><font color="#ff69b4"><strong>12.7cm(5인치)</strong></font> 크기도 딱 손에 잡히는 느낌이라 좋았고,<br>핑크색이 자연스럽게 물속에서 눈에 띈다는 평이 많더라고요.</p><p>처음에는 약간 망설였지만,<br>실사용 후기가 많아서 신뢰가 갔던 게 구매 결정에 큰 역할을 했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xhPKlNT2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xhPKlNT2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250115_284/1736905380479XYxBk_JPEG/71038327616238364_758557089.jpg" alt="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후의 느낌 차이</h2></section><p>처음에 받았을 때는 재질이 부드럽지만 튼튼한 느낌이 들어서<br>바로 손맛이 기대되었어요.</p><p>실제로 낚시에 사용해보니<br><font color="#ff69b4"><strong>바닷속 움직임이 자연스러워</strong></font> 물고기가 더 쉽게 반응하더라고요.</p><p>이전 웜에 비해 부서짐도 훨씬 적고<br>한번 잡으면 오래 쓸 수 있어서 가성비도 만족스러웠어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xhPKlNT2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xhPKlNT2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250109_110/1736404797959qu0dc_JPEG/14594084094687003_807554315.jpg" alt="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xhPKlNT2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xhPKlNT2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250109_157/1736404798433dXeBW_JPEG/14594084568326227_748170497.jpg" alt="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점도 솔직히 말해볼게요</h2></section><p>굳이 꼽자면, <font color="#ff69b4"><strong>처음에 냄새가 조금 강한 편</strong></font>이었어요.<br>그래도 금방 사라지고 물에 담가 두면 괜찮아졌답니다.</p><p>그리고 핑크 색상이 너무 밝으면 물속 환경에 따라 눈에 띄기 어려울 수도 있겠다 싶었지만,<br>실제로는 의외로 잘 보여서 만족했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xhPKlNT2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xhPKlNT2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250109_8/1736404798598At4FC_JPEG/14594084730915875_1999391220.jpg" alt="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천하고 싶은 광어다운샷웜일까?</h2></section><p>처음 낚시용 웜을 구매하는 분들이나<br>기존 웜이 쉽게 부서져서 고민인 분들께 꼭 추천해요.</p><p><font color="#ff69b4"><strong>자연스러운 컬러와 탄력 있는 재질</strong></font> 덕분에<br>광어 다운샷 낚시에 딱 맞는 제품이라 생각해요.</p><p>또한, 가격도 8,000원 할인가로 부담 없이 구매할 수 있어서<br>낚시 입문자에게 좋은 선택이 될 거예요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xhPKlNT2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xhPKlNT2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250109_152/1736404798770D70Ax_JPEG/14594084887702531_1898257964.jpg" alt="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 이미 몇 번 더 재구매를 고려 중이에요👍<br>왜냐하면 <font color="#ff69b4"><strong>가성비 좋고 효과를 바로 느낄 수 있어서</strong></font> 계속 쓰고 싶거든요.</p><p>후기와 상세페이지를 꼼꼼히 비교해 보시고,<br>자신에게 맞는 컬러와 사이즈를 선택하시면 좋을 것 같아요.</p><p>낚시가 더 즐거워지는 경험, 직접 해보시길 추천드려요😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xhPKlNT2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xhPKlNT2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250109_274/1736404799047dzFrw_JPEG/14594085181699573_1612437981.jpg" alt="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -223,14 +247,14 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xhPKlNT2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xhPKlNT2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250109_37/17364047992133FOyi_JPEG/14594085326203917_1252121899.jpg" alt="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
 <div class="content-block">
 <p>오늘은 이렇게 <font color="#ff69b4"><strong>캣츠크로우 모비딕쉐드 광어다운샷웜</strong></font> 037 핑크 색상을 소개해봤어요.<br>낚시 좋아하시는 분들은 한 번 써보시면 좋겠다는 마음으로 쓴 글입니다😊</p><p>여러분은 낚시할 때 어떤 웜을 선호하시나요?<br>저처럼 바다낚시 애호가라면 경험담도 공유해 주세요! 댓글로 여러분의 이야기 기다릴게요🎣</p><p>오늘도 즐거운 낚시 생활 보내시고,<br>좋아요와 댓글 잊지 말아 주세요💕</p><p>#광어다운샷웜 #캣츠크로우웜 #낚시용품추천 #바다낚시 #낚시웜후기</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" href="https://naver.me/xhPKlNT2" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리" href="https://naver.me/xhPKlNT2" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250109_272/1736404799752dFdTv_JPEG/14594085864216692_67544824.jpg" alt="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -238,7 +262,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xhPKlNT2" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xhPKlNT2" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="광어다운샷웜 추천 037 핑크 컬러 사용법과 후기 정리">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
