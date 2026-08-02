@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">초기 탈모로 고민하는 친구에게 그리너리 SOS 토닉을 살짝 추천하고 싶어요. 효과가 꽤 믿음직해요.</p>
     <div class="tags"><span>두피트러블</span><span>탈모초기</span><span>그리너리</span><span>토닉추천</span><span>두피관리</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기" href="https://naver.me/xPYvXE54" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기" href="https://naver.me/xPYvXE54" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20241025_271/1729819754876LiI4n_JPEG/11329788748605238_360333431.jpg" alt="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xPYvXE54" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xPYvXE54" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241025_271/1729819754876LiI4n_JPEG/11329788748605238_360333431.jpg" alt="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 <font color="#4caf50"><strong>두피 트러블 토닉</strong></font> 제품을 찾다가 그리너리 SOS 제품을 알게 되었답니다.<br>문제성 두피에 딱 맞는다는 설명이 마음에 들었어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xPYvXE54" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xPYvXE54" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241119_262/1731995817215OAFpu_JPEG/1286811351865597_1332192476.jpg" alt="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -153,7 +177,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>실제로 사용한 분들의 후기에서 <font color="#ff69b4"><strong>두피 진정과 초기 탈모 예방</strong></font>에 효과를 봤다는 글이 많았어요.<br>그래서 믿고 써보자 마음먹었죠.😊</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xPYvXE54" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xPYvXE54" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241025_183/1729837676158AftB7_PNG/63970622285345718_1696278258.png" alt="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -163,7 +187,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>아침저녁으로 토닉을 바르는 시간이 저만의 <font color="#4caf50"><strong>작은 힐링 타임</strong></font>이 되었어요.<br>두피가 진정되고 촉촉해지는 느낌이 정말 좋아요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xPYvXE54" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xPYvXE54" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241025_153/1729819741597S2Iks_JPEG/63952661816278267_1847900868.jpg" alt="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -175,7 +199,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xPYvXE54" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xPYvXE54" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241025_211/17298197449181TePK_JPEG/63952681599407601_1085970213.jpg" alt="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -185,7 +209,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>전체적으로 보면 두피 케어에 도움 되는 점이 더 커서 만족스러웠습니다.🌿</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xPYvXE54" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xPYvXE54" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241025_255/172981974835167BkH_JPEG/63952696529413328_391190871.jpg" alt="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -195,7 +219,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>저처럼 <font color="#4caf50"><strong>일상 속에서 간편하게 두피 건강 챙기고픈 분</strong></font>들도 만족하실 거랍니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xPYvXE54" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xPYvXE54" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241025_180/1729819752054F2MjA_JPEG/14275112842512582_1530920057.jpg" alt="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -237,7 +261,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>사용해 보신 분들은 어떤 점이 좋았는지 댓글로 공유해 주시면 서로 도움이 될 것 같아요!<br>궁금한 점도 언제든지 물어봐 주세요!</p>
 <p>#두피토닉 #초기탈모관리 #그리너리토닉 #두피가려움해결 #탈모예방제품</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기" href="https://naver.me/xPYvXE54" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기" href="https://naver.me/xPYvXE54" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20241025_271/1729819754876LiI4n_JPEG/11329788748605238_360333431.jpg" alt="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -245,7 +269,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xPYvXE54" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xPYvXE54" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="두피 트러블 토닉 추천 그리너리 SOS 탈모 초기 관리 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
