@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">캠핑할 때 편리한 반합 메스틴 찜망 세트를 고민하는 친구에게 추천하고 싶은 제품이에요.</p>
     <div class="tags"><span>캠핑</span><span>메스틴</span><span>찜망</span><span>조리도구</span><span>사용후기</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" href="https://naver.me/5QsuiTQk" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240215_261/1707968503071YyjVl_PNG/109104336876442272_1599964755.png" alt="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5QsuiTQk" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240215_261/1707968503071YyjVl_PNG/109104336876442272_1599964755.png" alt="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그동안 그냥 일반 냄비에 밥도 하고 찜도 했는데,<br>뭔가 불편하고 청소도 까다로워서 고민이 많았거든요.<br>특히 캠핑장에서 간편하게 밥도 짓고 찜도 할 수 있는<br>제품이 필요했답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5QsuiTQk" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230710_193/1688927111005pidl0_PNG/4443599330567549_181659951.png" alt="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -151,7 +175,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p><font color="#ff69b4"><strong>가격도 할인가 36,000원이라서 부담 없었고</strong></font>,<br>사용자들이 만족하는 점들을 보고 구매를 결정했답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5QsuiTQk" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210802_186/1627895696152wEssO_PNG/29031538862768502_407341255.png" alt="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -161,7 +185,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p><font color="#ff69b4"><strong>캠핑장에서 간편하게 사용하고 나서 청소도 손쉽게 할 수 있어 만족도가 높았어요.</strong></font></p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5QsuiTQk" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210802_259/1627895696211jHxF2_PNG/29031538925505307_428954754.png" alt="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -173,7 +197,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5QsuiTQk" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240215_286/1707968502683lgcvo_PNG/109104336504902326_1787126562.png" alt="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 세척할 때 찜망 사이사이에 음식물이 끼일 수 있는데,<br>물에 담궈두면 쉽게 떨어져서 크게 문제되지 않았어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5QsuiTQk" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240215_143/17079685027405wAuP_PNG/109104336560910736_709281487.png" alt="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -191,7 +215,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 밥 짓는 도구와 찜기를 따로 챙기기 번거로운 분들에게 딱 맞는 세트예요.<br>초보 캠퍼부터 요리 좋아하는 분들까지 폭넓게 활용 가능하답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5QsuiTQk" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240215_211/1707968502776oHaSy_PNG/109104336597356522_754173687.png" alt="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -201,7 +225,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p><font color="#ff69b4"><strong>저처럼 캠핑 요리 고민하는 분들께 꼭 도움이 될 제품이에요!</strong></font></p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5QsuiTQk" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240215_192/1707968502816wQYW2_PNG/109104336637381080_704287838.png" alt="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -234,7 +258,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5QsuiTQk" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240215_178/1707968502896Spbbz_PNG/109104336718298472_648268972.png" alt="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -245,11 +269,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>#캠핑요리 #메스틴찜망 #탑앤탑반합 #캠핑용품추천 #야외요리도구</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5QsuiTQk" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240215_293/1707968502969RsTdm_PNG/109104336783900212_794646724.png" alt="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기" href="https://naver.me/5QsuiTQk" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240215_261/1707968503071YyjVl_PNG/109104336876442272_1599964755.png" alt="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -257,7 +281,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5QsuiTQk" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5QsuiTQk" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="캠핑 필수품 반합 메스틴 찜망 세트 고르는법과 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
