@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">보육교사 분들께 꼭 맞는 모던 체크 앞치마 추천해요. 편안하고 실용적이라 꼭 한번 써보시길 살짝 권해드려요.</p>
     <div class="tags"><span>보육교사</span><span>앞치마</span><span>모던체크</span><span>어린이집</span><span>편안한착용감</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기" href="https://naver.me/GhwNLtQ9" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기" href="https://naver.me/GhwNLtQ9" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20241212_75/17339867684696xGlb_JPEG/16977266269138833_1407204498.jpg" alt="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GhwNLtQ9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GhwNLtQ9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241212_75/17339867684696xGlb_JPEG/16977266269138833_1407204498.jpg" alt="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요~😊 요즘 어린이집에서 일하면서 작은 불편함이 하나 있었어요.<br>매일 바쁘게 아이들을 돌보다 보니 앞치마가 금방 낡고<br>어떤 제품이 좋은지 찾는 게 쉽지 않더라고요.</p><p>그래서 <font color="#ff69b4"><strong>보육교사분들께 잘 맞는 앞치마</strong></font>를 꼭 하나 장만하고 싶었어요.<br>특히 <font color="#ff69b4"><strong>모던한 체크 무늬</strong></font>와 편안한 착용감, 그리고 활동성까지<br>고려해서요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GhwNLtQ9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GhwNLtQ9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210217_45/1613561847624xdeex_JPEG/14697745912891810_309837422.jpg" alt="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 앞치마가 필요했는지와 불편함 이야기</h2></section><p>어린이집에서 하루 종일 움직이다 보니<br>예전 앞치마는 무겁고 답답했어요.<br>또 무늬가 너무 평범하거나 너무 화려해서<br>아이들과 어울리기 힘들었답니다.</p><p>그리고 주방일과 아이들 놀이 활동을 동시에 할 때<br>얼룩도 쉽게 지워지지 않고 관리가 어려웠어요.<br>이런 점들이 불편해서 새 앞치마를 찾게 되었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GhwNLtQ9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GhwNLtQ9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241212_132/1733986700990H4dyu_JPEG/68119548726904738_1957034144.jpg" alt="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>모던 체크 앞치마 선택한 이유</h2></section><p>비슷한 제품이 많아서 많이 망설였는데,<br>이 제품은 <font color="#ff69b4"><strong>디자인이 세련되고 깔끔했어요.</strong></font><br>가격도 할인가로 26,000원이라 부담 없었고요.</p><p>후기도 보니 <font color="#ff69b4"><strong>보육교사분들이 많이 추천</strong></font>하고 평도 좋아서 믿음이 갔어요.<br>그리고 브랜드 신뢰도도 꽤 높아서 결정하는 데 큰 도움이 되었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GhwNLtQ9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GhwNLtQ9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241212_218/1733986701514flWKc_JPEG/68119549238181785_1581615817.jpg" alt="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GhwNLtQ9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GhwNLtQ9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241212_19/1733986702157Op929_JPEG/68119549881463578_1094370226.jpg" alt="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>가장 만족한 3가지 포인트</h2></section><p>첫째, <font color="#ff69b4"><strong>편안한 착용감</strong></font>이에요.<br>바쁜 업무 중에도 움직임에 제약이 없고 가볍답니다.</p><p>둘째, <font color="#ff69b4"><strong>깔끔한 모던 체크 디자인</strong></font>으로<br>아이들과 함께 있을 때도 자연스럽고 예뻐요.<br>마음까지 밝아지는 느낌이랄까요? 😊</p><p>셋째, <font color="#ff69b4"><strong>실용적인 세탁과 관리</strong></font>가 쉬워서 매일 사용해도<br>변함없이 깨끗한 상태를 유지할 수 있어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GhwNLtQ9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GhwNLtQ9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241212_134/1733986702778Ml935_JPEG/68119550486212921_811706027.jpg" alt="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점과 그래도 좋은 점</h2></section><p>딱 하나 아쉬운 점은 사이즈 조절이 조금 더 다양했으면 좋겠다는 점이에요.<br>그래도 <font color="#ff69b4"><strong>기본 사이즈가 잘 맞고 재질이 부드러워서 만족합니다.</strong></font></p><p>게다가 꼼꼼한 마감 덕분에 오래 사용할 수 있을 것 같아<br>아쉬움이 크게 느껴지지 않았어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GhwNLtQ9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GhwNLtQ9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241212_116/1733986764562RPRVU_JPEG/49002429141219739_885979095.jpg" alt="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -223,7 +247,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>오늘은 <font color="#ff69b4"><strong>모던 체크 앞치마</strong></font>에 대해 솔직한 사용 후기를 전해드렸어요.<br>혹시 여러분도 어린이집이나 카페, 미용실에서<br>편안하고 예쁜 앞치마를 찾고 계시다면<br>이 글이 도움이 되었으면 좋겠네요! 😊</p><p>사용하면서 느낀 점이나 궁금한 점 있으면<br>댓글로 나눠주세요~<br>서로 좋은 정보 공유하며 더 알찬 선택 하시길 바랄게요!💕</p><p>#보육교사앞치마 #어린이집필수템 #모던체크앞치마 #카페앞치마추천 #실용적인앞치마</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기" href="https://naver.me/GhwNLtQ9" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기" href="https://naver.me/GhwNLtQ9" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20241212_75/17339867684696xGlb_JPEG/16977266269138833_1407204498.jpg" alt="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -231,7 +255,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>보육교사용 모던 체크 앞치마 추천과 선택법 알아보기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/GhwNLtQ9" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/GhwNLtQ9" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="보육교사용 모던 체크 앞치마 추천과 선택법 알아보기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
