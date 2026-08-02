@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">빠르고 안정적인 USB PD C타입 케이블, 바쁜 일상에 충전 걱정 없이 추천드려요.</p>
     <div class="tags"><span>고속충전</span><span>USB-C</span><span>케이블추천</span><span>100W</span><span>내구성</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기" href="https://naver.me/5FDhb1nF" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기" href="https://naver.me/5FDhb1nF" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230419_115/16818716754034s6Fy_JPEG/3189012400868389_983033215.jpg" alt="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5FDhb1nF" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5FDhb1nF" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230419_115/16818716754034s6Fy_JPEG/3189012400868389_983033215.jpg" alt="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘은 노트북이며 스마트폰이며<br>빠른 충전이 필수잖아요.⚡</p><p>저도 오래된 충전 케이블 때문에<br>충전 속도가 느리고 자주 끊겨서<br>불편함이 컸거든요.</p><p><font color="#ff69b4"><strong>그래서 이번에 고속충전 가능한 USB PD C타입 케이블</strong></font>을 알아보게 됐어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5FDhb1nF" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5FDhb1nF" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250211_87/1739267975074xeVGY_PNG/73400911197021949_1046189903.png" alt="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 플렉스 100W USB PD 케이블을 고르게 됐을까?</h2></section><p>인터넷에 비슷한 제품들이 많아서<br>한참 고민했는데요,</p><p>가격도 적당하고, 후기도 좋아서<br>결국 플렉스 100W 5A 케이블을 선택했어요.</p><p>특히 <font color="#ff69b4"><strong>120cm 길이</strong></font>라서<br>책상 위나 소파에서 쓰기 딱 좋더라고요.</p><p>그리고 <font color="#ff69b4"><strong>5A 고속충전 지원</strong></font>이라<br>노트북도 문제없이 충전 가능하다는 점이<br>결정적인 구매 이유였답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5FDhb1nF" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5FDhb1nF" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230419_149/1681871641314tJfzL_JPEG/3188978319369323_687799727.jpg" alt="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 어떤 차이가 느껴졌을까?</h2></section><p>이전에는 2A 정도 충전 케이블을 썼었는데,</p><p>충전 속도가 너무 느리고 중간에 연결 불량이 자주 생겨서<br>답답했거든요.</p><p>그런데 이 케이블은 완전 다르더라고요.<br>스마트폰은 물론이고 노트북까지<br><font color="#ff69b4"><strong>빨리 충전되는 게 체감됐어요.</strong></font>👍</p><p>게다가 내구성도 좋아서<br>꼬임이나 단선 걱정이 덜하네요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5FDhb1nF" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5FDhb1nF" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230419_191/1681871645949o7DdE_JPEG/16604304932585286_409458087.jpg" alt="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -168,7 +192,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5FDhb1nF" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5FDhb1nF" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230419_219/1681871649987zTp5C_JPEG/31355257167178633_681332965.jpg" alt="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>조금 아쉬웠던 점도 솔직히 말해볼게요</h2></section><p>아쉬운 점이라면,</p><p>케이블 색상이 검정색이라 때가 조금 잘 타지 않을까<br>걱정되긴 해요.</p><p>하지만 전체적인 품질과 성능을 생각하면<br><font color="#ff69b4"><strong>가격 대비 만족도는 정말 높아요.</strong></font></p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5FDhb1nF" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5FDhb1nF" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230419_100/1681871674878GLPmQ_JPEG/3189011873190735_246019165.jpg" alt="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>이 제품, 어떤 분께 추천하고 싶나요?</h2></section><p>스마트폰과 노트북<br>모두 빠른 충전을 원하는 분들께 강추해요.</p><p>특히 외근이 잦거나 카페, 집 어디서든 편리하게<br>사용하고 싶은 분들이 쓰기 좋아요.</p><p>충전 케이블 자주 바꾸는 게 고민인 분들도<br><font color="#ff69b4"><strong>튼튼한 케이블을 찾는다면 꼭 추천합니다.</strong></font>😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5FDhb1nF" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5FDhb1nF" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230419_261/1681871675284iyXd2_JPEG/3189012281350832_426418790.jpg" alt="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -222,7 +246,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>여러분도 고속충전 케이블 바꾸실 때<br>이 글이 도움이 됐으면 좋겠어요.😊</p><p>사용 중 궁금한 점이나<br>여러분만의 충전 꿀팁도 댓글로 공유해주세요!<br>서로 도움이 되는 이야기 기다릴게요💕</p><p>#USB케이블 #고속충전 #USB_PD #C타입케이블 #플렉스케이블</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기" href="https://naver.me/5FDhb1nF" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기" href="https://naver.me/5FDhb1nF" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230419_115/16818716754034s6Fy_JPEG/3189012400868389_983033215.jpg" alt="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -230,7 +254,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5FDhb1nF" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5FDhb1nF" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="USB PD C타입 고속충전 케이블 100W 5A 선택법과 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
