@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">강아지 알러지 걱정 덜고 건강하게 줄 수 있는 마도로스펫 열빙어 동결건조간식 추천드려요.</p>
     <div class="tags"><span>열빙어간식</span><span>동결건조간식</span><span>강아지간식</span><span>고양이간식</span><span>알러지저감</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기" href="https://naver.me/xNpmfslm" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기" href="https://naver.me/xNpmfslm" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20210614_52/1623634574804no6hU_JPEG/24770409631989096_1769949957.jpg" alt="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xNpmfslm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xNpmfslm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210614_52/1623634574804no6hU_JPEG/24770409631989096_1769949957.jpg" alt="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요 😊 요즘 우리 집 강아지 간식 고르느라<br>여러 제품을 찾아보다가 발견한 마도로스펫 열빙어트릿!<br>100g 대용량이라 가격도 착하고 마음에 들어서<br>솔직하게 후기 남겨보려고 해요.</p><p>사실 전부터 간식 고르는 게 쉽지 않았는데,<br>우리 강아지가 알러지도 있고<br>자극적인 재료가 들어간 간식은 피하고 싶더라고요.<br>그래서 동결건조 간식에 관심이 생겼는데,<br>비슷한 제품이 많아 고민이 많았죠.</p><p>그중에서도 마도로스펫 열빙어트릿을 선택한 이유는<br>후기가 생각보다 좋아서였어요.<br><font color="#ff69b4"><strong>천연 재료</strong></font>에 <font color="#ff69b4"><strong>동결건조 방식</strong></font>이라<br>영양 손실이 적다고 하더라고요.<br>또, 가격도 할인가 14,000원으로 부담 없었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xNpmfslm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xNpmfslm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260209_262/1770597124292nUAhe_JPEG/21157898179656113_2090109077.jpg" alt="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>마도로스펫 열빙어트릿 선택한 이유와 고민</h2></section><p>처음엔 동결건조간식이 비싸고<br>우리 강아지가 잘 먹을까 걱정도 됐어요.<br>그래도 알러지 걱정 덜고 건강한 재료를 주고 싶어서<br>조금 더 알아보기로 했죠.</p><p>여러 브랜드를 비교하면서<br>마도로스펫은 <font color="#ff69b4"><strong>순수 열빙어 원물</strong></font>만 사용한다는 점이<br>가장 큰 메리트였어요.<br>인공 첨가물 걱정 없이 믿고 먹일 수 있겠더라고요.<br>그리고 대용량이라 자주 주문 안 해도 되고<br>가성비도 좋아서 구매를 결정했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xNpmfslm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xNpmfslm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260115_202/1768462584734TsoTQ_JPEG/3257682055580572_522064843.jpg" alt="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전후 달라진 점과 실제 먹는 모습</h2></section><p>처음 간식을 주었을 때는<br>작고 바삭한 조각들이라서<br>우리 강아지가 호기심 가득한 눈으로<br>잘 먹는 모습에 저도 기분이 좋았어요🐾</p><p>먹은 뒤로는 입 냄새도 조금 줄어든 것 같고,<br>간식 먹고 난 뒤에도 배탈이나 소화 문제 전혀 없어서<br>더 안심이 되었답니다.</p><p><font color="#ff69b4"><strong>동결건조된 열빙어가 신선하게 느껴져</strong></font>서 그런지<br>우리 강아지가 더 좋아하는 것 같아요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xNpmfslm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xNpmfslm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20221012_267/1665557066689TnbGF_JPEG/66692846396280925_678898517.jpg" alt="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xNpmfslm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xNpmfslm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210614_206/1623634594605JvIfE_JPEG/24770429424030061_1202101811.jpg" alt="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -210,7 +234,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>여러분도 반려동물과 함께 건강한 간식 찾고 계신가요?😊<br>궁금한 점이나 경험담 공유하고 싶으시면<br>댓글로 이야기 나눠요!<br>우리 아이들이 좋아하는 간식은 어떤 건지<br>서로 소소하게 공유하면 좋을 것 같아요.</p><p><font color="#ff69b4"><strong>#강아지간식 #고양이간식 #동결건조간식 #마도로스펫 #열빙어간식</strong></font></p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기" href="https://naver.me/xNpmfslm" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기" href="https://naver.me/xNpmfslm" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20210614_52/1623634574804no6hU_JPEG/24770409631989096_1769949957.jpg" alt="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -218,7 +242,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xNpmfslm" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xNpmfslm" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="열빙어 동결건조간식 추천 마도로스펫 강아지 고양이용 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
