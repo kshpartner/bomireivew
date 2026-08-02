@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">여름철 시원하고 스타일리시한 린넨 자켓 찾는 분께 조심스럽게 추천드려요. 편안하고 예쁜 체크 오버핏이라 만족스러울 거예요.</p>
     <div class="tags"><span>여름자켓</span><span>린넨자켓</span><span>오버핏</span><span>체크패턴</span><span>휴양지룩</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰" href="https://naver.me/5xgjD38f" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰" href="https://naver.me/5xgjD38f" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220524_283/1653372192733VOuul_JPEG/54508020556715411_951725289.jpg" alt="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5xgjD38f" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5xgjD38f" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220524_283/1653372192733VOuul_JPEG/54508020556715411_951725289.jpg" alt="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>여름철 얇은 자켓 찾다가 <font color="#ff6f61"><strong>린넨 자켓</strong></font>에 눈길이 갔어요.<br>항상 땀 많이 흘리는 편이라 무거운 옷은 부담스럽고,<br>그래서 시원하면서도 스타일 살릴 수 있는 옷이 필요했죠.😊</p><p>특히 <font color="#336699"><strong>여성용 오버핏 체크 자켓</strong></font>은 흔치 않아서 고민하다가<br>휴양지룩에도 어울린다는 말에 더욱 끌렸답니다.<br>가볍고 통기성이 좋아서 실내외 어디서나 입기 편하겠더라고요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5xgjD38f" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5xgjD38f" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220524_48/1653372192923oYdt7_JPEG/54508020747496359_884558619.jpg" alt="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>린넨 자켓 선택 전 고민과 불편함</h2></section><p>그전에는 얇은 면 자켓을 자주 입었는데<br>금방 눅눅해지고 촉감도 답답해서 여름엔 항상 불편했어요.<br>더워서 자주 벗게 되고, 스타일링하기도 애매했죠.</p><p>또한 너무 타이트한 핏은 움직임이 불편해서<br>넉넉한 핏을 원했는데, 마땅한 제품을 찾기 힘들었답니다.<br>그래서 휴양지룩도 되면서 편안한 자켓을 꼭 사고 싶었어요.</p><p>무엇보다 <font color="#ff4500"><strong>통기성 좋은 린넨 소재</strong></font>가 필요했는데,<br>마음에 드는 디자인을 찾는 게 쉽지 않았죠.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5xgjD38f" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5xgjD38f" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220524_56/16533721931532l1Nw_JPEG/54508020979271987_657765441.jpg" alt="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 이 체크 오버핏 린넨 자켓을 골랐을까?</h2></section><p>비슷한 여름 자켓이 많았지만,<br>이 제품은 <font color="#008080"><strong>블루와 레드 체크 패턴</strong></font>가 눈에 띄었어요.<br>컬러 조합이 예뻐서 어떤 하의와도 매치하기 좋을 것 같았거든요.</p><p>가격도 <font color="#ff69b4"><strong>할인가 42,800원</strong></font>로 합리적이라 부담 없었고,<br>후기들이 자연스럽고 진솔해서 신뢰가 갔어요.<br>솔직히 고민도 많았지만, 실사용자 리뷰 덕분에 결정했답니다.</p><p>그리고 무엇보다 <font color="#800080"><strong>반팔 오버핏 디자인</strong></font>이라<br>덥지 않고 스타일리시할 것 같아서 마음에 들었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5xgjD38f" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5xgjD38f" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220524_260/1653372193246fWiRb_JPEG/54508021072100854_952378287.jpg" alt="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -164,7 +188,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 느껴진 변화들</h2></section><p>처음 입었을 때는 시원함에 깜짝 놀랐어요.<br>통풍이 잘 돼서 땀차는 느낌 없이 쾌적했고,<br>휴양지에서 바람이 살랑살랑 부는 느낌 그대로였답니다.🌿</p><p>무엇보다 <font color="#4682b4"><strong>체크 무늬 덕분에 평범한 룩이 산뜻해졌고</strong></font>,<br>오버핏이 넉넉해서 팔 움직임도 자유로웠어요.<br>출근 룩이나 가벼운 외출에도 두루 활용 가능했죠.</p><p>가볍게 걸쳐만도 세련돼 보여서 <font color="#dc143c"><strong>자주 손이 갔던 자켓</strong></font>이에요.<br>여름철 자외선 차단 효과도 어느 정도 느껴져 만족스러웠답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5xgjD38f" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5xgjD38f" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220524_54/1653372186509FsDxN_JPEG/54508014318009302_1973171647.jpg" alt="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5xgjD38f" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5xgjD38f" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220524_81/1653372192395NdCWv_JPEG/54508020214950043_1455516018.jpg" alt="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>조금 아쉬웠던 점과 그럼에도 좋은 점</h2></section><p>개인적으로는 어깨선이 조금 더 부드럽게 떨어졌으면 좋겠다는 생각이 들었어요.<br>오버핏임에도 불구하고 어깨가 살짝 각져 보여서요.</p><p>하지만 <font color="#ff6f61"><strong>린넨 특유의 자연스러운 주름과 텍스처</strong></font>가 살아있어<br>이 점이 크게 불편하진 않았고,<br>더 자연스러운 무드가 연출돼 오히려 좋았답니다.</p><p>또, 세탁 시에는 소재 특성상 약간의 수축 주의가 필요하니<br>꼼꼼히 관리하면 오래 입을 수 있을 거예요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5xgjD38f" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5xgjD38f" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220524_144/1653372192556lN9Ep_JPEG/54508020380928913_1080283890.jpg" alt="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -225,7 +249,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>여름 린넨 자켓에 관심 있으셨던 분들은,<br>저처럼 부담 없는 가격에 스타일과 편안함을<br>모두 잡고 싶다면 이 자켓을 꼭 고려해 보세요!😊</p><p>여러분은 여름에 어떤 자켓을 즐겨 입으시나요?🤔<br>댓글로 여러분의 여름 패션 팁이나 경험 공유해 주세요.<br>서로 좋은 아이디어를 나누면 더욱 즐거운 여름이 될 거예요!💬</p><p>#여름자켓 #린넨자켓 #여성오버핏자켓 #체크패턴 #휴양지룩추천</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰" href="https://naver.me/5xgjD38f" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰" href="https://naver.me/5xgjD38f" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220524_283/1653372192733VOuul_JPEG/54508020556715411_951725289.jpg" alt="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -233,7 +257,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5xgjD38f" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5xgjD38f" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="여름 린넨 자켓 여성용 추천 체크 오버핏 활용법 리뷰">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
