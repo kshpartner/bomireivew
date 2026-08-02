@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">우리 강아지 건강에 딱 좋은 보양 삼계죽, 믿음 가는 제품이라 조심스레 추천해요.</p>
     <div class="tags"><span>반려견</span><span>보양식</span><span>삼계죽</span><span>노견관리</span><span>건강식</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기" href="https://naver.me/5CCrNIn4" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기" href="https://naver.me/5CCrNIn4" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20211004_242/1633351875920CQs3a_PNG/34487710537764064_2007263690.png" alt="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5CCrNIn4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5CCrNIn4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20211004_242/1633351875920CQs3a_PNG/34487710537764064_2007263690.png" alt="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p><font color="#ff69b4"><strong>건강한 보양식이 필요하다</strong></font>는 생각이 들었죠.</p><p>그동안 여러 강아지 간식이나 사료를 시도해 봤는데,<br>쉽게 질려 하거나 소화가 잘 안 되는 경우가 많았거든요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5CCrNIn4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5CCrNIn4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20211004_22/1633351942413GSwjQ_PNG/34487777226496968_1783496037.png" alt="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -151,7 +175,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 <font color="#ff69b4"><strong>노견과 췌장염 강아지도 먹을 수 있도록<br>신경 쓴 수제 간식</strong></font>이라는 점이 맘에 들었어요.</p><p>가격도 할인가 39,600원으로 적당해서 망설임 없이<br>구매 버튼을 누를 수 있었답니다.👍</p><p>후기도 꼼꼼히 읽어보면서 실사용자들이<br>만족하는 점들이 많아 신뢰가 갔어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5CCrNIn4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5CCrNIn4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20211004_128/16333518852838yLQc_PNG/34487719912837869_1078811688.png" alt="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -160,7 +184,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>부드럽고 촉촉한 식감 덕분인지<br>잘 씹고 먹는 모습이 보기 좋았어요. 🥰</p><p>며칠 먹이면서부터 활력도 조금씩 돌아오는 것 같고,<br>변 상태도 좋아지는 느낌이었답니다.</p><p><font color="#ff69b4"><strong>특히 노견에게 맞춘 레시피라<br>부담 없이 먹을 수 있어 만족스러워요.</strong></font></p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5CCrNIn4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5CCrNIn4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20211004_204/1633351918288VpibY_PNG/34487753105006161_1478955412.png" alt="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -172,7 +196,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5CCrNIn4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5CCrNIn4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20211004_94/1633351942231BvEor_PNG/34487777050122453_1299168797.png" alt="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -220,7 +244,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>여러분의 반려견에게 맞는 건강한 선택이 되길 바랄게요.</p>
 <p>좋아요와 공유도 부탁드려요~😊</p><p>#반려견보양식 #강아지삼계죽 #수제간식추천 #노견건강식 #위닝푸드리뷰</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기" href="https://naver.me/5CCrNIn4" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기" href="https://naver.me/5CCrNIn4" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20211004_242/1633351875920CQs3a_PNG/34487710537764064_2007263690.png" alt="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -228,7 +252,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5CCrNIn4" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5CCrNIn4" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="반려견 보양식 추천 삼계죽 고르는법과 후기 살펴보기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
