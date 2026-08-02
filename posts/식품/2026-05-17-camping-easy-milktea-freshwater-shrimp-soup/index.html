@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">캠핑할 때 간편하고 맛있는 민물새우탕 밀키트 후기예요. 초보자도 쉽게 준비할 수 있어 추천드려요.</p>
     <div class="tags"><span>캠핑요리</span><span>민물새우탕</span><span>밀키트</span><span>간편식</span><span>신선한재료</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" href="https://naver.me/5fdPl0RN" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260402_236/17751043209448ctO4_JPEG/90112814943680127_832867658.jpg" alt="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5fdPl0RN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260402_236/17751043209448ctO4_JPEG/90112814943680127_832867658.jpg" alt="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 캠핑 갈 때마다 <font color="#ff6347"><strong>간편한 식사</strong></font>가 너무 필요했어요.<br>준비하는 데 시간도 많이 걸리고,<br>무거운 재료 챙기는 것도 일이더라고요. 🏕️</p><p>특히 국물 요리가 먹고 싶을 때,<br>신선한 재료를 구하기 어렵고,<br>복잡한 조리 과정 때문에 포기하는 경우가 많았어요.</p><p>그래서 간단하면서도 <font color="#ff6347"><strong>맛있는 밀키트</strong></font>를 찾아보다가<br>‘금강수림 캠핑 초 간단 밀키트 민물새우탕 1kg’에 눈길이 갔답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5fdPl0RN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260402_238/1775104297996rnhtB_JPEG/101578186806225593_1362400176.jpg" alt="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>밀키트 선택, 이 제품을 고른 이유</h2></section><p>비슷한 민물새우탕 제품이 많아서 <font color="#4682b4"><strong>어떤 걸 사야 할지 고민</strong></font>했는데요.<br>금강수림 제품은 가격도 <font color="#4682b4"><strong>16,000원</strong></font>으로 적당했고,<br>후기들도 꽤 신뢰가 가더라고요.</p><p>특히 <font color="#4682b4"><strong>캠핑용으로 간단히 준비할 수 있다</strong></font>는 점이 마음에 들었어요.<br>조리법도 복잡하지 않고, 재료 손질도 거의 필요 없어서<br>초보 캠퍼도 부담 없이 사용할 수 있겠다는 생각이 들었죠.</p><p>처음에는 <font color="#4682b4"><strong>새우가 신선할까</strong></font> 살짝 망설였지만,<br>실제 받아보니 재료 상태가 좋아서<br>바로 구매를 결정했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5fdPl0RN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260402_4/1775104282157qkYcy_JPEG/103310420933965340_151227763.jpg" alt="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 캠핑에서 느낀 변화</h2></section><p>이전에는 캠핑가서 국물요리 하려면<br>재료 준비하느라 시간이 많이 걸렸는데,<br>이 밀키트는 포장 뜯고 냄비에 붓기만 하면 되니까 너무 편했어요.</p><p>뜨끈한 민물새우탕 한 그릇 먹으니<br>캠핑의 피로가 싹 풀리는 느낌이랄까요? 🦐<br>새우가 실하고 국물 맛도 깊고 시원해서<br>정말 만족스러웠어요.</p><p>아이들도 잘 먹고, <font color="#4682b4"><strong>캠핑 밥상 분위기가 한층 더 좋아졌다</strong></font>는 걸 느꼈답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5fdPl0RN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260402_229/1775104286425iIbiq_JPEG/121822605835556404_1593665208.jpg" alt="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5fdPl0RN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260402_55/1775104290465Cdq0l_JPEG/58719665457641213_1447287920.jpg" alt="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>약간의 아쉬움과 그래도 좋은 점</h2></section><p>개인적으로 아쉬웠던 점은<br>포장 디자인이 조금 더 감성적이면 좋겠다는 점이었어요.<br>하지만 맛과 편리함이 워낙 좋아서 크게 신경 쓰이지 않았답니다.</p><p>그리고 국물이 조금 더 매콤했으면 하는 욕심도 있었는데,<br>맑은 국물 좋아하는 분들께는 오히려 딱 맞을 거예요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5fdPl0RN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260402_248/1775104294124WJhdK_JPEG/17180327063089694_961177610.jpg" alt="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천할까?</h2></section><p><font color="#32cd32"><strong>캠핑 자주 가는 가족</strong></font>이나<br><font color="#32cd32"><strong>간편하게 국물 요리 즐기고 싶은 분</strong></font>께 적극 추천해요.<br>요리 초보라도 부담 없이 도전할 수 있어서<br>야외활동 중 간편식으로 딱입니다.</p><p>또한, 바쁜 일상 속에서 <font color="#32cd32"><strong>빠르고 건강한 한 끼</strong></font>를 원하시는 분께도 좋아요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5fdPl0RN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260402_234/17751043018368MSYG_JPEG/12889306009496606_2090923271.jpg" alt="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 이미 재구매 의사 100%랍니다!<br>캠핑 갈 때마다 챙기고 싶을 정도로 만족도가 높아요.<br>후기랑 상세페이지 같이 보시면서 비교해보시면<br><font color="#ff6347"><strong>왜 이 제품이 인기인지 이해가 될 거예요.</strong></font>😊</p><p>할인가 <font color="#ff6347"><strong>16,000원</strong></font>으로 가격도 합리적이라<br>가성비 좋은 캠핑 밀키트를 찾는 분께 추천하고 싶어요.</p><p>새우탕 좋아하시는 분들은 꼭 한번 경험해 보시길 바랄게요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5fdPl0RN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260402_127/1775104305907figk9_JPEG/109237228856230287_1744289498.jpg" alt="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -223,7 +247,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5fdPl0RN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260402_267/1775104309930u9TFQ_JPEG/51506752026162885_1074481424.jpg" alt="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -231,11 +255,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>캠핑 가서 따뜻한 새우탕 한 그릇, 상상만 해도 힐링되죠?💖<br>여러분도 한번 도전해 보시고,<br>어떤 점이 가장 좋았는지 댓글로 공유해 주세요.<br>여러분의 경험담도 궁금하답니다!</p><p>#캠핑밀키트 #민물새우탕 #간편요리 #캠핑음식 #금강수림</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5fdPl0RN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260402_140/1775104314736g3IN2_JPEG/33482411015928049_2079126698.jpg" alt="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁" href="https://naver.me/5fdPl0RN" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260402_236/17751043209448ctO4_JPEG/90112814943680127_832867658.jpg" alt="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -243,7 +267,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5fdPl0RN" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5fdPl0RN" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="민물새우탕 밀키트 추천 캠핑 간편요리 후기와 꿀팁">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
