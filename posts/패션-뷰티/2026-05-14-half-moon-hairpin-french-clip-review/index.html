@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">고민 많던 반달 헤어 집게핀, 직접 써보니 믿음 가고 예쁘더라구요. 꼭 한 번 써보세요!</p>
     <div class="tags"><span>헤어핀</span><span>프랑스핀</span><span>반달모양</span><span>올림머리</span><span>집게핀</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기" href="https://naver.me/Fc6u5axq" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기" href="https://naver.me/Fc6u5axq" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230805_225/1691242524202RyN4i_JPEG/5545425915707363_1426568193.jpg" alt="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fc6u5axq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fc6u5axq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230805_225/1691242524202RyN4i_JPEG/5545425915707363_1426568193.jpg" alt="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>여러분,<font color="#ff69b4"><strong>반달 모양의 헤어 집게핀</strong></font> 찾고 계셨나요?🙋‍♀️<br>저도 오랜 시간 머리핀 때문에 고민이 많았는데요,<br>오늘은 제가 직접 써본 <font color="#ff69b4"><strong>프랑스핀 고급 통통 반달 반머리 올림머리 바렛 헤어 집게핀</strong></font>을 소개해볼게요.</p><p>사실 저는 머리 묶을 때마다 잘 빠지고 힘없이 축 처지는 스타일 때문에 고생했어요.<br>특히 반머리나 반올림머리를 할 때는 집게핀이 잘 고정이 안 돼서<br>계속 손으로 만지게 되고 불편했거든요.<br>그래서 견고하면서도 예쁜 디자인의 핀을 찾던 중에 이 제품을 알게 됐답니다.✨</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fc6u5axq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fc6u5axq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230805_161/1691242473123zdG2H_JPEG/2877299908017732_1860163866.jpg" alt="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 프랑스핀 반달 헤어 집게핀을 선택했나요?</h2></section><p>비슷한 헤어 집게핀이 너무 많아서 고민이 많았는데,<br>이 제품은 <font color="#ff69b4"><strong>가격이 6,900원으로 합리적</strong></font>이면서도<br>후기가 꽤 좋아서 눈길이 갔어요.</p><p>특히 <font color="#ff69b4"><strong>프랑스핀 스타일</strong></font>이라 고급스러운 느낌이 강하고,<br>통통한 반달 디자인이 머리를 부드럽게 감싸준다는 점이 마음에 들었답니다.<br>처음에는 사이즈가 클까 걱정도 했지만,<br>사용 후기에서 안정적인 고정력을 자랑한다는 점이 구매 결정에 큰 역할을 했어요.</p><p>저처럼 머리카락이 가늘고 숱이 적은 분들에게도 잘 맞는다는 리뷰가 많아<br>더 믿음이 갔습니다.😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fc6u5axq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fc6u5axq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230805_129/1691242525393y87eM_JPEG/5545427116454498_1638058901.jpg" alt="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 어떤 차이를 느꼈나요?</h2></section><p>처음 사용하기 전에는 머리핀을 할 때마다<br>헤어가 흘러내리고 불편함을 자주 겪었는데요,<br>이 프랑스핀을 쓰고 나서는 확실히 달라졌어요.</p><p><font color="#ff69b4"><strong>집게핀의 통통한 곡선 덕분에 머리카락이 단단히 잡혀</strong></font>서 하루 종일 고정력이 좋아요.<br>반달 모양이 머리 형태에 딱 맞아서<br>자연스럽고 세련된 올림머리 스타일을 완성할 수 있더라고요.</p><p>특히 반머리 할 때도 손쉽게 고정할 수 있어서<br>아침 준비 시간이 훨씬 수월해졌답니다.<br>무엇보다 머리에 부담 없이 편안한 점이 제일 마음에 들었어요.💖</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fc6u5axq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fc6u5axq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230805_193/16912425221584yIAB_JPEG/5545423875092932_1830664055.jpg" alt="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fc6u5axq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fc6u5axq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230805_28/1691242523254vsOr5_JPEG/5545424989327308_21777859.jpg" alt="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -210,7 +234,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>오늘 제가 소개한 <font color="#ff69b4"><strong>프랑스핀 고급 통통 반달 반머리 올림머리 바렛 헤어 집게핀</strong></font> 이야기 어떠셨나요?😊<br>여러분의 헤어 고민에도 작은 도움이 되었으면 해요.<br>사용해보신 분들은 꼭 후기 공유해 주시고,<br>이 제품에 대해 궁금한 점이나 나만의 스타일링 팁도 댓글로 나눠주세요!<br>서로 소통하며 더 예쁜 하루 만들어가요.💖</p><p>#헤어집게핀 #반달헤어핀 #프랑스핀추천 #올림머리헤어핀 #데일리헤어악세서리</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기" href="https://naver.me/Fc6u5axq" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기" href="https://naver.me/Fc6u5axq" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230805_225/1691242524202RyN4i_JPEG/5545425915707363_1426568193.jpg" alt="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -218,7 +242,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/Fc6u5axq" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/Fc6u5axq" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="반달 반머리 헤어핀 추천 프랑스핀 바렛 집게핀 사용법과 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
