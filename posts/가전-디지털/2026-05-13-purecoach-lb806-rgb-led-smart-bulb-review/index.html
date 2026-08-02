@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">가성비 좋은 퓨어코치 LB806 스마트전구, 쉽고 편리한 와이파이 연결로 집 분위기 바꾸기에 딱이에요.</p>
     <div class="tags"><span>스마트전구</span><span>퓨어코치</span><span>RGB LED</span><span>와이파이</span><span>홈IoT</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기" href="https://naver.me/5K65FrFO" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기" href="https://naver.me/5K65FrFO" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220823_298/1661239751453UE7bz_JPEG/62375586283426444_2106762187.jpg" alt="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K65FrFO" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K65FrFO" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220823_298/1661239751453UE7bz_JPEG/62375586283426444_2106762187.jpg" alt="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요! 요즘 집에서 <font color="#ff69b4"><strong>스마트 조명</strong></font>에 관심이 많아져서<br>좋은 제품을 찾던 중에 퓨어코치 LB806을 알게 됐어요.😊</p><p>원래 집에 일반 전구만 사용하다 보니<br>밤에 분위기를 바꾸고 싶을 때마다 번거로웠거든요.<br>그래서 스마트전구를 알아보던 중인데,<br>가격도 부담스럽지 않고 기능도 괜찮아 보여서 구입해봤답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K65FrFO" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K65FrFO" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240529_293/1716970724116H2o7a_JPEG/118106619840247315_1810886395.jpg" alt="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 스마트전구가 필요했을까?</h2></section><p>사실 전구 하나 바꾸는 게 뭐 그리 대단할까 싶었는데,<br>막상 써보니 <font color="#ff69b4"><strong>조명 하나가</strong></font> 분위기에 미치는 영향이 정말 크더라고요.</p><p>저는 특히 밤에 책 읽거나 영화 볼 때<br>빛이 너무 강하거나 너무 어두우면 눈이 피곤해서<br>그에 맞게 조명 밝기와 색 온도를 조절하고 싶었어요.</p><p>그동안은 리모컨이 따로 있는 전구나, 여러 가지 색상 변환 기능이 있는 전구를 써봤는데,<br>와이파이 연결이 되지 않아서 스마트폰과 연동하기가 어렵고<br>여러 개를 한 번에 관리하기가 힘들었죠.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K65FrFO" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K65FrFO" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220823_138/1661239431407LOXK8_JPEG/68704141536167517_211070348.jpg" alt="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>퓨어코치 LB806 선택 이유</h2></section><p>수많은 스마트전구 중에서 퓨어코치를 고른 이유는<br>첫째, <font color="#ff69b4"><strong>가성비가 뛰어나다</strong></font>는 점이었어요.<br>할인가 8,900원이라는 가격에 RGB LED에 와이파이 연결까지 된다는 게 매력적이었거든요.</p><p>둘째, 리뷰가 꽤 긍정적이었고,<br>사용법도 간단해서 초보자도 쉽게 다룰 수 있다고 해서 안심이 됐어요.</p><p>마지막으로,<br>와이파이 기반이라 별도의 허브 없이도 스마트폰에서 바로 조작 가능하다는 점이<br>가장 결정적인 구매 동기였답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K65FrFO" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K65FrFO" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220823_123/1661239751243WEq7B_JPEG/62375586080446108_877996119.jpg" alt="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -164,7 +188,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후의 달라진 점</h2></section><p>전구를 바꾸고 나서 가장 먼저 느낀 건<br><font color="#ff69b4"><strong>집안 분위기가 훨씬 아늑해졌다</strong></font>는 거예요.</p><p>스마트폰 앱에서 원하는 색상과 밝기를 조절할 수 있으니<br>책 읽을 땐 눈이 편안한 따뜻한 빛으로,<br>친구들이 놀러 왔을 땐 화려한 RGB 조명으로 분위기를 바꿀 수 있어요.</p><p>또한 음성 명령으로 켜고 끌 수 있어<br>침대에 누워서도 조명 조절이 가능하니 정말 편리해요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K65FrFO" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K65FrFO" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220823_122/166123975137122WmG_JPEG/62375586206936304_613707476.jpg" alt="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K65FrFO" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K65FrFO" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220823_162/1661239751733sUet1_JPEG/62375586562880783_1560984674.jpg" alt="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점과 그래도 만족스러운 부분</h2></section><p>솔직히 밝기 조절 범위가<br>최대 밝기에서는 약간 더 밝았으면 하는 아쉬움이 있었어요.<br>하지만 일반적인 실내 사용에는 전혀 문제없었답니다.</p><p>그리고 앱 초기 구동 시 간혹 약간 느린 반응 속도도<br>가끔 느껴졌지만 크게 불편하진 않았어요.</p><p>그래도 와이파이 연결 안정성이나<br>다양한 색상 구현력은 정말 만족스러웠답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K65FrFO" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K65FrFO" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220823_283/1661239751907MBVBi_JPEG/62375586736152317_1086942296.jpg" alt="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천하고 싶을까?</h2></section><p>일단 <font color="#ff69b4"><strong>스마트 홈 입문자</strong></font>에게 강력 추천해요.<br>복잡한 설치 과정 없이 간편하게 스마트 조명을 경험할 수 있거든요.</p><p>또한 집에서 <font color="#ff69b4"><strong>분위기 전환을 자주 원하는 분</strong></font>,<br>저처럼 독서나 영화 감상할 때 조명 환경을 바꾸고 싶으신 분께도 좋아요.</p><p>가격 부담 없이 다양한 색상과 밝기를 체험해보고 싶은 분이라면<br>퓨어코치 LB806은 좋은 선택이 될 거예요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K65FrFO" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K65FrFO" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220823_183/1661239752361rhnPo_JPEG/62375587182734894_1493770482.jpg" alt="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -229,7 +253,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>오늘 제가 직접 사용해 본 <font color="#ff69b4"><strong>퓨어코치 LB806 홈IoT RGB LED 스마트전구</strong></font> 리뷰는 여기까지예요!😊</p><p>여러분도 집안 분위기를 손쉽게 바꾸고 싶은 순간이 있다면,<br>이 글 보시고 <font color="#ff69b4"><strong>한 번 사용해보시는 걸 추천드려요.</strong></font></p><p>혹시 사용해 보신 분들은 댓글로 여러분의 경험이나<br>가장 마음에 들었던 색상도 공유해 주세요! 소소한 이야기도 정말 환영입니다~💕</p>
 <p>#스마트전구 #홈IoT #RGBLED전구 #가성비조명 #집꾸미기</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기" href="https://naver.me/5K65FrFO" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기" href="https://naver.me/5K65FrFO" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220823_298/1661239751453UE7bz_JPEG/62375586283426444_2106762187.jpg" alt="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -237,7 +261,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5K65FrFO" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5K65FrFO" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="홈IoT 스마트전구 추천 퓨어코치 LB806 RGB LED 와이파이 연결 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
