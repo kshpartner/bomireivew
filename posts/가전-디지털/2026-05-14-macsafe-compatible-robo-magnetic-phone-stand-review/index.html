@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">맥세이프와 완벽 호환되는 로보 마그네틱 거치대, 편안하게 영상 볼 때 꼭 추천하고 싶어요.</p>
     <div class="tags"><span>스마트폰거치대</span><span>맥세이프</span><span>로보마그네틱</span><span>핸드폰스탠드</span><span>사용후기</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" href="https://naver.me/xcg92UK0" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20251106_100/1762395690395t2UCS_JPEG/795548784418049_4115681.jpg" alt="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xcg92UK0" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251106_100/1762395690395t2UCS_JPEG/795548784418049_4115681.jpg" alt="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 유튜브 보거나 영상 촬영할 때<br>핸드폰 거치대 하나쯤은 꼭 필요하더라고요📱<br>저도 침대에서 편하게 영상 보고 싶어서<br>여러 제품을 찾아봤는데,<br>로보 마그네틱 핸드폰 거치대가 눈에 딱 들어왔어요.</p><p>기존에 쓰던 거치대는 고정이 잘 안 돼서<br>살짝만 건드려도 핸드폰이 넘어지곤 했거든요.<br>특히 맥세이프 지원하는 스마트폰을 쓸 때<br>호환이 안 되면 불편함이 이만저만이 아니더라고요.</p><p><font color="#ff69b4"><strong>그래서 안정적이면서도<br>맥세이프와 잘 맞는 거치대를 찾고 있었어요.</strong></font> 여러 후기도 꼼꼼히 읽어보며<br>가격대도 적당하고 리뷰 평이 좋아서 선택하게 됐답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xcg92UK0" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260128_167/1769580442930H7BL5_JPEG/42567296066573447_1701653985.jpg" alt="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>로보 마그네틱 거치대를 선택한 이유</h2></section><p>비슷한 제품이 정말 많지만,<br>이 제품을 고른 가장 큰 이유는<br><font color="#ff69b4"><strong>맥세이프 자석과 완벽한 호환</strong></font> 덕분이었어요.</p><p>그동안 맥세이프가 지원되는 핸드폰에<br>비호환 거치대를 쓰니 자꾸 흔들리고<br>떨어질까 봐 불안했거든요.</p><p>가격도 할인해서 35,800원으로 적당했고,<br>구매 전 후기에서 자석 힘이 세서<br>안전하다는 평이 많아 망설임 없이 결정했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xcg92UK0" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260128_93/1769580447937ECbjr_JPEG/22296008382228077_393077721.jpg" alt="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 확실히 달라진 편안함</h2></section><p>침대에 누워 유튜브 보거나<br>가끔 수직 촬영할 때 정말 편해졌어요.<br>이전에는 핸드폰을 손으로 들고 있어야 했는데,<br>이제는 거치대에 착 달라붙어서 안정적이에요.</p><p><font color="#ff69b4"><strong>항공샷 촬영도 쉬워져서<br>콘텐츠 만들 때도 큰 도움이 됐어요.</strong></font> 핸드폰을 자유롭게 움직이며<br>여러 각도에서 찍을 수 있어서 활용도가 높답니다.</p><p>특히 자석의 힘이 적당해서<br>거치대에서 떨어질 걱정 없이<br>편하게 사용할 수 있었던 점이 가장 만족스러웠어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xcg92UK0" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260128_125/1769580463024yrnJ4_JPEG/103713311030477118_1249873322.jpg" alt="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -168,7 +192,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xcg92UK0" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251224_254/17665448132969oWN1_JPEG/5235217122170151_1203718742.jpg" alt="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>약간의 아쉬운 점</h2></section><p>무게가 약간 더 가벼웠으면 하는 바람이 있지만,<br>그래도 튼튼한 마감 덕분에 안정감이 뛰어나서<br>이 부분은 크게 신경 쓰이지 않아요.</p><p>그리고 흰색 등 다양한 컬러 옵션이 있으면<br>더 예쁠 것 같다는 작은 소망도 있답니다😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xcg92UK0" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260128_150/1769580467313JxgnA_JPEG/103713273057706434_1327219334.jpg" alt="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천할까?</h2></section><p>침대나 책상에서 스마트폰을 자주 사용하는 분,<br>특히 맥세이프 기능이 있는 아이폰 유저에게<br><font color="#ff69b4"><strong>최적화된 제품이에요.</strong></font></p><p>유튜브 시청이나 영상 촬영을 즐기는 분들도<br>가성비 좋은 마그네틱 거치대로 추천합니다.</p><p>스마트폰 거치대가 흔들리거나<br>안정감이 부족해 불편했던 경험이 있다면<br>한번 써보시면 만족하실 거예요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xcg92UK0" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251106_126/1762395654240VM5mA_JPEG/6031274447626513_1088457760.jpg" alt="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -192,7 +216,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>개인적으로는 만족도가 높아서<br>주변 친구들에게도 추천하고 싶어요.<br>혹시 고민된다면 <font color="#ff69b4"><strong>후기와 상세페이지를 꼼꼼히 비교해 보시길!</strong></font></p><p>할인 가격인 35,800원에 좋은 퀄리티를 경험할 수 있으니<br>가성비 좋은 선택이 될 거라 생각해요.</p><p>📌 사용해보니 자석 힘이 너무 약하지도 않고<br>너무 강하지도 않아 딱 적당해요. 한번 잡으면<br>쉽게 떨어지지 않아 너무 마음에 듭니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xcg92UK0" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251106_142/1762395680592VDrnj_JPEG/2462908645117882_2116587485.jpg" alt="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -225,7 +249,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xcg92UK0" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251106_165/1762395703681KGmSE_JPEG/13927029378142503_15445191.jpg" alt="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -233,11 +257,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>오늘도 편안한 스마트폰 사용을 위한<br>작은 팁 하나 공유해 봤어요.<br>혹시 거치대 선택에 고민이 있다면<br>댓글로 어떤 점이 궁금한지 알려주세요! 😊</p><p>같이 이야기 나누면서 좋은 선택 하실 수 있게<br>도움 드릴게요. 좋아요와 댓글은 저에게<br>큰 힘이 된답니다💖</p><p>#스마트폰거치대 #맥세이프거치대 #로보마그네틱 #유튜브거치대 #침대거치대</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xcg92UK0" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260128_267/1769580480039sYlIN_JPEG/8116448012341280_1421037908.jpg" alt="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기" href="https://naver.me/xcg92UK0" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20251106_100/1762395690395t2UCS_JPEG/795548784418049_4115681.jpg" alt="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -245,7 +269,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xcg92UK0" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xcg92UK0" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="스마트폰 거치대 추천 맥세이프 호환 로보 마그네틱 핸드폰 스탠드 사용법과 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
