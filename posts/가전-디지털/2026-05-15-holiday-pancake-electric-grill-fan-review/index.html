@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">명절에 부침개 부치기 번거로웠는데, 냄새 없는 전기 그릴 팬으로 편하게 즐겨보세요.</p>
     <div class="tags"><span>명절</span><span>부침개</span><span>전기그릴팬</span><span>후라이팬</span><span>냄새없는</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" href="https://naver.me/xKyzpRqf" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250124_261/1737674875145TCSwS_JPEG/89747262533935561_326297444.jpg" alt="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xKyzpRqf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250124_261/1737674875145TCSwS_JPEG/89747262533935561_326297444.jpg" alt="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -143,7 +167,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가격도 할인가 63,500원이라 부담스럽지 않고,<br>후기 평도 좋아서 궁금해졌어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xKyzpRqf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210116_287/1610807370126MnjCg_JPEG/11943265852955331_1635572626.jpg" alt="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -154,7 +178,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>망설임이 있긴 했지만<br>가격 대비 가성비도 좋아서 최종 결정했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xKyzpRqf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230921_185/16952510565108OtED_JPEG/13554488328180488_837717761.jpg" alt="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -165,7 +189,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 동그랑땡을 부칠 때는 기름이 적게 들어가도<br>노릇노릇 잘 익는 게 마음에 쏙 들었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xKyzpRqf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230921_70/16952510900460a5O5_JPEG/3671506932462373_659024193.jpg" alt="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -178,7 +202,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>이 세 가지 덕분에 명절 준비가 훨씬 여유로워졌어요.<br>기름 튀는 걱정 없이 요리에 집중할 수 있었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xKyzpRqf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210116_273/1610807517094vYfsR_JPEG/11943412510482121_1591608320.jpg" alt="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -188,7 +212,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>전체적으로 아쉬움은 작지만<br><font color="#ff69b4"><strong>요리의 편리함과 쾌적함이 더 크게 다가왔어요</strong></font>.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xKyzpRqf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210116_160/1610807323693TWYJk_JPEG/11943219237182170_1813427022.jpg" alt="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -198,7 +222,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>부침개 외에도 가볍게 전, 부침 요리를 즐기는<br>분들에게도 좋은 선택입니다.<span>👍</span></p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xKyzpRqf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210116_268/16108074716205uLgu_JPEG/11943367343315675_791335331.jpg" alt="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -208,7 +232,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가격도 지금 할인가라 더 좋은 기회니,<br>명절 준비 미리 하시는 분들은 참고해 보세요.<span>🎉</span></p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xKyzpRqf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210116_235/1610807495212AJsV2_JPEG/11943390933993122_861762267.jpg" alt="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -241,7 +265,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xKyzpRqf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210116_59/1610807555190HMXFh_JPEG/11943450910636127_964829271.jpg" alt="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -252,11 +276,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>#명절부침개 #전기그릴팬 #키친아트후라이팬 #냄새없는팬 #부침개팬추천</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xKyzpRqf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230921_282/1695251077490KcEoU_JPEG/1792343483192972_981818895.jpg" alt="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기" href="https://naver.me/xKyzpRqf" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250124_261/1737674875145TCSwS_JPEG/89747262533935561_326297444.jpg" alt="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -264,7 +288,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xKyzpRqf" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xKyzpRqf" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="명절 부침개 전기 그릴 팬 후기와 후라이팬 냄새없는 선택법 알아보기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
