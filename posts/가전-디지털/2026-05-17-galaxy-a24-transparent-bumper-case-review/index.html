@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">갤럭시A24 투명 케이스 고민된다면 변색 걱정 없이 카드까지 편하게 넣을 수 있는 제품을 조심스럽게 추천할게요.</p>
     <div class="tags"><span>갤럭시A24</span><span>투명케이스</span><span>변색방지</span><span>카드수납</span><span>범퍼케이스</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" href="https://naver.me/xqb5qyQh" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250519_44/1747634774873Fubq2_JPEG/349086966353925_2036113748.jpg" alt="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5qyQh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250519_44/1747634774873Fubq2_JPEG/349086966353925_2036113748.jpg" alt="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>저는 원래 카드 수납이 되는 케이스를 선호하는 편인데,<br>여러 개 사봤지만 변색되거나 두꺼워서 불편한 게 많았어요.<br>그래서 이번엔 진짜 오래 쓸 수 있는 걸로 골라야겠다고 마음먹었답니다.😊</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5qyQh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250808_36/1754627834417MnE0J_JPEG/86206631333099053_1041505074.jpg" alt="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -151,7 +175,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>갤럭시A24에 딱 맞는 디자인도 중요했는데,<br>이 제품은 정확한 치수와 범퍼형으로 충격에도 강하다고 하더라고요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5qyQh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250519_13/1747634749925IYeUt_JPEG/81767631167754491_1378047359.jpg" alt="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -161,7 +185,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>망설였던 건 투명 케이스라서 혹시 충격에 약하면 어쩌나 하는 걱정이었는데,<br>범퍼 케이스라서 가장자리가 두툼해서 그 부분도 해결됐어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5qyQh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250519_233/1747634750293pDzl2_JPEG/81767631535794987_815752938.jpg" alt="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -171,7 +195,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 범퍼가 있어서 폰 모서리를 잘 보호해주는 느낌도<br>사용하면서 점점 더 체감됐어요.<br>휴대폰 떨어뜨릴까 봐 걱정 덜하게 된 게 가장 큰 변화였어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5qyQh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250519_189/1747634750729u3mRb_JPEG/81767631971226512_1012310862.jpg" alt="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -183,7 +207,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5qyQh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250519_147/1747634751140WiRWe_JPEG/81767632376051546_2062910939.jpg" alt="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -192,7 +216,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>하지만 그만큼 카드가 쉽게 빠지지 않는다는 뜻이기도 하고,<br>전체적으로 봤을 땐 충분히 만족스러운 편이었어요.<br>그래서 큰 단점이라기보다는 작은 불편함 정도네요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5qyQh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250519_226/1747634751808sG9cs_JPEG/81767633049496065_1044507323.jpg" alt="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -202,7 +226,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 가볍고 심플한 디자인을 선호하는 분들도 좋아할 것 같아요.<br>저처럼 매일 들고 다니면서 편리함을 중요시하는 분들에게 강추합니다!✨</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5qyQh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250519_18/1747634752290xCmjC_JPEG/81767633529744556_1284408162.jpg" alt="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -212,7 +236,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>구매 고민 중이시라면 카드 수납 여부와 변색 방지 기능,<br>그리고 범퍼 보호까지 체크해보시면 후회 없으실 거예요!</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5qyQh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250519_50/1747634752707FrQqv_JPEG/81767633948095108_265590041.jpg" alt="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -245,7 +269,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5qyQh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250519_125/1747633660177iyzYU_JPEG/78968077667767686_83365600.jpg" alt="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -255,7 +279,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>좋아요와 댓글로 소통하며 더 좋은 정보 나눠요!<br>항상 감사드리고, 오늘도 좋은 하루 보내세요~🌷</p>
 <p>#갤럭시A24케이스 #투명범퍼케이스 #변색방지케이스 #카드수납케이스 #가성비폰케이스</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰" href="https://naver.me/xqb5qyQh" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250519_44/1747634774873Fubq2_JPEG/349086966353925_2036113748.jpg" alt="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -263,7 +287,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xqb5qyQh" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xqb5qyQh" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="갤럭시A24 투명 범퍼 케이스 추천 변색방지 카드수납 깔끔한 사용법 리뷰">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
