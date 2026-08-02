@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">여름휴가 준비 중인 친구에게 꼭 추천하고픈, 스타일도 챙김도 완벽한 여름모자 리뷰예요.</p>
     <div class="tags"><span>여름모자</span><span>비치모자</span><span>챙넓은모자</span><span>밀짚버킷햇</span><span>휴양지패션</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰" href="https://naver.me/Ghwb92S3" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰" href="https://naver.me/Ghwb92S3" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250330_239/174328183557546pal_JPEG/77414776688749739_33342186.jpg" alt="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Ghwb92S3" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Ghwb92S3" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250330_239/174328183557546pal_JPEG/77414776688749739_33342186.jpg" alt="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>예전에는 그냥 얇은 챙모자를 쓰다가 햇빛이 너무 강해서 얼굴이<br>타버리는 경험을 했거든요. 그래서 이번엔 제대로 된 <br>휴양지 여행용 비치 모자를 사야겠다 마음먹었죠. </p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Ghwb92S3" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Ghwb92S3" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260111_60/1768130451642Lrx7i_JPEG/670828598286792_2095673444.jpg" alt="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>하지만 휴양지에서 쓸 거라면 <br><font color="#ff69b4"><strong>대두 버킷햇</strong></font>처럼 넉넉한 크기에 챙이 넓은 게 꼭 필요했어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Ghwb92S3" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Ghwb92S3" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250330_253/1743281579381afhqz_JPEG/93979119299296011_1690035417.jpg" alt="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -162,7 +186,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 밀짚 소재라 통풍도 잘 되고, <br>버킷햇 디자인이 트렌디해서 평소에도 <br>일상에서 쓰기 좋을 것 같았어요. </p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Ghwb92S3" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Ghwb92S3" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250330_218/1743281589511pNuRl_JPEG/61584896462866738_1597889064.jpg" alt="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -172,7 +196,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 무엇보다 여행지에서 사진 찍을 때<br>자연스러운 멋이 살아서 <font color="#ff69b4"><strong>셀카 찍기 부담 없더라고요.</strong></font> 📸</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Ghwb92S3" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Ghwb92S3" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250330_196/1743281596477UTxDg_JPEG/29189558261396760_203891837.jpg" alt="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -185,7 +209,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>무겁지 않아서 장시간 써도 불편함이 거의 없었답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Ghwb92S3" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Ghwb92S3" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250330_243/1743281604844uaENw_JPEG/5745755934662370_1492472512.jpg" alt="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -238,7 +262,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 
 <p>#여름모자 #휴양지여행 #챙넓은모자 #여성버킷햇 #비치모자추천</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰" href="https://naver.me/Ghwb92S3" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰" href="https://naver.me/Ghwb92S3" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250330_239/174328183557546pal_JPEG/77414776688749739_33342186.jpg" alt="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -246,7 +270,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/Ghwb92S3" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/Ghwb92S3" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="챙넓은 여성 여름모자 추천 휴양지 비치 밀짚 버킷햇 리뷰">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
