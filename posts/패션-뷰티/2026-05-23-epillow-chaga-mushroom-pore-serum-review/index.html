@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">모공 고민이 심한 친구에게 깐달걀피부 에필로우 차가버섯 앰플을 조심스레 추천해요. 피부결이 부드러워지고 피지가 조절돼 정말 믿을 만해요.</p>
     <div class="tags"><span>모공관리</span><span>차가버섯</span><span>피지케어</span><span>앰플추천</span><span>피부결개선</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기" href="https://naver.me/5CCFjfB6" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기" href="https://naver.me/5CCFjfB6" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250811_140/1754886565254uAQGW_JPEG/34280512344118870_1287039511.jpg" alt="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5CCFjfB6" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5CCFjfB6" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250811_140/1754886565254uAQGW_JPEG/34280512344118870_1287039511.jpg" alt="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 <font color="#ff69b4"><strong>모공 고민</strong></font>이 심해져서 피부가 푸석푸석하고 피지도 자꾸 올라오는 느낌이었어요.<br>화장도 잘 받지 않고, 거울 볼 때마다 신경 쓰여서 스트레스였답니다.😥</p><p>그래서 <font color="#228B22"><strong>모공축소와 피지케어에 도움</strong></font>이 된다는 앰플을 찾아보기 시작했어요.<br>하지만 시중에 워낙 제품이 많아서 어떤 걸 써야 할지 고민이 컸답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5CCFjfB6" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5CCFjfB6" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260522_210/1779415502743qiWYu_PNG/1347907481420466_305316408.png" alt="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>깐달걀피부 에필로우 앰플을 선택한 이유</h2></section><p>수많은 모공 세럼 중에서 이 제품을 선택한 건,<br>차가버섯 추출물이 들어있다는 점이 가장 끌렸어요.<br>자연 유래 성분이라 피부 자극 걱정이 덜하고,<br>사용 후 후기가 좋아서 믿음이 갔답니다.👍</p><p>가격도 할인된 20,300원으로 부담스럽지 않고,<br>용량도 50ml라 꽤 오래 쓸 수 있을 것 같아 망설임 없이 주문했어요.<br>리뷰를 보니 <font color="#ff69b4"><strong>피부결 개선</strong></font>과 <font color="#ff69b4"><strong>피지 케어에 효과적</strong></font>이라고 하더라고요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5CCFjfB6" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5CCFjfB6" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250821_300/1755755199631sABDr_JPEG/89888015768295676_2018530895.jpg" alt="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전후 변화가 느껴진 피부 상태</h2></section><p>처음에는 피부가 좀 까칠하고 모공이 도드라져서<br>메이크업이 밀리는 느낌이 있었는데,<br>앰플을 꾸준히 바르니 피부결이 한층 매끄러워졌어요.<br>피지도 어느 정도 조절돼서 유분기가 줄었답니다.</p><p>특히 <font color="#228B22"><strong>모공이 눈에 띄게 작아진 느낌</strong></font>이라서 매일 거울 볼 때마다 뿌듯해요.<br>피부가 한결 부드러워져서 손으로 만질 때도 기분이 좋아졌답니다.😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5CCFjfB6" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5CCFjfB6" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250811_37/1754886564202GvaNr_JPEG/34280511275084379_1623420630.jpg" alt="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5CCFjfB6" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5CCFjfB6" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250811_259/1754886563055TW39p_JPEG/34280510155103982_325927493.jpg" alt="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>약간 아쉬운 점도 솔직히</h2></section><p>한 가지 아쉬웠던 점은,<br>앰플 제형이 조금 묽은 편이라 처음 사용할 때 양 조절이 어려웠어요.<br>그래도 흡수가 빠르고 끈적임이 없어서 금방 적응했답니다.</p><p>그리고 용기 디자인이 심플하지만 조금 더 손에 쥐기 편했으면 하는 바람도 있어요.<br>그래도 전체적으로 만족도가 높아서 큰 불편함은 아니었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5CCFjfB6" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5CCFjfB6" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250811_148/1754886564706qWDlo_JPEG/34280511781113921_1982311643.jpg" alt="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 특히 추천하고 싶나요?</h2></section><p><font color="#228B22"><strong>피부 모공 고민이 있는 분들</strong></font>, 특히 피지 분비가 많아 피부가 번들거리는 분들께 강력 추천해요.<br>또, 민감한 피부라도 자극 걱정 없이 자연 성분 제품을 찾는 분들에게도 잘 맞을 것 같아요.</p><p>피부결을 매끈하게 정돈하면서 모공을 관리하고 싶은 분들이라면 한 번쯤 써보시면 좋겠어요.<br>평소 스킨케어 단계에서 모공 케어를 꾸준히 하고 싶은 분들께 딱입니다!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5CCFjfB6" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5CCFjfB6" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250811_67/17548865634866rIC8_JPEG/34280510564825348_321101863.jpg" alt="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -220,7 +244,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>이번 리뷰가 모공 때문에 고민하는 분들께 작은 도움이 되었으면 좋겠어요.<br>혹시 사용해 보신 분들은 어떤 점이 가장 좋았는지 댓글로 공유해 주세요!<br>저도 여러분과 소통하며 더 좋은 제품 찾아갈게요.😊</p><p>#모공관리 #피지케어 #깐달걀피부 #차가버섯앰플 #피부결개선</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기" href="https://naver.me/5CCFjfB6" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기" href="https://naver.me/5CCFjfB6" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250811_140/1754886565254uAQGW_JPEG/34280512344118870_1287039511.jpg" alt="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -228,7 +252,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5CCFjfB6" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5CCFjfB6" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="모공 앰플 추천 깐달걀피부 에필로우 차가버섯 모공 세럼 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
