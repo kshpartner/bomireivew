@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">차박할 때 꼭 필요한 트렁크매트, 폴스타4 풀커버 매트를 사용해 보니 관리도 쉽고 만족스러워 조심스레 추천드려요.</p>
     <div class="tags"><span>차박</span><span>트렁크매트</span><span>폴스타4</span><span>SUV</span><span>차량용매트</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법" href="https://naver.me/GVVEdWAu" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법" href="https://naver.me/GVVEdWAu" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250320_172/1742448295660MV1Hx_PNG/69031494465219061_1753966004.png" alt="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEdWAu" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEdWAu" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250320_172/1742448295660MV1Hx_PNG/69031494465219061_1753966004.png" alt="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>여러 제품을 찾아봤지만 풀커버 형식의 매트가<br>가장 실용적일 것 같아서 관심을 두게 됐어요.<br>그중에서도 <font color="#ff69b4"><strong>차팡 SUV 트렁크매트 폴스타4</strong></font>가<br>후기도 좋고 디자인도 깔끔해서 고민 끝에 선택했어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEdWAu" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEdWAu" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250320_202/1742448289376gckWC_PNG/23809978164783315_1139846155.png" alt="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>초반에는 내 차에 꼭 맞을까,<br>내구성이 얼마나 좋을까 망설임도 있었지만<br>상세페이지 설명과 리뷰를 꼼꼼히 읽어본 후 구매를 결정했어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEdWAu" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEdWAu" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250320_223/17424482946538xrV7_PNG/69031493472118296_1065599355.png" alt="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -162,7 +186,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>차박 갈 때마다 편안한 공간을 만들어 주니<br>여행이 훨씬 즐거워졌어요.<font color="#ff69b4"><strong>차박 준비물로 꼭 챙기고 싶은 아이템</strong></font>이에요😊</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEdWAu" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEdWAu" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250320_126/1742448294808yMkjB_PNG/69031493629223659_1634769228.png" alt="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -172,7 +196,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>셋째, 설치와 분리가 간편해<br>필요할 때 빠르게 꺼내서 사용할 수 있고<br>청소도 쉽게 할 수 있답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEdWAu" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEdWAu" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250320_124/17424482949982diFe_PNG/69031493802262441_1879062640.png" alt="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -181,7 +205,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또, 색상이 블랙이라 때가 잘 안 타지만<br>밝은 색을 좋아하는 분들은 아쉬울 수도 있겠네요.<br>그래도 관리가 쉬운 건 큰 매력입니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEdWAu" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEdWAu" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250320_98/17424482952915o5qe_PNG/69031494100878703_1592296444.png" alt="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>트렁크 공간을 깔끔하게 유지하고 싶으면서<br>내 차 인테리어를 보호하고 싶은 분들께<br>꼭 필요한 아이템이라고 생각합니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEdWAu" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEdWAu" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250320_126/1742448295470sSbrQ_PNG/69031494285536662_787880441.png" alt="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -232,7 +256,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>좋아요와 댓글은 저에게 큰 힘이 된답니다!<br>차박할 때 가장 필요한 아이템이나<br>여러분의 추천템도 함께 알려주세요 💕</p>
 <p>#차박용품 #SUV트렁크매트 #차팡매트 #폴스타4 #캠핑용품추천</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법" href="https://naver.me/GVVEdWAu" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법" href="https://naver.me/GVVEdWAu" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250320_172/1742448295660MV1Hx_PNG/69031494465219061_1753966004.png" alt="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -240,7 +264,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/GVVEdWAu" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/GVVEdWAu" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="차박 SUV 트렁크매트 추천 폴스타4 풀커버 차박매트 사용후기와 선택법">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
