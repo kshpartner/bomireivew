@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">가족과 건강을 생각하는 친구에게 대용량 유리 에어프라이어를 조심스레 추천해요.</p>
     <div class="tags"><span>에어프라이어</span><span>유리</span><span>대용량</span><span>간편세척</span><span>가성비</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어" href="https://naver.me/FQuRBV17" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어" href="https://naver.me/FQuRBV17" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260324_231/1774339869734FvC6C_JPEG/37328938853514139_1822165873.jpg" alt="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FQuRBV17" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FQuRBV17" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260324_231/1774339869734FvC6C_JPEG/37328938853514139_1822165873.jpg" alt="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p><font color="#ff69b4"><strong>간편세척 대용량 유리 에어프라이어 5.5리터</strong></font> 제품인데요,<br>집에서 요리할 때 얼마나 편한지 알려드릴게요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FQuRBV17" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FQuRBV17" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250314_198/1741921318483nVl9d_JPEG/10827082273432188_1953658686.jpg" alt="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -150,7 +174,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 아이가 있어서 더 건강한 조리법을 찾다 보니<br>기름 없이도 바삭하게 요리할 수 있는 에어프라이어가 눈에 들어왔답니다.</p><p>근데 문제는 기존에 쓰던 에어프라이어가 세척하기 너무 불편하고,<br>용량도 작아서 자주 여러 번 돌려야 했던 점이었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FQuRBV17" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FQuRBV17" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260324_112/1774339867175eoQDC_JPEG/37328936294399441_1406253839.jpg" alt="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -159,7 +183,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가격도 <font color="#ff69b4"><strong>할인가 79,000원</strong></font>으로 부담 없고,<br>후기들도 대부분 세척 편리함과 디자인 만족도가 높아서 결정했어요.</p><p>처음엔 '유리라 깨질까?' 하는 걱정도 있었지만,<br>튼튼하다는 설명과 실사용자 리뷰가 마음을 놓게 해줬답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FQuRBV17" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FQuRBV17" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260324_162/1774339867687hBBAb_JPEG/37328936768804800_1412951487.jpg" alt="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -168,7 +192,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 치킨, 감자튀김은 물론 생선구이까지 깔끔하게 조리돼서<br>아이 간식도 걱정 없이 만들 수 있답니다.🍗🍟</p><p>세척도 정말 간편해요! 유리 재질이라 닦기 쉽고,<br>분리해서 세척할 수 있어서 손에 기름 안 묻히고 청결 유지가 쉬워요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FQuRBV17" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FQuRBV17" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260324_55/1774339868239hFCPB_JPEG/37328937323357701_1123760547.jpg" alt="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -181,7 +205,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>이 세 가지 덕분에 주방일이 훨씬 즐거워졌답니다!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FQuRBV17" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FQuRBV17" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260324_190/1774339868761mtLar_JPEG/37328937839916305_876023893.jpg" alt="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>하지만 그 무게 덕분에 안정감도 느껴지고,<br>튼튼한 느낌이라 결국 만족스러웠어요.</p><p>그리고 유리라 관리만 잘하면 오래 사용할 수 있다는 점에서<br>큰 단점은 아니라고 생각해요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FQuRBV17" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FQuRBV17" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260324_46/1774339869377980SI_JPEG/37328938463154448_1345224900.jpg" alt="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -234,7 +258,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>여러분도 주방에서 간편하고 건강한 요리를 원한다면,<br>이번 가정의 달 선물로 이 제품을 꼭 한번 살펴보세요! 🎁</p>
 <p>사용하면서 느꼈던 점이나 궁금한 점 댓글로 남겨주시면<br>더 자세히 알려드릴게요. 소소한 레시피 공유도 환영합니다~💕</p><p>#가정의달선물 #에어프라이어추천 #대용량에어프라이어 #간편세척 #유리에어프라이어</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어" href="https://naver.me/FQuRBV17" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어" href="https://naver.me/FQuRBV17" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260324_231/1774339869734FvC6C_JPEG/37328938853514139_1822165873.jpg" alt="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -242,7 +266,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FQuRBV17" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FQuRBV17" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="유리 에어프라이어 5.5리터 추천 꿀팁과 사용후기 간편세척 대용량 글라스 에어프라이어">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
