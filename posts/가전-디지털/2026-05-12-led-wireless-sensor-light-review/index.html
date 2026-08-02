@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">현관 조명이 어두워 불편했는데, 충전식 LED 무선 센서등으로 만족스러운 경험을 했어요. 꼭 추천드려요.</p>
     <div class="tags"><span>무선센서등</span><span>현관조명</span><span>충전식조명</span><span>가성비</span><span>사용후기</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기" href="https://naver.me/xqb5IWRB" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기" href="https://naver.me/xqb5IWRB" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240102_157/1704158897993LgIhY_JPEG/15052578281646778_35296739.jpg" alt="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5IWRB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5IWRB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240102_157/1704158897993LgIhY_JPEG/15052578281646778_35296739.jpg" alt="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요 여러분~😊 오늘은 제가 요즘 집 현관에 달아놓고 너무 만족하고 있는 <br><font color="#ff69b4"><strong>플랜룩스 LED 무선 센서등</strong></font>을 소개해볼까 해요.</p><p>사실 예전부터 <font color="#ff69b4"><strong>현관 조명</strong></font>이 너무 어둡다는 게 고민이었거든요.<br>밤에 들어올 때마다 손에 짐 들고 현관 스위치 찾느라 고생한 기억 있으시죠?</p><p>게다가 <font color="#ff69b4"><strong>건전지</strong></font> 넣어 쓰는 센서등은 자주 갈아줘야 해서 번거롭고, 전선 연결된 조명은 설치가 까다롭고 부담스러웠어요.</p><p>그래서 <font color="#ff69b4"><strong>무선에 충전식</strong></font>인 제품을 찾다가 발견한 게 바로 이 <font color="#ff69b4"><strong>플랜룩스 LED 무선 센서등</strong></font>이었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5IWRB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5IWRB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240122_178/1705898276162jitw1_JPEG/31098368867385050_1306570739.jpg" alt="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 플랜룩스 LED 무선 센서등을 선택했을까?</h2></section><p>처음에는 비슷한 <font color="#ff69b4"><strong>무선 센서등</strong></font>이 정말 많아서 어떤 걸 사야 할지 고민이 많았어요.<br>가격도 다양하고 후기도 제각각이라 망설였죠.</p><p>그런데 이 제품은 <font color="#ff69b4"><strong>충전식</strong></font>이라 건전지 걱정이 없고, <font color="#ff69b4"><strong>20cm 크기</strong></font>로 적당해서 계단이나 현관 어디에나 잘 어울릴 것 같더라고요.</p><p>또 후기들을 살펴보니 “밝기가 적당하다”, “설치가 쉽다”, “가성비 최고”라는 평이 많아서 신뢰가 갔어요.<br>가격도 <font color="#ff69b4"><strong>할인가 8,900원</strong></font>라 부담 없었고요.</p><p>솔직히 처음엔 너무 저렴한 가격에 품질이 걱정되긴 했지만,<br>사용 후 완전 만족해서 이제는 주변에 추천하고 있답니다!😄</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5IWRB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5IWRB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240102_51/1704158896823bkkfp_JPEG/19797182414168887_1731053741.jpg" alt="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 이렇게 달라졌어요</h2></section><p>전에는 밤에 집에 들어오면 손에 짐이 많을 때마다 현관 불 켜기가 너무 불편했는데,<br>지금은 사람이 다가가면 자동으로 환하게 켜져서 넘 편해요.</p><p>특히 센서가 예민해서 가까이 다가가면 바로 불이 켜져서<br>짧은 거리에서도 확실히 감지되는 점이 마음에 들었어요.</p><p>충전식이라 충전만 잘 해두면 따로 건전지 갈 필요도 없고,<br>전원선이 없으니 어디든 붙여놓기만 하면 돼서 설치도 너무 간단해요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5IWRB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5IWRB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240102_80/1704158897099lt0G8_JPEG/36976160980066156_1828000242.jpg" alt="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -164,7 +188,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>플랜룩스 LED 무선 센서등, 내가 만족한 포인트 3가지</h2></section><p>첫째, <font color="#ff69b4"><strong>충전식 무선이라 자유롭게 설치 가능</strong></font>해서 너무 좋아요.<br>전선 때문에 설치 위치가 제한되는 게 없어서 너무 편리해요.</p><p>둘째, <font color="#ff69b4"><strong>센서 반응 속도가 빠르고 밝기가 충분하다</strong></font>는 점.<br>밤길에 딱 필요한 밝기라 부담스럽지 않고 안전하게 사용할 수 있어요.</p><p>셋째, <font color="#ff69b4"><strong>심플하고 깔끔한 디자인</strong></font>이라 인테리어와도 잘 어울립니다.<br>요즘은 디자인도 중요하잖아요? 집 앞 계단에 달아놓으니 세련돼 보여서 만족스럽네요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5IWRB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5IWRB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240102_266/17041588973432SHl3_JPEG/33430531992882618_83138766.jpg" alt="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -172,7 +196,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>조금 아쉬웠던 점과 그래도 좋은 이유</h2></section><p>아쉬운 점이라면, 충전 시 시간이 조금 걸린다는 거예요.<br>그래도 한 번 충전하면 오래 쓸 수 있어서 크게 불편하지는 않았어요.</p><p>그리고 센서 감도 조절이 따로 안 돼서 가끔은 너무 가까이 다가가야 켜질 때도 있지만,<br>이 역시 실사용에 큰 문제는 없었답니다.</p><p>전체적으로 보면 이 가격에 이 정도 성능이라면 <font color="#ff69b4"><strong>충분히 만족스러운 선택</strong></font>이라고 생각해요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xqb5IWRB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xqb5IWRB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240102_275/1704158897707rm2Fd_JPEG/33430532352317357_598156421.jpg" alt="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -213,7 +237,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>오늘 제 <font color="#ff69b4"><strong>플랜룩스 LED 무선 센서등</strong></font> 후기가<br>여러분의 선택에 조금이나마 도움이 되었으면 해요! 😊</p><p>사용해보신 분들은 어떤 점이 좋았는지, 궁금한 점은 무엇인지 댓글로 공유해 주세요.<br>서로 이야기 나누면서 좋은 정보 많이 얻어가요~!</p><p>좋아요와 공감도 잊지 말고 눌러주시면 큰 힘이 됩니다!💖</p><p>#LED센서등 #무선조명 #충전식센서등 #현관조명추천 #가성비조명</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기" href="https://naver.me/xqb5IWRB" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기" href="https://naver.me/xqb5IWRB" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240102_157/1704158897993LgIhY_JPEG/15052578281646778_35296739.jpg" alt="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -221,7 +245,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>LED 무선 센서등 추천 현관 조명 고르는법과 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xqb5IWRB" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xqb5IWRB" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="LED 무선 센서등 추천 현관 조명 고르는법과 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
