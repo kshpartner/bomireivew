@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">집에서 편안함을 더할 순면 소파패드, 아이와 가족 모두에게 추천할 만한 제품이에요.</p>
     <div class="tags"><span>순면</span><span>소파패드</span><span>논슬립</span><span>6인용</span><span>가정용</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" href="https://naver.me/GNJvDnNx" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240409_190/1712671226813UyDFi_JPEG/113807115519947907_2077824025.jpg" alt="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDnNx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240409_190/1712671226813UyDFi_JPEG/113807115519947907_2077824025.jpg" alt="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -143,7 +167,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 이번에 <font color="#ff69b4"><strong>넓은 순면 쇼파패드 6인용</strong></font>을 선택하게 되었어요.<br>돌 흙 색감의 오프화이트가 집안 분위기에도 참 잘 어울리더라고요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDnNx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250214_35/173952222352977GQF_JPEG/9896644655500370_1069609682.jpg" alt="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -153,7 +177,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 <font color="#6a994e"><strong>넓고 안정적인 사이즈</strong></font>에<br>순면 소재라 촉감도 부드러운 소파패드를 찾게 됐어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDnNx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240408_286/1712534817517Ch7pb_JPEG/113670660205114384_1196320866.jpg" alt="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -163,7 +187,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>처음엔 크기가 너무 클까 봐 망설였지만<br>6인용 소파에 딱 맞는 90x280 사이즈가 마음에 들었죠.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDnNx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240409_40/1712670162509N8Clr_JPEG/113806051217203638_2034456424.jpg" alt="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -173,7 +197,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가장 만족스러운 건 청소가 훨씬 간편해진 점인데요,<br>탈부착이 쉬워서 세탁도 수월하답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDnNx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250214_45/1739522269735HbwJC_JPEG/15486943886724414_562392530.jpg" alt="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -185,7 +209,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDnNx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240409_212/1712670161236NlleD_JPEG/113806049937804003_2136168024.jpg" alt="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -195,7 +219,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가격도 할인가 <font color="#ff69b4"><strong>53,500원</strong></font>이라 부담 없이<br>구매할 수 있는 점이 큰 장점입니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDnNx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240409_118/17126701618378zSXo_JPEG/113806050540241065_1212298539.jpg" alt="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -205,7 +229,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또, 집안 분위기를 깔끔하고 밝게<br>연출하고 싶은 분께도 추천드립니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDnNx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250214_234/1739522355621F2Lyw_JPEG/10030392768440348_2037240414.jpg" alt="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -215,7 +239,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 <strong>편안한 촉감과 논슬립 안정성</strong>을 중요하게 생각하신다면<br>한 번 써보시길 추천드려요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDnNx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250214_242/1739522435102T4a6o_JPEG/42098183863142353_442313865.jpg" alt="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -248,7 +272,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDnNx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240409_64/1712670641123utXxB_JPEG/113806483831424659_1052619546.jpg" alt="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -257,7 +281,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>혹시 저처럼 소파패드 때문에 고민하셨던 분들이 있다면,<br>경험담이나 궁금한 점 댓글로 나눠 주세요.<br>서로 좋은 정보 공유하면 좋을 것 같아요!</p>
 <p>#소파패드 #순면쇼파패드 #논슬립소파패드 #6인용소파커버 #집꾸미기팁</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드" href="https://naver.me/GNJvDnNx" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240409_190/1712671226813UyDFi_JPEG/113807115519947907_2077824025.jpg" alt="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -265,7 +289,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/GNJvDnNx" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/GNJvDnNx" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="순면 소파패드 6인용 깔개 추천 논슬립 커버 활용법과 선택 가이드">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
