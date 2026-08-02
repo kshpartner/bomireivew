@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">환절기 목 건강에 고민 많다면 클리어톤 레몬민트 도라지차가 정말 도움돼서 조심스레 추천할게요.</p>
     <div class="tags"><span>목건강</span><span>레몬민트</span><span>도라지차</span><span>환절기</span><span>면역력</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기" href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기" href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20251207_144/1765111146320T2Aad_PNG/41513588443289178_2114677676.png" alt="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251207_144/1765111146320T2Aad_PNG/41513588443289178_2114677676.png" alt="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 같은 <font color="#ff69b4"><strong>환절기</strong></font>에는 목이 자주 불편해져서 걱정이 많았어요.<br>특히 황사나 미세먼지가 심한 날이면 목이 건조하고 따끔거리는 게 일상이었죠.<br>그래서 목에 좋은 차를 꾸준히 찾던 중에 클리어톤에서 나온 <font color="#008080"><strong>레몬민트 도라지차</strong></font>를 알게 되었답니다.</p><p>원래 차 종류가 워낙 많은데, 이 제품은 <font color="#ff6347"><strong>퀘르세틴</strong></font>과 <font color="#4682b4"><strong>브로멜라인</strong></font> 성분이 들어있어서 더 눈길이 갔어요.<br>면역력이 떨어지는 시기에 목 건강을 잘 챙겨야겠다는 마음에 구매를 결정했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251207_110/1765112627038XqD37_JPEG/19272566469037813_118101373.jpg" alt="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 클리어톤 목 건강 차를 선택했을까?</h2></section><p>인터넷 후기들도 꼼꼼히 살펴봤는데,<br>많은 분들이 목 컨디션 관리에 효과적이었다고 해서 신뢰가 생겼어요.<br>가격도 첫 구매 할인가로 18,980원이라 부담 없었고요.</p><p>사실 비슷한 성분의 제품들이 많아서 망설였는데,<br>이창섭씨가 만든 브랜드라는 점도 믿음이 갔던 것 같아요.<br>따뜻하면서도 상큼한 레몬민트 향도 제가 좋아하는 스타일이라 최종 선택하게 됐답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251204_59/17648180475075C8Gl_JPEG/33242642605969876_283414521.jpg" alt="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전후 어떤 변화가 있었을까?</h2></section><p>처음에는 출근길이나 외출 전에 한 포씩 간편하게 마시기 시작했는데,<br>목이 덜 칼칼해지고 오랜 시간 편안함을 유지하는 느낌이 들더라고요.</p><p>특히 환절기 황사 날에도 평소처럼 차를 마신 후엔<br><font color="#ff8c00"><strong>목이 뻣뻣하거나 아픈 증상 없이</strong></font> 훨씬 안정적이었어요.<br>계속 음료를 찾는 대신 이 차 한 포로 목 건강을 챙길 수 있어서 너무 좋았습니다.</p><p>출근할 때 가방에 쏙 넣어서 다니기도 편리하고,<br>스틱 타입이라 물에 잘 녹여 간단히 마실 수 있어 일상에 딱 맞더라고요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251204_247/1764818055764dgJhw_JPEG/3664314829856571_1679706038.jpg" alt="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251204_97/1764818063024ygm4m_JPEG/10956636639908096_31306170.jpg" alt="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -210,7 +234,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>긴 글 읽어주셔서 감사해요!<br>여러분도 환절기 목 관리에 관심 있으시다면<br>꼭 한번 경험해보셨으면 좋겠어요.</p><p>마음에 드는 부분이나 궁금한 점 있으면 댓글로 공유해 주세요.<br>제가 직접 써본 솔직한 이야기라 도움이 되셨다면 <font color="#ff1493"><strong>좋아요❤</strong></font>도 꼭 부탁드릴게요!</p><p>함께 건강한 하루 만들어가요! 😊</p><p>#환절기목관리 #도라지차추천 #클리어톤제품 #레몬민트차 #목건강챙기기</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기" href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기" href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20251207_144/1765111146320T2Aad_PNG/41513588443289178_2114677676.png" alt="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -218,7 +242,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://smartstore.naver.com/cleartone/products/12712448307?nt_source=sh&amp;nt_medium=sh" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="클리어톤 목 컨디션 관리 꿀팁과 레몬민트 도라지차 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
