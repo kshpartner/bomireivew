@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">집들이나 개업 선물로 고민된다면 자연 소재 편백 액막이 명태 북어 걸이형이 참 좋으니 한번 살펴봐봐요.</p>
     <div class="tags"><span>편백</span><span>액막이</span><span>명태북어</span><span>선물추천</span><span>집들이</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법" href="https://naver.me/GNJvDjJf" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법" href="https://naver.me/GNJvDjJf" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260219_215/1771472349992DJzMz_PNG/14308708493850856_1449587944.png" alt="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDjJf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDjJf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260219_215/1771472349992DJzMz_PNG/14308708493850856_1449587944.png" alt="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요 여러분😊</p><p>최근에 집들이나 개업 선물로 뭘 하면 좋을지 고민하던 중에<br>특별하면서도 실용적인 아이템을 찾게 되었어요.</p><p>제가 찾은 건 바로 <font color="#ff69b4"><strong>마켓유니버스 편백 액막이 명태 북어 걸이형 소</strong></font>인데요,<br>이 제품이 왜 좋았는지 솔직하게 이야기해볼게요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDjJf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDjJf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260120_53/17689052632461rupi_PNG/11741621727937948_1753392157.png" alt="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 편백 액막이 명태 북어 걸이형을 찾게 됐을까?</h2></section><p>이사나 개업을 할 때 <font color="#ff69b4"><strong>집 안 분위기와 운을 좋게 해주는 아이템</strong></font>을 고민했어요.</p><p>예전에는 그냥 꽃이나 화분을 선물하곤 했는데,<br>뭔가 특별한 의미가 담긴 걸 선물하고 싶더라고요.</p><p>그런데 막상 찾아보니 너무 평범하거나 너무 비싸서 망설여졌죠.<br>그래서 자연스럽고 실용적인 걸 찾다가 <font color="#ff69b4"><strong>편백과 명태 북어를 활용한 걸이형 액막이</strong></font>에 눈길이 갔답니다.</p><p>자연 소재라서 인테리어에도 잘 어울리고,<br>액운을 막아준다는 의미도 담겨 있으니 <strong>선물용으로 딱</strong>이라고 생각했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDjJf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDjJf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260120_97/1768905262885Gb7xk_PNG/11741621353725344_845722648.png" alt="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>수많은 제품 중에 이걸 고른 이유</h2></section><p>시중에 비슷한 편백 제품이 많지만,<br><font color="#ff69b4"><strong>마켓유니버스 제품은 가격이 합리적</strong></font>이었고 23,900원이라는 점이 마음에 들었어요.</p><p>그리고 후기가 정말 좋더라고요.<br>많은 분들이 <font color="#ff69b4"><strong>자연스러운 향과 고급스러운 디자인</strong></font>에 만족한다는 평이 많았죠.</p><p>솔직히 망설였던 부분은 ‘실제로 효과가 있을까?’ 하는 의문이었어요.<br>하지만 꾸준히 사용하는 분들의 후기를 보니 <strong>신뢰가 갔답니다</strong>.</p><p>결정적으로, <font color="#ff69b4"><strong>걸이형이라 설치가 쉽고 공간을 차지하지 않는 점</strong></font>이 구매를 결정하게 했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDjJf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDjJf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260120_241/1768905263068I3UTt_PNG/11741621544148587_186802613.png" alt="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -164,7 +188,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전후 달라진 점 느껴보기</h2></section><p>처음에 걸어두고 나서 <strong>집 안에 은은한 편백 향이 퍼져서 정말 힐링되는 느낌</strong>이었어요.</p><p>바쁜 하루 끝에 집에 돌아와서 향긋한 냄새를 맡으면 마음이 편안해지는 게 확실히 느껴졌어요.<br>명태 북어가 함께 걸려 있어 독특하고 자연스러운 분위기도 참 좋더라고요.</p><p>친구들도 집들이 선물로 받으면 기분 좋아할 것 같아요.<br>저도 선물 받으면 참 의미 있게 쓸 것 같고요.</p><p>한 달 정도 사용해보니 <font color="#ff69b4"><strong>공간에 생기가 돌고 긍정적인 에너지가 더해진 것 같아요</strong></font>.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDjJf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDjJf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260120_220/1768905262520RKdxb_PNG/11741621007191351_215009688.png" alt="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDjJf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDjJf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260120_68/1768905262713vtMe0_PNG/11741621184224282_801348003.png" alt="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>약간의 아쉬운 점</h2></section><p>개인적으로는 조금 더 다양한 사이즈가 있었으면 좋겠다는 생각이 들었어요.<br>하지만 소 사이즈도 집에 걸기 딱 적당해서 크게 불편하지는 않았답니다.</p><p>그리고 향이 너무 강하지 않아서 오히려 자연스러운 점은 <strong>장점</strong>이지만,<br>향을 선호하는 분들에겐 약하게 느껴질 수도 있을 것 같아요.</p><p>그래도 전체적으로 만족도가 높은 제품임은 분명해요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GNJvDjJf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GNJvDjJf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260120_145/1768905262367JmunQ_PNG/11741620849715232_1269050514.png" alt="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -223,7 +247,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>읽어주셔서 정말 감사해요💖</p><p>여러분도 <font color="#ff69b4"><strong>소중한 분께 의미 있는 선물</strong></font> 고민 중이라면,<br>마켓유니버스 편백 액막이 명태 북어 걸이형 제품 한번 살펴보시길 추천드려요.</p><p>댓글로 여러분의 경험이나 생각도 공유해주시면<br>서로 도움 많이 될 것 같아요! 궁금한 점 있으면 언제든 물어봐 주세요~😊</p><p>#편백액막이 #명태북어걸이 #개업선물추천 #집들이선물 #이사선물 #마켓유니버스 #자연향소품</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법" href="https://naver.me/GNJvDjJf" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법" href="https://naver.me/GNJvDjJf" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260219_215/1771472349992DJzMz_PNG/14308708493850856_1449587944.png" alt="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -231,7 +255,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/GNJvDjJf" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/GNJvDjJf" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="편백 액막이 명태 북어 걸이형 추천 개업 집들이 이사 선물 고르는법">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
