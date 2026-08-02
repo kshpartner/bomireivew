@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">포근한 집 분위기를 위해 추천하는 보덴 크로쉐 원형 뜨개 매트, 믿고 사용해보세요.</p>
     <div class="tags"><span>크로쉐</span><span>테이블보</span><span>뜨개질</span><span>보덴</span><span>원형매트</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" href="https://naver.me/GJZES3Dm" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240905_252/1725515909287eGjPp_JPEG/29072783049266018_1241867790.jpg" alt="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GJZES3Dm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240905_252/1725515909287eGjPp_JPEG/29072783049266018_1241867790.jpg" alt="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 집 안 분위기를 조금 더 <font color="#ff69b4"><strong>포근하고 따뜻하게</strong></font> 만들어줄 소품을 찾고 있었어요.<br>특히 식탁 위에 놓는 테이블보가 너무 밋밋하고 관리도 어렵더라고요.<br>그래서 직접 뜨개질 느낌이 나는 <font color="#ff69b4"><strong>보덴 크로쉐 원형 뜨개 매트</strong></font>를 알게 되었답니다.🧶</p><p>이 제품을 알기 전에는 플라스틱 소재나 비닐 테이블보를 써봤는데<br>뜨거운 냄비를 올리면 금방 변형되거나 미끄러워서 불편했어요.<br>게다가 식탁 분위기도 차갑게 느껴져서 아쉬웠죠.</p><p>그래서 조금은 자연스러운 소재, 손으로 직접 만든 듯한 느낌의 테이블보를 원했답니다.<br>그중에서도 <font color="#ff69b4"><strong>보덴 크로쉐 원형 뜨개 매트</strong></font>는 눈에 띄게 달랐어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GJZES3Dm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240905_282/1725515904657l4Sem_JPEG/6611310544835481_29515585.jpg" alt="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>보덴 크로쉐 원형 뜨개 매트 선택한 이유</h2></section><p>인터넷에 뜨개 테이블보 종류가 워낙 많아서 고민을 많이 했어요.<br>가격도 천차만별이고, 후기들도 다양해서 선택이 쉽지 않았죠.</p><p>그런데 이 제품은 <font color="#ff69b4"><strong>가격이 4,400원으로 부담 없고</strong></font>,<br>후기가 꽤 솔직하고 좋은 편이었어요.<br>또 브랜드 신뢰도도 괜찮아서 한번 믿고 주문해봤답니다.</p><p>물론 망설였던 부분은 ‘내 식탁에 정말 어울릴까?’ 하는 점이었어요.<br>하지만 원형 디자인과 컬러가 무난해서 여러 분위기에 잘 맞을 것 같았어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GJZES3Dm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230403_24/1680494232846nbFEG_JPEG/81630060660160242_1183132760.jpg" alt="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 달라진 식탁 분위기</h2></section><p>제품을 받자마자 식탁 위에 올려봤는데, 느낌이 정말 따뜻하고 자연스러웠어요.<br>기존에 사용하던 플라스틱 테이블보와는 완전히 다른 분위기였답니다.</p><p>특히 뜨개질 특유의 <font color="#ff69b4"><strong>포근한 텍스처</strong></font>가 손에 닿을 때도 기분 좋았어요.<br>손님이 왔을 때도 <font color="#ff69b4"><strong>“이거 어디서 샀어?”</strong></font> 하는 반응이 많더라고요.</p><p>무엇보다 식탁 위에 냄비나 컵을 올려놓아도 미끄러짐이 적고, 쉽게 움직이지 않아 안정감이 있었습니다.👍</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GJZES3Dm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230403_1/1680494233347QDjbS_JPEG/81630061167268187_1495943116.jpg" alt="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -164,7 +188,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>가장 만족스러운 세 가지 포인트</h2></section><p>첫째, <font color="#ff69b4"><strong>디자인이 정말 예쁘고 자연스러워서</strong></font> 인테리어 효과가 뛰어나요.<br>원형 모양이 식탁과도 잘 어울리고 손뜨개 느낌이 따뜻했어요.</p><p>둘째, <font color="#ff69b4"><strong>세탁과 관리가 간편한 점</strong></font>이 너무 좋았어요.<br>물티슈로 살짝 닦아도 되고, 세탁기 돌려도 형태가 잘 변하지 않아서 편했답니다.</p><p>셋째, <font color="#ff69b4"><strong>가격 대비 퀄리티가 뛰어나다</strong></font>는 점이에요.<br>4,400원이라는 할인가에 이런 퀄리티라니 정말 만족스러웠습니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GJZES3Dm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230403_225/16804942323172Olnb_JPEG/81630060018010414_584674863.jpg" alt="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -172,7 +196,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>살짝 아쉬웠던 점</h2></section><p>한 가지 아쉬운 점은 크기가 조금 더 다양했으면 하는 점이에요.<br>제가 쓰는 식탁이 조금 더 크다 보니, 원형 매트가 조금 작게 느껴졌답니다.</p><p>하지만 그 덕분에 여러 개를 조합해서 사용해볼 수 있다는 점에서 나름 활용도는 높았어요.<br>그리고 소재가 너무 얇지도 두껍지도 않아 계절에 따라 쓰기 좋았습니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GJZES3Dm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230403_33/16804942319434xtas_JPEG/81630059764974052_447179473.jpg" alt="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -180,7 +204,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>이런 분들께 추천드려요</h2></section><p>가족이 모이는 식탁에 따뜻하고 자연스러운 분위기를 만들고 싶으신 분,<br>뜨개질 느낌의 소품을 좋아하는 분들께 강추해요.</p><p>또 가격 부담 없이 <font color="#ff69b4"><strong>소품으로 분위기를 바꾸고 싶으신 분들</strong></font>,<br>간편하게 세탁 가능한 테이블 매트를 찾는 분들께도 딱 맞아요.</p><p>특히 아기나 아이가 있는 가정에서는 부드러운 소재라서 더 안심하고 사용할 수 있답니다.👶</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GJZES3Dm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230403_129/1680494233683hJBwd_JPEG/81630061504664389_1837155059.jpg" alt="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -188,7 +212,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 다음에도 다른 컬러로 꼭 재구매할 생각이에요.<br>가격도 합리적이고 활용도도 높아서 부담 없이 몇 개 더 사서 바꿔가며 쓰고 싶거든요.</p><p>후기와 상세페이지를 꼼꼼히 비교해 보시면, 왜 이 제품이 가성비 갑인지 아실 거예요.<br>무엇보다 직접 써보고 느낀 만족감 때문에 추천하고 싶답니다.😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GJZES3Dm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230403_151/1680494233091F1hoG_JPEG/81630060912992382_1862519316.jpg" alt="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -221,7 +245,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GJZES3Dm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230403_220/1680494233869pSU3t_JPEG/81630061691352317_1602006201.jpg" alt="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -229,11 +253,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>이렇게 <font color="#ff69b4"><strong>보덴 크로쉐 원형 뜨개 매트</strong></font>에 대해 솔직하게 이야기해봤는데요,<br>여러분도 식탁 분위기를 바꾸고 싶다면 한번 고민해보시길 바라요! 😊</p><p>사용해보신 분들은 어떤 점이 가장 마음에 들었는지 댓글로 알려주세요.<br>그리고 궁금한 점이나 추가 팁도 나누면 서로 도움 될 것 같아요! 🌸</p><p>#테이블매트 #크로쉐테이블보 #뜨개매트 #홈인테리어소품 #가성비테이블보</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GJZES3Dm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230403_139/1680494232624xtEHH_JPEG/81630060447436892_325012157.jpg" alt="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기" href="https://naver.me/GJZES3Dm" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240905_252/1725515909287eGjPp_JPEG/29072783049266018_1241867790.jpg" alt="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -241,7 +265,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/GJZES3Dm" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/GJZES3Dm" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="크로쉐 원형 뜨개 매트 테이블보 선택법과 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
