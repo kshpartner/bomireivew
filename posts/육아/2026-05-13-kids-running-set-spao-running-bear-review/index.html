@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">아이에게 편안하고 귀여운 러닝 상하세트를 찾는다면 스파오키즈 러닝 베어 세트를 추천할게요. 믿고 선택할 만해요.</p>
     <div class="tags"><span>키즈러닝</span><span>상하세트</span><span>편안한옷</span><span>스파오키즈</span><span>러닝베어</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" href="https://naver.me/xLNJMNMW" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260424_214/1776995234930WLVoK_JPEG/56391756081187761_183543411.jpg" alt="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xLNJMNMW" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260424_214/1776995234930WLVoK_JPEG/56391756081187761_183543411.jpg" alt="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>아이 옷을 고를 때면 <font color="#ff69b4"><strong>편안함과 디자인</strong></font>을<br>가장 먼저 생각하게 돼요. 저도 요즘 아이가<br>활발하게 뛰어놀면서 불편해하는 옷은 싫어하더라고요.<br>그래서 자연스럽게 러닝 상하세트를 찾게 되었어요.👟</p><p>그중에서 <font color="#ff69b4"><strong>스파오키즈 러닝 베어 반팔 상하세트</strong></font>가 눈에<br>들었는데, 여러 제품 중 고민이 많았죠.<br>아이에게 딱 맞는 옷을 골라주고 싶었거든요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xLNJMNMW" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260508_47/1778211811625aPCSo_JPEG/112344694718977373_86948469.jpg" alt="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>러닝 상하세트가 필요했던 이유</h2></section><p>아이들 옷은 아무리 예뻐도 활동성 없으면 소용없잖아요.<br>전에는 얇거나 너무 빳빳한 소재로 된 상하세트를 많이 사줬는데,<br>금방 불편해하고 움직임도 제한되는 느낌이 들더라고요.</p><p>특히 여름에는 땀도 많이 흘리고<br>피부도 민감해서 <font color="#ff69b4"><strong>통기성 좋은 소재</strong></font>가 절실했어요.<br>그래서 러닝 전용 상하세트가 필요하다고 생각했죠.</p><p>아이도 신나게 뛰어놀면서 편안함을 느낄 수 있는 옷이<br>절실했답니다. 그래서 다시 찾게 된 거죠! 😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xLNJMNMW" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260508_220/1778227739566T65Xb_JPEG/112360559650186238_1189932562.jpg" alt="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 스파오키즈 러닝 베어 상하세트인가?</h2></section><p>비슷한 스타일이 많은데 이걸 선택한 이유는<br><font color="#ff69b4"><strong>디자인, 가격, 그리고 후기</strong></font>가 한몫했어요.<br>아이들 옷은 디자인이 귀여워야 하는데<br>러닝 베어 캐릭터가 너무 사랑스럽더라고요.</p><p>그리고 가격도 <strong>35,940원</strong>으로 적당해서 부담 없었고,<br>후기들을 보니 아이들이 정말 편안하게 입는다는 말이 많았어요.<br>특히 <font color="#ff69b4"><strong>소재가 부드럽고 신축성</strong></font>이 좋다는 점이 맘에 들었죠.</p><p>솔직히 처음엔 혹시 사이즈가 클까 걱정했는데,<br>딱 맞게 잘 맞아서 만족했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xLNJMNMW" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260508_176/1778227739030j4tb0_JPEG/112360559110878743_898038699.jpg" alt="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xLNJMNMW" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260508_116/1778227740141Gxq7m_JPEG/112360560237365519_1764535944.jpg" alt="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>가장 만족한 3가지 포인트</h2></section><p>첫째, <font color="#ff69b4"><strong>편안한 착용감</strong></font>이에요.<br>신축성 좋은 소재 덕분에 아이가<br>움직일 때 전혀 불편함을 못 느끼더라고요.</p><p>둘째, <font color="#ff69b4"><strong>귀여운 러닝 베어 디자인</strong></font>이 마음에 쏙 들었어요.<br>아이도 좋아해서 매일 입고 싶어 했답니다.</p><p>셋째, <font color="#ff69b4"><strong>가성비 좋은 가격</strong></font> 덕분에 부담 없이 구매할 수 있었어요.<br>가끔 세일할 때 사면 더 좋겠지만,<br>이 가격도 충분히 만족스러워요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xLNJMNMW" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260320_149/1773991979913KSxAb_JPEG/25417947966195880_1135518951.jpg" alt="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점과 그래도 좋은 부분</h2></section><p>솔직히 아쉬운 점은 색상 옵션이 조금 더 다양했으면<br>좋겠다는 점이었어요.<br>기본 색상만 있는 게 아쉽긴 했는데,<br>그래도 러닝 베어 캐릭터가 워낙 매력적이라 괜찮았어요.</p><p>그리고 사이즈가 조금 작게 나오는 편이라<br>사이즈 선택할 때 참고하면 좋겠다는 생각이 들었답니다.<br>하지만 소재와 착용감은 정말 만족스러워서<br>전체적으로 좋은 제품이에요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xLNJMNMW" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260320_103/1773991980224nmyoA_JPEG/25417948274527656_1929594533.jpg" alt="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천할까?</h2></section><p>이 제품은 <font color="#ff69b4"><strong>활발하게 뛰어노는 3~7세 아이</strong></font>를 둔 부모님께<br>적극 추천하고 싶어요.<br>아이 옷 고르면서 활동성과 편안함,<br>귀여운 디자인까지 챙기고 싶은 분들께 딱이에요.</p><p>또한 <font color="#ff69b4"><strong>여름철 가볍고 통기성 좋은 옷</strong></font>을 찾는 분들에게도<br>스파오키즈 러닝 베어 상하세트가 좋은 선택이 될 거예요.</p><p>아이 옷이 자주 낡거나 불편해하는 부모님들도<br>한 번 고려해보시길 바래요! 😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xLNJMNMW" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260320_258/1773991980600HBufz_JPEG/25417948640934854_444845388.jpg" alt="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -198,7 +222,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 이미 만족해서 다음에 또 다른 색상이 나오면<br>구매할 의사가 있어요.<br>아이도 너무 좋아해서 <font color="#ff69b4"><strong>자주 입히게 되더라고요</strong></font>.<br>후기랑 상세페이지 꼼꼼히 보시면서 비교해보시면<br>분명 좋은 선택 하실 수 있을 거예요!</p><p>가격도 할인 중인 경우가 많으니 알뜰 쇼핑 하시길<br>바라며, 아이 러닝 상하세트 고민 중이시라면<br><font color="#ff69b4"><strong>스파오키즈 러닝 베어</strong></font> 꼭 한 번 보세요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xLNJMNMW" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260320_258/1773991979253WsVUd_JPEG/28613717237367889_473483175.jpg" alt="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -231,14 +255,14 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xLNJMNMW" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260320_112/1773991980996Xohl9_JPEG/25417949046360895_3731941.jpg" alt="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
 <div class="content-block">
 <p>읽어주셔서 감사합니다!😊 아이 옷 고르실 때<br>이 글이 조금이라도 도움이 되었으면 좋겠어요.<br>혹시 아이가 좋아하는 캐릭터 옷이나 러닝 상하세트에 대한<br>경험이 있으시면 댓글로 이야기 나눠주세요.<br>서로 좋은 정보 공유하면서 아이 키우는 즐거움도<br>커지면 좋겠네요!</p><p>#스파오키즈 #러닝상하세트 #키즈옷추천 #아이옷 #러닝베어</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기" href="https://naver.me/xLNJMNMW" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260424_214/1776995234930WLVoK_JPEG/56391756081187761_183543411.jpg" alt="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -246,7 +270,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xLNJMNMW" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xLNJMNMW" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="키즈 러닝 상하세트 추천 스파오키즈 러닝 베어 실용 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
