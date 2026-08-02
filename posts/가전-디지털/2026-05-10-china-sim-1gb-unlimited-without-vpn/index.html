@@ -95,18 +95,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -121,7 +145,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">중국에서도 VPN 없이 카톡을 편하게 쓸 수 있는 1일 1GB 무제한 유심, 꼭 추천드려요.</p>
     <div class="tags"><span>중국유심</span><span>카톡사용</span><span>VPN없이</span><span>데이터무제한</span><span>해외여행인터넷</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" href="https://naver.me/51unRlKx" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20241203_256/1733189178974pPnBs_PNG/8807274431642495_1343074467.png" alt="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -131,7 +155,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/51unRlKx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241203_256/1733189178974pPnBs_PNG/8807274431642495_1343074467.png" alt="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 카카오톡 같은 메신저를 VPN 없이<br>잘 사용할 수 있을지 걱정이 많았는데요,<br>그럴 때 딱 좋은 제품을 발견해서 소개하려고 해요.</p><p>이전엔 해외 로밍이나<br>복잡한 VPN 설치 때문에 불편함이 많았거든요.</p><p>하지만 이번에 쓴 중국유심은<br><font color="#ff69b4"><strong>상하이, 칭다오 등 주요 도시에서 VPN 없이도</strong></font><br><font color="#ff69b4"><strong>카톡이 잘 되는</strong></font> 점이 정말 마음에 들었답니다.😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/51unRlKx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251017_207/1760679998440CaePB_PNG/14855251245172343_1859004334.png" alt="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>중국유심 선택 이유와 고민</h2></section><p>중국에선 인터넷 검열 때문에 VPN이 필수라고들 하는데,<br>저는 VPN 설치가 번거롭고 불안했어요.</p><p>그래서 VPN 없이도 카톡을 자유롭게 쓸 수 있는 유심칩을 찾기 시작했죠.<br>여러 제품이 많았지만 그중에서도 1일 1GB 무제한 데이터를 제공하는<br>제품이 눈에 띄었어요.</p><p>가격도 할인된 가격인 <font color="#ff69b4"><strong>900원</strong></font>이라 부담 없었고,<br>후기도 좋아서 조금 망설이다가 구매를 결정했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/51unRlKx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241203_297/1733187617765d0XfJ_JPEG/35131631557747380_919775758.jpg" alt="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후 확실한 차이점</h2></section><p>사용 전엔 카톡이 안 돼서 현지에서 연락하는 게 너무 힘들었는데,<br>이 제품을 쓰고 나서는 인터넷 연결 걱정 없이<br>자유롭게 메신저를 쓸 수 있었어요.</p><p>현지에서도 사진이나 영상 보내기가 훨씬 편했고,<br>1GB씩 매일 새로 주니 데이터 관리도 쉽더라고요.</p><p>VPN 없이도 안정적인 속도를 경험하니<br><font color="#ff69b4"><strong>진짜 여행 스트레스가 확 줄었어요.</strong></font>👍</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/51unRlKx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241203_52/1733188902123cj0lO_PNG/67321753262632166_605173154.png" alt="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/51unRlKx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241203_240/1733188902435TVX8h_PNG/67321753512852754_555230357.png" alt="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점도 솔직하게</h2></section><p>솔직히 1GB가 무제한이라고 하지만<br>대용량 영상 스트리밍에는 약간 부족할 수도 있겠다는 생각이 들었어요.</p><p>하지만 카톡, 지도, 기본 웹서핑에는 전혀 문제 없었고,<br>무엇보다 VPN 없이 쓸 수 있다는 점이 훨씬 더 컸답니다.</p><p>그래서 전체적으로 만족도가 높았어요!🌟</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/51unRlKx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241203_124/1733188902575uziIq_PNG/67321753683674007_1719188150.png" alt="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천할까?</h2></section><p>중국 여행이나 출장 가는 분들 중에<br><font color="#ff69b4"><strong>VPN 설치가 번거롭거나 어려운 분들</strong></font>께 특히 추천해요.</p><p>그리고<br><font color="#ff69b4"><strong>가성비 좋은 유심으로 카톡, 인터넷을 간편하게 쓰고 싶은 분들</strong></font>께도 딱이에요.</p><p>현지에서 빠르고 편리한 인터넷 연결을 원하는 분이라면<br>한번 써보시길 강력히 권해드려요!😉</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/51unRlKx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241203_180/1733188902705pOlUO_PNG/67321753817227559_1803864442.png" alt="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 다음번 중국 방문 때도<br>이 제품을 꼭 다시 쓸 생각이에요.<br>가격도 착하고, 성능도 믿을 만하니까요.</p><p>후기나 상세페이지 꼼꼼히 보시고<br>비교해 보시면 분명 만족스러운 선택이 될 거예요.<br>저처럼 VPN 걱정 없이 카톡 하실 분들은 꼭 참고해보세요!💡</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/51unRlKx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241203_35/1733188902850swaM5_PNG/67321753953673341_1474962346.png" alt="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -223,7 +247,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/51unRlKx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241203_201/1733189186768UvFOi_PNG/22223702515359921_906543478.png" alt="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -231,11 +255,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>중국에서 인터넷 걱정 없이 자유롭게 카톡하고 싶은 분들,<br>이 제품 써보시면 정말 편하실 거예요.😊</p><p>여러분은 여행 중 인터넷 문제로<br>가장 힘들었던 경험이 무엇인가요? 댓글로 공유해 주세요.<br>서로 좋은 팁 나누면 더 도움이 될 것 같아요!</p><p>#중국유심 #카톡사용법 #무제한데이터 #VPN없이카톡 #여행필수템</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/51unRlKx" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241203_125/1733188903018HztQ4_PNG/67321754162659359_1594669640.png" alt="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰" href="https://naver.me/51unRlKx" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20241203_256/1733189178974pPnBs_PNG/8807274431642495_1343074467.png" alt="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -243,7 +267,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/51unRlKx" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/51unRlKx" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="중국유심 1일 1GB 무제한 사용법과 카톡 VPN 없이 즐기는 꿀팁 리뷰">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
