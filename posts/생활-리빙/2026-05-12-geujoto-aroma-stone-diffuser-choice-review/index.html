@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">은은한 향기로 집과 차량 분위기를 산뜻하게 바꾸고 싶은 친구에게 추천하고픈 제품이에요.</p>
     <div class="tags"><span>규조토</span><span>아로마</span><span>스톤디퓨저</span><span>방향제</span><span>차량용</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기" href="https://naver.me/xzHn5VU9" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기" href="https://naver.me/xzHn5VU9" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20251128_221/1764327462120uMt6Y_JPEG/18854444908119452_1672410038.jpg" alt="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xzHn5VU9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xzHn5VU9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251128_221/1764327462120uMt6Y_JPEG/18854444908119452_1672410038.jpg" alt="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 <font color="#ff69b4"><strong>자연스러운 방향제</strong></font>를<br>찾다가 만난 게 바로 레노포프 규조토 아로마 스톤디퓨저예요.<br>가격도 <font color="#ff69b4"><strong>7,500원</strong></font>으로 부담 없고,<br>뭔가 깔끔한 디자인에 끌렸죠.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xzHn5VU9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xzHn5VU9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251128_15/1764327401245smKTR_JPEG/68726679113840393_1735767330.jpg" alt="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 저처럼 차량용과 실내 겸용으로 쓰기 좋은<br>제품을 찾는 분들에게 딱 맞는 것 같아서<br>결정했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xzHn5VU9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xzHn5VU9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240629_198/1719623515320JJXxY_PNG/165723948815831_1521592525.png" alt="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -162,7 +186,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>집에서도 책상 위에 올려두고 쓰는데,<br>작은 틴케이스 덕분에 어디든 편하게 옮겨 다니기<br>좋았어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xzHn5VU9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xzHn5VU9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231230_188/1703906242156PJWqz_JPEG/105042130848138029_44787473.jpg" alt="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xzHn5VU9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xzHn5VU9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240629_157/1719623520496uNXVe_PNG/1335493477905100_721057105.png" alt="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -183,7 +207,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 틴케이스가 작아 발향 시간이<br>조금 짧은 느낌도 있지만,<br>오히려 그 덕분에 자주 향을 바꿀 수 있어서<br>취향에 맞게 사용할 수 있었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xzHn5VU9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xzHn5VU9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231230_233/1703906236791qoGDn_JPEG/105042125487390942_231839448.jpg" alt="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -230,7 +254,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>사용해본 후기가 궁금하다면 댓글로<br>질문 남겨주세요! 여러분의 향기 취향도 공유해주시면<br>더 재미있을 것 같아요.</p>
 <p>#아로마디퓨저 #규조토방향제 #차량용방향제 #틴케이스디퓨저 #은은한향기</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기" href="https://naver.me/xzHn5VU9" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기" href="https://naver.me/xzHn5VU9" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20251128_221/1764327462120uMt6Y_JPEG/18854444908119452_1672410038.jpg" alt="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -238,7 +262,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xzHn5VU9" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xzHn5VU9" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="규조토 아로마 스톤디퓨저 추천 틴케이스 방향제 선택법과 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
