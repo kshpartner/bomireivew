@@ -95,18 +95,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -121,7 +145,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">플라이토 댄싱 블루투스 스피커, 음질과 휴대성 좋아서 조심스레 추천드려요.</p>
     <div class="tags"><span>블루투스스피커</span><span>음질</span><span>휴대성</span><span>가성비</span><span>리뷰</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" href="https://naver.me/F7Fx4Itl" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" href="https://naver.me/F7Fx4Itl" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20191018_204/1571389293781zubSl_JPEG/8752682323623402_1807567407.jpg" alt="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -131,7 +155,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F7Fx4Itl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F7Fx4Itl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20191018_204/1571389293781zubSl_JPEG/8752682323623402_1807567407.jpg" alt="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -139,7 +163,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요 여러분~ 오늘은 제가 최근에 직접 써본 <font color="#ff69b4"><strong>플라이토 댄싱 블루투스 스피커 JSFDPo</strong></font>에 대해 이야기해보려고 해요.</p><p>요즘 집에서 음악 듣는 시간이 많아지면서 스피커 하나 제대로 갖고 싶다는 생각이 들더라구요.<br>그런데 기존에 쓰던 제품은 음질도 아쉽고 연결도 자주 끊겨서 답답했었거든요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F7Fx4Itl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F7Fx4Itl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220114_20/1642142724206LNpk5_JPEG/43278569889843150_1818772113.jpg" alt="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -149,7 +173,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 평소 음악 듣는 걸 좋아해서 일상 속에서 자연스럽게 쓸 수 있는 블루투스 스피커가 꼭 필요했죠.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F7Fx4Itl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F7Fx4Itl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20191018_195/1571389109511JyodH_JPEG/8752498048333560_956255423.jpg" alt="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -159,7 +183,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>집안 인테리어와도 잘 어울리고, 귀여운 댄싱 캐릭터 모양이 일상에 작은 즐거움을 주더라고요.<br>이런 감성적인 부분도 제겐 큰 플러스였답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F7Fx4Itl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F7Fx4Itl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20191021_188/1571629957757nEf3D_JPEG/8990696386285238_1280261128.jpg" alt="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -169,7 +193,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 댄싱 모드가 있어서 스피커 캐릭터가 음악에 맞춰 움직이는데,<br>이게 생각보다 기분 전환에 큰 도움이 되더라고요.😊</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F7Fx4Itl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F7Fx4Itl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20191018_33/1571389283496KOAES_JPEG/8751617044178169_278894557.jpg" alt="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -181,7 +205,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F7Fx4Itl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F7Fx4Itl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20191018_269/1571389283640mTkLg_JPEG/8751617188055638_2127978972.jpg" alt="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 충전 시간이 좀 걸리는 편인데,<br>그래도 한번 충전하면 오래 쓸 수 있어서 실사용에는 무리가 없었어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F7Fx4Itl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F7Fx4Itl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20191018_235/1571389283812rA4o1_JPEG/8751617361079365_1627008679.jpg" alt="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -200,7 +224,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>저처럼 무겁고 복잡한 기기보다 간단하고 실용적인 걸 원하시는 분들께 꼭 추천드려요.🎵</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F7Fx4Itl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F7Fx4Itl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20191018_291/1571389283729no8dL_JPEG/8751617277280510_957949516.jpg" alt="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -210,7 +234,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>저처럼 일상에 작은 즐거움과 편리함을 더하고 싶은 분들께 꼭 한 번 써보시라고 권하고 싶어요.😊</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F7Fx4Itl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F7Fx4Itl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20191018_293/1571389293686EIxfU_JPEG/8752682225502785_313152451.jpg" alt="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -248,7 +272,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>저도 여러분 댓글 보면서 더 좋은 제품 추천해드릴 수 있도록 노력할게요.</p>
 <p>#플라이토스피커 #블루투스스피커추천 #댄싱스피커 #가성비스피커 #일상음악템</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" href="https://naver.me/F7Fx4Itl" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;" href="https://naver.me/F7Fx4Itl" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20191018_204/1571389293781zubSl_JPEG/8752682323623402_1807567407.jpg" alt="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -256,7 +280,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/F7Fx4Itl" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/F7Fx4Itl" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="플라이토 댄싱 블루투스 스피커 JSFDPo 후기와 추천 이유&#127775;">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
