@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">허리 통증으로 고민하는 친구에게 따뜻하게 권해주고 싶은 바른 자세 매트리스 후기입니다.</p>
     <div class="tags"><span>허리건강</span><span>매트리스추천</span><span>바른자세</span><span>통증완화</span><span>하드매트리스</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" href="https://naver.me/FIcoGwFc" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250728_134/1753663625040NtaIr_JPEG/8201588652299888_604020584.jpg" alt="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FIcoGwFc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250728_134/1753663625040NtaIr_JPEG/8201588652299888_604020584.jpg" alt="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 들어 <font color="#ff69b4"><strong>허리가 자주 아파서</strong></font> 고민이 많았어요.<br>아침에 일어나면 무거운 느낌이 들고, 하루 종일 불편해서 잠도 잘 못 자고요.😥</p><p>그래서 <font color="#ff69b4"><strong>허리 건강에 좋은 매트리스</strong></font>를 꼭 찾아야겠다 싶었어요.<br>원래는 그냥 아무 매트리스나 쓰다가 자꾸 통증이 심해져서 바꾸기로 결심했답니다.</p><p>여러 브랜드를 찾아봤는데,<br>이왕이면 <font color="#ff69b4"><strong>바른 자세를 도와주는 제품</strong></font>으로 고르고 싶었죠.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FIcoGwFc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250414_151/1744589882387e4Cfs_JPEG/78722729532689260_1672914095.jpg" alt="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 ‘바른 허리 매트리스’를 선택했나요?</h2></section><p>비슷한 매트리스가 정말 많은데,<br>이 제품을 고른 이유는 후기들이 꽤 신뢰가 갔거든요.<br>특히 허리 통증 완화에 도움 됐다는 글이 많았어요.👍</p><p>가격도 생각보다 합리적이었어요.<br>할인가 379,000원으로 부담스럽지 않아서 망설임이 줄었죠.<br>처음에는 하드 타입이라 좀 딱딱하지 않을까 걱정했는데, 후기에서 오히려 허리를 잘 받쳐줘서 편하다고 하더라고요.</p><p>결정적인 구매 동기는 바로 <font color="#ff69b4"><strong>‘바른 자세 지원’</strong></font> 기능이었어요.<br>평소 잘못된 자세 때문에 허리 부담이 컸는데, 매트리스가 교정해준다는 설명이 마음에 들었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FIcoGwFc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240306_12/1709688870689R9RmW_JPEG/110824704507037325_1720608982.jpg" alt="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후의 변화</h2></section><p>매트리스를 바꾸고 나서 첫날 밤,<br>아무래도 딱딱해서 적응이 필요할까 봐 걱정했는데 생각보다 편안했어요.<br>허리가 자연스럽게 받쳐져서 <font color="#ff69b4"><strong>푹 자는 느낌</strong></font>이었답니다.🌙</p><p>사용한 지 일주일 정도 지나니까 확실히 아침에 일어났을 때<br>무거웠던 허리 통증이 줄어든 게 느껴졌어요.<br>요즘은 하루 종일 앉아있어도 허리가 덜 아파서 일상 생활이 훨씬 편해졌답니다.</p><p>저처럼 허리 때문에 고생하는 분들이라면<br><font color="#ff69b4"><strong>한번 사용해볼 만한 매트리스</strong></font>라고 자신 있게 말할 수 있어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FIcoGwFc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240306_163/1709688885291FxgOE_JPEG/110824719111441156_2139784271.jpg" alt="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -168,7 +192,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FIcoGwFc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240306_285/1709688885434UfVgO_JPEG/110824719250860432_1572512341.jpg" alt="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점도 솔직히 말할게요</h2></section><p>개인적으로는 무게가 좀 있는 편이라<br>혼자 옮기거나 관리할 때 조금 힘들었어요.<br>하지만 그만큼 소재가 탄탄하니 장점으로 봐도 되겠죠?</p><p>그리고 하드 타입이라 처음에는 약간 딱딱하게 느껴질 수 있어요.<br>그런데 몸이 점점 적응하면서 오히려 허리가 편안해졌답니다.</p><p>전체적으로는 <font color="#ff69b4"><strong>편안함과 지지력</strong></font>을 잘 잡아줘서 만족스러웠어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FIcoGwFc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240306_220/1709688885654jl6xX_JPEG/110824719472461033_642427199.jpg" alt="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>어떤 분께 추천드릴까요?</h2></section><p>평소에 <font color="#ff69b4"><strong>허리 통증이나 피로감을 자주 느끼는 분</strong></font>들께 강력 추천해요.<br>특히 <font color="#ff69b4"><strong>바른 자세를 중요하게 생각하는 분</strong></font>들에게 딱이에요.</p><p>또한, <font color="#ff69b4"><strong>딱딱한 매트리스를 선호하는 분</strong></font>이나 오래도록 튼튼한 제품을 찾는 분들에게도 좋을 것 같아요.<br>잠자리에서 허리 편안함을 찾고 싶은 분들은 꼭 한 번 고려해 보세요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FIcoGwFc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240306_3/1709688885780xoHmb_JPEG/110824719599587262_1215707503.jpg" alt="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -192,7 +216,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 앞으로도 계속 <font color="#ff69b4"><strong>이 매트리스만 쓸 생각</strong></font>이에요.<br>허리 건강에 도움을 많이 받아서 만족도가 높답니다.😊</p><p>혹시 고민 중이라면 후기도 꼼꼼히 읽어보시고,<br>상세페이지에서 제품 특징과 가격을 비교해 보시길 추천드려요.<br>후기와 함께 보면 선택이 더 쉬워질 거예요.</p><p><font color="#ff69b4"><strong>편안한 잠자리와 건강한 허리</strong></font>를 위해 한번 도전해 보세요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FIcoGwFc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250728_240/17536627689034qdQj_JPEG/105731162470014321_1755115614.jpg" alt="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -225,7 +249,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FIcoGwFc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250728_290/1753663610610l8tMX_JPEG/87796547298945084_759275717.jpg" alt="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -233,11 +257,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>여러분도 저처럼 허리 때문에 잠 못 이루는 날이 많다면,<br>이 매트리스 한번 고민해 보세요.😉<br>사용해 보신 분들은 어떤 점이 가장 좋았는지 댓글로 공유해 주시면 서로 도움이 될 것 같아요!<br>좋아요도 살짝 눌러 주시면 큰 힘이 됩니다.</p><p>#바른허리매트리스 #허리건강침대 #슈퍼싱글매트리스 #하드타입침대 #숙면도움매트리스</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FIcoGwFc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250728_210/1753662779341Rafi5_JPEG/8200742950540795_1300979049.jpg" alt="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법" href="https://naver.me/FIcoGwFc" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250728_134/1753663625040NtaIr_JPEG/8201588652299888_604020584.jpg" alt="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -245,7 +269,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FIcoGwFc" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FIcoGwFc" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="허리 건강 매트리스 추천 바른 허리 슈퍼싱글 하드 후기와 선택법">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
