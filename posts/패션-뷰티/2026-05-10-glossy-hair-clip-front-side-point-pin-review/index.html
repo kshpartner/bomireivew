@@ -95,18 +95,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -121,7 +145,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">작고 심플한 유광집게핀으로 앞머리와 옆머리를 자연스럽게 고정할 수 있어 친구한테도 자신 있게 추천해요.</p>
     <div class="tags"><span>유광집게핀</span><span>헤어스타일</span><span>포인트핀</span><span>고정력</span><span>스타일링</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" href="https://naver.me/GgUPBeJm" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220929_264/1664411109650akENM_JPEG/65546955332261779_1497250103.jpg" alt="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -131,7 +155,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GgUPBeJm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220929_264/1664411109650akENM_JPEG/65546955332261779_1497250103.jpg" alt="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>기존에 쓰던 집게핀들은 자꾸 미끄러지고 머리가 눌려서 불편했거든요.<br>그래서 자연스러운 고정력과 예쁜 디자인을 가진 <font color="#ff69b4"><strong>유광집게핀</strong></font>을 찾게 되었어요.<br>가격도 합리적이고 후기도 좋아서 더욱 기대가 됐답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GgUPBeJm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220929_136/1664411095440mr0Fk_JPEG/65546941116446897_323095358.jpg" alt="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -150,7 +174,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>처음엔 고정력이 걱정됐지만,<font color="#ff69b4"><strong>튼튼한 집게 구조</strong></font>라며<br>구매평에서 안정적인 착용감을 본 게 결정적이었어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GgUPBeJm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220929_158/1664411107848Er2Pf_JPEG/65546953545807959_1919380991.jpg" alt="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -159,7 +183,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>옆머리를 고정하니 얼굴이 훨씬 갸름해 보이고,<br>똥머리를 포인트 주기에 딱 좋아서 매일 아침 스타일링 시간이 즐거워졌어요 😊</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GgUPBeJm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220929_282/1664411108041djVoN_JPEG/65546953739630633_671949347.jpg" alt="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -171,7 +195,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GgUPBeJm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220929_169/16644111082598fspB_JPEG/65546953953067476_87215743.jpg" alt="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -180,7 +204,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 사이즈가 한 가지라서 머리 숱이 많거나 두꺼운 분들은<br>고정력이 다소 부족할 수 있겠다는 점은 참고하시면 좋겠어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GgUPBeJm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220929_1/1664411108474kL5EU_JPEG/65546954171330377_2121571137.jpg" alt="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -189,7 +213,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또한, 똥머리나 옆머리 핀으로 자연스럽게 스타일링을 완성하고 싶은 분들,<br>가성비 좋은 헤어 액세서리를 원하는 분들에게도 잘 맞을 것 같아요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GgUPBeJm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220929_175/1664411108711tOt5K_JPEG/65546954399626289_760850220.jpg" alt="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -198,7 +222,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 처음 구매하실 때는 기본 컬러부터 시작해보시고<br>사용해보면서 스타일에 맞게 추가 구매하는 것도 좋은 방법이에요 😊</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GgUPBeJm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220929_285/1664411108985O0m4t_JPEG/65546954674519414_1139400959.jpg" alt="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -231,7 +255,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GgUPBeJm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220929_188/1664411109208y8UCJ_JPEG/65546954897066588_874842894.jpg" alt="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -240,11 +264,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>#헤어핀추천 #유광집게핀 #앞머리핀 #포인트헤어핀 #데일리헤어스타일</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GgUPBeJm" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220929_66/16644111094270x3Ip_JPEG/65546955109595603_2038597949.jpg" alt="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기" href="https://naver.me/GgUPBeJm" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220929_264/1664411109650akENM_JPEG/65546955332261779_1497250103.jpg" alt="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -252,7 +276,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/GgUPBeJm" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/GgUPBeJm" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="유광집게핀 앞머리&#183;옆머리 포인트핀 고르는법과 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
