@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">집 분위기를 따뜻하게 해줄 포토 LED 무드등 추천해요. 직접 만든 사진으로 특별함을 더할 수 있어요.</p>
     <div class="tags"><span>포토LED무드등</span><span>주문제작</span><span>사진액자</span><span>인테리어소품</span><span>선물추천</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" href="https://naver.me/F6Qbuz4M" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240205_73/1707121665673JJpH0_JPEG/108257445390399514_887845549.jpg" alt="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F6Qbuz4M" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240205_73/1707121665673JJpH0_JPEG/108257445390399514_887845549.jpg" alt="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 집에서 보내는 시간이 많아지면서<br>공간 분위기를 살릴 소품을 찾게 되었어요.<br>특히 따뜻한 무드등이 있으면<br>훨씬 편안한 기분이 들 것 같더라고요. 😊</p><p>예전에는 단순한 LED 조명을 썼는데<br>그냥 밝기 조절만 되고<br>사진이나 특별한 의미를 담을 수 없어서 아쉬웠어요.<br>그래서 이번에는 <font color="#ff69b4"><strong>나만의 사진으로 꾸밀 수 있는 무드등</strong></font>을 찾아보기 시작했답니다.</p><p>온라인에서 비슷한 제품이 너무 많아서<br>고르기가 쉽지 않았는데<br>그중에서 주문제작 포토 LED 무드등 사진 액자가<br>눈에 들어오더라고요.<br>가격도 <font color="#ff69b4"><strong>할인된 12,900원</strong></font>이라 부담 없었고,<br>후기도 꽤 좋아서 믿음이 갔어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F6Qbuz4M" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240314_176/1710386023805iTNV6_JPEG/111521922508496171_89437641.jpg" alt="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>포토 LED 무드등 선택 이유와 망설임</h2></section><p>사실 처음에는<br>가격이 너무 저렴해서<br>제품 퀄리티가 걱정됐어요.<br>그런데 여러 후기들을 보면서<br>사진 인쇄 상태도 좋고,<br>LED 조명도 은은해서 만족스럽다는 글이 많더라고요.</p><p>또 하나 마음에 들었던 건<br><font color="#ff69b4"><strong>주문제작 방식</strong></font>이어서<br>내가 직접 고른 사진으로<br>나만의 무드등을 만들 수 있다는 점이었어요.<br>집들이 선물이나 특별한 날 선물용으로도<br>딱 좋겠다는 생각이 들었답니다.</p><p>고민 끝에<br>할인 가격과 후기를 믿고 구매를 결정했어요.<br>가끔 배송이 늦는다는 후기가 있었는데<br>저는 주문 후 3일 만에 받아서 만족스러웠습니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F6Qbuz4M" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230328_2/1679999297779K48VP_JPEG/81135132565155203_2138357459.jpg" alt="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후의 달라진 분위기</h2></section><p>무드등을 설치하기 전에는<br>저녁에 조명이 너무 밝거나<br>따뜻한 느낌이 부족해서<br>편안하게 쉬기가 어려웠는데요.<br>이 무드등을 켜고 나서는<br>방 안 전체가 한층 아늑해진 느낌이에요. 🌙</p><p>특히 내가 좋아하는 가족 사진을<br>무드등으로 볼 수 있으니<br>그날그날 기분도 좋아지고<br>감성 충전 제대로 되는 느낌이에요.<br>밤에 불을 끄고 이 조명만 켜두면<br>은은한 빛 덕분에 잠도 잘 오는 것 같아요.</p><p>아이 방에 두었더니<br>아이도 무드등 켤 때마다<br>기분 좋아하면서 잠들더라고요.<br>실용적이고 따뜻한 조명이라<br>모두가 만족하는 분위기가 되었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F6Qbuz4M" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240205_131/1707121617797r5gjV_JPEG/108257397501747630_675622756.jpg" alt="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -168,7 +192,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F6Qbuz4M" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240205_115/1707121634742Ap6DF_PNG/108257414451117765_301423373.png" alt="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>조금 아쉬웠던 점과 그럼에도 좋은 이유</h2></section><p>아쉬운 점을 굳이 꼽자면<br>무드등 크기가 생각보다 조금 작아서<br>넓은 공간을 밝히기엔 부족할 수 있어요.<br>그래도 침대 옆이나 책상 위에 두기엔 딱 좋아서<br>개인적으로는 크게 불편함 없었답니다.</p><p>그리고 주문제작 과정에서<br>사진 해상도가 낮으면<br>약간 흐릿하게 나올 수 있다는 점도 알아두면 좋아요.<br>그래도 상세페이지에 가이드가 잘 되어 있어서<br>신경 써서 사진만 준비하면 문제없어요.</p><p>무드등 켤 때마다<br>내 사진이 환하게 빛나는 모습을 보면<br>이 제품을 선택한 게 참 잘했다는 생각이 들어요. 💖</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F6Qbuz4M" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240205_145/1707121634879BVjyL_PNG/108257414587377733_1370488608.png" alt="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>이런 분들께 추천해요</h2></section><p>혼자만의 공간을 아늑하게 꾸미고 싶은 분,<br>특별한 사진으로 집안을 꾸미고 싶은 분,<br>감성 인테리어 소품을 찾는 분들께 <font color="#ff69b4"><strong>강력 추천</strong></font>드려요.</p><p>또한<br>생일이나 집들이 선물로<br>개인 맞춤형 선물을 고민하는 분들께도<br>좋은 선택이 될 것 같아요.<br>아이 방이나 책상 위에 두어도 너무 귀엽답니다.</p><p>가격도 부담 없고<br>사용법도 간단해서<br>처음 무드등을 써보는 분들께도 딱 맞아요.✨</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F6Qbuz4M" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240205_37/17071216349661oINE_PNG/108257414672207723_248553663.png" alt="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -192,7 +216,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>이미 주변 지인들에게도 소개해줬을 정도로<br>재구매 의사가 확실해요.<br>다른 사진으로 또 만들어 보고 싶을 만큼 만족스럽답니다.</p><p>구매 전에는 꼭<br><font color="#ff69b4"><strong>상세페이지의 사진 가이드</strong></font>와<br>실제 후기들을 꼼꼼히 확인해 보시면<br>후회 없는 선택에 도움이 될 거예요.</p><p>저처럼<br>특별한 무드등을 찾는 분들은<br>한번쯤 살펴보시길 추천해요.😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F6Qbuz4M" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240205_80/1707121635090Ja9FD_JPEG/108257414805993424_348571669.jpg" alt="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -225,7 +249,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F6Qbuz4M" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240205_27/1707121635348PbMYE_JPEG/108257415065229207_1358471165.jpg" alt="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -233,11 +257,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>오늘 제가 소개한 주문제작 포토 LED 무드등,<br>여러분 집 공간에 감성 한 스푼 넣어보는 건 어떠세요?<br>사용하면서 느꼈던 소소한 이야기나<br>여러분이 좋아하는 사진 아이디어도 공유해주시면<br>서로 더 즐거운 이야기 나눌 수 있을 것 같아요! 💌</p><p>좋아요와 댓글은<br>제가 또 좋은 제품을 발견하는 데 큰 힘이 되니까<br>부담 없이 자유롭게 남겨 주세요! 🙌</p><p>#포토무드등 #LED조명추천 #사진액자 #주문제작무드등 #감성인테리어</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/F6Qbuz4M" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240205_190/1707121635572hnBHs_JPEG/108257415291047394_753596562.jpg" alt="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기" href="https://naver.me/F6Qbuz4M" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240205_73/1707121665673JJpH0_JPEG/108257445390399514_887845549.jpg" alt="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -245,7 +269,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/F6Qbuz4M" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/F6Qbuz4M" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="포토 LED 무드등 추천 주문제작 사진 액자 활용법과 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
