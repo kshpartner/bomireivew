@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">오쿠 두유 제조기로 직접 만든 신선한 두유와 콩비지, 순두부가 가족 모두에게 사랑받아 정말 추천할게요.</p>
     <div class="tags"><span>두유제조기</span><span>콩비지</span><span>순두부</span><span>오쿠</span><span>홈카페</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" href="https://naver.me/5ECa7UL4" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20241031_15/1730340302109H3ct6_JPEG/64473238789009081_335661324.jpg" alt="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ECa7UL4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241031_15/1730340302109H3ct6_JPEG/64473238789009081_335661324.jpg" alt="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 두유 죽 제조기를 찾아보기 시작했는데,<br>생각보다 종류도 많고 가격도 천차만별이라 선택이 쉽지 않았답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ECa7UL4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240323_7/1711183319272BgFcU_JPEG/112319102982862393_1074798023.jpg" alt="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -153,7 +177,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>후기도 꽤 신뢰가 가는 편이었고,<br>사용법도 간단하다는 점이 결정적이었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ECa7UL4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240323_225/1711183319465XKQAq_JPEG/112319103176830674_1484674966.jpg" alt="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -163,7 +187,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>직접 만든 두유는 <font color="#ff69b4"><strong>고소하고 신선한 맛</strong></font>이 일품이라<br>가족들도 모두 좋아했어요.🥰</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ECa7UL4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240323_138/1711183319806RojSh_JPEG/112319103513953978_872620908.jpg" alt="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -175,7 +199,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ECa7UL4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240323_106/1711183321461UBQ6e_JPEG/112319105168026041_179446074.jpg" alt="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -185,7 +209,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그럼에도 불구하고 <font color="#ff69b4"><strong>깔끔한 디자인</strong></font>과<br>편리한 조작법 덕분에 만족도가 높았어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ECa7UL4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240323_58/1711183321680647xf_JPEG/112319105385249590_852821547.jpg" alt="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -195,7 +219,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 위생과 내구성을 중요하게 생각하는 분들께도<br>후회 없는 선택이 될 거예요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ECa7UL4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240323_145/17111833219130Aduo_JPEG/112319105606762982_310322961.jpg" alt="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -205,7 +229,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>저처럼 신선한 두유와 콩비지를 직접 만들어<br>건강한 식생활을 원하는 분들께 강력 추천해요!😉</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ECa7UL4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240323_113/1711183322448f7z4F_JPEG/112319106151567109_1427924523.jpg" alt="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -238,7 +262,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ECa7UL4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240323_69/1711183339629gBpMq_JPEG/112319123332230200_1828491504.jpg" alt="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -249,11 +273,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>좋아요와 댓글은 저에게 큰 힘이 된답니다! 감사합니다.</p><p>#두유제조기 #오쿠두유제조기 #콩비지만들기 #순두부제조기 #건강한집밥</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ECa7UL4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240323_250/1711183322773KGIq0_JPEG/112319106482494649_1318663162.jpg" alt="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기" href="https://naver.me/5ECa7UL4" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20241031_15/1730340302109H3ct6_JPEG/64473238789009081_335661324.jpg" alt="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -261,7 +285,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5ECa7UL4" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5ECa7UL4" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="두유 제조기 추천 오쿠 콩비지 순두부 만들기 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
