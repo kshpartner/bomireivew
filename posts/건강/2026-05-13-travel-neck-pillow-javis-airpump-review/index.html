@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">여행할 때 목이 불편하다면 자비스 에어펌프 목베개가 정말 도움이 될 거예요. 편안하고 휴대도 간편하답니다.</p>
     <div class="tags"><span>목베개</span><span>여행용품</span><span>휴대용</span><span>목건강</span><span>에어펌프</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법" href="https://naver.me/5ajqUFln" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법" href="https://naver.me/5ajqUFln" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240130_48/1706592617108vipgN_JPEG/33895300959879862_917014060.jpg" alt="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ajqUFln" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ajqUFln" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240130_48/1706592617108vipgN_JPEG/33895300959879862_917014060.jpg" alt="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 비행기나 장시간 버스 이동 시<br><font color="#ff69b4"><strong>목이 뻣뻣해지고 불편한 경험</strong></font>이 많았거든요.<br>그래서 이번에는 꼭 좋은 제품을 골라보자 마음먹었답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ajqUFln" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ajqUFln" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240130_87/17065926470174o5yO_JPEG/33895330880106293_1633854175.jpg" alt="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -151,7 +175,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 기내용으로 딱 맞는<br><font color="#ff69b4"><strong>휴대성과 편안함</strong></font>이 중요했어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ajqUFln" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ajqUFln" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20190909_185/1568011109055F1BUd_JPEG/5371847685049111_1744247939.jpg" alt="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -161,7 +185,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가격도 <strong>할인가 30,900원</strong>으로<br>가성비가 괜찮아 보였고,<br>실제 사용자 리뷰가 믿음직스러웠어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ajqUFln" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ajqUFln" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240130_290/1706592578871JK1Kz_JPEG/33895262731803345_498674479.jpg" alt="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -171,7 +195,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 <strong>공기를 빼고 접으면<br>가방에 쏙 들어가는 크기</strong>라서<br>휴대하기도 무척 편리했답니다.🎒</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5ajqUFln" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5ajqUFln" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20190909_37/1568011124704pAHqA_JPEG/5371863335719673_1239258194.jpg" alt="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -229,7 +253,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>서로 여행 꿀팁도 공유하면서<br>더 즐거운 여행 준비해봐요~✈️</p>
 <p>#여행용목베개 #휴대용목베개 #기내용목베개 #자비스에어펌프 #여행필수품</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법" href="https://naver.me/5ajqUFln" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법" href="https://naver.me/5ajqUFln" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240130_48/1706592617108vipgN_JPEG/33895300959879862_917014060.jpg" alt="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -237,7 +261,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5ajqUFln" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5ajqUFln" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="여행용 목베개 추천 자비스 에어펌프 휴대용 기내용 리뷰와 사용법">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
