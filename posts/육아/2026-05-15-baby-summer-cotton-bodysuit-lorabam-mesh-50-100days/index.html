@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">우리 아기 피부에 좋은 시원한 여름용 바디수트를 찾는다면, 로라밤 메쉬 민소매 바디수트 추천드려요.</p>
     <div class="tags"><span>유아옷</span><span>여름바디수트</span><span>로라밤</span><span>코튼메쉬</span><span>민소매</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법" href="https://naver.me/5impHZ5z" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법" href="https://naver.me/5impHZ5z" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260421_117/1776759179533BDH5A_JPEG/131587734471608923_1202266642.jpg" alt="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5impHZ5z" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5impHZ5z" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260421_117/1776759179533BDH5A_JPEG/131587734471608923_1202266642.jpg" alt="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 <font color="#ff69b4"><strong>여름용 통기성 좋은 바디수트</strong></font>를 찾게 됐어요. <br>특히 50일, 100일 된 아기들이 입기 좋은 사이즈와 디자인이 마음에 들더라고요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5impHZ5z" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5impHZ5z" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260421_42/17767591714275U6Kd_JPEG/110892049744879157_1761465661.jpg" alt="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -151,7 +175,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>처음엔 사이즈가 맞을지, 소재가 정말 시원할지 망설였지만 <font color="#ff69b4"><strong>후기들이 긍정적이라 안심</strong></font>하고 주문했어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5impHZ5z" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5impHZ5z" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260421_156/1776759178480blkQY_JPEG/131587733419675750_960559051.jpg" alt="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -161,7 +185,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>50일, 100일 아기용 사이즈라 딱 맞는 핏이어서 입히기도 편하고, 사진 찍을 때도 너무 귀여워서 만족도가 컸어요. 😊</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5impHZ5z" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5impHZ5z" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260421_297/17767591788536Fu3T_JPEG/131587733791174777_1394342777.jpg" alt="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>직접 써보니 아기의 피부 건강을 위해 소재 선택이 정말 중요하다는 걸 다시 한 번 느꼈어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5impHZ5z" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5impHZ5z" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260421_60/1776759179254kAdVY_JPEG/131587734193111755_2007769733.jpg" alt="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -224,7 +248,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>댓글로 <font color="#ff69b4"><strong>아기 여름옷 고민</strong></font>이나 추천템 공유해주시면 서로 도움이 될 것 같아요! 😊</p>
 <p>#유아바디수트 #아기여름옷 #신생아옷추천 #로라밤바디수트 #코튼메쉬민소매</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법" href="https://naver.me/5impHZ5z" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법" href="https://naver.me/5impHZ5z" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260421_117/1776759179533BDH5A_JPEG/131587734471608923_1202266642.jpg" alt="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -232,7 +256,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5impHZ5z" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5impHZ5z" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="유아 여름 코튼 바디수트 추천 로라밤 메쉬 민소매 50일 100일 활용법">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
