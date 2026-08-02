@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">캠핑용으로 좋은 벨락 코팅 프라이팬 24cm, 사용해보니 믿음 가고 편리하네요. 추천드려요!</p>
     <div class="tags"><span>캠핑용품</span><span>프라이팬</span><span>코팅팬</span><span>가성비</span><span>사용후기</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기" href="https://naver.me/xXnEw3Af" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기" href="https://naver.me/xXnEw3Af" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230414_114/168146001991961bYo_JPEG/16192678890764349_719047754.jpg" alt="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xXnEw3Af" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xXnEw3Af" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230414_114/168146001991961bYo_JPEG/16192678890764349_719047754.jpg" alt="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 이번에 <font color="#ff69b4"><strong>벨락 코팅 프라이팬 24cm</strong></font>을 찾아보게 됐어요.<br>특히 캠핑용으로 적당한 크기와 코팅 내구성이 중요했죠.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xXnEw3Af" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xXnEw3Af" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250408_163/17440939778051VdzP_JPEG/24876214237680480_1274289534.jpg" alt="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 무엇보다 벨락 브랜드가 <font color="#ff69b4"><strong>내구성과 코팅 기술</strong></font>에서 평이 좋아서<br>한 번 믿고 써보기로 했어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xXnEw3Af" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xXnEw3Af" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230414_215/16814600193447Awsl_JPEG/16192678316911031_1212884172.jpg" alt="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -162,7 +186,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>세척도 정말 간편해서, 물로 가볍게 씻고 닦기만 하면<br>금세 깨끗해져서 캠핑 후 정리 시간이 크게 줄었어요. 😍</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xXnEw3Af" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xXnEw3Af" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230414_12/1681460019574dxLMA_JPEG/16192678549469901_1549112952.jpg" alt="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -172,7 +196,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>셋째, <font color="#ff69b4"><strong>24cm 사이즈가 적당해 여러 요리에 두루 활용 가능</strong></font>해 캠핑 요리 폭이 넓어졌어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xXnEw3Af" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xXnEw3Af" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230414_88/1681460019734bndUV_JPEG/16192678707887046_983429387.jpg" alt="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -224,7 +248,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>여러분도 캠핑용 프라이팬 고민하신다면,<br>사용해본 경험이나 요리 팁 댓글로 나눠주세요!<br>함께 이야기 나누면 더 즐거울 것 같아요.</p>
 <p>#캠핑프라이팬 #벨락코팅팬 #캠핑요리 #가성비주방용품 #24cm프라이팬</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기" href="https://naver.me/xXnEw3Af" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기" href="https://naver.me/xXnEw3Af" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230414_114/168146001991961bYo_JPEG/16192678890764349_719047754.jpg" alt="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -232,7 +256,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xXnEw3Af" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xXnEw3Af" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="캠핑 프라이팬 추천 벨락 코팅 24cm 가성비 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
