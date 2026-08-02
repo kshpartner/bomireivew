@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">스승의날 선물 고민되면 이 장미 카네이션 무드등 추천할게요, 공간도 따뜻해져서 좋아요.</p>
     <div class="tags"><span>장미</span><span>카네이션</span><span>스승의날</span><span>무드등</span><span>선물추천</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" href="https://naver.me/GXFqe8rM" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220418_200/1650285018512oAQhd_JPEG/51420864188778538_1039596379.jpg" alt="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GXFqe8rM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220418_200/1650285018512oAQhd_JPEG/51420864188778538_1039596379.jpg" alt="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>스승의날이 다가오면서 어떤 선물을 준비할까 고민이 많았어요.<br>매년 똑같은 꽃이나 소소한 선물이 조금은 식상하게 느껴지더라고요.</p><p>그래서 이번에는 <font color="#ff69b4"><strong>특별하면서도 오래도록 기억에 남는 선물</strong></font>을 찾고 싶었어요.<br>바로 장미 카네이션 꽃 무드등이란 제품을 발견했답니다.🌹</p><p>이 무드등은 꽃과 조명이 결합되어 있어서<br>단순한 꽃보다 <font color="#ff69b4"><strong>공간 분위기도 살리고 실용성도 갖춘 아이템</strong></font>이라는 점이 눈에 쏙 들어왔죠.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GXFqe8rM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220423_52/1650706649547MXFyW_JPEG/51842429025293453_230369841.jpg" alt="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 장미 카네이션 무드등을 고르게 되었나?</h2></section><p>사실 꽃 선물은 금방 시들고 버리게 되는 게 늘 아쉬웠어요.<br>그래서 평소에 사용할 수 있고 예쁜 장식도 되는 무드등을 찾게 되었답니다.</p><p>시중에 비슷한 조명들이 많았지만<br>장미와 카네이션이 함께 있어 스승의날 느낌도 제대로 살릴 수 있었던 게 큰 장점이었어요.</p><p>가격도 <font color="#ff69b4"><strong>26,800원</strong></font>으로 부담스럽지 않아서<br>가성비 좋게 느껴졌던 점도 구매를 결정하게 만든 이유랍니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GXFqe8rM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220511_41/1652272839285wl4Uk_JPEG/53408734756958806_1331308617.jpg" alt="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 달라진 내 방 분위기</h2></section><p>무드등을 켜기 전에는 방 한쪽이 좀 휑하고 어두운 느낌이었는데요.<br>조명을 켜자마자 은은한 장미빛이 공간을 포근하게 감싸주었어요.</p><p>특히 책상이나 침대 옆에 두면<br>낮에는 예쁜 꽃 장식, 밤에는 따뜻한 조명으로 1석 2조 효과가 확실했답니다.😊</p><p>또 스승의날 선물로 드렸는데,<br>선생님께서도 너무 좋아하시며 집안 어디에 둬도 잘 어울린다고 말씀해주셨어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GXFqe8rM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220418_147/1650285059346rqzgW_JPEG/51420905042831731_1716015715.jpg" alt="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -168,7 +192,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GXFqe8rM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220418_41/1650285015933tPyOR_JPEG/51420861610589838_1176524892.jpg" alt="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점도 솔직하게</h2></section><p>조명이 USB 충전 방식이라 편리하지만,<br>가끔 충전 시간이 조금 길게 느껴질 때가 있어요.</p><p>그리고 크기가 작아서 공간을 크게 채우진 못하지만,<br>그래도 부담 없이 어디에나 두기 좋은 사이즈라는 점은 장점이랍니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GXFqe8rM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220418_154/1650285016500huLSU_JPEG/51420862139892082_2014295119.jpg" alt="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 특히 추천할까?</h2></section><p>꽃을 좋아하지만 금방 시드는 게 아쉬웠던 분들,<br>또 <font color="#ff69b4"><strong>스승의날 선물</strong></font>이나 특별한 날에 의미 있는 무드등을 찾는 분들께 추천드리고 싶어요.</p><p>집이나 사무실 책상 위에 두기 좋은 크기와 디자인이라<br>은은한 조명을 좋아하는 분들도 만족하실 거예요.💡</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GXFqe8rM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220418_180/1650285017043MqYDS_JPEG/51420862721450323_730398579.jpg" alt="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -192,7 +216,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 이미 다른 가족 선물용으로도 또 주문하려고 해요.<br>후기와 상세페이지 꼼꼼히 살펴보시면 선택에 도움 될 거예요.</p><p>가격 대비 디자인과 활용도가 좋아서<br>가성비 좋은 선물로 추천드리고 싶답니다.🎁</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GXFqe8rM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220418_208/1650285057686TQwxe_JPEG/51420903332419381_1811352040.jpg" alt="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -225,7 +249,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GXFqe8rM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220418_244/1650285058764kQn7d_JPEG/51420903890253730_1865190238.jpg" alt="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -235,11 +259,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>#스승의날선물 #꽃무드등 #장미카네이션 #로즈데이선물 #감성인테리어</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GXFqe8rM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220418_46/165029089849965gvQ_JPEG/51426786955219370_987330276.jpg" alt="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법" href="https://naver.me/GXFqe8rM" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220418_200/1650285018512oAQhd_JPEG/51420864188778538_1039596379.jpg" alt="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -247,7 +271,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/GXFqe8rM" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/GXFqe8rM" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="꽃 무드등 추천 스승의날 선물로 좋은 장미 카네이션 활용법">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
