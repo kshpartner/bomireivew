@@ -95,18 +95,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -121,7 +145,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">좁은 주방도 정돈할 수 있는 도어형 렌지장과 밥솥장, 믿음 가는 추천 드려요.</p>
     <div class="tags"><span>렌지장</span><span>밥솥장</span><span>광파오븐</span><span>도어형선반</span><span>주방수납</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰" href="https://naver.me/FfsABcq2" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰" href="https://naver.me/FfsABcq2" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230729_195/1690617138559VindP_JPEG/26714326534965015_592771877.jpg" alt="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -131,7 +155,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FfsABcq2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FfsABcq2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230729_195/1690617138559VindP_JPEG/26714326534965015_592771877.jpg" alt="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -139,7 +163,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요 여러분~😊 오늘은 제가 요즘 정말 만족하며<br>사용하고 있는 <font color="#ff69b4"><strong>렌지장 광파오븐장 전기밥솥선반</strong></font>을 소개해볼게요.<br>저도 한동안 주방 공간 때문에 꽤나 고민했거든요.</p><p>주방이 좁다 보니 렌지랑 밥솥 놓을 자리가 애매했어요.<br>특히 밥솥 놓는 곳이 부족해서 매번 불편했죠.</p><p>그래서 깔끔하면서도 공간을 잘 활용할 수 있는 <font color="#ff69b4"><strong>도어형 밥솥장</strong></font>을 찾다가 이 제품을 알게 됐답니다.<br>가격도 <font color="#ff69b4"><strong>할인된 49,800원</strong></font>이라서 고민 끝에 바로 구매했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FfsABcq2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FfsABcq2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240829_2/1724921027401tAGDc_JPEG/42013850336307260_1386895315.jpg" alt="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -147,7 +171,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 이 제품을 선택했을까요?</h2></section><p>비슷한 렌지장이나 밥솥장이 많아서 처음엔 조금 망설였어요.<br>하지만 후기를 꼼꼼히 읽어보니 튼튼하다는 평이 많더라고요.</p><p>그리고 무엇보다 <font color="#ff69b4"><strong>도어형 선반</strong></font>이 마음에 쏙 들었어요.<br>밥솥을 꺼낼 때 손잡이만 살짝 잡으면 편하게 쏙 나오니까요.</p><p>가격도 부담스럽지 않아서, 가성비 좋은 선택 같았어요.<br>주변에서 추천하는 분들도 많았고 신뢰가 갔답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FfsABcq2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FfsABcq2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230729_206/1690617137212RUf6t_JPEG/26714325188571018_309567361.jpg" alt="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -155,7 +179,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후의 확실한 차이</h2></section><p>예전엔 밥솥을 매번 바닥에 두거나 좁은 식탁 구석에 놓아야 해서<br>요리할 때마다 공간이 답답했어요.</p><p>근데 이 렌지장으로 바꾸고 나니, 주방이 훨씬 정돈된 느낌이에요.<br>밥솥도 도어형 선반 덕분에 꺼내고 넣기가 너무 편하더라고요.</p><p>광파오븐도 올려놓으니 한 곳에서 다 해결돼서 시간도 절약되고<br>요리하는 재미가 더 생긴 것 같아요.🍳</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FfsABcq2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FfsABcq2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230729_179/1690617137335SMvLx_JPEG/26714325309547866_1439270703.jpg" alt="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -165,7 +189,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FfsABcq2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FfsABcq2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230729_137/1690617137550k27rD_JPEG/26714325524507847_501525669.jpg" alt="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -173,7 +197,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점도 솔직하게</h2></section><p>사실 처음엔 조립이 좀 헷갈렸던 부분이 있었어요.<br>설명서가 좀 더 상세했으면 하는 바람이 있었답니다.</p><p>그리고 선반 높이가 조금만 더 조절 가능했으면 좋겠는데<br>그래도 기본적으로 잘 맞아서 크게 불편하지는 않았어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FfsABcq2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FfsABcq2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230729_196/1690617137843D3rqt_JPEG/26714325817288248_1050999426.jpg" alt="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -181,7 +205,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천할까요?</h2></section><p>주방 공간이 좁거나, 렌지와 밥솥을 한꺼번에 깔끔하게 정리하고 싶은 분들께 강력 추천해요.<br>특히 <font color="#ff69b4"><strong>혼자 사는 분들</strong></font>이나 신혼부부에게 딱 맞는 제품이에요.</p><p>또한 가성비 좋은 주방 가구를 찾는 분들이라면 이 제품이 만족스러울 거라 생각해요.<br>꼭 참고해 보시길 바랄게요!✨</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FfsABcq2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FfsABcq2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230729_153/1690617138046cz9is_JPEG/26714326020113932_91530529.jpg" alt="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -189,7 +213,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 마지막 팁</h2></section><p>저는 개인적으로 너무 만족해서 주변에도 추천했어요.<br>다음에 주방 정리할 일이 생기면 또 구매할 의향이 있답니다.</p><p>혹시 고민된다면 후기와 상세페이지를 함께 보면서<br>꼼꼼히 비교해보시는 걸 추천드려요.😊</p><p><font color="#ff69b4"><strong>할인가 49,800원</strong></font>이라는 가격도 부담 없고,<br>실용성까지 뛰어나니까요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FfsABcq2" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FfsABcq2" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230729_256/16906171383211Ol7z_JPEG/26714326296815822_1005407491.jpg" alt="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -218,7 +242,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>여러분도 주방 정리 때문에 고민이라면,<br>이 렌지장 광파오븐장 전기밥솥선반 한번 살펴보세요!<br>사용해본 분들의 후기나 궁금한 점 댓글로 알려주시면<br>더 자세히 알려드릴게요~ 함께 이야기 나눠요!💬</p><p>#주방수납 #렌지장추천 #밥솥선반 #도어형선반 #주방정리꿀팁</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰" href="https://naver.me/FfsABcq2" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰" href="https://naver.me/FfsABcq2" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230729_195/1690617138559VindP_JPEG/26714326534965015_592771877.jpg" alt="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -226,7 +250,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FfsABcq2" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FfsABcq2" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="렌지장 &amp; 밥솥장 추천 꿀팁 광파오븐 도어형 선반 활용법 리뷰">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
