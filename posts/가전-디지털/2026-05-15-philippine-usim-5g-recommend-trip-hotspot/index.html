@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">필리핀 여행 준비할 때 정말 도움이 될 만한 5G 유심과 핫스팟 정보예요. 믿고 추천해도 좋아요.</p>
     <div class="tags"><span>필리핀유심</span><span>5G</span><span>여행핫스팟</span><span>보홀</span><span>세부</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁" href="https://naver.me/FaeSTFrD" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁" href="https://naver.me/FaeSTFrD" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260228_212/1772274982759CwHdR_JPEG/40934417458714256_1310358182.jpg" alt="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FaeSTFrD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FaeSTFrD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260228_212/1772274982759CwHdR_JPEG/40934417458714256_1310358182.jpg" alt="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>여행 준비할 때 가장 고민하는 것 중 하나가 바로 <font color="#ff69b4"><strong>현지에서의 인터넷</strong></font>이에요.📱</p><p>이번에 필리핀 보홀, 세부, 보라카이로 여행을 계획하면서<br>5G 유심칩과 핫스팟을 어떻게 준비할지 정말 많이 고민했거든요.</p><p>이전 여행 때는 현지 유심 구매가 번거롭기도 하고, 데이터가 부족해서 불편한 기억이 있어서요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FaeSTFrD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FaeSTFrD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260317_12/1773722075943R1tp2_JPEG/55118093659159126_943866184.jpg" alt="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>필리핀유심 5G 제품을 고른 이유</h2></section><p>시장에 워낙 다양한 필리핀 유심들이 많아서<br>고르기가 쉽지 않았어요. 그래서 후기를 꼼꼼히 살펴봤답니다.</p><p><font color="#ff69b4"><strong>1일 500MB 무제한</strong></font>이라는 점이 가장 눈에 띄었어요.<br>가격도 할인가 1,000원이라 부담 없이 시도해 볼 수 있었죠.</p><p>특히 보홀, 세부, 보라카이에서 모두 사용 가능하고 핫스팟 기능까지 지원된다는 게 결정적인 구매 동기였어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FaeSTFrD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FaeSTFrD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260315_275/1773542572126mbYjb_JPEG/28822329413258887_746438753.jpg" alt="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 확실히 달라진 점</h2></section><p>사용 전에는 인터넷 연결이 자주 끊기거나 속도가 느려서<br>답답했던 적이 많았는데, 이 제품을 쓰고 나서 확실히 달랐어요.</p><p>여행지 어디서든 5G 속도를 안정적으로 사용할 수 있어서<br>카페에서 사진 올리고, 지도 검색하는 것도 스트레스가 없었답니다.</p><p>여행 중 가족들과도 영상통화가 끊기지 않아<br>더 자주 연락할 수 있었던 점이 가장 좋았어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FaeSTFrD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FaeSTFrD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260228_223/1772274935737frKF6_JPEG/106407756608864554_677838894.jpg" alt="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -168,7 +192,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FaeSTFrD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FaeSTFrD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260314_278/1773459261751M1k1d_JPEG/107592080355786676_1589137460.jpg" alt="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점도 솔직히 말하자면</h2></section><p>사실 무제한이라고 해도 500MB 이후에는 속도 제한이 조금 느껴지긴 했어요.<br>하지만 일상적인 인터넷 사용에는 큰 불편함이 없었답니다.</p><p>그리고 처음 유심을 꽂고 설정하는 과정이 조금 헷갈릴 수 있었는데,<br>친절한 가이드가 있어서 쉽게 해결할 수 있었어요.</p><p>그래도 <font color="#ff69b4"><strong>이 가격에 이 정도 품질이라면 충분히 만족</strong></font>스러웠어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FaeSTFrD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FaeSTFrD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260228_270/1772274959617hyj17_JPEG/19636524288987401_1177293869.jpg" alt="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -186,7 +210,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="warm-point"><strong>여러 기기를 동시에 연결하는 핫스팟 기능이 필요한 분들께 꼭 권하고 싶어요. &#127796;</strong></div><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FaeSTFrD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FaeSTFrD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260228_227/1772274970384FJfrt_JPEG/15111328631669385_541281060.jpg" alt="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -194,7 +218,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 유도 팁</h2></section><p>여행할 때마다 인터넷 걱정이 컸는데,<br>이번에 제대로 준비해서 너무 마음 편했어요.</p><p>후기와 상세페이지 꼼꼼히 비교해 보시고<br><font color="#ff69b4"><strong>필리핀유심 5G 제품</strong></font>으로 편안한 여행 즐겨보시길 추천해요.</p><p>가격도 할인가 1,000원이라 부담 없이 체험해보세요!✨</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FaeSTFrD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FaeSTFrD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260228_225/1772274971779l8NL5_JPEG/15111330097579103_1542039637.jpg" alt="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -223,7 +247,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>여러분도 여행 중 인터넷 때문에 불편했던 경험 있으신가요?😊<br>댓글로 여러분의 꿀팁이나 경험 공유해 주세요.</p><p>필리핀 여행 준비하시는 분들께 조금이라도 도움이 되었으면 좋겠어요!<br>좋아요와 댓글은 언제나 큰 힘이 된답니다.💖</p><p>#필리핀유심 #5G유심추천 #보홀유심 #세부여행준비 #보라카이인터넷</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁" href="https://naver.me/FaeSTFrD" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁" href="https://naver.me/FaeSTFrD" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260228_212/1772274982759CwHdR_JPEG/40934417458714256_1310358182.jpg" alt="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -231,7 +255,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FaeSTFrD" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FaeSTFrD" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="필리핀유심 5G 추천 보홀 세부 보라카이 여행용 핫스팟 사용법과 구매팁">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
