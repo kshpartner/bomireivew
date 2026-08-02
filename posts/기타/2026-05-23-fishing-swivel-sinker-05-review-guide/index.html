@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">민물 낚시할 때 꼭 필요한 회전 도래! 사용해보니 찌 움직임이 훨씬 부드러워서 믿고 추천할게.</p>
     <div class="tags"><span>낚시</span><span>봉돌</span><span>스위벨</span><span>민물낚시</span><span>회전도래</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드" href="https://naver.me/FBMeqysX" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드" href="https://naver.me/FBMeqysX" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260316_73/1773636432095CAYil_JPEG/53030379183692558_921853539.jpg" alt="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMeqysX" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMeqysX" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260316_73/1773636432095CAYil_JPEG/53030379183692558_921853539.jpg" alt="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 이번에 <font color="#ff69b4"><strong>성동 분납 회전 도래 0.5호</strong></font> 제품을 찾아보게 됐어요. 낚시방이나 온라인 후기들이<br> 꽤 좋아서 한번 써보고 싶다는 생각이 들었죠. 가격도 할인가 1,500원이라 부담도 적었고요😊</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMeqysX" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMeqysX" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260316_57/1773636426976o7jc1_JPEG/39229776062652379_346666749.jpg" alt="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -150,7 +174,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가격 대비 후기도 많고, 특히 성동 브랜드가 낚시인들 사이에서<br> 신뢰가 있는 편이라서 믿음이 갔어요. 망설였던 건 작은 사이즈라서<br> 튼튼함이 걱정되긴 했지만, 후기에서 내구성이 좋다는 말을 보고<br> 구매를 결정했답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMeqysX" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMeqysX" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240717_8/1721192306943t84Fz_JPEG/7748339569197991_56327169.jpeg" alt="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -159,7 +183,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>낚시할 때 손맛도 달라지고, 확실히 채비 관리가 쉬워져서<br> 집중력이 높아졌습니다. 무엇보다 낚시하는 시간이 더 즐거워졌다는 점이<br> 가장 크게 와닿았어요🐟</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMeqysX" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMeqysX" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240717_47/1721192307241iTpHO_JPEG/2904280291955963_1882084142.jpeg" alt="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -171,7 +195,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMeqysX" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMeqysX" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240717_88/1721192307341uD6j3_JPEG/2904280393174566_11009144.jpeg" alt="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -220,7 +244,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>함께 이야기 나누면서 더 좋은 낚시 팁도 공유하면<br> 좋을 것 같아요. 좋아요도 꾹 눌러주시고요🐟</p>
 <p>#낚시용품 #민물낚시 #봉돌추천 #회전도래 #낚시채비</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드" href="https://naver.me/FBMeqysX" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드" href="https://naver.me/FBMeqysX" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260316_73/1773636432095CAYil_JPEG/53030379183692558_921853539.jpg" alt="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -228,7 +252,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FBMeqysX" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FBMeqysX" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="낚시 봉돌 추천 민물 스위벨 도래 0.5호 사용후기와 구매가이드">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
