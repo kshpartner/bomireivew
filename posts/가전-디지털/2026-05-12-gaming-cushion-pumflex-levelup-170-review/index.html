@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">장시간 게이밍으로 허리 통증이 고민이라면 펌플렉스 쿠션이 정말 도움될 거예요. 신뢰할 만한 리뷰에 부담없는 가격이라 살짝 추천드려요.</p>
     <div class="tags"><span>게이밍쿠션</span><span>허리통증완화</span><span>펌플렉스</span><span>편안한자세</span><span>장시간사용</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" href="https://naver.me/5NeAvXKY" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" href="https://naver.me/5NeAvXKY" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250811_109/1754879619734ykUj1_JPEG/38081016564022205_1420269676.jpg" alt="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5NeAvXKY" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5NeAvXKY" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250811_109/1754879619734ykUj1_JPEG/38081016564022205_1420269676.jpg" alt="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 <font color="#ff69b4"><strong>장시간 게이밍</strong></font>을 하다 보니<br>허리와 등 쪽이 너무 불편했어요.</p><p>특히 오래 앉아있으면 허리 통증이 심해져서<br>편안하게 지지해 줄 쿠션이 필요했답니다.</p><p>그래서 <font color="#ff69b4"><strong>편안한 자세 유지</strong></font>에 도움 되는 쿠션을 찾다가<br>펌플렉스 레벨업쿠션 170을 알게 되었어요. 🎮</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5NeAvXKY" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5NeAvXKY" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260411_5/1775842244414zdhM8_JPEG/38833704547944133_2114502258.jpg" alt="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 펌플렉스 레벨업쿠션을 선택했을까?</h2></section><p>시중에 게이밍 쿠션이 정말 많아서 고민이 많았는데,<br>리뷰들이 꽤 신뢰가 가더라고요.</p><p>가격도 <font color="#ff69b4"><strong>할인가 78,900원</strong></font>이라 부담스럽지 않고,<br>뭔가 튼튼해 보이는 느낌이 들어 선택하게 되었죠.</p><p>특히 <font color="#ff69b4"><strong>반달형 디자인</strong></font>이 독특해서<br>등과 허리를 자연스럽게 감싸줄 것 같았어요.</p><p>처음엔 가격 때문에 조금 망설였지만,<br>후기들을 꼼꼼히 살펴보고 결정했습니다. 👍</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5NeAvXKY" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5NeAvXKY" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260113_84/17682643780054X0AE_JPEG/12537022293608841_2007138989.jpg" alt="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 확실히 달라진 편안함</h2></section><p>사용하기 전에는 게이밍 의자가 푹신한 편임에도<br>장시간 앉으면 허리가 아팠어요.</p><p>그런데 펌플렉스 쿠션을 사용한 뒤로는<br>앉아있는 시간이 훨씬 길어져도 통증이 줄었답니다.</p><p>실제로 컴퓨터 앞에서 게임할 때마다<br>쿠션이 허리를 잘 받쳐줘서 자세가 자연스러워졌어요.</p><p>뜨개질하거나 독서할 때도 편안해서,<br>여러 상황에서 유용하게 쓰고 있습니다. 🧶📚</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5NeAvXKY" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5NeAvXKY" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250807_59/1754530658623YXdX3_JPEG/666871608896702_55762676.jpg" alt="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5NeAvXKY" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5NeAvXKY" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250807_117/1754531094278WB27R_JPEG/2935687150419617_1930266557.jpg" alt="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>조금 아쉬웠던 점과 그래도 좋았던 부분</h2></section><p>쿠션 자체가 약간 무게감이 있어서<br>휴대하기에는 조금 불편했어요.</p><p>하지만 무게 때문에 오히려 안정감이 생겼고,<br>내구성도 좋아서 오래 쓸 수 있을 것 같아요.</p><p>그리고 관리가 쉽도록 커버가 분리 가능하면 좋겠다는 생각도 들었지만,<br>그래도 소재가 부드럽고 피부에 자극이 적어 만족스럽습니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5NeAvXKY" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5NeAvXKY" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250807_48/1754544838580y4DTx_JPEG/86123635509312452_1128109140.jpg" alt="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 이 쿠션을 추천할까?</h2></section><p>특히 <font color="#ff69b4"><strong>장시간 앉아서 작업하거나 게임하는 분</strong></font>께 추천하고 싶어요.</p><p>또 <font color="#ff69b4"><strong>뜨개질, 독서, 미용실 의자</strong></font> 등에서 허리 지지가 필요한 분들에게도 좋아요.</p><p>편안한 자세를 찾고 싶지만<br>너무 복잡한 제품은 싫은 분들에게도 딱 맞는 제품이에요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5NeAvXKY" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5NeAvXKY" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250801_138/1754039305012wNqSi_JPEG/29657358482792347_2056962817.jpg" alt="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 자연스러운 구매 유도</h2></section><p>저는 이미 재구매를 고민 중인데요,<br>다른 색상이나 크기도 궁금해요.</p><p>후기와 상세페이지를 꼼꼼히 비교해 보시고,<br>편안한 자세를 원하시는 분들은 한번쯤 사용해보시길 추천합니다. 😊</p><p>특히 이 가격대에서 이렇게 탄탄한 지지력과 디자인을<br>찾기 쉽지 않으니까요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5NeAvXKY" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5NeAvXKY" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250801_207/1754039304632ohmVt_JPEG/29657358097582926_1237597852.jpg" alt="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -223,14 +247,14 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5NeAvXKY" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5NeAvXKY" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250801_83/1754039304140CCp0F_JPEG/29657357606786498_758832890.jpg" alt="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
 <div class="content-block">
 <p>오늘 제 리뷰가 도움이 되셨다면<br>좋아요와 댓글로 여러분의 경험이나 궁금한 점을 나눠주세요! 💬</p><p>여러분이 직접 사용해 본 쿠션이나 자세 교정 팁도 기다릴게요.</p><p>앞으로도 편안한 생활에 도움이 되는 제품 리뷰로 찾아뵙겠습니다. 감사합니다! 🌸</p><p>#게이밍쿠션 #펌플렉스레벨업쿠션 #허리지지쿠션 #편안한쿠션추천 #장시간앉기</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" href="https://naver.me/5NeAvXKY" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기" href="https://naver.me/5NeAvXKY" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250811_109/1754879619734ykUj1_JPEG/38081016564022205_1420269676.jpg" alt="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -238,7 +262,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5NeAvXKY" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5NeAvXKY" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="게이밍 쿠션 추천 펌플렉스 레벨업쿠션 170 활용법과 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
