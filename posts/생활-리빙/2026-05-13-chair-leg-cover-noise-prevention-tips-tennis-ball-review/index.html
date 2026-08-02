@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">조용한 집에서 의자 소음 때문에 고생하는 친구에게 꼭 추천하고 싶은 발커버 후기입니다.</p>
     <div class="tags"><span>의자발커버</span><span>소음방지</span><span>재택근무</span><span>테니스공</span><span>자가점착</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="의자발커버 소음방지 팁과 테니스공 활용 후기" href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="의자발커버 소음방지 팁과 테니스공 활용 후기" href="https://naver.me/xfbk9GFl" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20231023_172/1698037951979LG7w2_JPEG/1411359965559734_630708711.jpg" alt="의자발커버 소음방지 팁과 테니스공 활용 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xfbk9GFl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231023_172/1698037951979LG7w2_JPEG/1411359965559734_630708711.jpg" alt="의자발커버 소음방지 팁과 테니스공 활용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요 여러분~😊<br>오늘은 제가 집에서 정말 잘 사용하고 있는 <font color="#ff69b4"><strong>자가점착 의자 발커버</strong></font>를 소개해보려고 해요.</p><p>요즘 집에서 재택근무를 하면서 의자 움직일 때 나는 소음 때문에<br>정말 스트레스를 많이 받았거든요. 특히 아침저녁 조용한 시간대에<br>삭삭 긁히는 소리가 너무 신경 쓰였어요.</p><p>그래서 <font color="#ff69b4"><strong>소음방지용 의자 발커버</strong></font>를 찾게 됐는데,<br>많은 제품이 있더라고요. 고민 끝에 이 <font color="#ff69b4"><strong>자가점착 발커버 테이프</strong></font>를 골랐답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xfbk9GFl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231023_255/1698037940550D75fD_JPEG/2671181455158422_1982340527.jpg" alt="의자발커버 소음방지 팁과 테니스공 활용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 자가점착 의자 발커버를 선택했을까?</h2></section><p>사실 처음엔 그냥 테니스공을 의자 다리에 붙여서 쓰는 방법도 봤는데,<br>그건 좀 불편할 것 같았어요.</p><p>그에 비해 이 제품은 발커버 테이프라서 간단하게 붙일 수 있고,<br>끈적임이 있어서 쉽게 떨어지지 않는다는 점이 마음에 들었어요.</p><p>또 가격이 <font color="#ff69b4"><strong>1,500원</strong></font>으로 부담 없고, 구매 후기들도<br>대체로 만족스러운 평이 많아서 신뢰가 갔죠.</p><p>조금 망설였던 건 점착력이 너무 강하면 나중에 떼기 힘들까 봐였는데,<br>사용 후 그런 걱정은 없었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xfbk9GFl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231023_235/1698037945921lzqVg_JPEG/31446155917722660_627179745.jpg" alt="의자발커버 소음방지 팁과 테니스공 활용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 느껴진 변화</h2></section><p>사용 전엔 의자를 움직일 때마다 <font color="#ff69b4"><strong>긁히는 소리</strong></font>가 너무 커서<br>집 안이 시끄러웠어요. 밤에 일할 때도 아이가 깨지 않을까 걱정될 정도였죠.</p><p>하지만 발커버를 붙인 후엔 소리가 확실히 줄어서<br>조용한 환경에서 집중하기가 훨씬 편해졌어요.</p><p>특히 식탁의자에 붙이니 식사시간에도 의자가 미끄러지거나 긁히는 소음이 없어서<br>가족 모두 만족하더라고요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xfbk9GFl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231023_257/1698037946172hHOkl_JPEG/31446156169882264_1560538423.jpg" alt="의자발커버 소음방지 팁과 테니스공 활용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xfbk9GFl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231023_40/1698037946502tgM30_JPEG/31446156497327416_372060099.jpg" alt="의자발커버 소음방지 팁과 테니스공 활용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점과 그래도 좋은 이유</h2></section><p>솔직히 점착력이 너무 강하면 떼기 힘들까 걱정했는데,<br>조금 약한 편이라 재부착은 어려워요.</p><p>그래도 한 번 붙이면 잘 떨어지지 않아서<br>장기적으로 사용할 수 있다는 점은 아주 마음에 들었어요.</p><p>그리고 크기가 작은 편이라 큰 의자 다리에는 여러 개 붙여야 할 수도 있겠네요.<br>하지만 그만큼 깔끔하고 눈에 띄지 않는 점이 좋아요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xfbk9GFl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231023_270/1698037946772azKdT_JPEG/31446156758978295_1458179398.jpg" alt="의자발커버 소음방지 팁과 테니스공 활용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천할까?</h2></section><p><font color="#ff69b4"><strong>가정에서 조용한 환경을 원하시는 분들</strong></font>께 추천해요.<br>특히 재택근무 하시는 분들, 아이가 있는 집, 그리고 조용한 독서 공간에 딱 맞아요.</p><p>또 식탁의자나 공부방 의자, 카페테이블 의자 소음을 줄이고 싶으신 분들께도 좋습니다.<br>비슷한 고민을 하시는 분들께 이 제품은 <font color="#ff69b4"><strong>실용적인 해결책</strong></font>이 될 거예요.</p><p>그리고 무엇보다도 부담 없는 가격 덕분에<br>여러 개 구매해서 여러 곳에 붙여두기 좋아요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xfbk9GFl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231023_30/1698037947208LPxHu_JPEG/31446157203094170_459412852.jpg" alt="의자발커버 소음방지 팁과 테니스공 활용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 이미 가족과 친한 친구들 선물용으로도 몇 개 더 주문했답니다.<br>정말 마음에 들어서 재구매 의사 100%예요! 😄</p><p>혹시 구매 고민하시는 분들은 후기도 꼼꼼히 보시고,<br>상세페이지 내용과 비교해 보시면 도움이 될 거예요.</p><p><font color="#ff69b4"><strong>가격도 착하고 사용법도 간단해서</strong></font> 부담 없이 시도해 보시길 추천드려요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xfbk9GFl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231023_177/1698037947511RWBLS_JPEG/31446157507682317_977330826.jpg" alt="의자발커버 소음방지 팁과 테니스공 활용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -223,7 +247,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xfbk9GFl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231023_12/1698037947756MlOft_JPEG/31446157755606129_306785191.jpg" alt="의자발커버 소음방지 팁과 테니스공 활용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -231,11 +255,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>이상으로 <font color="#ff69b4"><strong>자가점착 의자 발커버</strong></font> 후기를 마칠게요.<br>여러분도 의자 소음 때문에 고민이라면 한 번 사용해 보시고,<br>어떤 점이 가장 마음에 들었는지 댓글로 알려주세요! 😊</p><p>함께 좋은 꿀팁 공유하며 집안 환경을 더 쾌적하게 만들어봐요~💖</p><p>#의자발커버 #소음방지 #테니스공활용 #자가점착테이프 #가성비템</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xfbk9GFl" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231023_13/1698037947943Cf2gn_JPEG/31446157942001251_783105938.jpg" alt="의자발커버 소음방지 팁과 테니스공 활용 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="의자발커버 소음방지 팁과 테니스공 활용 후기" href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="의자발커버 소음방지 팁과 테니스공 활용 후기" href="https://naver.me/xfbk9GFl" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20231023_172/1698037951979LG7w2_JPEG/1411359965559734_630708711.jpg" alt="의자발커버 소음방지 팁과 테니스공 활용 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -243,7 +267,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>의자발커버 소음방지 팁과 테니스공 활용 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xfbk9GFl" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="의자발커버 소음방지 팁과 테니스공 활용 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xfbk9GFl" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="의자발커버 소음방지 팁과 테니스공 활용 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
