@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">입맛 까다로운 강아지 때문에 고민이라면 전연령 맞춤 펫토리아 사료를 따뜻하게 추천해요.</p>
     <div class="tags"><span>강아지사료</span><span>전연령사료</span><span>황태소고기</span><span>펫토리아</span><span>건식사료</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰" href="https://naver.me/5RA8d96l" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰" href="https://naver.me/5RA8d96l" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260309_183/1773027344925iqoLn_JPEG/107160122067268246_859052878.jpg" alt="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5RA8d96l" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5RA8d96l" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260309_183/1773027344925iqoLn_JPEG/107160122067268246_859052878.jpg" alt="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 이번에 <font color="#ff69b4"><strong>펫토리아 한끼뚝딱 클래식</strong></font>을<br>알게 됐는데, 황태와 소고기 조합이라<br>더 끌렸답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5RA8d96l" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5RA8d96l" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251030_167/1761801000389FWSkR_JPEG/6750557370738940_2049182961.jpg" alt="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>건강한 재료로 만든 사료가 필요했고,<br>특히 <font color="#ff69b4"><strong>황태와 소고기</strong></font>처럼<br>좋은 단백질이 들어간 제품을 원했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5RA8d96l" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5RA8d96l" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260309_4/1773027343420xJ83t_JPEG/107160120543092601_2134089632.jpg" alt="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -162,7 +186,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 무엇보다 <font color="#ff69b4"><strong>자연 재료</strong></font>를 사용한 점이<br>결정적인 구매 이유였답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5RA8d96l" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5RA8d96l" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260309_111/1773027343942gcJ2g_JPEG/107160121082328122_978329564.jpg" alt="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5RA8d96l" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5RA8d96l" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260309_2/17730273442810ci7i_JPEG/107160121423043759_1840871222.jpg" alt="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>셋째, 사료 크기가 적당해서<br>작은 입에도 잘 맞고, 씹기 편해요.<br>이 점이 강아지가 거부감 없이 먹는 비결 같아요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5RA8d96l" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5RA8d96l" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260309_113/1773027344612btsKp_JPEG/107160121749915128_1698353059.jpg" alt="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -233,7 +257,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>우리 아이 입맛에 맞는 사료, 함께 찾아봐요.<br>좋아요도 눌러 주시면 힘이 됩니다! 😊</p>
 <p>#펫토리아 #강아지사료추천 #황태소고기사료 #전연령강아지사료 #반려견건식사료</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰" href="https://naver.me/5RA8d96l" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰" href="https://naver.me/5RA8d96l" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260309_183/1773027344925iqoLn_JPEG/107160122067268246_859052878.jpg" alt="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -241,7 +265,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5RA8d96l" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5RA8d96l" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="강아지 건식사료 추천 펫토리아 황태소고기 맛 전연령 맞춤 사료 고르는법 리뷰">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
