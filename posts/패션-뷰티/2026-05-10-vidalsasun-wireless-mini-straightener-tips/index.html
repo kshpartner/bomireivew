@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">간편한 무선 미니 고데기 추천이에요. 여행이나 일상에서 뿌리 볼륨 살리기에 정말 좋답니다.</p>
     <div class="tags"><span>무선고데기</span><span>비달사순</span><span>헤어스타일링</span><span>미니고데기</span><span>휴대용고데기</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" href="https://naver.me/x2YhcJsq" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" href="https://naver.me/x2YhcJsq" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20200917_33/1600328655908imEuw_JPEG/1464551538004957_91982968.jpeg" alt="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x2YhcJsq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x2YhcJsq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200917_33/1600328655908imEuw_JPEG/1464551538004957_91982968.jpeg" alt="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p><font color="#ff69b4"><strong>그래서 찾게 된 게 바로 비달사순 무선 매직기 미니 판 고데기</strong></font>였답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x2YhcJsq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x2YhcJsq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240524_17/1716534283781TNgN9_JPEG/117670182487874719_486902359.jpg" alt="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p><font color="#ff69b4"><strong>그리고 뿌리 볼륨이나 앞머리를 자연스럽게 살리고 싶었던 제 스타일 고민</strong></font>이 컸답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x2YhcJsq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x2YhcJsq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200916_145/16002194506462wCuN_JPEG/1355339189186479_741206013.jpg" alt="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -162,7 +186,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>물론 처음에는 무선이라 성능이 약하지 않을까 걱정도 했지만,<br> 실제 사용 후 만족도가 높아서 기분이 좋았어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x2YhcJsq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x2YhcJsq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200917_226/1600328536146pelnQ_JPEG/1464431879831342_1364705021.jpg" alt="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -172,7 +196,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p><font color="#ff69b4"><strong>앞머리도 자연스럽게 정돈돼서 하루 종일 흐트러짐 없이 유지</strong></font>됐답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x2YhcJsq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x2YhcJsq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200917_201/1600328560604VV0N9_JPEG/1464456223830328_1197634409.jpeg" alt="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x2YhcJsq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x2YhcJsq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200917_218/1600328569496irGz1_JPEG/1464464948733226_1047626888.jpeg" alt="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -194,7 +218,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>하지만 무선이라는 점과 휴대성에서 오는 편리함이 더 크게 와 닿았어요.😊</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x2YhcJsq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x2YhcJsq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200917_139/1600328582998eeVdz_JPEG/1464478639337075_2138282015.jpg" alt="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -204,7 +228,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p><font color="#ff69b4"><strong>가볍고 휴대하기 좋은 미니 고데기를 찾는 분들이라면 꼭 한 번 써보시길!</strong></font></p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x2YhcJsq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x2YhcJsq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200917_14/1600328626209NHkFi_JPEG/1464521823845474_1123504894.jpg" alt="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -214,7 +238,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>저처럼 아침 시간을 조금이라도 여유롭게 만들고 싶은 분들께 꼭 맞을 거예요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x2YhcJsq" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x2YhcJsq" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200917_261/1600328648035P7fQn_JPEG/1464543663368495_390472440.jpeg" alt="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -252,7 +276,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>앞으로도 유용한 리뷰로 자주 찾아올게요.<br> 좋아요와 댓글도 잊지 말아 주세요~💕</p>
 <p>#비달사순 #무선고데기 #미니매직기 #헤어스타일링 #휴대용고데기</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" href="https://naver.me/x2YhcJsq" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁" href="https://naver.me/x2YhcJsq" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20200917_33/1600328655908imEuw_JPEG/1464551538004957_91982968.jpeg" alt="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -260,7 +284,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/x2YhcJsq" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/x2YhcJsq" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="비달사순 무선 매직기 미니 고데기 추천 사용법과 구매팁">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
