@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">빛 밝기와 디자인이 좋아서 주방 분위기를 한층 살리고 싶은 친구에게 꼭 추천하고 싶어요.</p>
     <div class="tags"><span>LED식탁조명</span><span>벨리드이클립스</span><span>모던인테리어</span><span>식탁조명추천</span><span>집꾸미기</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="LED 식탁조명 추천 벨리드 이클립스 모던 인테리어 활용법" href="https://naver.me/xXnEuNsn" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="LED 식탁조명 추천 벨리드 이클립스 모던 인테리어 활용법" href="https://naver.me/xXnEuNsn" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260112_165/1768182079108kOocU_PNG/102314928239841336_1691320319.png" alt="LED 식탁조명 추천 벨리드 이클립스 모던 인테리어 활용법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xXnEuNsn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xXnEuNsn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260112_165/1768182079108kOocU_PNG/102314928239841336_1691320319.png" alt="LED 식탁조명 추천 벨리드 이클립스 모던 인테리어 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>처음에는 다양한 브랜드와 디자인 중 어떤 걸 골라야 할지 많이 망설였는데,<br>그 중에서 <font color="#ff69b4"><strong>벨리드 이클립스</strong></font>가 리뷰도 좋고 디자인도 모던해서 선택했답니다.<br>가격도 할인된 376,500원이라 부담스럽지 않았어요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xXnEuNsn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xXnEuNsn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260207_164/1770426215842bSPSt_PNG/13262574353034167_201893101.png" alt="LED 식탁조명 추천 벨리드 이클립스 모던 인테리어 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>밝기는 물론, 눈이 편안한 점이 가장 결정적이었어요.<br>처음에는 가격이 조금 고민됐지만 할인 가격에 만나서 가성비도 만족스러웠어요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xXnEuNsn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xXnEuNsn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260305_244/1772707758448GYtsj_PNG/16422981314981098_441093722.png" alt="LED 식탁조명 추천 벨리드 이클립스 모던 인테리어 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -209,7 +233,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>여러분도 집안 분위기를 살짝 바꾸고 싶을 때<br>벨리드 이클립스 LED 식탁조명을 한 번 고려해보시면 좋을 것 같아요!<br>😊<br>사용해보신 분들은 어떤 점이 좋았는지 댓글로 나눠주세요.<br>서로 좋은 정보 공유하면 정말 도움이 될 거예요! 💬</p>
 <p>#LED식탁조명 #모던인테리어 #주방조명추천 #벨리드이클립스 #포인트조명</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="LED 식탁조명 추천 벨리드 이클립스 모던 인테리어 활용법" href="https://naver.me/xXnEuNsn" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="LED 식탁조명 추천 벨리드 이클립스 모던 인테리어 활용법" href="https://naver.me/xXnEuNsn" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260112_165/1768182079108kOocU_PNG/102314928239841336_1691320319.png" alt="LED 식탁조명 추천 벨리드 이클립스 모던 인테리어 활용법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -217,7 +241,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>LED 식탁조명 추천 벨리드 이클립스 모던 인테리어 활용법</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xXnEuNsn" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="LED 식탁조명 추천 벨리드 이클립스 모던 인테리어 활용법">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xXnEuNsn" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="LED 식탁조명 추천 벨리드 이클립스 모던 인테리어 활용법">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
