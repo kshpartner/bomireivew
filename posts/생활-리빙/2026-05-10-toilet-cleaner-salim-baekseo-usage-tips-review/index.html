@@ -95,18 +95,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -121,7 +145,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">화장실 청소가 고민이었는데, 살림백서 변기세정제 사용 후 효과가 좋아 주변에 살짝 추천하고 싶어요.</p>
     <div class="tags"><span>변기세정제</span><span>화장실청소</span><span>살림백서</span><span>청소후기</span><span>생활팁</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="변기클리너 살림백서 변기세정제 사용법과 구매팁 후기" href="https://naver.me/x0OzXtyi" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="변기클리너 살림백서 변기세정제 사용법과 구매팁 후기" href="https://naver.me/x0OzXtyi" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220714_75/1657781243523WD5Af_JPEG/58917139227280866_1823906339.jpg" alt="변기클리너 살림백서 변기세정제 사용법과 구매팁 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -131,7 +155,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x0OzXtyi" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x0OzXtyi" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220714_75/1657781243523WD5Af_JPEG/58917139227280866_1823906339.jpg" alt="변기클리너 살림백서 변기세정제 사용법과 구매팁 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -139,7 +163,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>화장실 청소, 정말 귀찮죠?😥 특히 변기 관리가 늘 고민이었어요.<br>항상 세정제를 사용해도 찌든때가 남고 냄새도 완전히 잡히지 않아 불편했답니다.</p><p>그래서 <font color="#ff69b4"><strong>변기세정제</strong></font> 제품을 찾아보기 시작했어요.<br>하지만 종류가 너무 많아 어느 걸 사야 할지 망설여지더라고요.</p><p>그중에서도 살림백서 변기세정제 40gx20개 제품을 선택하게 된 이유,<br>그리고 직접 써보니 어땠는지 솔직하게 공유할게요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x0OzXtyi" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x0OzXtyi" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220714_243/1657781246913Jpakd_JPEG/58917142618191462_16739885.jpg" alt="변기클리너 살림백서 변기세정제 사용법과 구매팁 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -196,7 +220,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>여러분도 변기 청소 때문에 고민이라면<br>한 번 써보시길 추천해요! 사용 후 느낌이나,<br>궁금한 점 있으면 댓글로 공유해 주세요.😊</p><p>여러분의 청소 꿀팁이나 변기 관리 팁도 함께 나눠보면<br>서로 도움 될 것 같아요! 기다릴게요~💕</p><p>#변기세정제 #변기클리너 #화장실청소 #살림백서 #가성비세정제</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="변기클리너 살림백서 변기세정제 사용법과 구매팁 후기" href="https://naver.me/x0OzXtyi" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="변기클리너 살림백서 변기세정제 사용법과 구매팁 후기" href="https://naver.me/x0OzXtyi" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220714_75/1657781243523WD5Af_JPEG/58917139227280866_1823906339.jpg" alt="변기클리너 살림백서 변기세정제 사용법과 구매팁 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -204,7 +228,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>변기클리너 살림백서 변기세정제 사용법과 구매팁 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/x0OzXtyi" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="변기클리너 살림백서 변기세정제 사용법과 구매팁 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/x0OzXtyi" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="변기클리너 살림백서 변기세정제 사용법과 구매팁 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     
