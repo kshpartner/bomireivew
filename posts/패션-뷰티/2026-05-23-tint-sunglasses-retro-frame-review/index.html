@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">편안하면서 스타일도 살릴 수 있는 틴트 선글라스, 믿고 추천할 만한 사용 후기를 전해드릴게요.</p>
     <div class="tags"><span>틴트선글라스</span><span>레트로선글라스</span><span>여자패션</span><span>뿔테안경</span><span>눈부심완화</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" href="https://naver.me/x9V59hJs" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240424_10/1713942115032HRIGz_JPEG/115078010757905502_634843772.jpg" alt="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x9V59hJs" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240424_10/1713942115032HRIGz_JPEG/115078010757905502_634843772.jpg" alt="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -143,7 +167,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 이번에는 <font color="#ff69b4"><strong>틴트 선글라스</strong></font>를 집중적으로<br> 찾아보게 되었어요. 편안하면서도 스타일은<br> 살릴 수 있는 제품이 필요했거든요.😉</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x9V59hJs" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230728_206/1690530602947uzckV_JPEG/17037428057048391_1932941331.jpg" alt="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -154,7 +178,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>처음엔 틴트 렌즈가 너무 연하지 않을까<br> 고민했지만, 리뷰를 보고 마음이 확신으로<br> 바뀌었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x9V59hJs" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240425_189/171401740863190HSn_JPEG/115153297335041772_1250898412.jpg" alt="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -164,7 +188,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 뿔테 디자인 덕분에 얼굴이 작아 보이고,<br> 레트로한 무드가 일상 코디에 포인트가<br> 되더라고요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x9V59hJs" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20221005_37/1664938581162YzFBs_JPEG/66074415900462409_1184946384.JPG" alt="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x9V59hJs" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240424_66/1713936674258DRiGQ_JPEG/115072562966195459_945149223.jpg" alt="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -186,7 +210,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 프레임 굵기가 약간 두꺼운 편이라<br> 호불호가 있을 수 있지만, 저는 오히려<br> 그런 점이 얼굴형 보완에 도움 되었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x9V59hJs" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20211125_215/16378096053442iEk4_JPEG/38945389052327939_338972433.jpg" alt="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -196,7 +220,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="warm-point"><strong>가격 부담 적고 가벼운 뿔테 선글라스를 찾는 분들에게 특히 추천드려요.&#128150;</strong></div><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x9V59hJs" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240425_19/171401745403864Jnh_JPEG/115153342738644705_1657228686.jpg" alt="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -206,7 +230,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>괜찮은 틴트 선글라스 찾으시는 분들께<br> 이 제품 추천하고 싶어요! 😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x9V59hJs" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210831_196/16303920367693zFbq_JPEG/31527932431277501_1754938765.jpg" alt="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -239,7 +263,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x9V59hJs" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210831_58/1630394431565jQpTH_JPEG/31530319482656085_982116360.jpg" alt="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -250,11 +274,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>#틴트선글라스 #여자선글라스 #레트로선글라스<br>#뿔테선글라스 #데일리패션</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x9V59hJs" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20210819_126/1629366160521gDqJr_JPEG/30502006228709892_1191095643.jpg" alt="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기" href="https://naver.me/x9V59hJs" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240424_10/1713942115032HRIGz_JPEG/115078010757905502_634843772.jpg" alt="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -262,7 +286,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/x9V59hJs" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/x9V59hJs" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="틴트 선글라스 여자 패션 추천 레트로 뿔테 색안경 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
