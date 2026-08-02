@@ -95,18 +95,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -121,7 +145,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">머리 볼륨 고민 중이라면 여신왕리본 자동 핀 정말 추천해요. 편하고 자연스러워서 믿고 써보셔도 좋아요.</p>
     <div class="tags"><span>올림머리핀</span><span>볼륨헤어핀</span><span>헤어스타일링</span><span>자동핀</span><span>여신왕리본</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" href="https://naver.me/Gow2imen" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240702_26/1719903353443exfNL_JPEG/1229651261258189_148755828.jpeg" alt="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -131,7 +155,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gow2imen" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240702_26/1719903353443exfNL_JPEG/1229651261258189_148755828.jpeg" alt="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -139,7 +163,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요 여러분! 😊 요즘 머리 스타일링에 작은 변화가 필요했는데요,<br>특히 올림머리나 반묶음할 때 볼륨감을 주는 핀을 찾고 있었어요.<br>매번 헤어핀을 사용해도 머리가 쉽게 풀리고 불편했거든요.</p><p>그래서 <font color="#ff69b4"><strong>여신왕리본핀</strong></font>을 직접 써보게 되었답니다.<br>가격도 <font color="#ff69b4"><strong>할인가 8,900원</strong></font>이라 부담 없었고,<br>후기도 꽤 좋아서 호기심에 주문해봤어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gow2imen" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240702_39/1719903351461rNhbx_PNG/1229649263944813_1203218881.png" alt="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -147,7 +171,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>올림머리 고민, 여신왕리본핀으로 해결!</h2></section><p>평소 올림머리를 할 때 볼륨이 없거나 머리가 쉽게 처지는 게 고민이었어요.<br>볼륨을 살리려면 여러 개의 핀을 쓰거나 별도로 헤어 제품을 발라야 했거든요.</p><p>그런데 여신왕리본핀은 자동핀 형태로 디자인되어서<br>간편하게 머리를 고정할 수 있고 볼륨도 자연스럽게 살아나요.<br>반묶음 머리에도 적합해서 활용도가 높더라고요.</p><p>특히 머리카락이 얇거나 숱이 적은 분들에게도 잘 맞는다고 하니<br>제가 찾던 딱 그 제품이었죠!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gow2imen" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240702_70/1719903351549A0MEH_JPEG/1229649370025102_277953917.jpeg" alt="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -155,7 +179,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>비슷한 핀 많았는데, 이걸 선택한 이유</h2></section><p>자동핀 형태의 헤어핀은 정말 많잖아요?<br>그 중에서 왜 여신왕리본핀을 골랐냐면,<br>우선 <font color="#ff69b4"><strong>리본 디자인이 사랑스러워서</strong></font> 눈길이 갔어요.</p><p>그리고 <font color="#ff69b4"><strong>후기들이 진짜 솔직하고 긍정적</strong></font>이었고,<br>가격도 8,900원으로 합리적이라 부담 없이 시도해볼 수 있겠더라고요.<br>처음엔 사이즈가 클까 걱정했지만, 실제로는 적당했어요.</p><p>또한 배송도 빠르고 포장도 깔끔해서 믿음이 갔답니다.<br>결정적으로 볼륨감 있는 올림머리를 손쉽게 완성할 수 있다는 점이 구매 동기였어요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gow2imen" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240702_292/1719903351933BdGRL_JPEG/1229649601192453_22600077.jpeg" alt="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -163,7 +187,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 머리 모양의 차이</h2></section><p>사용 전에는 올림머리가 쉽게 풀리고 볼륨이 사라져서 속상했는데,<br>여신왕리본핀을 사용하고 나서는 확실히 달라졌어요.</p><p>자동핀을 머리에 꽂기만 하면 자연스러운 볼륨이 생기고,<br>머리가 무겁지 않아 하루 종일 편안하게 지낼 수 있었답니다.<br>특히 헤어라인이 깔끔하게 잡혀서 사진 찍을 때도 자신감이 생겼어요! 📸</p><p>반묶음 스타일도 쉽게 연출돼서 평소보다 스타일링 시간이 줄었답니다.<br>매일 아침이 한결 가벼워졌어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gow2imen" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240702_2/1719903352117sVUPu_JPEG/1229649938163681_612271016.jpeg" alt="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -175,7 +199,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gow2imen" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240702_186/1719903352523cYCbq_JPEG/1229650344401134_1196864641.jpeg" alt="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -183,7 +207,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점과 그래도 좋은 점</h2></section><p>솔직히 말하면 처음엔 핀 크기가 조금 클까 봐 걱정했는데,<br>막상 사용해보니 그 부분이 크게 신경 쓰이지 않았어요.</p><p>그리고 리본 부분이 은근히 포인트가 되다 보니,<br>평소 심플한 스타일을 좋아하는 분들은 호불호가 있을 수도 있겠더라고요.</p><p>하지만 <font color="#ff69b4"><strong>따뜻한 느낌의 디자인과 편안한 착용감</strong></font>은 확실히 만족스러워서<br>데일리 헤어 악세서리로 추천하고 싶어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gow2imen" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240702_173/1719903352650Qy2ih_JPEG/1229650470721104_1412255878.jpeg" alt="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -191,7 +215,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천할까?</h2></section><p>매일 간편하게 <font color="#ff69b4"><strong>올림머리나 반묶음 머리를 스타일링</strong></font>하고 싶은 분,<br>머리에 볼륨감을 더하고 싶은 분께 특히 추천해요.</p><p>또한 헤어 악세서리에 큰 비용을 들이지 않고<br>예쁜 디자인과 편리함을 동시에 원하는 여성분들께 딱이에요.</p><p>특히 머리숱이 적거나 얇은 분들도 사용하기 좋고,<br>일상 속 작은 변화를 주고 싶은 분들께 강력 추천합니다! 💕</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gow2imen" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240702_213/1719903352904KbRQt_JPEG/1229650726242637_329897120.jpeg" alt="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -199,7 +223,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 이미 만족해서 주변 친구들에게도 추천했는데요,<br>재구매 의사 100%랍니다.</p><p>혹시 고민 중이라면 후기와 상세페이지를 꼼꼼히 비교해보시고,<br>자신의 스타일과 잘 맞는지 확인해보세요.</p><p><font color="#ff69b4"><strong>여신왕리본핀</strong></font>은 가격도 합리적이라 부담 없이 시도하기 좋은 제품이니까요.<br>꾸준히 쓰면서 머리 스타일에 자신감을 더해보세요! 🌸</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gow2imen" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240702_58/1719903353065svRCn_JPEG/1229650882706798_2058383303.jpeg" alt="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -232,14 +256,14 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gow2imen" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240702_231/1719903353195ELB1g_JPEG/1229651015874428_2140535091.jpeg" alt="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
 <div class="content-block">
 <p>오늘도 제 후기를 읽어주셔서 감사해요! 😊<br>여러분도 올림머리 할 때 어떤 핀을 쓰는지,<br>여신왕리본핀에 대해 궁금한 점이나 사용 경험이 있다면<br>댓글로 함께 나눠주세요! 💬</p><p>서로 좋은 팁도 공유하고 더 예쁜 스타일링 아이디어도<br>얘기할 수 있으면 좋겠네요. 좋아요도 눌러주시면<br>더 힘이 된답니다! 💖</p><p>#헤어핀추천 #올림머리핀 #볼륨헤어핀 #여신왕리본핀 #데일리헤어악세서리</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기" href="https://naver.me/Gow2imen" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240702_26/1719903353443exfNL_JPEG/1229651261258189_148755828.jpeg" alt="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -247,7 +271,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/Gow2imen" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/Gow2imen" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="올림머리핀 추천 여신왕리본 볼륨 자동 헤어핀 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
