@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">집에서 간편하게 신선한 보라성게 맛볼 수 있는 제품이라 믿음 가는 마음으로 추천할게요.</p>
     <div class="tags"><span>성게알</span><span>보라성게</span><span>신선도</span><span>해산물</span><span>홈마카세</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="성게알 추천 신선한 보라성게 맛보고 느낀 후기" href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="성게알 추천 신선한 보라성게 맛보고 느낀 후기" href="https://naver.me/xeFUPjTB" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20231219_125/1702961891280vwwfn_JPEG/104097725882824662_1628359981.jpg" alt="성게알 추천 신선한 보라성게 맛보고 느낀 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xeFUPjTB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231219_125/1702961891280vwwfn_JPEG/104097725882824662_1628359981.jpg" alt="성게알 추천 신선한 보라성게 맛보고 느낀 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>후기들이 꽤 좋아서 기대 반 걱정 반이었죠.<br>이제부터 직접 써본 솔직한 리뷰 공유할게요!😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xeFUPjTB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250809_157/17546888260112z15k_PNG/37890222830934428_1197819967.png" alt="성게알 추천 신선한 보라성게 맛보고 느낀 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>이런 고민 때문에 <font color="#ff4500"><strong>보라성게 100g</strong></font> 제품을 눈여겨보게 됐답니다.<br>가격도 부담스럽지 않고 양도 적당해서 좋았어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xeFUPjTB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250809_282/1754688805396y9sJ3_PNG/8861255195539198_1132138100.png" alt="성게알 추천 신선한 보라성게 맛보고 느낀 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -162,7 +186,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>솔직히 처음에는 신선도가 걱정됐는데,<br>실제 먹어보고 그 고민은 싹 사라졌어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xeFUPjTB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240523_259/1716399147660O2kln_JPEG/117535046317393662_227100891.jpg" alt="성게알 추천 신선한 보라성게 맛보고 느낀 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -172,7 +196,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>먹는 내내 입 안에서 부드럽게 퍼지는 풍미가<br>자꾸 손이 가게 만드는 마성의 맛이었어요.<br>가족들도 다 좋아해서 함께 즐길 수 있어서 더 좋았답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xeFUPjTB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240503_18/1714667225470QICcT_JPEG/41969909350434623_778981120.jpg" alt="성게알 추천 신선한 보라성게 맛보고 느낀 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -185,7 +209,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>이 세 가지가 제일 마음에 들어서 자꾸 생각나네요.✨</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xeFUPjTB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240503_155/1714667225238KQglV_JPEG/41969909116554744_476927129.jpg" alt="성게알 추천 신선한 보라성게 맛보고 느낀 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -194,7 +218,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>하지만 그 점만 잘 지키면<br><font color="#6a5acd"><strong>신선한 맛</strong></font>과 촉촉한 식감을 그대로 즐길 수 있어서 만족했어요.<br>그리고 양이 100g이라 다 먹고 나면 좀 아쉽긴 하지만, 그만큼 신선하게 먹을 수 있다는 점에서 납득이 갔답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xeFUPjTB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240503_20/17146672256961HH6c_JPEG/41969909574298860_254460099.jpg" alt="성게알 추천 신선한 보라성게 맛보고 느낀 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -203,7 +227,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 바다 내음 가득한 고급스러운 맛을 부담 없는 가격에 경험해 보고 싶은 분들께도 좋아요.<br>초보자도 부담 없이 도전할 수 있어 성게알 입문용으로도 추천드려요.🧡</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xeFUPjTB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231219_294/1702961922348qm2Qu_JPEG/104097756989914225_1230098489.jpg" alt="성게알 추천 신선한 보라성게 맛보고 느낀 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -212,7 +236,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>홈마카세 보라성게 알 제품은 가격도 적당하고<br>간편하면서도 신선한 맛을 원하는 분들에게 좋은 선택이 될 거예요.<br>저처럼 집에서 간편한 해산물 한 끼를 즐기고 싶다면 한 번 시도해 보시길 바랄게요!🍣</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xeFUPjTB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231219_189/17029619128338qnY7_JPEG/104097747425588384_1803612251.jpg" alt="성게알 추천 신선한 보라성게 맛보고 느낀 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -245,7 +269,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xeFUPjTB" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231219_236/1702961930765WXzIH_JPEG/104097765383947173_906889067.jpg" alt="성게알 추천 신선한 보라성게 맛보고 느낀 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -253,7 +277,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>오늘은 집에서 간편하게 신선한 성게알을 즐길 수 있었던 경험을 공유해 봤어요.<br>혹시 성게알 좋아하시거나 궁금하셨던 분들은 댓글로 어떤 요리에 도전해보고 싶은지 알려 주세요!<br>저도 여러분의 꿀팁 기다리고 있을게요.😊</p>
 <p>#성게알 #우니 #보라성게 #냉동해산물 #홈마카세</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="성게알 추천 신선한 보라성게 맛보고 느낀 후기" href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="성게알 추천 신선한 보라성게 맛보고 느낀 후기" href="https://naver.me/xeFUPjTB" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20231219_125/1702961891280vwwfn_JPEG/104097725882824662_1628359981.jpg" alt="성게알 추천 신선한 보라성게 맛보고 느낀 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -261,7 +285,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>성게알 추천 신선한 보라성게 맛보고 느낀 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xeFUPjTB" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="성게알 추천 신선한 보라성게 맛보고 느낀 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xeFUPjTB" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="성게알 추천 신선한 보라성게 맛보고 느낀 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
