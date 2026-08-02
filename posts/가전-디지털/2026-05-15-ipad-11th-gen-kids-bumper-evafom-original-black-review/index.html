@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">아이패드 11세대 사용자라면 아이 손에 딱 맞고 안전한 키즈 범퍼 케이스를 따뜻하게 추천해요.</p>
     <div class="tags"><span>아이패드케이스</span><span>키즈범퍼</span><span>에바폼</span><span>충격흡수</span><span>안전케이스</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기" href="https://naver.me/G7NZ24Wj" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기" href="https://naver.me/G7NZ24Wj" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240624_197/1719210519194s2MYC_JPEG/47845506012952320_354536073.jpg" alt="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G7NZ24Wj" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G7NZ24Wj" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240624_197/1719210519194s2MYC_JPEG/47845506012952320_354536073.jpg" alt="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요😊 요즘 아이패드 11세대 10.9인치 모델을<br>사용하는 분들 많으시죠? 저도 아이와 함께<br>쓰다 보니 케이스 선택에 꽤 신경 쓰게 됐답니다.</p><p>처음에는 예쁜 케이스 위주로만 골랐는데,<br>아이 손에 쥐어주다 보니 보호력이 약해<br>걱정이 많았어요. 그래서 튼튼하고 안전한<br>키즈용 범퍼 케이스를 찾게 되었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G7NZ24Wj" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G7NZ24Wj" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230117_2/1673932824235FLGCF_JPEG/x1bUV_102081_8.jpg" alt="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아이패드 케이스를 찾은 이유와 고민</h2></section><p>아이패드를 들고 다니는 우리 아이가<br>자꾸 떨어뜨리다 보니 화면이 걱정됐어요.<br>그냥 일반 케이스는 충격 흡수가<br>부족하더라고요.</p><p>또, 너무 두껍거나 무거운 케이스는<br>아이 손에 부담이 되고, 불편해하는 점도<br>있었어요. 그래서 가볍고 튼튼한 케이스를<br>중심으로 찾아봤답니다.</p><p>특히 11세대 10.9인치 사이즈에 딱 맞는<br>제품이 별로 없어서 더 신중했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G7NZ24Wj" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G7NZ24Wj" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230117_290/1673932823652qYAQf_JPEG/88ze7_102081_1.jpg" alt="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>에바폼 오리지널 블랙 케이스를 고른 이유</h2></section><p>비슷한 키즈 범퍼 케이스가 많았지만,<br><font color="#ff69b4"><strong>에바폼 소재</strong></font>라서<br>충격 흡수력이 좋고 가벼운 점이 마음에 들었어요.</p><p>후기도 꽤 좋아서 아이가 안전하게 쓸 수 있을 것 같았고,<br>무엇보다 <font color="#ff69b4"><strong>20,900원</strong></font>이라는<br>가격이 부담스럽지 않아서 바로 결정했죠.</p><p>처음에는 블랙 색상이 아이에게 조금 딱딱해 보이지 않을까<br>망설였는데, 오히려 깔끔하고 어디에나 잘 어울려서 만족 중이에요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G7NZ24Wj" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G7NZ24Wj" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230117_83/1673932823878nG49f_JPEG/CW5QU_102081_7.jpg" alt="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -164,7 +188,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 확실히 달라진 점</h2></section><p>사용 전에는 떨어뜨리면 불안해서 아이에게<br>늘 조심하라고 했는데, 케이스 착용 후엔<br>더 편안하게 사용할 수 있었어요.</p><p>범퍼가 아이패드 테두리를 감싸줘서<br>충격이 분산되는 느낌이 확실히 있었고,<br>아이도 손에 쥐기 편해졌답니다.</p><p>그리고 케이스 자체가 너무 무겁지 않아<br>아이 혼자서도 쉽게 들고 다니는 모습이<br>보기 좋았어요.😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G7NZ24Wj" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G7NZ24Wj" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230117_48/1673932824554RdOo2_JPEG/asjia_102081_9.jpg" alt="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G7NZ24Wj" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G7NZ24Wj" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240624_166/1719210518699Kptq8_JPEG/47845505518798526_2085428849.jpg" alt="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>조금 아쉬웠던 점도 솔직히</h2></section><p>딱 하나 아쉬운 점이라면, 케이스가 너무<br>두꺼워서 슬림함을 좋아하는 분들께는<br>조금 부담될 수도 있겠다는 생각이에요.</p><p>하지만 그만큼 안전성이 더 좋아졌다고 생각하니<br>아이 안전을 위해서는 충분히 감수할 만했답니다.</p><p>그리고 에바폼 특성상<br>때때로 먼지가 좀 붙는 편인데,<br>물티슈로 쓱 닦아주면 금방 깨끗해져요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G7NZ24Wj" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G7NZ24Wj" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240624_116/1719210518859aRCxt_JPEG/47845505676289197_12945255.jpg" alt="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -223,7 +247,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>아이와 함께 쓰는 아이패드 케이스,<br>내 아이를 위한 최선의 선택이었어요.💕</p><p>여러분은 아이패드 케이스 선택에 있어<br>가장 중요하게 생각하는 부분이 무엇인가요?<br>댓글로 공유해 주세요! 서로 좋은 팁 나누면<br>더 도움이 될 것 같아요~ 😊</p><p>좋아요도 꾹 눌러주시고, 앞으로도<br>실속 있는 제품 소개 많이 할게요! 감사합니다.</p><p>#아이패드케이스 #키즈범퍼케이스 #에바폼케이스 #아이패드11세대 #유아아이패드케이스</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기" href="https://naver.me/G7NZ24Wj" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기" href="https://naver.me/G7NZ24Wj" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240624_197/1719210519194s2MYC_JPEG/47845506012952320_354536073.jpg" alt="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -231,7 +255,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/G7NZ24Wj" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/G7NZ24Wj" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="아이패드 11세대 케이스 추천 키즈 범퍼 에바폼 오리지널 블랙 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
