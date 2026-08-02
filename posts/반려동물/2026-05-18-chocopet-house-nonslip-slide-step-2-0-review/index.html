@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">우리 강아지 안전을 생각하는 분들께 초코펫하우스 논슬립 계단 추천드려요. 믿음 가는 사용 후기입니다.</p>
     <div class="tags"><span>강아지계단</span><span>논슬립</span><span>슬라이드스텝</span><span>반려견안전</span><span>후기</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" href="https://naver.me/FSv5omkh" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250930_29/1759195505487WAPkM_JPEG/30661958618836737_157837463.jpg" alt="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5omkh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250930_29/1759195505487WAPkM_JPEG/30661958618836737_157837463.jpg" alt="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요🐾 오늘은 저희 집 강아지를 위해 구입한 <font color="#ff6f61"><strong>초코펫하우스 강아지계단 슬라이드스텝</strong></font> 2.0 베이지, 대형 제품 후기를 공유하려고 해요.<br>사실 반려견이 점프하다가 다칠까 걱정되어 계단을 찾게 되었는데요, 저처럼 고민하는 분들에게 조금이나마 도움이 됐으면 합니다.</p><p>우리 강아지가 나이가 들면서 소파나 침대 오르내리기가 힘들어 보이더라고요.<br>예전엔 잘 올라가던 곳도 점점 부담스러워하는 모습에 <font color="#ff6f61"><strong>안전한 계단이 꼭 필요하겠다</strong></font> 싶었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5omkh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241211_75/1733894534686ferOV_PNG/6048671781926221_764826124.png" alt="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>여러 제품 중 초코펫하우스를 선택한 이유</h2></section><p>강아지계단은 정말 종류가 많아서 한참 고민했는데요.<br>가격, 후기, 디자인, 무엇보다 미끄럼 방지 기능이 중요했거든요.</p><p>그중에서도 <font color="#ff6f61"><strong>논슬립 처리와 슬라이드스텝 구조</strong></font>가 눈에 띄었어요.<br>후기들이 제품 내구성과 강아지들이 편안해 한다는 평이 많아서 믿음이 갔답니다.</p><p>가격도 할인가로 86,800원으로 적당했어요.<br>비싼 편은 아니면서도 튼튼해 보여서 더 끌렸던 것 같아요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5omkh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250930_164/1759195498551q3jb0_JPEG/9059150071251825_1342787150.jpg" alt="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 확실히 달라진 점</h2></section><p>설치를 하고 나니 강아지가 처음엔 조심스러워했지만,<br>몇 번 지나가면서 자연스럽게 익히더라고요.</p><p>무엇보다 <font color="#ff6f61"><strong>계단 각 단계가 부드러운 경사로 되어 있어 뛰어내릴 때 부담이 적은 점</strong></font>이 마음에 들었어요.<br>예전에는 점프할 때마다 다칠까 봐 걱정했는데, 이제는 걱정 없이 편안하게 오르내려요.</p><p>또 미끄럼 방지 덕분에 바닥에서 미끄러지지 않아<br>저도 안심하고 지켜볼 수 있답니다🐶💕</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5omkh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250930_198/1759195499006DBuzi_JPEG/9059150551781326_1873471008.jpg" alt="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -168,7 +192,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5omkh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250930_97/1759195499252RgOex_JPEG/9059150793384173_1236659974.jpg" alt="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점과 그래도 만족스러운 이유</h2></section><p>사실 무게가 좀 있는 편이라 가끔 위치를 옮길 때는 힘들더라고요.<br>하지만 그만큼 튼튼해서 쉽게 움직이지 않는다는 장점도 있기에 감수할 만해요.</p><p>또 베이지 색상이 예쁘긴 한데, 강아지 털이 조금 묻으면 눈에 띄는 편이에요.<br>그래도 청소가 어렵지 않고 소재가 내구성 있어서 자주 닦아주면 괜찮답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5omkh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250930_31/17591954996272Yc4E_JPEG/9059151170822881_2129585518.jpg" alt="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천하면 좋을까?</h2></section><p>강아지 계단이 필요한 반려인이라면 <font color="#ff6f61"><strong>중대형 강아지와 나이 든 강아지, 관절 보호가 필요한 친구</strong></font>에게 특히 추천드리고 싶어요.<br>또 미끄럼 걱정 없이 안전하게 계단을 설치하고 싶은 분들께도 적합합니다.</p><p>특히 집에 소파나 침대가 높아 점프가 부담스러운 반려견이 있다면 한 번 고려해보세요.<br>우리 강아지가 편안하게 오르내리는 모습을 보면 뿌듯할 거예요😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5omkh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250930_185/1759195499886EgQPV_JPEG/9059151432015972_2135576791.jpg" alt="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -192,7 +216,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 이번에 너무 만족해서 혹시 다른 공간에 놓으려고 추가 구매도 생각 중이에요.<br>사용 후기와 상세페이지 꼼꼼히 살펴보고 비교해보시면 분명 좋은 선택이 될 거예요.</p><p>가격도 할인가 86,800원이라 부담 없으니 꼭 한번 둘러보시길 추천합니다💖<br>반려견과 더 안전하고 편안한 일상을 만들어 보세요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5omkh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250930_264/17591955001880vGR3_JPEG/9059151732056643_1514774666.jpg" alt="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -225,7 +249,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5omkh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250930_249/1759195500488cTEii_JPEG/9059152033508444_772732641.jpg" alt="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -233,11 +257,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>오늘 제가 경험한 <font color="#ff6f61"><strong>초코펫하우스 강아지계단 슬라이드스텝 2.0</strong></font> 이야기는 여기까지에요.<br>혹시 반려견 계단 고민 중이신 분들께 조금이나마 도움이 되었으면 좋겠네요🐕‍🦺💖</p><p>여러분은 반려견을 위한 안전용품 중 어떤 점을 가장 중요하게 생각하시나요?<br>댓글로 여러분의 경험이나 궁금한 점 공유해 주세요! 함께 이야기 나누면 좋을 것 같아요😊</p><p>#강아지계단 #반려견용품 #초코펫하우스 #논슬립계단 #강아지안전용품</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5omkh" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250930_96/1759195500795x0Ljq_JPEG/9059152340572978_1180995906.jpg" alt="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기" href="https://naver.me/FSv5omkh" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250930_29/1759195505487WAPkM_JPEG/30661958618836737_157837463.jpg" alt="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -245,7 +269,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FSv5omkh" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FSv5omkh" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="강아지계단 추천 초코펫하우스 논슬립 슬라이드스텝 2.0 사용법과 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
