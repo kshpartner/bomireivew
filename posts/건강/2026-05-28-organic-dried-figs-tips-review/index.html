@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">건강한 간식을 찾는 너에게 자연스러운 맛과 촉촉한 식감이 정말 좋은 유기농 무화과를 살짝 추천할게.</p>
     <div class="tags"><span>유기농</span><span>무화과</span><span>건강간식</span><span>말린과일</span><span>반건조</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" href="https://naver.me/xoGQShum" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" href="https://naver.me/xoGQShum" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230907_131/16940562716377I3TC_JPEG/22321674412916421_1748856165.JPG" alt="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xoGQShum" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xoGQShum" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230907_131/16940562716377I3TC_JPEG/22321674412916421_1748856165.JPG" alt="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 건강 간식 찾다가 <font color="#a0522d"><strong>유기농 반건조 무화과</strong></font>에 눈이 갔어요🍂</p><p>평소 과일 먹는 걸 좋아하지만<br>신선한 과일은 보관이 쉽지 않고,<br>달달한 간식이 당길 때마다<br>뭔가 자연스러운 걸 찾고 싶더라고요.</p><p>그래서 말린 과일 쪽으로 알아봤는데,<br>특히 무화과가 건강에도 좋다기에<br>한번 시도해봤답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xoGQShum" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xoGQShum" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231010_178/1696931148492es5zg_PNG/48305095431766577_1226052773.png" alt="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>유기농 반건조 무화과를 선택한 이유</h2></section><p>비슷한 말린 무화과 제품이 많아서<br>처음엔 고민이 많았어요.</p><p>가격대도 다양하고, 후기마다<br>품질 차이가 커 보여서<br>결정을 쉽게 못 내렸는데요.</p><p>그중 <font color="#a0522d"><strong>300g 용량에 31,500원</strong></font> 할인가가 적당했고,<br>후기도 자연스럽고 솔직한 게 많아서 믿음이 갔어요.</p><p>또 <font color="#a0522d"><strong>유기농 인증</strong></font>이라는 점이<br>가장 마음에 들었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xoGQShum" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xoGQShum" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230907_260/1694056146518GPKmb_JPEG/26590750576850382_776604890.JPG" alt="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>먹기 전과 후 달라진 점</h2></section><p>처음 한 입 먹었을 땐<br>부드럽고 자연스러운 단맛에 깜짝 놀랐어요.</p><p>반건조라 그런지 촉촉하면서도<br>말랑말랑한 식감이 너무 좋더라고요.</p><p>평소 간식으로 과자나 인공 감미료가 들어간 걸 자주 먹었는데,<br>이제는 건강한 간식으로 바꾸니<br>속도 편안하고 몸이 더 가벼운 느낌이에요😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xoGQShum" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xoGQShum" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230907_122/1694056145911bkN97_JPEG/26590749966989572_106318803.JPG" alt="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -169,7 +193,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 아이가 좋아해서<br>간식 걱정이 한결 줄었어요.</p><p>그리고 포장도 깔끔해서<br>보관하기 편리한 점도 마음에 쏙 들었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xoGQShum" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xoGQShum" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230907_157/1694056145682fsGlr_JPEG/26590749739526396_303205918.JPG" alt="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -177,7 +201,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬웠던 점도 솔직히</h2></section><p>가격이 조금 아쉬운 편이긴 하지만,<br>그래도 질 좋은 유기농 무화과라 생각하면<br>납득이 가더라고요.</p><p>그리고 배송이 좀 더 빠르면 좋겠다는 생각도 들었어요.</p><p>하지만 제품 상태가 좋아서<br>기다린 보람은 충분했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xoGQShum" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xoGQShum" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230907_276/1694056146146JkaVP_JPEG/26590750204493892_2099898198.JPG" alt="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -185,7 +209,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천하고 싶은가요?</h2></section><p>건강한 간식을 찾는 분들,</p><p>아이들 간식 고민하는 부모님들께<br><font color="#a0522d"><strong>특히 추천</strong></font>드리고 싶어요.</p><p>그리고 평소 과일을 자주 챙기기 힘든 분들이나<br>자연스러운 단맛이 필요할 때<br>한 번쯤 시도해보면 좋을 것 같아요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xoGQShum" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xoGQShum" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230907_99/1694056147028lTTEy_JPEG/26590751053020909_280674872.JPG" alt="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -193,7 +217,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 전 체크 팁</h2></section><p>저는 벌써 두 번째 주문했답니다😊</p><p>처음엔 망설였지만 먹어보니<br><font color="#a0522d"><strong>가성비 좋은 건강 간식</strong></font>이라 생각해요.</p><p>후기와 상세페이지 꼼꼼히 비교해보시고,<br>자연스러운 무화과 맛이 궁금하다면<br>한번 도전해보시길 추천드릴게요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xoGQShum" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xoGQShum" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230907_207/1694056147363hlrVb_JPEG/26590751382991317_2128136245.JPG" alt="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -226,14 +250,14 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xoGQShum" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xoGQShum" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230907_76/16940561477245Dxwl_JPEG/26590751749765841_364004302.JPG" alt="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
 <div class="content-block">
 <p>이 글 보시고 여러분도 <font color="#a0522d"><strong>자연을 담은 건강 간식</strong></font> 찾아보시길 바래요🍃</p><p>궁금한 점이나 여러분의 간식 취향 공유해주시면<br>제가 또 달콤하게 답해드릴게요! 댓글 기다릴게요💬</p><p>#유기농반건조무화과 #건무화과추천 #말린과일간식 #건강간식 #자연식품</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" href="https://naver.me/xoGQShum" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기" href="https://naver.me/xoGQShum" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230907_131/16940562716377I3TC_JPEG/22321674412916421_1748856165.JPG" alt="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -241,7 +265,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xoGQShum" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xoGQShum" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="유기농 건무화과 추천 자연 그대로의 맛 말린 무화과 구매팁과 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
