@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">간편하고 건강한 소고기 육포 20g 간식, 소소한 술안주나 출출할 때 추천드려요.</p>
     <div class="tags"><span>소고기육포</span><span>간식추천</span><span>마른안주</span><span>단백질간식</span><span>건강간식</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" href="https://naver.me/5sunCsZv" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240625_6/1719295516454hxtPq_PNG/9570498251187430_1394740398.png" alt="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5sunCsZv" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240625_6/1719295516454hxtPq_PNG/9570498251187430_1394740398.png" alt="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 <font color="#ff6f61"><strong>간단하게 즐길 수 있는 안주</strong></font>를 찾다가<br>소고기 육포 20g 제품을 알게 됐어요. 🍖</p><p>평소에 집에서 <font color="#ff6f61"><strong>술 한잔 할 때 간편한 마른안주</strong></font>가 없어서<br>좀 불편했거든요.</p><p>과자나 견과류도 좋지만,<br>건강하고 맛있는 <font color="#ff6f61"><strong>단백질 간식</strong></font>가 필요했어요.</p><p>그래서 <font color="#ff6f61"><strong>소고기 육포</strong></font>를 직접 찾아보게 됐답니다. 🍷</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5sunCsZv" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240927_140/1727419013246U4YXL_PNG/61551871367020272_1662498638.png" alt="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 소고기 육포 20g을 선택했을까?</h2></section><p>소고기 육포 제품이 정말 많아서<br>고르기가 쉽지 않았어요.</p><p>그중에서도 20g이라는 적당한 양과<br>할인가 1,500원이라는 가격이 마음에 들었어요.</p><p>그리고 무엇보다<br><font color="#ff6f61"><strong>구매 후기가 좋아서</strong></font> 믿음이 갔답니다.</p><p>사실 가격 대비 맛이 어떨지 조금 망설였지만,<br>리뷰에 “식감이 부드럽고 짜지 않다”는 평이 많아서 선택했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5sunCsZv" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240927_277/1727419019582HVkmb_PNG/73444862225545546_1421338085.png" alt="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -158,7 +182,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5sunCsZv" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240927_214/1727419025410mjADI_PNG/8454459229194742_1369257783.png" alt="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>내가 꼽은 소고기 육포 3가지 만족 포인트</h2></section><p>첫째, <font color="#ff6f61"><strong>적당한 양과 가격</strong></font>으로 부담 없이 구매 가능했어요.</p><p>둘째, 식감이 너무 딱딱하지 않고<br>촉촉하면서도 고기의 풍미가 살아있어서<br>먹는 내내 만족스러웠답니다.</p><p>셋째, <font color="#ff6f61"><strong>포장도 깔끔해서</strong></font> 보관이나 휴대가 편리해<br>언제 어디서나 간편하게 즐길 수 있어요. 🎉</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5sunCsZv" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240927_242/1727419031704RznsT_PNG/61551880777484766_2036541171.png" alt="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬웠던 점은?</h2></section><p>아쉬운 점이라면<br>조금 더 다양한 맛 옵션이 있었으면 하는 바람이 있어요.</p><p>그래도 기본 맛이 너무 괜찮아서<br>그 부분은 크게 신경 쓰이지 않았답니다.</p><p>그리고 20g이라 양이 적어<br>한 번에 여러 개 먹게 되는 점도 있지만,<br>오히려 신선함이 유지되는 장점으로 생각해요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5sunCsZv" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240625_279/171929551516970SUg_PNG/9570496963457148_1368810335.png" alt="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천하고 싶을까?</h2></section><p><font color="#ff6f61"><strong>혼술을 즐기는 1인 가구</strong></font> 분들,<br>간편하면서도 건강한 간식을 찾는 분들께 딱이에요.</p><p>특히 출출할 때 부담 없이<br>단백질을 보충하고 싶은 분들께 강추합니다.</p><p>그리고 아이 간식이나<br>간단한 캠핑, 여행용 안주로도 좋아요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5sunCsZv" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240625_197/1719295515394lIykp_PNG/9570497181247562_1227113651.png" alt="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 마지막 한마디</h2></section><p>저는 이미 두 번째 주문을 고민 중이에요. 😄</p><p>후기와 상세페이지를 꼼꼼히 비교해보니<br>가격도 착하고 품질도 기대 이상이라<br>다른 제품보다 만족도가 높더라고요.</p><p>소고기 육포 20g 제품, 한번 경험해 보시길<br><font color="#ff6f61"><strong>자연스러운 맛과 간편함을 느끼실 수 있을 거예요</strong></font>.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5sunCsZv" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240625_145/17192955158763PPyr_PNG/9570497656583975_2036229279.png" alt="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -223,7 +247,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5sunCsZv" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240625_83/1719295516055jpa0v_PNG/9570497841731620_575070053.png" alt="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -232,11 +256,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>#소고기육포 #간식추천 #마른안주 #혼술안주 #건강간식</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5sunCsZv" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240625_128/1719295516267TPDrl_PNG/9570498017884245_1804334953.png" alt="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁" href="https://naver.me/5sunCsZv" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240625_6/1719295516454hxtPq_PNG/9570498251187430_1394740398.png" alt="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -244,7 +268,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5sunCsZv" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5sunCsZv" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="소고기 육포 간식 추천 20g 마른안주 리뷰와 먹는 꿀팁">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     
