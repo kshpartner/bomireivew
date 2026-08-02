@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">작은 원룸에 딱 맞는 루이스 LPM 옷장을 조심스럽게 추천드려요. 공간 활용과 깔끔한 디자인이 만족스러워요.</p>
     <div class="tags"><span>원룸</span><span>옷장</span><span>수납</span><span>공간활용</span><span>구매팁</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" href="https://naver.me/Fz8QqNfc" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" href="https://naver.me/Fz8QqNfc" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250623_175/1750670235317BvmAW_JPEG/6652952455416325_480745856.jpg" alt="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fz8QqNfc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fz8QqNfc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250623_175/1750670235317BvmAW_JPEG/6652952455416325_480745856.jpg" alt="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요~😊 오늘은 제가 얼마 전에 구입한 <font color="#ff69b4"><strong>루이스 LPM 옷장 원룸 안방 싱글 기본 800 화이트</strong></font> 제품에 대해 솔직하게 리뷰해보려고 해요.<br>사실 저는 작은 원룸에 살고 있어서 옷장 공간 때문에 늘 고민이 많았거든요.<br>옷이 많아지면 자연스레 정리도 어렵고, 답답한 느낌이 들 때가 많았어요.</p><p>그래서 이번에는 공간 활용도 좋고 깔끔한 디자인의 옷장을 찾던 중에 이 제품을 알게 되었답니다.<br>가격도 할인가로 72,000원이라 부담 없이 도전해볼 수 있었어요.<br>오늘 글에서는 왜 이 제품을 선택했는지, 직접 써보고 느낀 점을 <font color="#ff69b4"><strong>자세히 공유</strong></font>해드릴게요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fz8QqNfc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fz8QqNfc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250623_30/17506702257829oNdd_JPEG/1655819594012013_135798882.jpg" alt="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>작은 원룸에 딱! 옷장 고민에서 시작된 구매</h2></section><p>처음에는 그냥 기존에 있던 옷장을 사용했는데, 너무 좁고 정리가 잘 안 되더라고요.<br>특히 한쪽에 쌓여가는 옷들 때문에 공간이 더 비좁아 보였어요.<br>그래서 <font color="#ff69b4"><strong>원룸용으로 적당한 사이즈</strong></font>의 옷장을 찾기 시작했죠.</p><p>또한, 너무 어두운 색이나 무거운 디자인은 피하고 싶었고,<br>밝고 깔끔한 화이트 톤이면 집안 분위기도 훨씬 산뜻해질 것 같았어요.<br>그런 점에서 이 제품은 제 고민을 딱 해결해 줄 것 같았답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fz8QqNfc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fz8QqNfc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250623_117/1750670236189JKakk_JPEG/6652953319714673_1495043691.jpg" alt="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>루이스 LPM 옷장을 선택한 이유와 망설임</h2></section><p>사실 비슷한 옷장이 워낙 많아서 한참을 고민했어요.<br>가격대도 다양하고, 디자인도 천차만별이라 쉽게 결정할 수 없었거든요.<br>하지만 이 제품은 <font color="#ff69b4"><strong>후기 평이 좋고</strong></font> 또 깔끔한 화이트 컬러가 너무 마음에 들었어요.</p><p>그리고 무엇보다 브랜드 신뢰도가 있어서 망설임 없이 주문하게 됐죠.<br>처음에는 800mm 폭이 제 방에 너무 클까 걱정했지만,<br>실제로 놓아보니 딱 적당해서 공간 활용도 훨씬 좋아졌어요.</p><p>가격도 <font color="#ff69b4"><strong>할인된 72,000원</strong></font>이라 부담 없었고, 이 점이 구매 결정을 굳히는 데 큰 역할을 했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fz8QqNfc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fz8QqNfc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250623_210/1750670236787fGPgC_JPEG/6652953925553696_869837550.jpg" alt="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -164,7 +188,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 직접 느낀 변화</h2></section><p>옷장을 받자마자 직접 조립해봤는데, 생각보다 조립법도 간단했어요.<br>설명서가 자세히 나와 있어서 큰 어려움 없이 마무리할 수 있었답니다.</p><p>그리고 사용해보니 옷들이 훨씬 깔끔하게 정리돼서 방이 훨씬 넓어 보였어요.<br>옷을 찾을 때도 한눈에 정리된 게 보이니까 아침 준비 시간이 훨씬 빨라졌답니다.</p><p>특히 화이트 색상이 방 분위기를 밝게 만들어줘서<br><font color="#ff69b4"><strong>기분 전환에도 큰 도움</strong></font>이 됐어요.<br>작은 변화지만, 일상에서 느끼는 만족감이 컸답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fz8QqNfc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fz8QqNfc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250623_127/1750670237210BEKh7_JPEG/6652954345436998_880093183.jpg" alt="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fz8QqNfc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fz8QqNfc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250623_100/1750670237742xb3cy_JPEG/6652954875336640_1391750799.jpg" alt="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>약간 아쉬운 점과 그래도 좋은 이유</h2></section><p>조금 아쉬운 점은 옷장 폭이 좀 더 넓었으면 하는 마음이 살짝 있었어요.<br>그래도 원룸 공간 특성상 이 사이즈가 딱 맞아서 큰 불편함은 없었답니다.</p><p>그리고 화이트라 관리할 때 약간 더 신경 써야 하는 점도 있지만,<br>그래도 먼지나 오염이 눈에 잘 보여서 자주 청소하게 되는 장점도 있더라고요.<br>결국 깨끗한 상태를 유지하는 데 도움이 됐어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fz8QqNfc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fz8QqNfc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250623_187/1750670238139XC49p_JPEG/6652955275580881_1389532013.jpg" alt="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -192,7 +216,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>이 제품, 누구에게 추천할까?</h2></section><p>원룸이나 작은 방에 살면서 <font color="#ff69b4"><strong>깔끔하고 실용적인 옷장</strong></font>을 찾는 분들께 적극 추천드려요.<br>특히 화이트톤 인테리어를 좋아하시는 분들께 딱 맞는 제품이랍니다.</p><p>그리고 혼자 살면서 옷장이 작아서 정리가 어렵거나,<br>가성비 좋은 제품으로 편리하게 옷장 정리를 시작해보고 싶은 분들께도 좋아요.<br>실용성과 디자인 모두 신경 쓴 제품이거든요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fz8QqNfc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fz8QqNfc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250623_113/1750670238754bfHnR_JPEG/6652955890101100_849811251.jpg" alt="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -200,7 +224,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 이번에 너무 만족스러워서 나중에 이사 가거나 추가로 공간이 필요할 때 다시 구매할 의사가 확실해요.<br>가격도 합리적이라 부담 없이 추천할 수 있답니다.</p><p>혹시 구매를 고민 중이시라면 후기도 꼼꼼히 살펴보시고,<br>상세페이지와 제품 사이즈를 꼭 확인해보시는 걸 추천드려요.<br>저처럼 공간 고민이 있으신 분들은 이 옷장과 함께라면 훨씬 편안한 일상이 가능할 거예요😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Fz8QqNfc" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Fz8QqNfc" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250623_165/1750670234927MI36w_JPEG/6652952063022066_295333441.jpg" alt="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -235,7 +259,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>여러분도 작은 공간에서 효율적인 옷장 찾고 계시다면<br>루이스 LPM 옷장 한번 고려해보세요!😊<br>제가 직접 써보고 느낀 솔직한 후기가 도움이 되셨다면<br>좋아요와 댓글로 알려주세요.<br>특히 여러분의 옷장 고민이나 추천 제품이 있다면 함께 나눠요!🌸</p><p>#원룸옷장 #루이스LPM #화이트옷장 #작은방정리 #가성비옷장</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" href="https://naver.me/Fz8QqNfc" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁" href="https://naver.me/Fz8QqNfc" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250623_175/1750670235317BvmAW_JPEG/6652952455416325_480745856.jpg" alt="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -243,7 +267,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/Fz8QqNfc" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/Fz8QqNfc" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="원룸 옷장 추천 루이스 LPM 싱글 800 화이트 활용법과 구매팁">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
