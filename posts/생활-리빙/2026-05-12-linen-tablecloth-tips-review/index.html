@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">집 분위기를 한층 아름답게 해줄 린넨 식탁보, 부드럽고 관리도 쉬워서 꼭 추천드리고 싶어요.</p>
     <div class="tags"><span>린넨식탁보</span><span>홈파티</span><span>캠핑</span><span>식탁꾸미기</span><span>사용후기</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기" href="https://naver.me/GFsYLDBe" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기" href="https://naver.me/GFsYLDBe" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20191201_142/15752101198450n4hc_JPEG/12572453402599329_950674119.jpg" alt="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GFsYLDBe" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GFsYLDBe" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20191201_142/15752101198450n4hc_JPEG/12572453402599329_950674119.jpg" alt="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 <font color="#6a8caf"><strong>튼튼하고 예쁜 식탁보</strong></font>를 찾기 시작했는데,<br>린넨 소재가 자연스러우면서도 고급스러운 느낌이 있어<br>눈길이 많이 갔어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GFsYLDBe" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GFsYLDBe" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250521_3/17478099440004mRHf_JPEG/76399571048884729_811110697.jpg" alt="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또한 <font color="#6a8caf"><strong>17,900원</strong></font>이라는 가격이 부담 없고,<br>구매 후기들이 꽤 긍정적이라 신뢰가 갔답니다.<br>처음에는 린넨이 관리가 어렵지 않을까<br>조금 망설였지만, 후기에서 세탁도 어렵지 않다길래<br>결심하게 됐어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GFsYLDBe" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GFsYLDBe" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200723_179/1595470175731mfM33_JPEG/32833564245606926_171886180.jpg" alt="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -162,7 +186,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 홈파티 때는 백일상, 돌상 등<br>테이블 꾸미기에 신경 쓸 일이 많잖아요?<br>그럴 때마다 이 식탁보가 정말 빛을 발했어요.<br>원단 특성상 구김이 자연스러워서<br>더 자연스러운 분위기를 만들어 주더라고요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GFsYLDBe" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GFsYLDBe" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200723_258/1595430125559dokUx_JPEG/32791668202488441_1959000317.jpg" alt="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -172,7 +196,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>셋째, <font color="#6a8caf"><strong>사이즈가 딱 적당해서</strong></font> 사각형, 원형 테이블 모두<br>커버할 수 있어 활용도가 높아요.<br>캠핑 갈 때도 들고 다니기 편해서 좋아요!</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GFsYLDBe" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GFsYLDBe" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200723_290/1595470243464xvawx_JPEG/32832577055165168_1037579337.jpg" alt="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -181,7 +205,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 가격 대비 질감은 만족스럽지만<br>좀 더 다양한 컬러가 있었으면 하는 바람도 있어요.<br>그래도 크림블루 색상 자체가 너무 예뻐서<br>충분히 만족했어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GFsYLDBe" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GFsYLDBe" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200723_192/1595470256314TFQjK_JPEG/32830994904320179_241103877.jpg" alt="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -191,7 +215,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>린넨의 자연스러운 멋을 살리고 싶다면<br>한 번쯤 써보길 권해드려요!🌿</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GFsYLDBe" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GFsYLDBe" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200723_205/1595470276269TwBPU_JPEG/32832609861267092_157496260.jpg" alt="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -233,7 +257,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>사용하시면서 느꼈던 점이나<br>궁금한 점 댓글로 남겨주시면<br>진심으로 소통하고 싶어요! 함께 이야기 나눠요~😊</p>
 <p>#린넨식탁보 #홈파티테이블보 #크림블루테이블보 #캠핑식탁보 #백일상준비</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기" href="https://naver.me/GFsYLDBe" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기" href="https://naver.me/GFsYLDBe" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20191201_142/15752101198450n4hc_JPEG/12572453402599329_950674119.jpg" alt="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -241,7 +265,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/GFsYLDBe" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/GFsYLDBe" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="린넨 식탁보 추천 홈파티부터 캠핑까지 활용 꿀팁과 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
