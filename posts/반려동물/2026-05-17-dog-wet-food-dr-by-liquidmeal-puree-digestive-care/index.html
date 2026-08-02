@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">우리 강아지 소화가 안 좋아 힘들었는데 닥터바이 리퀴드밀 퓨레 덕분에 편안해져서 따뜻하게 추천해요.</p>
     <div class="tags"><span>강아지</span><span>습식사료</span><span>소화케어</span><span>닥터바이</span><span>퓨레</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" href="https://naver.me/FYrIbwJM" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" href="https://naver.me/FYrIbwJM" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20251119_57/1763519251869zG4w4_JPEG/47134626864949256_1795985161.jpg" alt="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FYrIbwJM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FYrIbwJM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251119_57/1763519251869zG4w4_JPEG/47134626864949256_1795985161.jpg" alt="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 유동식 형태로 부드럽게 먹을 수 있는 사료를 찾아보게 됐어요.<br>바로 <font color="#ff69b4"><strong>닥터바이 리퀴드밀 강아지 퓨레 습식사료</strong></font>였죠.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FYrIbwJM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FYrIbwJM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260226_76/1772089940120RA5Wb_PNG/8268581916903283_216042788.png" alt="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또, <font color="#ff69b4"><strong>210g 한 팩으로 개별 포장</strong></font>되어 신선함을 유지할 수 있다는 점도 마음에 들었답니다.<br>가격도 15,900원으로 부담스럽지 않아 선택에 큰 도움이 됐어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FYrIbwJM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FYrIbwJM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260226_180/1772089967512ATHC7_JPEG/14926326012592026_535961353.jpg" alt="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -162,7 +186,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히, 평소보다 훨씬 활동량이 늘고 기분이 좋아 보여서<br>돌봐주는 입장에서도 안심이 됐답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FYrIbwJM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FYrIbwJM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251119_216/1763519249647EvPVN_JPEG/47134624612143953_400058131.jpg" alt="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FYrIbwJM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FYrIbwJM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251119_149/1763519250069YKnEG_JPEG/47134625066021584_1795024708.jpg" alt="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 퓨레 형태라 손에 묻을 수 있어서<br>먹일 때 조심하는 편이 좋겠어요.😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FYrIbwJM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FYrIbwJM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260226_186/17720899678319lEHd_JPEG/14926326337964129_1076509033.jpg" alt="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -194,7 +218,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 입맛이 없거나 유동식이 필요한 아이들에게는 딱 맞는 선택입니다.🐾</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FYrIbwJM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FYrIbwJM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251119_19/1763519250374KHIbV_JPEG/47134625364538964_1620496670.jpg" alt="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -204,7 +228,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가격도 할인가 15,900원으로 부담 없으니 한 번 시도해보세요!😉</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FYrIbwJM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FYrIbwJM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251119_231/1763519251249fNQTB_JPEG/47134626241260250_1183934898.jpg" alt="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -237,7 +261,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FYrIbwJM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FYrIbwJM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251119_102/1763519251565zFLX0_JPEG/47134626562293997_1252268346.jpg" alt="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -246,7 +270,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>우리 아이의 작은 변화부터 건강까지<br>따뜻하게 챙길 수 있는 방법을 함께 찾아가요.</p>
 <p>궁금한 점이나 경험담 공유하고 싶으신 분들은<br>댓글로 꼭 이야기 나눠주세요!😊</p><p>#강아지사료 #강아지습식사료 #닥터바이리퀴드밀 #반려견소화케어 #강아지유동식</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" href="https://naver.me/FYrIbwJM" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기" href="https://naver.me/FYrIbwJM" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20251119_57/1763519251869zG4w4_JPEG/47134626864949256_1795985161.jpg" alt="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -254,7 +278,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FYrIbwJM" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FYrIbwJM" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="강아지 습식사료 추천 닥터바이 리퀴드밀 퓨레 소화 케어 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
