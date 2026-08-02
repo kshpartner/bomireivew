@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">광어낚시 초보에게 정말 도움될 광킬 5인치 다운샷웜 리뷰와 선택법, 가격까지 따뜻하게 알려줄게요.</p>
     <div class="tags"><span>광어웜</span><span>다운샷웜</span><span>낚시용품</span><span>광킬</span><span>가격비교</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지" href="https://naver.me/5YoaSeOn" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지" href="https://naver.me/5YoaSeOn" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260408_192/177563745980824IUI_JPEG/16784189506460063_224848128.jpg" alt="광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5YoaSeOn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5YoaSeOn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260408_192/177563745980824IUI_JPEG/16784189506460063_224848128.jpg" alt="광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가격도 너무 비싸면 부담스럽고,<br>성능이 좋아도 내 스타일이 아니면 의미가 없고 말이에요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5YoaSeOn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5YoaSeOn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260408_173/1775637313139oSb4g_JPEG/13422317349147244_1842834734.jpg" alt="광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 <font color="#ff69b4"><strong>광킬 다운샷웜</strong></font>은 사이즈가 5인치로 적당해서 여러 낚시 상황에 맞출 수 있다는 점이 마음에 들었어요.<br>너무 크거나 작으면 힘들잖아요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5YoaSeOn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5YoaSeOn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260408_101/1775637326556Igf6k_JPEG/58712791367324482_663784543.jpg" alt="광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -162,7 +186,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 저는 디자인보다 실용성을 더 중요하게 생각해서,<br>대광어를 공략하기에 적합하다는 점이 맘에 쏙 들었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5YoaSeOn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5YoaSeOn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260408_253/1775637326820SX7ql_JPEG/58712791628277918_1134738982.jpg" alt="광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -219,7 +243,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>사용해보고 느낀 점이나 궁금한 점 댓글로 나눠주세요.<br>서로의 경험이 더 좋은 낚시를 만드는 힘이니까요!</p>
 <p>#광킬웜 #광어다운샷웜 #대광어낚시 #가성비낚시용품 #낚시웜추천</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지" href="https://naver.me/5YoaSeOn" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지" href="https://naver.me/5YoaSeOn" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260408_192/177563745980824IUI_JPEG/16784189506460063_224848128.jpg" alt="광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -227,7 +251,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5YoaSeOn" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5YoaSeOn" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="광어웜 선택법과 광킬 5인치 다운샷웜 활용법 솔직리뷰와 가격비교까지">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     
