@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">주방 공간 고민이 많은 친구에게 오븐렉 3단 선반으로 깔끔한 수납을 조심스럽게 추천드려요.</p>
     <div class="tags"><span>오븐렉</span><span>전자렌지선반</span><span>밥솥받침대</span><span>주방수납</span><span>가전정리</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기" href="https://naver.me/5jXmB6Hf" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기" href="https://naver.me/5jXmB6Hf" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230306_212/16780920796027SBm1_JPEG/79227859327613337_1308283960.jpg" alt="오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5jXmB6Hf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5jXmB6Hf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230306_212/16780920796027SBm1_JPEG/79227859327613337_1308283960.jpg" alt="오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>이 제품은 <font color="#ff69b4"><strong>3단 랙</strong></font>이라서 밥솥과 오븐, 밥통 등<br> 여러 주방 가전을 깔끔하게 정리할 수 있어<br> 너무 기대가 되었어요.😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5jXmB6Hf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5jXmB6Hf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250224_152/1740383991390GROjy_JPEG/74516944494934990_1944012067.jpg" alt="오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>솔직히 처음엔 조립이 어려울까 봐<br> 살짝 망설였지만, 리뷰에 조립 방법이 자세히 나와 있어서<br> 마음을 정했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5jXmB6Hf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5jXmB6Hf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240124_194/1706084171803d5Spw_JPEG/107220006629863594_1213665038.jpg" alt="오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -162,7 +186,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가족들도 주방이 훨씬 정돈돼 보여서<br> 좋아하더라고요. 🌿</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5jXmB6Hf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5jXmB6Hf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230306_258/1678092306669NvpYF_JPEG/79228086374127974_51172729.jpg" alt="오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -219,7 +243,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>여러분은 주방에서 가장 불편한 점이 무엇인지,<br> 어떻게 정리하고 계신지 댓글로 공유해 주세요.<br> 함께 좋은 아이디어 나누면 좋겠네요!🌷</p>
 <p>#오븐렉 #전자렌지선반 #밥솥받침대 #주방수납 #가성비선반</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기" href="https://naver.me/5jXmB6Hf" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기" href="https://naver.me/5jXmB6Hf" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230306_212/16780920796027SBm1_JPEG/79227859327613337_1308283960.jpg" alt="오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -227,7 +251,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5jXmB6Hf" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5jXmB6Hf" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="오븐렉 추천 3단 전자렌지선반 밥솥받침대 활용법과 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
