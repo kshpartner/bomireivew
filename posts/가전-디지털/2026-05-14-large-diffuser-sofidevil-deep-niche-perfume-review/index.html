@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">대용량 디퓨저가 필요하다면 소피데빌 딥 니치퍼퓸 추천드려요. 자연스러운 향과 합리적 가격이 정말 좋아요.</p>
     <div class="tags"><span>대용량디퓨저</span><span>방향제추천</span><span>소피데빌</span><span>사용후기</span><span>향기</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기" href="https://naver.me/FBMJpEWL" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기" href="https://naver.me/FBMJpEWL" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20251204_254/1764839566573GLn0O_JPEG/98972431712492424_937113218.jpg" alt="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMJpEWL" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMJpEWL" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251204_254/1764839566573GLn0O_JPEG/98972431712492424_937113218.jpg" alt="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 거실과 서재, 그리고 사무실 책상에<br>향기를 더하고 싶었는데<br>작은 용량 제품은 자주 갈아줘야 해서 번거롭더라고요.<br>그래서 대용량 리필 제품을 찾다가<br><font color="#ff69b4"><strong>소피데빌 딥 니치퍼퓸 500ml</strong></font>를 알게 됐어요.</p><p>이전에 사용하던 방향제는 금방 향이 약해지고<br>리필도 자주 해야 해서 비용과 번거로움이 컸죠.<br>그래서 자연스럽고 오래가는<br>대용량 디퓨저 리필을 원했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMJpEWL" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMJpEWL" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251208_257/1765177846302uHOum_JPEG/40795878779856918_960019261.jpg" alt="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -151,7 +175,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>둘째, 후기들을 찾아보니<br>향이 오래가고 자연스럽다는 평이 많았고,<br>평소에도 브랜드 신뢰도가 꽤 있어서<br>망설임 없이 결정했답니다.</p><p>처음엔 향이 너무 강하면 어떡하지 걱정도 했는데<br>실제로는 은은하고 포근한 향이라서<br>가볍게 사용하기 딱 좋았어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMJpEWL" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMJpEWL" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251204_64/1764839515847EliMm_JPEG/33264110958486047_1148227666.jpg" alt="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -161,7 +185,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 아이가 있는 집이라 향에 민감할까 걱정했는데<br>자극적이지 않고 자연스러운 향이라<br>더 안심이 됐답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMJpEWL" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMJpEWL" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251204_21/1764839520045YPz4I_JPEG/10978093729000295_1375509548.jpg" alt="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -173,7 +197,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMJpEWL" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMJpEWL" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251204_76/1764839533829hJfkl_JPEG/18999473230877279_1468511054.jpg" alt="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -183,7 +207,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 포장이 깔끔해서 선물용으로도 괜찮겠더라고요.🎁</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMJpEWL" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMJpEWL" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251204_256/1764839550768iJ980_JPEG/90869036043284065_2105833775.jpg" alt="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -192,7 +216,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 향 지속력이 중요하고<br>자주 리필하기 번거로운 분들에게 추천해요.</p><p>아이와 반려동물이 있는 집에서도<br>자극적이지 않아 부담 없이 쓸 수 있답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMJpEWL" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMJpEWL" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251204_182/1764839557686jptQ3_JPEG/18999497206975011_1858832633.jpg" alt="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -202,7 +226,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 가격 대비 용량과 향 지속력은<br>분명히 만족하실 거라 믿어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FBMJpEWL" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FBMJpEWL" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251204_88/1764839562178NL6Y6_JPEG/10472572966265715_1194505986.jpg" alt="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -240,7 +264,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>좋아요와 공유도 잊지 말아주세요~ 감사합니다!</p>
 <p>#디퓨저추천 #대용량방향제 #소피데빌 #집들이선물 #향기로운공간</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기" href="https://naver.me/FBMJpEWL" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기" href="https://naver.me/FBMJpEWL" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20251204_254/1764839566573GLn0O_JPEG/98972431712492424_937113218.jpg" alt="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -248,7 +272,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FBMJpEWL" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FBMJpEWL" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="대용량 디퓨저 추천 소피데빌 딥 니치퍼퓸 호텔&#183;사무실 방향제 사용법과 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
