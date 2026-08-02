@@ -95,18 +95,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -121,7 +145,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">작고 음질 좋은 블루투스 스피커 찾는 친구에게 크리에이티브 펩블 프로를 조심스레 추천해요.</p>
     <div class="tags"><span>블루투스 스피커</span><span>크리에이티브</span><span>음질</span><span>휴대성</span><span>디자인</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법" href="https://naver.me/G3vXPU2C" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법" href="https://naver.me/G3vXPU2C" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250528_163/1748398540137XBgJP_JPEG/640513674548343_1870814974.jpg" alt="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -131,7 +155,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G3vXPU2C" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G3vXPU2C" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250528_163/1748398540137XBgJP_JPEG/640513674548343_1870814974.jpg" alt="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 <font color="#ff69b4"><strong>휴대성</strong></font>과 <font color="#ff69b4"><strong>깔끔한 디자인</strong></font>을 중요하게 생각했어요.<br>그래서 여러 제품을 비교해 봤는데,<br>크리에이티브 PEBBLE PRO BLACK이 눈에 딱 들어오더라고요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G3vXPU2C" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G3vXPU2C" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250707_122/17518260668583oXzO_JPEG/2804237683619971_1354719912.jpg" alt="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -152,7 +176,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>하지만 실제로 받아보고 나서 그 걱정은 싹 사라졌어요.<br>그야말로 딱 제 스타일! 😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G3vXPU2C" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G3vXPU2C" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250528_244/1748398537760IvwCu_JPEG/640511309072806_1268103916.jpg" alt="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -163,7 +187,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>덕분에 음악 듣는 시간이 훨씬 즐거워졌답니다! 🎵</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G3vXPU2C" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G3vXPU2C" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250528_137/1748398538112cXRm4_JPEG/640511656891726_1812425424.jpg" alt="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G3vXPU2C" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G3vXPU2C" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250528_203/1748398538486j1VfO_JPEG/640512032531201_829659298.jpg" alt="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -186,7 +210,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 한 가지, <font color="#ff69b4"><strong>방수 기능이 없어서</strong></font><br>야외에서 물기가 많은 곳에서는 조심해야 한다는 점은 참고하세요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G3vXPU2C" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G3vXPU2C" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250528_246/17483985389544IzrF_JPEG/640512499898938_124645815.jpg" alt="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -196,7 +220,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>집에서뿐만 아니라 사무실 책상 위에 두고<br>음악이나 팟캐스트 듣기에 아주 좋답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G3vXPU2C" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G3vXPU2C" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250528_175/1748398539293TfynQ_JPEG/640512842378639_1400703321.jpg" alt="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -206,7 +230,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>89,000원 할인가에 이 정도 음질과 디자인,<br>휴대성까지 갖춘 스피커는 흔치 않으니까요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G3vXPU2C" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G3vXPU2C" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250528_178/1748398539672FiSUX_JPEG/640513209757562_674263971.jpg" alt="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -244,7 +268,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>좋아요와 공감도 잊지 말아 주시고요~</p>
 <p>#블루투스스피커 #크리에이티브PEBBLEPRO #음악감상 #가성비스피커 #감성인테리어</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법" href="https://naver.me/G3vXPU2C" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법" href="https://naver.me/G3vXPU2C" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250528_163/1748398540137XBgJP_JPEG/640513674548343_1870814974.jpg" alt="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -252,7 +276,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/G3vXPU2C" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/G3vXPU2C" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="블루투스 스피커 추천 크리에이티브 펩블 프로 블랙 후기와 선택법">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
