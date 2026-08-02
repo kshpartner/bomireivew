@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">스팀 에그보일러로 아침 달걀 삶기가 쉬워졌어요. 믿음직한 제품이라 추천할게요.</p>
     <div class="tags"><span>스팀에그보일러</span><span>제니퍼룸</span><span>달걀삶기</span><span>가성비</span><span>아침식사</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법" href="https://naver.me/Gi0erekb" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법" href="https://naver.me/Gi0erekb" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250428_152/1745806369489A8FSO_JPEG/71835854759592685_386739362.jpg" alt="스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gi0erekb" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gi0erekb" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250428_152/1745806369489A8FSO_JPEG/71835854759592685_386739362.jpg" alt="스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 간편하면서도 <font color="#ff69b4"><strong>깔끔하게 달걀을 삶을 수 있는 도구</strong></font>가 필요했죠.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gi0erekb" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gi0erekb" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250428_286/1745806369084RpGWp_JPEG/71835854358185266_2026079112.jpg" alt="스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -151,7 +175,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가격도 할인가 <font color="#ff69b4"><strong>39,900원</strong></font>으로 부담스럽지 않고,<br>실사용자들의 리뷰가 믿음직스러워 망설임 없이 선택했답니다.</p><p>사실 처음에는 전기제품이다 보니 고장 걱정도 있었지만,<br>튼튼해 보이는 스텐 찜기와 심플한 디자인에 신뢰가 갔어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gi0erekb" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gi0erekb" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250908_174/1757292217138uo4zl_JPEG/74298710934868877_877892137.jpg" alt="스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -161,7 +185,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>아침마다 바쁜 시간에 <font color="#ff69b4"><strong>스위치만 켜두면 자동으로 조리가 끝나니</strong></font><br>시간 절약도 되고 스트레스도 줄었어요.😄</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/Gi0erekb" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/Gi0erekb" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250428_212/1745806368468I4DeY_JPEG/71835853743081961_182080614.jpg" alt="스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -220,7 +244,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>궁금한 점 있으면 언제든지 물어봐 주세요!<br>함께 건강한 식생활 만들어 가요~</p>
 <p>#제니퍼룸 #에그보일러 #스팀계란삶기 #간편요리 #주방필수템</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법" href="https://naver.me/Gi0erekb" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법" href="https://naver.me/Gi0erekb" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250428_152/1745806369489A8FSO_JPEG/71835854759592685_386739362.jpg" alt="스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -228,7 +252,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/Gi0erekb" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/Gi0erekb" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="스팀 에그보일러 추천 제니퍼룸 JRK-EB1601SOM 사용후기와 선택법">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
