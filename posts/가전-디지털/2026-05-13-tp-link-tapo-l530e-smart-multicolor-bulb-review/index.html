@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">집에서 쉽게 분위기를 바꾸고 싶다면 티피링크 스마트 멀티컬러 전구를 추천드려요. 믿음 가는 제품이에요.</p>
     <div class="tags"><span>스마트전구</span><span>멀티컬러조명</span><span>티피링크</span><span>홈조명</span><span>사용후기</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" href="https://naver.me/5hoJzzWD" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" href="https://naver.me/5hoJzzWD" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20251103_34/1762133950610RWyjN_JPEG/28404492965047095_2040639582.jpg" alt="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJzzWD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJzzWD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251103_34/1762133950610RWyjN_JPEG/28404492965047095_2040639582.jpg" alt="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요~ 오늘은 제가 최근에 사용해본 <font color="#ff69b4"><strong>티피링크 Tapo L530E 스마트 멀티컬러 전구</strong></font>를 소개해볼게요! 😊</p><p>사실 요즘 집에서 분위기를 쉽게 바꾸고 싶을 때마다 <br>조명 하나 바꾸는 게 큰 차이를 만든다는 걸 느끼고 있었어요.</p><p>그래서 기존에 쓰던 일반 LED전구 말고<br>조명 색상도 조절할 수 있고 스마트하게 컨트롤 되는 제품을 찾게 됐죠.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJzzWD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJzzWD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250714_58/1752473219146UfaDp_JPEG/45675806360692969_125105093.jpg" alt="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 스마트 멀티컬러 전구가 필요했을까?</h2></section><p>집에 있는 조명이 너무 단조로워서 늘 똑같은 분위기였어요.<br>특히 저녁에 휴식을 취할 때 전구색 조명 하나면 훨씬 편안한데,<br>리모컨도 없고 조절할 수 있는 방법이 없어서 아쉬웠거든요.</p><p>또, 요즘은 집에서 보내는 시간이 많아지다 보니<br>조명 하나 바꾸는 것만으로도 <font color="#ff69b4"><strong>분위기 전환이 절실해졌어요.</strong></font><br>그래서 스마트 조명 제품을 알아보게 되었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJzzWD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJzzWD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251103_76/1762133952565YD4lf_JPEG/28404490655437620_2019661343.jpg" alt="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>티피링크 Tapo L530E를 선택한 이유</h2></section><p>처음에는 비슷한 스마트 전구가 너무 많아서 한참 고민했어요.<br>가격도 천차만별이고, 후기들도 다양했죠.</p><p>하지만 <font color="#ff69b4"><strong>가격대가 11,900원으로 부담이 적었고</strong></font>,<br>사용자 후기가 꽤 긍정적이라 믿음이 갔어요.<br>그리고 브랜드도 티피링크라 스마트 기기에서 어느 정도 신뢰가 가더라고요.</p><p>무엇보다도 <font color="#ff69b4"><strong>멀티컬러 기능과 전구색 옵션을 동시에 지원</strong></font>하는 점이 결정적이었어요.<br>이런 점이 너무 마음에 들어 바로 구매하게 됐답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJzzWD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJzzWD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251103_263/17621339502928VM3K_JPEG/28404491057907978_1849753235.jpg" alt="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -164,7 +188,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후의 확실한 차이</h2></section><p>처음 설치할 때는 너무 간단해서 깜짝 놀랐어요.<br>소켓에 끼우고 Tapo 앱으로 연결하니까 바로 작동하더라고요.</p><p>가장 먼저 전구색으로 집 안을 밝히니<br>훨씬 따뜻하고 포근한 느낌이 확 살아났어요.<br>늦은 밤 독서할 때도 눈이 편안해서 너무 좋더라고요.</p><p>그리고 가끔 기분 따라<br><font color="#ff69b4"><strong>멀티컬러로 바꿔서 파티 분위기나 휴식 모드</strong></font>로 연출할 수 있어서 집에서 보내는 시간이 훨씬 즐거워졌답니다. 🎉</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJzzWD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJzzWD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251103_76/17621339497004rM2H_JPEG/28404491260423347_1865182537.jpg" alt="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJzzWD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJzzWD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251103_221/1762133949524oor5Q_JPEG/28404491476008736_1962277627.jpg" alt="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>약간의 아쉬운 점</h2></section><p>조금 아쉬운 점은 앱이 가끔씩 느려질 때가 있어서<br>즉각적인 반응이 좀 지연될 때가 있더라고요.</p><p>하지만 전체적으로 보면 <font color="#ff69b4"><strong>가성비도 좋고 편리함이 더 커서</strong></font><br>큰 단점이라고 느껴지진 않았어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJzzWD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJzzWD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251103_103/1762133955914VlX9K_JPEG/28404492102891586_1212119157.jpg" alt="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>이 제품을 추천하고 싶은 사람은?</h2></section><p>집에서 간편하게 <font color="#ff69b4"><strong>분위기 전환을 하고 싶은 분</strong></font>,<br>스마트 홈 초보자분들께 정말 추천드려요!</p><p>그리고 전구색 조명으로 편안한 휴식 시간을 갖고 싶은 분,<br>가성비 좋은 스마트 조명을 찾는 분들께 딱 맞을 거예요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJzzWD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJzzWD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251103_85/1762133947131bf54P_JPEG/28404492560298262_1021335232.jpg" alt="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -198,7 +222,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 이미 다른 방에도 추가로 구입할 생각이에요.<br><font color="#ff69b4"><strong>후기와 상세 페이지를 꼼꼼히 살펴보시면</strong></font>,<br>어떤 점이 좋은지 확실히 느끼실 거예요.</p><p>아무래도 조명은 자주 바꾸는 제품이 아니니,<br>천천히 비교해보시고 결정하시면 후회 없을 거랍니다. 😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJzzWD" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJzzWD" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251103_124/17621339490147al50_JPEG/28404492745316559_1543829717.jpg" alt="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -233,7 +257,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>오늘 소개한 티피링크 Tapo L530E 스마트 전구로 집 안 분위기,<br>편안함이 한층 업그레이드 되는 걸 느껴보셨으면 해요!✨</p><p>여러분은 집에서 어떤 조명 분위기를 가장 좋아하시나요? <br>댓글로 알려주시면 저도 참고해서 다음에 더 좋은 제품 소개할게요.🙌</p><p>좋아요와 댓글 남겨주시면 큰 힘이 됩니다! 감사합니다~💖</p><p>#스마트전구 #티피링크전구 #멀티컬러조명 #집꾸미기 #가성비조명</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" href="https://naver.me/5hoJzzWD" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁" href="https://naver.me/5hoJzzWD" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20251103_34/1762133950610RWyjN_JPEG/28404492965047095_2040639582.jpg" alt="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -241,7 +265,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5hoJzzWD" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5hoJzzWD" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="스마트 멀티컬러 전구 추천 티피링크 Tapo L530E 사용후기와 꿀팁">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
