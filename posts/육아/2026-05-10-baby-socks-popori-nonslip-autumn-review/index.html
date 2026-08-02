@@ -95,18 +95,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -121,7 +145,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">아기 양말 고르기 힘든 엄마에게 포포리 논슬립 무압박 양말을 조심스럽게 추천드려요.</p>
     <div class="tags"><span>아기양말</span><span>논슬립</span><span>무압박</span><span>가을양말</span><span>육아용품</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기" href="https://naver.me/G5kJP1TE" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기" href="https://naver.me/G5kJP1TE" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230825_125/1692946575052pEdeY_JPEG/26358304913354140_126247376.jpg" alt="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -131,7 +155,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G5kJP1TE" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G5kJP1TE" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230825_125/1692946575052pEdeY_JPEG/26358304913354140_126247376.jpg" alt="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 찾은 게 바로 <font color="#ff69b4"><strong>포포리 논슬립 아기양말</strong></font>인데요,<br>가을 양말로 딱 맞고 후기도 좋아서 선택하게 됐답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G5kJP1TE" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G5kJP1TE" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230825_243/16929460617296zIhH_JPEG/FLXkV_100213_1.jpg" alt="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -151,7 +175,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>실제 구매 전 <font color="#ff69b4"><strong>사용 후기</strong></font>도 꼼꼼히 읽어봤는데, 아이들이 편안해 한다는 평이 많아서 신뢰가 갔어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G5kJP1TE" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G5kJP1TE" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230825_41/1692946566926V4o95_JPEG/6432255795839759_375318074.jpg" alt="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -161,7 +185,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>무엇보다 발목을 너무 조이지 않아 아기 피부가 붉게 달아오르는 일이 없어서 좋았어요.<br>무압박이라 정말 만족스러웠습니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/G5kJP1TE" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/G5kJP1TE" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230825_158/1692946571044l6VWQ_JPEG/7839860288493280_1390696080.jpg" alt="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -218,7 +242,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>사용 후기를 남겨주시면 다른 부모님들께 큰 도움이 될 거예요!<br>아기 양말 선택에 관한 고민이나 궁금한 점 있으면 댓글로 함께 이야기 나눠요.😊</p>
 <p>#아기양말추천 #포포리아기양말 #논슬립아기양말 #무압박양말 #가을아기양말</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기" href="https://naver.me/G5kJP1TE" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기" href="https://naver.me/G5kJP1TE" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230825_125/1692946575052pEdeY_JPEG/26358304913354140_126247376.jpg" alt="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -226,7 +250,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/G5kJP1TE" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/G5kJP1TE" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="아기양말 추천 포포리 논슬립 가을 무압박 양말 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     
