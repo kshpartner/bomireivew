@@ -95,18 +95,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -121,7 +145,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">가볍고 접이식이라 캠핑 짐 부담 줄이기에 딱 좋은 마운틴하이커 프라이팬, 믿고 추천할게요.</p>
     <div class="tags"><span>캠핑용품</span><span>경량프라이팬</span><span>접이식</span><span>스테인리스</span><span>백패킹</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰" href="https://naver.me/FFqSaok9" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰" href="https://naver.me/FFqSaok9" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260112_26/1768176820793gMOmH_JPEG/102309737461900677_840454776.jpg" alt="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -131,7 +155,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FFqSaok9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FFqSaok9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260112_26/1768176820793gMOmH_JPEG/102309737461900677_840454776.jpg" alt="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>저도 전에 사용하던 프라이팬이 너무 무겁고 부피가 커서 <br>항상 짐 싸는 게 스트레스였거든요. 그래서 이번에 <br><font color="#ff69b4"><strong>마운틴하이커 캠핑 후라이팬</strong></font>을<br>알아보게 됐어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FFqSaok9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FFqSaok9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260112_218/1768176731912USblc_JPEG/6520273399686890_1025642784.jpg" alt="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -151,7 +175,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또한, 스테인리스 재질이라 관리하기 쉽고 오래 쓸 수<br>있는 것도 중요했어요. 산에서 사용하면 내구성도 필수니까요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FFqSaok9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FFqSaok9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231006_21/1696575522271MuJWQ_JPEG/2174327076033033_2102455679.jpg" alt="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -161,7 +185,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 무엇보다 접이식이라는 점이 너무 매력적이었고, <br>가벼워서 배낭에 쏙 들어가는 게 구매를 결정짓는 포인트였답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FFqSaok9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FFqSaok9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231006_114/1696575525418NvVEl_JPEG/24164944388550539_552462255.jpg" alt="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -171,7 +195,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>설거지도 간단하고, 접어서 가방 안에 넣으니 공간도 <br>훨씬 여유로워졌답니다. 🍳👍</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FFqSaok9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FFqSaok9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231006_217/1696575528201lVG7d_JPEG/12062816405952416_1809871849.jpg" alt="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -183,7 +207,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FFqSaok9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FFqSaok9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231006_20/1696575531313yV4Da_JPEG/215223550445729_472502348.jpg" alt="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -192,7 +216,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 스테인리스 팬이라 처음 몇 번은 약간 음식이 <br>붙는 느낌이 있었는데, 몇 번 사용하니 코팅 팬처럼 부드러워졌어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FFqSaok9" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FFqSaok9" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260112_101/1768176780568RaCvC_JPEG/6520322053773592_1256388305.jpg" alt="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -239,7 +263,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>여러분의 캠핑 요리 이야기도 궁금하니,<br>편하게 댓글 남겨주시면 정말 반가울 것 같아요. 🍳</p>
 <p>#캠핑용품 #백패킹후라이팬 #경량프라이팬 #마운틴하이커 #캠핑요리</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰" href="https://naver.me/FFqSaok9" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰" href="https://naver.me/FFqSaok9" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260112_26/1768176820793gMOmH_JPEG/102309737461900677_840454776.jpg" alt="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -247,7 +271,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FFqSaok9" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FFqSaok9" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="캠핑 후라이팬 추천 마운틴하이커 경량 스텐 접이식 프라이팬 리뷰">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
