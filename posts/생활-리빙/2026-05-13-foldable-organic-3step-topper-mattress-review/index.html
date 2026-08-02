@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">허리가 약한 분께 정말 추천드리고 싶은 탄탄하고 편안한 접이식 오가닉 매트리스 사용 후기예요.</p>
     <div class="tags"><span>토퍼매트리스</span><span>접이식매트리스</span><span>오가닉</span><span>허리건강</span><span>3단매트리스</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" href="https://naver.me/GHLVCd0v" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230912_32/16944455172517KMMx_JPEG/10735609076959712_151054743.jpg" alt="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GHLVCd0v" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230912_32/16944455172517KMMx_JPEG/10735609076959712_151054743.jpg" alt="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요 여러분~ 😊 오늘은 제가 최근에 써보고 너무 만족한<br>“탑토퍼 3단 토퍼 접이식 매트리스”에 대해 이야기해보려고 해요.<br>평소에 허리가 약해서 매트리스 선택이 늘 고민이었는데,<br>이번 제품은 제 기대 이상이라 공유하고 싶었답니다.</p><p>사실 전에 쓰던 매트리스가 너무 푹신해서 허리가 자주 아팠거든요.<br>아침에 일어나면 허리가 뻐근하고 불편한 느낌이 계속돼서<br>어떤 제품이 좋을지 많이 찾아봤어요.<br>특히 탄탄하면서도 편안한 매트리스를 찾는 게 제일 어려웠죠.</p><p>그래서 접이식으로 공간 활용도 되고,<br>오가닉 소재라 피부에도 자극 없을 것 같아 관심이 갔어요.<br>가격도 <font color="#ff69b4"><strong>할인된 194,000원</strong></font>이라 적당한 편이었고,<br>후기도 꽤 좋아서 고민 끝에 구매했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GHLVCd0v" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240315_68/1710514371140umJ53_JPEG/37817055004069220_1469892693.jpg" alt="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>탑토퍼 3단 토퍼 선택한 이유</h2></section><p>비슷한 토퍼 매트리스가 정말 많잖아요?<br>근데 저는 무엇보다 <font color="#4b8bbe"><strong>탄탄한 지지력</strong></font>이 중요했어요.<br>후기를 보면 단단하지만 너무 딱딱하지 않다는 점이 눈에 띄었거든요.</p><p>그리고 <font color="#f08a5d"><strong>접이식 3단 구조</strong></font>라서 청소하거나 보관할 때 편리한 점도 마음에 들었어요.<br>공간 활용도가 높은 점은 작지만 큰 장점이었죠.<br>그 외에 오가닉 커버가 피부에 닿는 느낌이 부드럽다는 리뷰가 많아서<br>더 믿음이 갔답니다.</p><p>처음엔 가격대가 좀 망설여졌지만,<br>잘 쓰면 오래 사용할 수 있을 것 같아서 결국 선택했어요.<br>결정적으로 저처럼 허리 건강에 신경 쓰는 분들이<br>많이 추천하는 걸 보고 믿음이 확 생겼답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GHLVCd0v" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250824_190/1755997831083EXnRj_JPEG/90130707019342270_565755203.jpg" alt="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전후 달라진 점</h2></section><p>처음에는 딱딱한 매트리스가 불편하지 않을까 걱정했는데,<br>막상 사용해 보니 <font color="#ff6f61"><strong>허리를 단단히 받쳐주는 느낌</strong></font>이 정말 좋아요.<br>아침에 일어나면 전보다 훨씬 허리가 덜 뻐근하고<br>몸이 가볍게 느껴지더라고요.</p><p>특히 접이식이라 청소할 때 들고 다니기 편하고,<br>필요하면 소파 옆이나 작은 방에도 간편하게 펼 수 있어서<br>사용하는 게 정말 편리해요.<br>밤마다 기대감이 생길 정도로 편안한 잠자리를 만들어 주네요. 🌙</p><p>또 오가닉 소재 덕분인지 피부에 닿는 감촉이 부드럽고,<br>자극이 없어서 예민한 피부에도 안성맞춤인 것 같아요.<br>요즘은 잠자리가 달라져서인지 숙면 시간이 늘어난 느낌입니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GHLVCd0v" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250824_59/1755997988963a1Db4_JPEG/41182954638832852_1012149303.jpg" alt="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -168,7 +192,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GHLVCd0v" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230912_135/1694447669693c470h_JPEG/8336527469538093_1989074661.jpg" alt="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점도 솔직히</h2></section><p>물론 3단으로 접히다 보니 두께가 조금 얇다는 느낌은 있어요.<br>하지만 그만큼 가벼워서 이동과 정리가 편하니 크게 문제되지 않았어요.</p><p>그리고 사용 초반에는 딱딱함에 적응하는 시간이 필요했는데,<br>며칠 지나니 오히려 이 탄탄함 덕분에 더 편해졌답니다.<br>이 부분만 감안하면 충분히 만족스러운 제품이에요.</p><p>가격대도 할인 중이라 부담이 덜했고,<br>튼튼한 내구성까지 생각하면 가성비가 좋은 편이라고 생각해요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GHLVCd0v" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230912_288/1694447669358x9jah_JPEG/8336527141709262_1315362356.jpg" alt="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -185,7 +209,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 접이식이라 혼자서도 쉽게 다룰 수 있어서<br>싱글 라이프를 즐기시는 분들께도 추천드리고 싶어요. 😊</p><p>탄탄한 매트리스 찾으면서 공간도 효율적으로 쓰고 싶은 분들께는<br><font color="#ff69b4"><strong>탑토퍼 3단 토퍼 매트리스</strong></font>가 좋은 선택이 될 거예요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GHLVCd0v" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230912_234/1694447670784g2XLN_JPEG/8336528548397134_521740845.jpg" alt="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -193,7 +217,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>솔직히 저는 앞으로도 계속 쓸 생각이에요.<br>허리가 편안해지니 잠자리 질도 좋아지고 일상도 훨씬 쾌적해졌거든요.</p><p>구매 전에는 후기와 상세페이지를 꼼꼼히 비교해 보시고,<br>자신에게 맞는지 꼭 확인해 보세요.<br>저처럼 허리 건강 신경 쓰시는 분이라면 후회 없으실 거예요.</p><p>가격 할인도 자주 하는 편이니 타이밍 맞춰 구매하시면 좋을 것 같아요.<br>궁금하신 점 있으면 댓글로 물어봐 주세요! 🌸</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GHLVCd0v" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230912_192/1694447670290fbUDB_JPEG/8336528063489474_1500723587.jpg" alt="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -226,7 +250,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GHLVCd0v" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230912_23/1694447669953eH7ir_JPEG/8336527728438779_568225185.jpg" alt="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -234,11 +258,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>오늘 제 사용 후기가 도움이 되셨나요?🤗<br>여러분도 혹시 허리나 공간 문제로 매트리스 고민 중이라면,<br>꼭 한번 이 제품 고려해보시길 바랄게요.<br>사용 경험이나 궁금한 점 있으면 댓글로 남겨주세요.<br>서로 좋은 팁도 나누며 편안한 잠자리 만들어가요!💖</p><p>#접이식토퍼매트리스 #허리편한매트리스 #오가닉매트리스 #3단토퍼추천 #싱글매트리스</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GHLVCd0v" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230824_73/169286569391309v9F_JPEG/26277423772376998_1461141843.jpg" alt="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기" href="https://naver.me/GHLVCd0v" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20230912_32/16944455172517KMMx_JPEG/10735609076959712_151054743.jpg" alt="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -246,7 +270,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/GHLVCd0v" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/GHLVCd0v" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="접이식 토퍼 매트리스 추천 탄탄한 3단 오가닉 싱글 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
