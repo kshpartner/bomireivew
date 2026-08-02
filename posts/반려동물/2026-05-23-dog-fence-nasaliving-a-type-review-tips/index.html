@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">강아지 안전 공간 마련에 고민이라면 나사리빙 울타리가 마음 편한 선택일 거예요.</p>
     <div class="tags"><span>강아지울타리</span><span>나사리빙</span><span>안전펜스</span><span>가림막</span><span>반려동물용품</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁" href="https://naver.me/FAARfVUM" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁" href="https://naver.me/FAARfVUM" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220110_285/16417911895239keHe_JPEG/42927016786288123_349765957.jpg" alt="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FAARfVUM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FAARfVUM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220110_285/16417911895239keHe_JPEG/42927016786288123_349765957.jpg" alt="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그런데 <font color="#ff69b4"><strong>나사리빙 강아지울타리펜스 가림막 A타입</strong></font>을 알게 되면서 고민이 조금씩 풀렸어요.😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FAARfVUM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FAARfVUM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20230619_138/1687142905407vioPN_JPEG/1038799364124636_10439685.jpg" alt="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -150,7 +174,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>처음엔 설치가 어렵지 않을까 걱정했는데,<br>사용 후기 보니 집에서도 쉽게 할 수 있다고 하더라고요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FAARfVUM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FAARfVUM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20200519_264/1589882052270CfkHj_JPEG/27241886810878629_1910667102.jpg" alt="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -159,7 +183,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p><font color="#ff69b4"><strong>가림막 덕분에 강아지도 스트레스 덜 받고</strong></font>, 저도 집안일에 더 집중할 수 있어서 좋아요.<br>무엇보다 깔끔한 디자인 덕분에 집 분위기랑도 잘 어울렸답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FAARfVUM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FAARfVUM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220110_198/1641791141885gV3PL_JPEG/42926969713892502_1060986802.jpg" alt="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -171,7 +195,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FAARfVUM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FAARfVUM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220110_208/1641791156844G7ALS_JPEG/42926984673756162_286433525.jpg" alt="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -181,7 +205,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 색상이나 디자인이 다양하면 더 좋겠다는 생각도 들었어요.<br>하지만 집안 어디에 두어도 어울리는 무난한 스타일이라 만족해요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FAARfVUM" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FAARfVUM" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220110_300/1641791173040Jkb2E_JPEG/42927000748135018_1629504765.jpg" alt="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -228,7 +252,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>좋아요도 꾹 눌러주시고, 유용한 정보 공유도 잊지 마세요.😊</p>
 <p>#강아지울타리 #나사리빙 #펜스가림막 #강아지안전용품 #실내용울타리</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁" href="https://naver.me/FAARfVUM" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁" href="https://naver.me/FAARfVUM" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220110_285/16417911895239keHe_JPEG/42927016786288123_349765957.jpg" alt="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -236,7 +260,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FAARfVUM" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FAARfVUM" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="강아지 울타리펜스 추천 나사리빙 가림막 A타입 후기와 구매팁">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
