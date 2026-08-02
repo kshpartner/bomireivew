@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">요즘 집안 공기와 향기를 위해 딥블러쉬 블랙딘 호텔 디퓨저를 사용해 보았는데, 은은하고 고급스러워 추천해요.</p>
     <div class="tags"><span>방향제</span><span>딥블러쉬</span><span>블랙딘</span><span>호텔디퓨저</span><span>공기정화</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기" href="https://naver.me/FCZ40HKd" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기" href="https://naver.me/FCZ40HKd" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220917_39/1663391509810fYQhM_JPEG/64527344554922089_562844187.jpg" alt="백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FCZ40HKd" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FCZ40HKd" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220917_39/1663391509810fYQhM_JPEG/64527344554922089_562844187.jpg" alt="백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 <font color="#ff69b4"><strong>백화점 방향제</strong></font>를 찾던 중<br>딥블러쉬의 <font color="#ff69b4"><strong>블랙딘 호텔 디퓨저 150ml</strong></font>를 알게 됐답니다.<br>이 제품을 고르게 된 이유, 실제 사용 후기를 나눠볼게요.<br></p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FCZ40HKd" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FCZ40HKd" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251117_172/1763369226040etLnx_JPEG/97502076187804419_812280261.jpg" alt="백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -151,7 +175,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 좀 더 은은하고 오래 지속되는<br>방향제를 찾기 시작했어요.<br>그 중에서도 자연스러운 향과 고급스러운 분위기를<br>같이 느낄 수 있는 제품을 원했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FCZ40HKd" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FCZ40HKd" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251117_172/1763368928159leyI0_JPEG/12074488963578329_267903926.jpg" alt="백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -161,7 +185,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 디자인도 블랙 톤이라 세련됐고<br>인테리어 소품으로도 손색없어 보여서<br>결정하는 데 큰 도움이 됐어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FCZ40HKd" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FCZ40HKd" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20220917_198/1663391558380LmOXD_JPEG/64527393104257513_1386692479.jpg" alt="백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -224,7 +248,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>오늘 제가 써본 딥블러쉬 블랙딘 호텔 디퓨저 이야기가<br>향기로운 집 꾸미기에 도움이 되었으면 해요!💖<br>여러분은 집에서 어떤 향을 좋아하시나요?<br>댓글로 나만의 향기 팁 공유해 주세요! 🤗</p>
 <p>#백화점방향제 #딥블러쉬디퓨저 #호텔디퓨저 #집꾸미기팁 #은은한향기</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기" href="https://naver.me/FCZ40HKd" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기" href="https://naver.me/FCZ40HKd" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20220917_39/1663391509810fYQhM_JPEG/64527344554922089_562844187.jpg" alt="백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -232,7 +256,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FCZ40HKd" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FCZ40HKd" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="백화점 방향제 추천 딥블러쉬 블랙딘 호텔 디퓨저 150ml 후기와 사용법 알아보기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
