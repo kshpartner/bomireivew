@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">집안 어두운 곳에 무선 LED 센서등을 붙여봤는데, 정말 편리하고 만족스러워서 조심스레 추천드려요.</p>
     <div class="tags"><span>무선센서등</span><span>LED조명</span><span>간접조명</span><span>충전식센서등</span><span>가성비조명</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" href="https://naver.me/FXnKP5j4" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240213_104/1707789684753aQ3y0_JPEG/35092368620876808_1230495939.jpg" alt="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FXnKP5j4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240213_104/1707789684753aQ3y0_JPEG/35092368620876808_1230495939.jpg" alt="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요 여러분~ 😊</p><p>요즘 집 안 곳곳에 <font color="#ff69b4"><strong>작은 조명 하나</strong></font>가 얼마나 큰 차이를 만드는지 새삼 느끼고 있어요.<br>특히 <font color="#ff69b4"><strong>화장실, 주방, 현관</strong></font>처럼 어두운 곳에 말이죠.</p><p>저는 밤에 잠깐 일어나거나, 현관문을 열 때마다 너무 어두워서 불편함을 많이 느꼈어요.<br>그래서 무선으로 간편하게 붙일 수 있는 <font color="#ff69b4"><strong>LED 센서등</strong></font>을 찾게 됐답니다.</p><p>이번에 알게 된 <font color="#ff69b4"><strong>충전식 쎈서등</strong></font>은 <font color="#ff69b4"><strong>부착형</strong></font>이라 벽이나 신발장 안에도 쉽게 붙일 수 있어서 더더욱 끌렸어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FXnKP5j4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240308_271/1709886185688eagiy_JPEG/111022084393065904_376843119.jpg" alt="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>센서등을 고르게 된 이유와 결정적 구매동기</h2></section><p>사실 비슷한 무선 LED 센서등이 많아서 한참 고민했어요.<br>가격대도 천차만별이고, 후기들도 각양각색이라 쉽지 않았죠.</p><p>그런데 이 제품은 <font color="#ff69b4"><strong>13,800원</strong></font>이라는 합리적인 가격에,<br>충전식이라 건전지 교체 걱정이 없다는 점이 정말 마음에 들었답니다.</p><p>후기들도 꽤 많았고, <font color="#ff69b4"><strong>야간 쎈서 기능</strong></font>이 잘 작동한다는 평이 많아서 믿음이 갔어요.<br>조명이 너무 밝거나 어두우면 어쩌나 싶었는데, 그런 점들도 꼼꼼히 체크했죠.</p><p>결국 <font color="#ff69b4"><strong>사용 편리함과 가성비</strong></font>가 구매를 결정하게 만든 포인트였어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FXnKP5j4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240213_238/1707789640905EJ8YE_JPEG/35092324781721328_690005843.jpg" alt="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전후, 달라진 나의 일상 이야기</h2></section><p>설치 전에는 밤에 화장실 갈 때마다 <br>스마트폰 플래시를 켜거나 손전등을 찾느라 번거로웠어요.</p><p>지금은 센서등 덕분에 손만 살짝 대거나 지나가기만 해도<br><font color="#ff69b4"><strong>부드러운 빛이 자동으로 켜져서</strong></font> 너무 편리해요.</p><p>특히 주방에서 야간 간식 준비할 때도 딱 적당한 밝기라 눈부시지 않고, <br>현관에서는 귀가할 때 바로 켜져서 따뜻한 느낌까지 들어요.</p><p>충전식이라 배터리 걱정도 덜었고, 부착형이라 공간 활용도 짱입니다! 🏠</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FXnKP5j4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240213_49/1707789654152awxwX_JPEG/35092338036084779_1690971401.jpg" alt="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -168,7 +192,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FXnKP5j4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240213_107/1707789654507u9ERx_JPEG/35092338380983721_1817256261.jpg" alt="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>약간의 아쉬움과 그래도 만족한 점</h2></section><p>아쉬운 점은 센서가 아주 넓은 공간을 커버하지는 못한다는 거예요.<br>그래서 너무 넓은 현관이나 복도에는 여러 개가 필요할 듯해요.</p><p>하지만 소규모 공간이나 신발장, 화장실 같이 제한된 공간에는 딱 맞는 크기와 밝기라<br><font color="#ff69b4"><strong>아쉬움보다 만족이 훨씬 커요</strong></font>.</p><p>그리고 충전 시간도 크게 부담스럽지 않고, 한 번 충전하면 오래 사용할 수 있어서<br>실용성 면에서 참 괜찮았습니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FXnKP5j4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240213_277/1707789654744jtCp3_JPEG/35092338611865955_1674736216.jpg" alt="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>어떤 분들께 추천하고 싶을까?</h2></section><p>밤에 자주 집 안을 이동해야 하는 분,<br>손에 무언가 들고 있을 때도 센서등이 자동으로 켜지면 좋겠다 싶은 분들에게 강추해요.</p><p>또한 건전지 교체 귀찮고, 간편하게 설치할 수 있는 조명을 찾는 분,<br>부착형 간접 조명을 선호하는 분들에게 정말 유용할 거예요.</p><p>아기 방, 노약자 집, 자취생 원룸 등<br><font color="#ff69b4"><strong>야간 안전을 위해 센서등이 필요한 모든 분들께 추천합니다.</strong></font></p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FXnKP5j4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240213_109/1707789654957t7U4z_JPEG/35092338838983199_198263910.jpg" alt="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -192,7 +216,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 이미 집 곳곳에 몇 개 더 추가 구매를 고민 중이에요.<br>작은 조명 하나가 이렇게 삶의 질을 높여줄 줄 몰랐거든요.</p><p>구매 전에 후기도 꼼꼼히 읽어보시고,<br>상세페이지에서 제품 특징과 충전 방법, 설치법 등을 꼭 확인해 보세요.</p><p><font color="#ff69b4"><strong>가격도 13,800원으로 부담 없으니</strong></font> 저처럼 집안 곳곳 밝고 안전하게 관리하고 싶은 분들께 추천드려요! ✨</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FXnKP5j4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240213_256/1707789655163fBDP5_JPEG/35092339027699420_427595719.jpg" alt="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -225,7 +249,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FXnKP5j4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240213_300/17077896656471GRyX_JPEG/35092349520187548_355559113.jpg" alt="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -233,11 +257,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>오늘 제 리뷰가 무선 LED 센서등을 고민하는 여러분께<br>조금이나마 도움이 되었으면 해요. 😊</p><p>여러분 집에서는 어느 공간에 센서등이 가장 필요하셨나요?<br>댓글로 공유해주시면 서로 좋은 팁이 될 것 같아요!</p><p>좋아요와 댓글은 언제나 큰 힘이 된답니다. 다음에 또 유용한 이야기로 만나요! 🌷</p><p>#무선LED센서등 #간접조명추천 #충전식센서등 #부착형조명 #야간센서등</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FXnKP5j4" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240213_284/17077896776721GM41_JPEG/35092361535929038_2113457789.jpg" alt="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기" href="https://naver.me/FXnKP5j4" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240213_104/1707789684753aQ3y0_JPEG/35092368620876808_1230495939.jpg" alt="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -245,7 +269,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FXnKP5j4" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FXnKP5j4" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="무선 LED 센서등 추천 쎈서 부착형 간접조명 사용법과 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
