@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">작고 예쁜 2인용 밥솥이 필요하다면, 쿠쿠 마시멜로 밥솥을 따뜻하게 추천드려요. 간편하고 맛도 좋아서 만족스러울 거예요.</p>
     <div class="tags"><span>2인용밥솥</span><span>쿠쿠밥솥</span><span>간편조리</span><span>밥솥후기</span><span>마시멜로밥솥</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="2인용 밥솥 추천 쿠쿠 마시멜로 CR-0215MW 후기와 선택법" href="https://naver.me/GlR7GzMF" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="2인용 밥솥 추천 쿠쿠 마시멜로 CR-0215MW 후기와 선택법" href="https://naver.me/GlR7GzMF" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250219_294/1739951336239sL2eo_JPEG/31137516043841234_1488257384.jpg" alt="2인용 밥솥 추천 쿠쿠 마시멜로 CR-0215MW 후기와 선택법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GlR7GzMF" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GlR7GzMF" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250219_294/1739951336239sL2eo_JPEG/31137516043841234_1488257384.jpg" alt="2인용 밥솥 추천 쿠쿠 마시멜로 CR-0215MW 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 집에서 밥 한 그릇을 <font color="#ff69b4"><strong>간편하게</strong></font> 해먹고 싶어서<br>2인용 밥솥을 찾고 있었어요. 🍚</p><p>사실 혼자 살면서 큰 밥솥은 항상 남아서 불편했고,<br>작은 용량에 딱 맞는 제품이 필요했답니다.</p><p>특히 <font color="#ff69b4"><strong>간편한 조작법</strong></font>과 디자인까지 예쁜 걸 찾다 보니<br>마음에 쏙 드는 제품을 발견했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GlR7GzMF" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GlR7GzMF" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20251013_254/1760335194976JUgRy_JPEG/14510447791403068_2087190616.jpg" alt="2인용 밥솥 추천 쿠쿠 마시멜로 CR-0215MW 후기와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -195,7 +219,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>여러분도 쿠쿠 2인용 마시멜로 밥솥으로<br>따뜻한 한 끼, 간편한 주방 생활을 경험해보세요. 😊</p><p>사용해보신 후에 <font color="#ff69b4"><strong>어떤 점이 좋았는지</strong></font>,<br>또는 궁금한 점 댓글로 공유해주시면<br>저도 더 도움이 되는 정보 알려드릴게요!</p><p>좋아요와 댓글은 저에게 큰 힘이 된답니다. 함께 이야기 나눠요! 💕</p><p>#쿠쿠밥솥 #2인용밥솥추천 #혼밥템 #주방가전리뷰 #간편조리</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="2인용 밥솥 추천 쿠쿠 마시멜로 CR-0215MW 후기와 선택법" href="https://naver.me/GlR7GzMF" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="2인용 밥솥 추천 쿠쿠 마시멜로 CR-0215MW 후기와 선택법" href="https://naver.me/GlR7GzMF" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250219_294/1739951336239sL2eo_JPEG/31137516043841234_1488257384.jpg" alt="2인용 밥솥 추천 쿠쿠 마시멜로 CR-0215MW 후기와 선택법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -203,7 +227,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>2인용 밥솥 추천 쿠쿠 마시멜로 CR-0215MW 후기와 선택법</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/GlR7GzMF" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="2인용 밥솥 추천 쿠쿠 마시멜로 CR-0215MW 후기와 선택법">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/GlR7GzMF" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="2인용 밥솥 추천 쿠쿠 마시멜로 CR-0215MW 후기와 선택법">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
