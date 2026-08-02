@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">강아지 피부가 예민한 친구에게 모공까지 깨끗이 씻기고 촉촉한 샴푸를 조심스럽게 추천해요.</p>
     <div class="tags"><span>강아지샴푸</span><span>딥클렌징</span><span>보습</span><span>민감피부</span><span>후기추천</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기" href="https://naver.me/58q3BILn" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기" href="https://naver.me/58q3BILn" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250214_253/17395285856842vMyz_JPEG/51167487680696477_1544128006.JPG" alt="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/58q3BILn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/58q3BILn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250214_253/17395285856842vMyz_JPEG/51167487680696477_1544128006.JPG" alt="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>안녕하세요🐾 요즘 저희 강아지 피부 고민 때문에 좋은 샴푸를 찾고 있었는데요.<br>특히 <font color="#ff69b4"><strong>모공 깨끗 딥클렌징</strong></font>과 <font color="#ff69b4"><strong>보습</strong></font>이 동시에 가능한 샴푸가 필요했어요.<br>예민한 피부라서 자극 없는 제품을 고르기 쉽지 않았거든요.</p><p>그래서 여러 제품을 비교하던 중에 <font color="#ff69b4"><strong>에브리원스 강아지 샴푸 400ml</strong></font>를 알게 되었답니다.<br>후기도 꽤 좋아서 한번 써보기로 마음먹었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/58q3BILn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/58q3BILn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250123_181/1737604973180vPbCf_PNG/26276377022157259_891859771.png" alt="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -150,7 +174,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>또 목욕 후 건조한 피부 때문에 가려움증을 보이기도 했고요.<br>그래서 세정력과 보습 두 마리 토끼를 잡을 제품을 찾게 되었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/58q3BILn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/58q3BILn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250123_196/1737610858934Hu1JQ_PNG/76074045553932_503224522.png" alt="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -160,7 +184,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>처음에는 효과가 정말 있을까 망설였지만, <font color="#ff69b4"><strong>딥클렌징</strong></font>과 <font color="#ff69b4"><strong>보습</strong></font>이라는 문구에 끌려서 한 번 시도해보기로 했죠.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/58q3BILn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/58q3BILn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250123_299/1737610859028PmAbV_PNG/76074142339899_414471970.png" alt="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -170,7 +194,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>더불어 향도 은은해서 산책 후 강아지에게서 상쾌한 향이 나서 기분 좋았어요. 🐶</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/58q3BILn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/58q3BILn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250123_81/1737610859135zm5GR_PNG/76074225723320_2036815247.png" alt="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -183,7 +207,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>이 세 가지는 정말 매일 사용해도 부담 없고, 강아지 피부 건강에 도움 되는 부분이라 마음에 들었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/58q3BILn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/58q3BILn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250123_269/1737610796608nHUqe_PNG/18646230467894582_1551066825.png" alt="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -192,7 +216,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 샴푸 용기가 조금 더 손에 쥐기 편했으면 하는 작은 바람이 있네요.<br>그래도 가격 대비 용량과 품질이 좋아서 전반적으로 만족스러웠어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/58q3BILn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/58q3BILn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250214_102/1739528575167V4cTa_JPEG/23690588952804936_1154924206.jpg" alt="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -201,7 +225,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p><font color="#ff69b4"><strong>딥클렌징과 보습을 한 번에</strong></font> 챙기고 싶은 분들께도 잘 맞는 제품이에요.<br>또 가격도 할인가 30,200원으로 적당해서 부담 없이 구매하기 좋아요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/58q3BILn" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/58q3BILn" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250214_215/1739528599276iP1mk_JPEG/20769794246087147_1704138369.JPG" alt="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -241,7 +265,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>오늘은 저희 강아지 샴푸 고민부터 사용 후기까지 솔직하게<br>나눠봤어요. 여러분 강아지도 건강한 피부와 깨끗한 털로<br>행복한 일상 보내길 바라며, 궁금한 점이나 경험담 댓글로<br>공유해 주세요! 🐾💬</p><p>#강아지샴푸 #딥클렌징샴푸 #강아지보습 #애견용품 #반려동물케어</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기" href="https://naver.me/58q3BILn" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기" href="https://naver.me/58q3BILn" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250214_253/17395285856842vMyz_JPEG/51167487680696477_1544128006.JPG" alt="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -249,7 +273,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/58q3BILn" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/58q3BILn" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="강아지 샴푸 추천 모공 딥클렌징과 보습 효과 살펴보기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
