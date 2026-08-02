@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">밤에도 정원 분위기를 따뜻하게 밝혀주는 솔라콤 태양광 LED 정원등, 친구처럼 믿고 추천드려요.</p>
     <div class="tags"><span>태양광 정원등</span><span>솔라콤</span><span>LED 조명</span><span>야외 조명</span><span>에너지 절약</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기" href="https://naver.me/x7eBJEsG" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기" href="https://naver.me/x7eBJEsG" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260507_291/1778132652312Jgwig_JPEG/109711449233385248_664475140.jpg" alt="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x7eBJEsG" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x7eBJEsG" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260507_291/1778132652312Jgwig_JPEG/109711449233385248_664475140.jpg" alt="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 집 앞마당이나 작은 정원을 꾸미고 싶은 마음이 커졌어요🌿<br>그런데 저녁이 되면 어두워서 불편함을 느끼곤 했거든요.</p><p>그래서 <font color="#ff69b4"><strong>태양광 정원등</strong></font>을 찾게 됐답니다.<br>특히 전기선 없이 설치 가능하고, 자연스러운 분위기를 만들어주는 걸 원했어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x7eBJEsG" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x7eBJEsG" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20221109_38/1667981477387jSbVA_JPEG/69117261035388560_2069228859.jpg" alt="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>태양광 LED 정원등을 고르게 된 이유</h2></section><p>시장에 정말 다양한 태양광 조명이 있더라고요.<br>저도 한참 망설였죠.</p><p>그중 <font color="#ff69b4"><strong>솔라콤 태양광 정원등</strong></font>을 선택한 건<br>가격이 합리적이면서도 디자인이 예뻐서였어요.</p><p>게다가 구매자 후기도 꽤 신뢰가 갔고,<br>특히 LED 수정 구슬이 달려 있어서 밤에 반짝이는 모습이 너무 예쁠 것 같았거든요✨</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x7eBJEsG" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x7eBJEsG" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20221109_99/16679614386309eNJW_JPEG/69097337266335383_1965089796.jpg" alt="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 달라진 일상</h2></section><p>설치 전에는 어두워서 밤에 정원 산책하기가 불편했는데,<br>이 정원등을 설치하고 난 뒤엔 분위기가 완전 달라졌어요.</p><p>밤마다 은은한 빛이 잔디 위에 퍼져서<br>가족들과 저녁 시간을 보내는 게 훨씬 더 편안해졌답니다.</p><p>전기 연결 없이 태양열만으로 자동으로 켜지고 꺼지니까 관리도 손쉽고<br>정말 만족스러워요😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x7eBJEsG" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x7eBJEsG" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260507_93/1778130512602DTXGs_JPEG/80074526390242157_705798496.jpg" alt="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x7eBJEsG" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x7eBJEsG" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260507_142/177813051303507kU8_JPEG/80074526826446323_189331217.jpg" alt="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>조금 아쉬웠던 점</h2></section><p>물론 빛이 너무 강하지는 않아서<br>정말 밝은 조명을 원한다면 조금 아쉬울 수 있어요.</p><p>그래도 잔잔한 분위기를 원하는 분들에겐 오히려 장점일 거예요.<br>저는 그 은은함이 더 좋았답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x7eBJEsG" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x7eBJEsG" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260507_187/1778130513404EcPfw_JPEG/80074527191335939_219393329.jpg" alt="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>이런 분들께 추천해요</h2></section><p>작은 정원이나 베란다를 아기자기하게 꾸미고 싶은 분,<br>전기 연결 없이 간편하게 설치 가능한 조명을 찾는 분께 딱입니다.</p><p>또한 자연스러운 조명으로 편안한 분위기를 만들고 싶은 분들께<br><font color="#ff69b4"><strong>솔라콤 태양광 정원등</strong></font>을 자신 있게 추천드려요😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x7eBJEsG" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x7eBJEsG" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260507_107/17781326515836o1IR_JPEG/109711448510335455_443923802.jpg" alt="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 이미 몇 개 더 구입해서 다른 공간에도 설치할 예정이에요.<br>가격도 할인 중인 6,500원으로 부담 없이 구매할 수 있었거든요.</p><p>후기랑 상세페이지 꼭 한번 꼼꼼히 살펴보시고,<br>여러 제품과 비교해보시면 분명 만족스러운 선택이 될 거예요.</p><p>자연 속에서 반짝이는 작은 빛을 만나보고 싶다면,<br>한번쯤 경험해보시길 추천해요🌟</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/x7eBJEsG" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/x7eBJEsG" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260507_45/1778132651968rJ8MB_JPEG/109711448893246296_639795324.jpg" alt="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -225,7 +249,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>오늘은 제가 직접 써보고 좋았던 <font color="#ff69b4"><strong>솔라콤 태양광 정원등</strong></font> 후기를 공유해봤어요.<br>여러분도 밤하늘 아래 작은 빛으로 힐링하는 경험 해보셨으면 좋겠어요.</p><p>사용해본 분들은 어떤 점이 가장 마음에 드셨나요?😊<br>저랑 공감가는 부분이나 궁금한 점 댓글로 남겨주시면<br>서로 좋은 정보 나누는 재미가 더할 것 같아요!</p><p>#태양광정원등 #솔라콤LED #야외조명추천 #가로등사용후기 #정원꾸미기</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기" href="https://naver.me/x7eBJEsG" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기" href="https://naver.me/x7eBJEsG" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260507_291/1778132652312Jgwig_JPEG/109711449233385248_664475140.jpg" alt="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -233,7 +257,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/x7eBJEsG" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/x7eBJEsG" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="태양광 정원등 추천 솔라콤 LED 가로등 활용법과 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
