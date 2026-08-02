@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">3~10개월 아기 발달에 좋은 터미타임 장난감, 경험담과 추천을 조심스럽게 나눠요.</p>
     <div class="tags"><span>터미타임</span><span>아기장난감</span><span>발달놀이</span><span>육아팁</span><span>영유아</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" href="https://naver.me/FSv5o6KK" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250725_95/1753416284958LelnV_JPEG/87549050064184035_1096575547.jpg" alt="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5o6KK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250725_95/1753416284958LelnV_JPEG/87549050064184035_1096575547.jpg" alt="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>아기가 <font color="#ff69b4"><strong>3개월부터 10개월</strong></font>까지 성장하는 시기에<br>어떤 장난감이 도움이 될까 고민했어요. 👶</p><p>특히 터미타임 할 때 함께 놀 수 있는 제품이 필요했는데,<br>아기가 흥미를 잃지 않고 즐겁게 놀 수 있는 걸 찾고 있었죠.</p><p>이전에는 단순한 딸랑이만 주로 줬는데,<br>아기가 금세 싫증을 내서 좀 더 다양한 자극이 필요했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5o6KK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260401_24/1775033178970bd5pz_JPEG/29725691994760236_1030045621.jpg" alt="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>왜 터미타임 아기장난감으로 결정했을까?</h2></section><p>터미타임은 아기 성장에 좋다는 얘기를 많이 들어서 관심이 컸어요.<br>그래서 자연스럽게 터미타임 전용 장난감을 찾게 됐죠.</p><p>시중에 비슷한 장난감이 정말 많았는데,<br>이 제품을 고른 이유는 <font color="#ff69b4"><strong>노래 기능</strong></font>과 다양한 월령에 맞춘 구성이 마음에 들었기 때문이에요.</p><p>또한 가격도 합리적인 <font color="#ff69b4"><strong>할인가 49,900원</strong></font>이라 부담 없었고,<br>후기도 대체로 긍정적이라 믿음이 갔어요.</p><p>처음엔 노래가 아이에게 부담스럽지 않을까 고민했지만,<br>직접 써보니 은은한 멜로디가 오히려 집중력을 높여 주더라고요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5o6KK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20231120_94/1700466681563gtNbh_JPEG/3073162372626158_1590981292.jpg" alt="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후, 달라진 아기 반응</h2></section><p>사용 전에는 터미타임 시간을 매번 힘들어했는데,<br>이 장난감을 주니 눈을 반짝이며 장난감에 손을 뻗더라고요. 🎵</p><p>특히 5~6개월 아기부터는 노래와 빛, 촉감 자극 덕분에<br>자기 주도적으로 놀면서 터미타임 시간이 훨씬 즐거워졌어요.</p><p>9~10개월 아기는 이제 장난감을 잡고 흔들기도 하면서<br>운동 발달과 소근육 자극에 도움을 받고 있는 게 느껴졌어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5o6KK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240620_188/1718869006831e7kA0_JPEG/74060604836711670_1668944838.jpg" alt="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5o6KK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241101_41/17304396155851QG8w_JPEG/16086567472160878_638662484.jpg" alt="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>조금 아쉬웠던 점과 그래도 좋은 이유</h2></section><p>아쉬운 점은 장난감 크기가 조금 더 작았으면<br>외출할 때도 휴대하기 편했을 것 같다는 점이에요.</p><p>하지만 집에서 터미타임용으로는 딱 적당한 크기라<br>큰 불편함 없이 잘 사용하고 있어요.</p><p>그리고 노래 볼륨 조절 기능이 있었으면 더 좋겠지만,<br>기본 볼륨도 적당해서 크게 문제는 없었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5o6KK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241101_159/1730439605119B4lhh_JPEG/57140847183172424_160044210.jpg" alt="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>누구에게 추천하고 싶은가요?</h2></section><p>특히 <font color="#ff69b4"><strong>3개월부터 10개월까지</strong></font> 아기 엄마라면<br>터미타임 장난감 고민할 때 꼭 한 번 고려해보세요.</p><p>아기가 놀이에 흥미를 느끼고 <br>운동 발달과 감각 자극에 도움 받길 바라는 분들에게 추천해요.</p><p>그리고 <font color="#ff69b4"><strong>노래와 촉감 자극이 함께 되는 제품</strong></font>을 원한다면<br>가성비 좋은 선택이 될 거예요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5o6KK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250725_135/1753416736881yT3JC_JPEG/80451078947282638_1925423020.jpg" alt="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -190,7 +214,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>재구매 의사와 구매 팁</h2></section><p>저는 이미 몇 달째 만족하며 사용 중이라<br>조만간 주변 지인 선물용으로도 구매할 생각이에요. 🎁</p><p>구매 전에는 후기와 상세페이지 꼼꼼히 비교해보시고,<br>아기의 월령과 성향에 맞는지 확인하는 걸 추천드려요.</p><p>가격도 지금 <font color="#ff69b4"><strong>할인가 49,900원</strong></font>으로 합리적이니<br>기회를 놓치지 마세요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5o6KK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250725_287/1753416982655s6UOl_JPEG/87549913728514852_1311308383.jpg" alt="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -223,7 +247,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5o6KK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250725_131/175341624904150DW3_JPEG/70743180567470403_2141610804.jpg" alt="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -231,11 +255,11 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>아기와 함께 터미타임을 더 즐겁고 의미 있게 보내고 싶다면<br>이 제품을 꼭 한 번 써보시길 추천드려요. 😊</p><p>사용해보신 분들은 댓글로 아기 반응이나 팁도 공유해 주세요!<br>우리 모두 육아 정보 나누며 힘내봐요. 💕</p><p>#터미타임 #아기장난감추천 #발달장난감 #육아템 #3개월아기</p><p>#아기발달 #노래장난감 #6개월아기 #10개월아기 #육아소통</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/FSv5o6KK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250725_90/1753416285884WBiMN_JPEG/87549050994603849_910504068.jpg" alt="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법" href="https://naver.me/FSv5o6KK" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250725_95/1753416284958LelnV_JPEG/87549050064184035_1096575547.jpg" alt="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -243,7 +267,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/FSv5o6KK" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/FSv5o6KK" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="터미타임 아기장난감 추천 3~10개월 발달 놀이 리뷰와 선택법">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
