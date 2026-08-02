@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">갤럭시탭 S10 울트라 보호에 좋은 케이스를 찾는 친구에게 신중하게 추천드릴게요.</p>
     <div class="tags"><span>갤럭시탭</span><span>케이스추천</span><span>울트라하이브리드</span><span>보호케이스</span><span>S10울트라</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드" href="https://naver.me/xxoRDl4a" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드" href="https://naver.me/xxoRDl4a" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250409_128/174418158624952WzT_JPEG/16689813163177024_732893866.jpg" alt="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xxoRDl4a" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xxoRDl4a" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250409_128/174418158624952WzT_JPEG/16689813163177024_732893866.jpg" alt="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>처음엔 그냥 가방에 넣고 다녔는데, 어느 순간 작은 흠집들이 눈에 띄더라고요.<br>그래서 제대로 된 케이스가 필요하다는 생각이 들었어요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xxoRDl4a" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xxoRDl4a" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250409_19/1744179029458mgNDk_JPEG/48571084315925125_763621563.jpg" alt="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -153,7 +177,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>후기들도 대부분 <font color="#ff69b4"><strong>사용감이 좋고 만족한다</strong></font>는 평이 많아서 신뢰가 갔죠.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xxoRDl4a" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xxoRDl4a" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250409_144/17441790310242wjqX_JPEG/13779526120767108_1460716123.jpg" alt="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -164,7 +188,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>외출 시에도 탭을 가방에 막 넣어도 걱정이 덜해진 게 가장 큰 변화였어요.😊</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xxoRDl4a" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xxoRDl4a" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20241105_288/17307874781663WJr9_JPEG/84062652330441071_1439985104.jpg" alt="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xxoRDl4a" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xxoRDl4a" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250409_187/174418158584112VVI_JPEG/16689812745618451_1668331102.jpg" alt="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -186,7 +210,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그리고 그레이 컬러가 무난해서 어디에나 잘 어울려서 만족했답니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/xxoRDl4a" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/xxoRDl4a" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250409_8/1744181586669B4Xh4_JPEG/16689813574783338_1549832778.jpg" alt="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -234,7 +258,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>서로 경험 공유하며 좋은 선택 하시길 바랄게요.😊</p>
 <p>#갤럭시탭케이스 #S10울트라 #울트라하이브리드프로 #태블릿보호 #스마트기기액세서리</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드" href="https://naver.me/xxoRDl4a" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드" href="https://naver.me/xxoRDl4a" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250409_128/174418158624952WzT_JPEG/16689813163177024_732893866.jpg" alt="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -242,7 +266,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/xxoRDl4a" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/xxoRDl4a" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="갤럭시탭 케이스 추천 울트라하이브리드 프로 그레이 실용적인 S10 울트라 보호 가이드">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
