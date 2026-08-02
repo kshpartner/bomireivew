@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">소야트 두유 제조기는 조용하고 청소가 쉬워서 건강한 식생활에 정말 추천드리고 싶어요.</p>
     <div class="tags"><span>두유제조기</span><span>저소음</span><span>건강식</span><span>청소용이</span><span>가정용</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기" href="https://naver.me/5GchfzeK" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기" href="https://naver.me/5GchfzeK" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240215_88/1707978237336IsoDJ_JPEG/109114072151460257_1977138065.jpg" alt="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5GchfzeK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5GchfzeK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20240215_88/1707978237336IsoDJ_JPEG/109114072151460257_1977138065.jpg" alt="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -143,7 +167,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>그래서 좀 더 편리하고 조용한 제품을 찾다가<br> 이 제조기를 알게 되었어요.😊</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5GchfzeK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5GchfzeK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260206_180/1770367901568nW5Aq_PNG/104500701671745885_335364752.png" alt="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -154,7 +178,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>할인가 139,000원으로 비교적 합리적인 가격이라서<br> 결정을 내릴 수 있었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5GchfzeK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5GchfzeK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250826_29/1756181014164kKI9q_JPEG/73497085108687655_440318122.jpg" alt="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -165,7 +189,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>직접 만든 두유와 죽은<br> <font color="#ff69b4"><strong>신선하고 건강한 맛</strong></font>이 느껴져서 만족도가 높아요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5GchfzeK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5GchfzeK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250825_203/1756088659460xqqzK_GIF/90221427509499764_1815571711.gif" alt="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -177,7 +201,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5GchfzeK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5GchfzeK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250731_200/1753924023959FkXFr_JPEG/46649142256479368_1506289527.jpg" alt="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -187,7 +211,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>전체적으로 보면 <font color="#ff69b4"><strong>가격대비 성능이 아주 만족스럽다</strong></font>고 생각해요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5GchfzeK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5GchfzeK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250825_263/1756088744006iILEN_JPEG/7858526130101681_1207511402.jpg" alt="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -197,7 +221,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>매일 부담 없이 사용할 수 있어서<br> 건강한 식습관을 꾸준히 유지하는 데 도움이 될 거예요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5GchfzeK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5GchfzeK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250825_209/1756088750915MmtRb_JPEG/44905520715261121_527129530.jpg" alt="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -207,7 +231,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가격도 현재 할인가 139,000원이라 적당하니<br> 관심 있으신 분들은 서두르셔도 좋을 것 같아요!</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5GchfzeK" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5GchfzeK" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250825_34/1756088774585BHwt4_JPEG/90221590731230171_505819340.jpg" alt="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -244,7 +268,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>좋아요와 공감도 큰 힘이 되니까 잊지 말고 눌러주세요.💖</p>
 <p>#두유제조기 #소야트두유메이커 #저소음가전 #건강식품메이커 #주방가전추천</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기" href="https://naver.me/5GchfzeK" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기" href="https://naver.me/5GchfzeK" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20240215_88/1707978237336IsoDJ_JPEG/109114072151460257_1977138065.jpg" alt="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -252,7 +276,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5GchfzeK" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5GchfzeK" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="소야트 글라스 두유 제조기 사용법과 저소음 죽 메이커 후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
