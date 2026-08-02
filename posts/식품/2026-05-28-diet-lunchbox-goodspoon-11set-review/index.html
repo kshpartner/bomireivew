@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">바쁜 일상에도 건강하게 먹고 싶은 친구에게 추천하는 굿스푼 다이어트 도시락 11종 세트 후기입니다.</p>
     <div class="tags"><span>다이어트</span><span>도시락</span><span>굿스푼</span><span>건강식</span><span>직장인식단</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법" href="https://naver.me/GVVEIgaN" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법" href="https://naver.me/GVVEIgaN" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250205_121/173873868457511PEl_JPEG/28342860549455721_2059771425.jpg" alt="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEIgaN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEIgaN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250205_121/173873868457511PEl_JPEG/28342860549455721_2059771425.jpg" alt="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 다이어트 식단 때문에 <font color="#ff69b4"><strong>도시락</strong></font> 고민 많으시죠? 😅<br>저도 직장인이라 바쁜 일상 속에서 건강하게 먹는 게 참 쉽지 않더라고요.<br>특히 <font color="#ff69b4"><strong>소불고기, 치즈 떡갈비, 김치제육</strong></font> 같이 맛있으면서도 다이어트에 도움이 되는 메뉴를 찾기 어려웠어요.<br>그래서 여러 제품을 비교하다가 <font color="#ff69b4"><strong>굿스푼 2주 다이어트 식단 도시락 11종 11팩</strong></font>을 만나게 됐답니다.</p><p>이전에는 직접 도시락을 싸거나 외식 위주였는데,<br>칼로리 계산도 어렵고 시간도 많이 걸려서 스트레스였거든요.<br>그래서 간편하면서도 <font color="#ff69b4"><strong>균형 잡힌 식단</strong></font>을 원했어요.<br>굿스푼 도시락은 그런 면에서 딱 맞더라고요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEIgaN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEIgaN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250730_270/1753839393173VTwrW_JPEG/26160473321556718_2016176215.jpg" alt="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>굿스푼 도시락을 선택한 이유</h2></section><p>사실 다이어트 도시락 브랜드가 너무 많아서 한참 망설였어요.<br>가격도 천차만별이고, 후기도 다양해서 고민이 컸죠.<br>그런데 <font color="#ff69b4"><strong>58,800원</strong></font>이라는 할인된 가격과<br>꾸준한 <font color="#ff69b4"><strong>구매 후기</strong></font>가 마음을 끌었어요.<br>그리고 무엇보다 <font color="#ff69b4"><strong>11가지 다양한 메뉴</strong></font>가 한 세트에 있다는 점이 결정적이었답니다.</p><p>특히 직장인으로서 <font color="#ff69b4"><strong>간편하게 전자레인지에 데우기만 하면 되는</strong></font> 점이 너무 편리했어요.<br>요리 시간이 부족한 저에게 딱 맞는 솔루션이었죠.<br>처음에는 양이 적지 않을까 걱정했는데,<br>먹어보니 적당한 포만감에 만족했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEIgaN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEIgaN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250205_120/1738738629840xjGJN_JPEG/72871562959015875_1063545925.jpg" alt="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>굿스푼 2주 다이어트 식단 도시락 사용 후기</h2></section><p>실제로 먹기 시작한 후부터는 매일 식사 고민이 훨씬 줄었어요.<br>출근 전에 미리 도시락을 꺼내 놓고 점심시간에 간편하게 데워 먹으니 시간 절약은 물론 스트레스도 줄었답니다.<br>소불고기와 치즈 떡갈비는 특히 맛있어서 식단 조절하면서도 즐겁게 먹을 수 있었어요. 😊</p><p>김치제육 메뉴는 약간 매콤해서 입맛을 돋워주고, 밥과 함께 먹으면 든든했어요.<br>한 끼 식사로 충분한 영양과 맛을 챙길 수 있다는 점에서 아주 만족스러웠답니다.</p><p>먹으면서도 건강하게 다이어트한다는 느낌이 들어서<br>꾸준히 식단을 이어가기에 부담이 없었어요.<br>덕분에 무리하지 않고 자연스럽게 체중 관리하는 데 도움이 되었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEIgaN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEIgaN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250203_253/1738556088219p3R76_JPEG/72688865376499003_552180312.jpg" alt="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -168,7 +192,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEIgaN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEIgaN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250123_238/1737633940900qGyn0_JPEG/89706328259288123_1786643699.jpg" alt="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -176,7 +200,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>약간의 아쉬웠던 점과 그래도 좋았던 이유</h2></section><p>사실 양이 살짝 적다고 느낄 때가 있었는데,<br>그럴 때는 간단한 샐러드나 과일을 곁들이면 딱 좋았어요.<br>하지만 전체적으로 식단이 잘 짜여져 있어서 크게 불편하지 않았답니다.</p><p>또 하나 아쉬운 점은 메뉴가 조금 더 다양했으면 하는 바람도 있었어요.<br>그래도 11종 세트라 충분히 여러 맛을 경험할 수 있어서 만족스러웠어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEIgaN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEIgaN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250123_83/17376339455275NOx8_JPEG/71766797626945755_1597367300.jpg" alt="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -184,7 +208,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>굿스푼 다이어트 도시락, 이런 분들께 추천해요</h2></section><p>바쁜 직장인이나 시간 내기 어려운 분들,<br>건강한 다이어트 식단을 간편하게 해결하고 싶은 분들에게 적극 추천해요.<br>그리고 혼자 사는 1인 가구 분들도 식사 준비 걱정을 덜 수 있답니다.</p><p>무엇보다 <font color="#ff69b4"><strong>맛과 영양 균형을 중요하게 생각하는 분들</strong></font>께 꼭 맞는 제품이라고 생각해요.<br>편리함과 건강을 모두 챙기고 싶은 분들께 좋은 선택이 될 거예요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/GVVEIgaN" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/GVVEIgaN" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250205_222/1738738650812sdkHj_JPEG/72871557008873479_1982974866.jpg" alt="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -216,7 +240,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>이 글을 읽고 나서 여러분도 자신에게 딱 맞는 다이어트 도시락을 찾으셨으면 좋겠어요!<br>혹시 도시락 구매나 다이어트 식단에 대해 궁금한 점 있으시면<br><font color="#ff69b4"><strong>댓글로 편하게 질문</strong></font> 남겨 주세요. 😊<br>저도 여러분과 소통하면서 더 좋은 정보 나누고 싶어요!</p><p>#다이어트도시락 #굿스푼 #직장인다이어트 #간편식단 #소불고기도시락</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법" href="https://naver.me/GVVEIgaN" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법" href="https://naver.me/GVVEIgaN" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250205_121/173873868457511PEl_JPEG/28342860549455721_2059771425.jpg" alt="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -224,7 +248,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/GVVEIgaN" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/GVVEIgaN" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="다이어트 도시락 추천 굿스푼 11종 세트 후기와 활용법">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
