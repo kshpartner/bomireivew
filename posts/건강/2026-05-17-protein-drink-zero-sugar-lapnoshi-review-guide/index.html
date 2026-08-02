@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">바쁜 일상 속에도 건강 챙기기 좋은 제로슈거 프로틴 드링크, 랩노쉬 후기와 구매 팁을 조심스레 추천할게요.</p>
     <div class="tags"><span>프로틴</span><span>제로슈거</span><span>단백질음료</span><span>운동보조</span><span>간편건강</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" href="https://naver.me/5hoJd2Yf" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" href="https://naver.me/5hoJd2Yf" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260326_209/1774491933477sVm6m_JPEG/23248204616318875_622888845.jpg" alt="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJd2Yf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJd2Yf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260326_209/1774491933477sVm6m_JPEG/23248204616318875_622888845.jpg" alt="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -141,7 +165,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>하지만 기존에 먹던 단백질 보충제들은 맛이 너무 인공적이거나, 설탕 함량이 높아 부담스러웠어요.<br>그래서 <font color="#007acc"><strong>제로슈거 제품을 찾기 시작했죠.</strong></font> 건강은 챙기고 싶고 당 걱정은 덜고 싶더라고요.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJd2Yf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJd2Yf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260326_123/1774493551618TAcBe_JPEG/27208489728939097_284131518.jpg" alt="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -151,7 +175,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>처음에는 <font color="#007acc"><strong>가격이 조금 부담스럽지 않을까</strong></font> 했지만, 꾸준히 먹으면 운동 후 회복이나 간식 대용으로 충분히 가치가 있을 것 같아 주문했답니다.😊</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJd2Yf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJd2Yf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260326_187/1774491932456BNbHb_JPEG/23248203600938046_651771549.jpg" alt="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -161,7 +185,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>꾸준히 마시다 보니 <font color="#007acc"><strong>단백질 섭취도 자연스럽게 늘고</strong></font> 운동 효과도 더 좋아진 것 같아서 만족스럽네요.👍</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJd2Yf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJd2Yf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260326_273/1774491932804q5T8j_JPEG/23248203927522270_1128086431.jpg" alt="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -173,7 +197,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJd2Yf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJd2Yf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260128_49/1769588081830cScbC_JPEG/76345446219604333_1589156033.jpg" alt="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -183,7 +207,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>무엇보다 <font color="#007acc"><strong>제로슈거 단백질 음료라는 점</strong></font>이 큰 매력이었고, 꾸준히 챙기기에 부담 없다는 게 좋았습니다.</p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJd2Yf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJd2Yf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260128_163/1769588082192SdL6C_JPEG/76345446583433954_699678963.jpg" alt="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -192,7 +216,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>간편한 식사 대용이나 운동 후 회복용으로도 <font color="#ff69b4"><strong>부담 없이 마실 수 있어 활용도가 높아요.</strong></font></p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJd2Yf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJd2Yf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260128_138/17695880825537fXkH_JPEG/76345446939498902_1939635087.jpg" alt="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -201,7 +225,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가격 대비 가성비도 괜찮으니 <font color="#ff69b4"><strong>건강한 단백질 음료를 찾는 분들은 한 번쯤 시도해보시면 좋을 것 같아요.</strong></font></p>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJd2Yf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJd2Yf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260326_56/1774491920079VqhTn_JPEG/47466272944144527_217375964.jpg" alt="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -234,7 +258,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </table>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5hoJd2Yf" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5hoJd2Yf" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260326_11/1774491933173tl20E_JPEG/23248204315876486_1078828438.jpg" alt="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -244,7 +268,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>궁금한 점 있으면 편하게 질문도 남겨주시고요. 항상 응원합니다!🙏</p>
 <p>#프로틴드링크 #제로슈거단백질 #랩노쉬후기 #건강음료추천 #간편단백질</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" href="https://naver.me/5hoJd2Yf" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드" href="https://naver.me/5hoJd2Yf" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20260326_209/1774491933477sVm6m_JPEG/23248204616318875_622888845.jpg" alt="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -252,7 +276,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5hoJd2Yf" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5hoJd2Yf" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="프로틴 드링크 추천 제로슈거 단백질음료 랩노쉬 혼합 4종 후기와 구매가이드">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
