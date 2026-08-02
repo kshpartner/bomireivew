@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">참돔 낚시대를 새로 구매하려 고민 중이라면, 가성비 좋고 사용감 좋은 타이라바로드를 조심스레 추천할게요.</p>
     <div class="tags"><span>참돔낚시</span><span>타이라바로드</span><span>낚시대추천</span><span>가성비</span><span>사용후기</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="참돔낚시대 추천 타이라바로드 선택법과 사용후기" href="https://naver.me/5K6qfQ1x" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="참돔낚시대 추천 타이라바로드 선택법과 사용후기" href="https://naver.me/5K6qfQ1x" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250813_29/17550685290018cwIQ_JPEG/89201459118647982_2077180523.jpg" alt="참돔낚시대 추천 타이라바로드 선택법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K6qfQ1x" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K6qfQ1x" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250813_29/17550685290018cwIQ_JPEG/89201459118647982_2077180523.jpg" alt="참돔낚시대 추천 타이라바로드 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -142,7 +166,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p><font color="#ff69b4"><strong>가볍고 편안한 대구라바로드</strong></font>가 필요했어요.<br>그래서 여러 제품을 찾아보며 고민했답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K6qfQ1x" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K6qfQ1x" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20260314_153/1773473028215f9XYI_JPEG/99502513483284514_1236647620.jpg" alt="참돔낚시대 추천 타이라바로드 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -153,7 +177,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>가성비 좋고, <font color="#ff69b4"><strong>참돔 타이라바로드</strong></font>로서의 기능을 충실히 한다는 점이 마음에 들었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K6qfQ1x" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K6qfQ1x" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250813_27/1755068511327pVQF1_JPEG/36483705319305970_927521202.jpg" alt="참돔낚시대 추천 타이라바로드 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -163,7 +187,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>특히 타이라바 낚시에 최적화되어 있어<br>참돔 입질을 더 잘 느낄 수 있었던 점이 인상적이었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K6qfQ1x" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K6qfQ1x" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250813_224/1755068528354dVK5K_JPEG/89201458471007900_839545389.jpg" alt="참돔낚시대 추천 타이라바로드 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -175,7 +199,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5K6qfQ1x" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5K6qfQ1x" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250813_249/1755068528708O1zBX_JPEG/89201458827473050_1837647110.jpg" alt="참돔낚시대 추천 타이라바로드 선택법과 사용후기" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -228,7 +252,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>좋아요도 눌러주시고 다음 글에서 또 만나요! 🎣</p>
 <p>#참돔낚시대 #타이라바로드 #낚시용품추천 #가성비낚시대 #대구라바로드</p>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="참돔낚시대 추천 타이라바로드 선택법과 사용후기" href="https://naver.me/5K6qfQ1x" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="참돔낚시대 추천 타이라바로드 선택법과 사용후기" href="https://naver.me/5K6qfQ1x" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250813_29/17550685290018cwIQ_JPEG/89201459118647982_2077180523.jpg" alt="참돔낚시대 추천 타이라바로드 선택법과 사용후기"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -236,7 +260,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>참돔낚시대 추천 타이라바로드 선택법과 사용후기</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5K6qfQ1x" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="참돔낚시대 추천 타이라바로드 선택법과 사용후기">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5K6qfQ1x" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="참돔낚시대 추천 타이라바로드 선택법과 사용후기">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
