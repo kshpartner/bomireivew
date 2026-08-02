@@ -96,18 +96,42 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8401776774247553"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVBM3GHMNX"></script>
-<script>
+<script data-google-ads-click-tracking="all-links-v1">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-NVBM3GHMNX');
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-ga-event]');
-    if (!el || typeof gtag !== 'function') return;
-    gtag('event', el.getAttribute('data-ga-event'), {
-      event_category: 'engagement',
-      event_label: el.getAttribute('data-ga-label') || el.href || ''
+  function gtag_report_conversion(url) {
+    var completed = false;
+    var callback = function() {
+      if (completed) return;
+      completed = true;
+      if (typeof url === 'string' && url) window.location.href = url;
+    };
+    gtag('event', 'click', {
+      'event_callback': callback,
+      'event_timeout': 2000
     });
+    window.setTimeout(callback, 2100);
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href]');
+    if (!el || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var href = el.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#' || /^javascript:/i.test(href)) return;
+
+    var eventName = el.getAttribute('data-ga-event');
+    if (eventName) {
+      gtag('event', eventName, {
+        event_category: 'engagement',
+        event_label: el.getAttribute('data-ga-label') || el.href || ''
+      });
+    }
+
+    e.preventDefault();
+    gtag_report_conversion(el.href);
   });
 </script>
 </head>
@@ -122,7 +146,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <div class="disclosure">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</div>
     <p class="summary">당과 칼로리가 걱정될 때, 마이노멀 저당 카페시럽으로 부담 없이 맛있는 커피를 즐겨보세요.</p>
     <div class="tags"><span>저당</span><span>카페시럽</span><span>마이노멀</span><span>저칼로리</span><span>커피</span></div>
-    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁" href="https://naver.me/5suGuaug" target="_blank" rel="nofollow noopener">
+    <a class="product-bookmark" data-ga-event="product_click" data-ga-label="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁" href="https://naver.me/5suGuaug" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250914_27/1757855340755r2eqS_JPEG/12407620284230566_1058886547.jpg" alt="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -132,7 +156,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </a>
     <p class="warm-note">구매 전 한 번 더 살펴보면 좋을 포인트를 차분히 정리했어요. 필요한 부분만 편하게 골라 읽어보세요.</p>
     <article><figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5suGuaug" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5suGuaug" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250914_27/1757855340755r2eqS_JPEG/12407620284230566_1058886547.jpg" alt="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -140,7 +164,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <p>요즘 <font color="#ff69b4"><strong>카페 시럽</strong></font>을 찾게 된 이유가 있었어요. ☕️</p><p>사실 집에서 커피 즐기다 보니 <font color="#ff69b4"><strong>당과 칼로리 걱정</strong></font>이 커졌거든요.<br>예전엔 달달한 시럽 많이 넣었는데, 너무 부담스럽더라고요.</p><p>그래서 <font color="#ff69b4"><strong>저당 저칼로리 제품</strong></font>을 꼭 한번 써보고 싶었답니다.<br>그런데 시장에 너무 많아서 어떤 걸 골라야 할지 고민이 많았죠.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5suGuaug" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5suGuaug" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250914_172/17578553280243TrfA_JPEG/30702135244005829_572413060.jpg" alt="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -148,7 +172,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>마이노멀 카페시럽 선택한 이유</h2></section><p>여러 브랜드 비교해보다가 <font color="#ff69b4"><strong>마이노멀 저당 저칼로리 카페시럽</strong></font>에 마음이 갔어요.<br>가격도 할인가로 8,900원이라 부담 없고,<br>후기도 꽤 좋아서 신뢰가 갔거든요.</p><p>특히 바닐라 외에 <font color="#ff69b4"><strong>초코, 헤이즐넛</strong></font> 2종이 더 있어서 다양하게 즐길 수 있다는 점도 매력적이었어요.<br>처음엔 조금 망설였는데,<br>실제로 사용해본 분들 평이 좋아서 결정했답니다.</p><p>저처럼 <font color="#ff69b4"><strong>칼로리 걱정되시는 분들께 딱</strong></font>인 제품이에요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5suGuaug" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5suGuaug" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250914_139/1757855303013WvwQ3_JPEG/105002803680120600_2003627753.jpg" alt="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -156,7 +180,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>사용 전과 후의 달라진 커피 타임</h2></section><p>처음 제품을 받고 집에서 아메리카노에 바닐라 시럽을 넣어봤어요.<br>예전보다 훨씬 깔끔한 단맛이라 부담이 확 줄었답니다.</p><p>또한 시럽이 너무 달지 않으면서도 커피 맛을 한층 더 풍부하게 만들어줘서 매일 아침이 기다려지더라고요.<br>특히 저칼로리라 마음 편하게 즐길 수 있어서 좋아요.</p><p>초코와 헤이즐넛도 시도해봤는데, 각각 독특한 풍미가 있어 기분 전환용으로 딱이었어요.<br>이렇게 <font color="#ff69b4"><strong>세 가지 맛을 번갈아가며</strong></font> 즐길 수 있는 것도 큰 장점이었답니다.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5suGuaug" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5suGuaug" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250914_181/1757855308427JLIDX_JPEG/51969531364965479_1327087143.jpg" alt="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -166,7 +190,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 </div>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5suGuaug" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5suGuaug" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250914_180/1757855314579x0Vlk_JPEG/6412662317493936_53072706.jpg" alt="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -174,7 +198,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>아쉬운 점과 그래도 좋았던 부분</h2></section><p>아쉬운 점이라면 <font color="#ff69b4"><strong>용기 디자인이 조금 단조롭다</strong></font>는 것 정도였어요.<br>하지만 그만큼 깔끔해서 보관하기 편했답니다.</p><p>그리고 간혹 좀 더 진한 맛을 원할 때는 시럽 양을 조금 더 넣어야 해서 살짝 조절이 필요했어요.<br>그래도 전체적으로 만족도가 높아서 자주 쓰고 있답니다.</p><p>이 점들을 감안해도 <font color="#ff69b4"><strong>집에서 간편하게 저칼로리 시럽을 즐기기엔 딱</strong></font>이었어요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5suGuaug" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5suGuaug" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250914_218/17578553219993sauC_JPEG/6412669751167732_1081234697.jpg" alt="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -182,7 +206,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <section class="section-title-block"><h2>어떤 분께 추천할까?</h2></section><p>일단 <font color="#ff69b4"><strong>커피를 좋아하지만 당과 칼로리가 신경 쓰이는 분</strong></font>께 정말 추천해요.<br>그리고 집에서 손쉽게 카페 분위기 내고 싶은 분들,<br>다양한 맛을 골고루 즐기고 싶으신 분들께도 딱 맞는 제품입니다.</p><p>또한, 다이어트 중이라도 달콤한 커피 한잔 포기하기 어려운 분들께 꼭 권하고 싶네요. 😊</p><p>저처럼 평소 시럽 과다 사용 때문에 고민했던 분들은 한번 써보시면 분명 만족하실 거예요.</p><br>
 </div>
 <figure class="post-image" style="display:block;width:100%;margin:30px auto;text-align:center;clear:both;">
-  <a href="https://naver.me/5suGuaug" target="_blank" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
+  <a href="https://naver.me/5suGuaug" rel="nofollow noopener" style="display:block;width:min(100%,760px);margin-left:auto;margin-right:auto;border-radius:14px;background:#fffdf9;border:1px solid #eadfd2;overflow:hidden;box-shadow:0 14px 34px rgba(111,74,55,.14);">
     <img src="https://shop-phinf.pstatic.net/20250914_215/1757855334828gHt5m_JPEG/30702142046501700_1098086418.jpg" alt="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁" style="display:block;width:100%;height:auto;max-height:760px;object-fit:contain;margin:0 auto;">
   </a>
 </figure>
@@ -220,7 +244,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
 <div class="content-block">
 <p>오늘은 마이노멀 저당 저칼로리 카페시럽 3종에 대해 솔직한 후기 공유해봤어요.<br>혹시 여러분도 커피에 달콤함 더하고 싶으면서 건강까지 챙기고 싶다면<br>이 글 보시고 궁금한 점이나 경험담 댓글로 나눠 주세요! 😊🍰</p><p>여러분의 <font color="#ff69b4"><strong>카페시럽 꿀팁</strong></font>도 기다릴게요. 함께 건강하고 달콤한 커피 생활 해봐요!</p><p>#카페시럽추천 #저당시럽 #마이노멀시럽 #홈카페 #커피꿀팁</p><br>
 </div>
-<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁" href="https://naver.me/5suGuaug" target="_blank" rel="nofollow noopener">
+<a class="product-bookmark product-bookmark-bottom" data-ga-event="product_click" data-ga-label="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁" href="https://naver.me/5suGuaug" rel="nofollow noopener">
   <div class="product-bookmark-thumb"><img src="https://shop-phinf.pstatic.net/20250914_27/1757855340755r2eqS_JPEG/12407620284230566_1058886547.jpg" alt="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁"></div>
   <div class="product-bookmark-body">
     <span>네이버 쇼핑 커넥트</span>
@@ -228,7 +252,7 @@ main{max-width:940px;margin:0 auto;padding:42px 20px 80px}
     <p>저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁</p>
   </div>
 </a>
-<p><a class="cta" href="https://naver.me/5suGuaug" target="_blank" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁">상품 자세히 살펴보기</a></p>
+<p><a class="cta" href="https://naver.me/5suGuaug" rel="nofollow noopener" data-ga-event="cta_click" data-ga-label="저당 카페시럽 추천 마이노멀 바닐라 외 2종 사용후기와 꿀팁">상품 자세히 살펴보기</a></p>
 <p class="closing-note">작은 선택 하나도 생활의 결을 바꿀 수 있으니까요. 오늘의 리뷰가 마음에 맞는 제품을 고르는 데 도움이 되었으면 합니다.</p>
 </article>
     <section class="related-posts">
